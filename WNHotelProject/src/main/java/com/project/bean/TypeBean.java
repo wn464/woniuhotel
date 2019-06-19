@@ -10,6 +10,8 @@ public class TypeBean {
 	private int id;//主键id
 	private String name;//类型名称
 	private String message;//类型描述
+	
+	
 	@Override
 	public String toString() {
 		return "TypeBean [id=" + id + ", name=" + name + ", message=" + message + "]";
