@@ -1,5 +1,7 @@
 package com.project.bean;
 
+import java.util.List;
+
 /**
  * 房间信息
  * @author my
