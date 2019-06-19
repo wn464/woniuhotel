@@ -10,7 +10,8 @@ public class PeopleBean {
 	private int id;//主键id
 	private String name;//姓名
 	private String idCard;//身份证号
-	private int gender;//性别
+	private MarkBean gender;
+	
 	public int getId() {
 		return id;
 	}
@@ -29,10 +30,11 @@ public class PeopleBean {
 	public void setIdCard(String idCard) {
 		this.idCard = idCard;
 	}
-	public int getGender() {
+	
+	public MarkBean getGender() {
 		return gender;
 	}
-	public void setGender(int gender) {
+	public void setGender(MarkBean gender) {
 		this.gender = gender;
 	}
 	@Override
