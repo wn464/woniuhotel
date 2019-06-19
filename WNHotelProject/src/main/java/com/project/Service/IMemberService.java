@@ -10,7 +10,7 @@ import com.project.bean.MemberBean;
 @Service
 public interface IMemberService {
 		//登录
-		public MemberBean login(String username);
+		public MemberBean login(String userName);
 		
 		//注册
 		public int reg(MemberBean member);

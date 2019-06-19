@@ -12,11 +12,11 @@ import com.project.bean.MemberBean;
 public interface IMemberDao {
 	
 	//登录
-	@Select("select * from member where username=#{username}")
-	public MemberBean login(String username);
+	@Select("select * from member where username=#{userName}")
+	public MemberBean login(String userName);
 	
 	//注册
-	@Insert("insert into member(username,password,phonenumber,money) values(#{username},#{password},#{phonenumber},0)")
+	@Insert("insert into member(username,password,phonenumber,money) values(#{username},#{password},#{phoneNumber},0)")
 	public int reg(MemberBean member);
 	
 	//查看个人用户信息
@@ -32,6 +32,6 @@ public interface IMemberDao {
 	public int updateMoney(double money,int id);
 	
 	//修改VIP等级
-	@Update("update member set Vip=#{Vip.id} where id = #{id}")
+	@Update("update member set vip=#{vip.id} where id = #{id}")
 	public int updateVip(MemberBean member);
 }
