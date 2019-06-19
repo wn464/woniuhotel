@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  <mapper namespace="com.project.dao.IRoomDao">
+  <select id="selectroombyid" resultMap="rmap">
+  select *from room where id=#{rid}
+  </select>
+  <resultMap type="RoomBean" id="rmap">
+  <id property="id" column="id" />
+  <result property="name" column="name" />
+  <result property="img" column="img" />
+  <result property="phone" column="phone" />
+  <result property="location" column="location" />
+  <result property="message" column="message" />
+  <result property="area" column="area" />
+  <association property="type" javaType="TypeBean" select="com.project.dao.ITypeDao.selecttypeByid" column="type" />
+  </resultMap>
+  </mapper>
