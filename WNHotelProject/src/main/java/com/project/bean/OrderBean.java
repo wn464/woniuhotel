@@ -15,7 +15,7 @@ public class OrderBean {
 	private MemberBean member;//订单所属用户
 	private MarkBean subcribeStatus;//订单是否处于预约状态
 	private CommentBean comment;//订单评论，避免sql死循环，不要直接查询，由comment进行维护
-	private LiveBean livaBean;//入住信息
+	private List<LiveBean> lives;//入住信息
 	
 	
 	
@@ -81,18 +81,18 @@ public class OrderBean {
 	public void setComment(CommentBean comment) {
 		this.comment = comment;
 	}
-	public LiveBean getLivaBean() {
-		return livaBean;
+	public List<LiveBean> getLives() {
+		return lives;
 	}
-	public void setLivaBean(LiveBean livaBean) {
-		this.livaBean = livaBean;
+	public void setLives(List<LiveBean> lives) {
+		this.lives = lives;
 	}
 	@Override
 	public String toString() {
 		return "OrderBean [id=" + id + ", orderTime=" + orderTime + ", orderNumber=" + orderNumber + ", status="
 				+ status + ", alipayNumber=" + alipayNumber + ", payMoney=" + payMoney + ", price=" + price
-				+ ", member=" + member + ", subcribeStatus=" + subcribeStatus + ", comment=" + comment + ", livaBean="
-				+ livaBean + "]";
+				+ ", member=" + member + ", subcribeStatus=" + subcribeStatus + ", comment=" + comment + ", lives="
+				+ lives + "]";
 	}
 	
 	
