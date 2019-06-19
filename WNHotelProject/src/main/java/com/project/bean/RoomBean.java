@@ -15,6 +15,8 @@ public class RoomBean {
 	private String phone;//房间电话
 	private String location;//详细位置
 	private String message;//描述
+	private String area;//面积
+	private ServiceBean service;//房间服务
 	public int getId() {
 		return id;
 	}
@@ -63,10 +65,23 @@ public class RoomBean {
 	public void setMessage(String message) {
 		this.message = message;
 	}
+	public String getArea() {
+		return area;
+	}
+	public void setArea(String area) {
+		this.area = area;
+	}
+	public ServiceBean getService() {
+		return service;
+	}
+	public void setService(ServiceBean service) {
+		this.service = service;
+	}
 	@Override
 	public String toString() {
-		return "RoomBean [id=" + id + ", name=" + name + ", img=" + img + ", status=" + status + ", phone=" + phone
-				+ ", location=" + location + ", message=" + message + "]";
+		return "RoomBean [id=" + id + ", name=" + name + ", type=" + type + ", img=" + img + ", status=" + status
+				+ ", phone=" + phone + ", location=" + location + ", message=" + message + ", area=" + area + "]";
 	}
+	
 	
 }
