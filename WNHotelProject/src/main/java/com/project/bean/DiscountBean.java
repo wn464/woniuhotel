@@ -14,7 +14,7 @@ public class DiscountBean {
 	private double number2;//数字段2
 	private double number3;//数字段3
 	private double number4;//数字段4
-	private int roomTypeId;
+	private int roomTypeId;//房间类型id
 	@Override
 	public String toString() {
 		return "DiscountBean [id=" + id + ", name=" + name + ", discountType=" + discountType + ", beginTime="
