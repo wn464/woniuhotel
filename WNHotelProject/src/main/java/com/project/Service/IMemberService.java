@@ -7,7 +7,9 @@ import org.springframework.stereotype.Service;
 
 import com.project.bean.MemberBean;
 
-@Service
+/*
+ * 会员 service
+ */
 public interface IMemberService {
 		//登录
 		public MemberBean login(String userName);
@@ -26,4 +28,6 @@ public interface IMemberService {
 		
 		//修改VIP等级
 		public int updateVip(MemberBean member);
+		
+		
 }
