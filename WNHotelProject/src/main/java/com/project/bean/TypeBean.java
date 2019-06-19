@@ -10,9 +10,16 @@ public class TypeBean {
 	private int id;//主键id
 	private String name;//类型名称
 	private String message;//类型描述
+	private double price;
+	public double getPrice() {
+		return price;
+	}
+	public void setPrice(double price) {
+		this.price = price;
+	}
 	@Override
 	public String toString() {
-		return "TypeBean [id=" + id + ", name=" + name + ", message=" + message + "]";
+		return "TypeBean [id=" + id + ", name=" + name + ", message=" + message + ", price=" + price + "]";
 	}
 	public int getId() {
 		return id;

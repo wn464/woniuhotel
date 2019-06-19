@@ -4,7 +4,7 @@ import java.util.List;
 
 import com.project.bean.VipBean;
 
-public interface IVip {
+public interface IVipService {
 
 	/**
 	 * 添加vip
