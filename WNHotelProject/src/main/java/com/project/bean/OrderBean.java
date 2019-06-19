@@ -6,8 +6,6 @@ import java.util.List;
 public class OrderBean {
 
 	private int id;//订单主键
-	private Timestamp inTime;//入住时间
-	private Timestamp outTime;//退房时间
 	private Timestamp orderTime;//订单生成时间
 	private String orderNumber;//订单号
 	private int status;//订单状态 失效，未支付、已支付
@@ -23,18 +21,6 @@ public class OrderBean {
 	}
 	public void setId(int id) {
 		this.id = id;
-	}
-	public Timestamp getInTime() {
-		return inTime;
-	}
-	public void setInTime(Timestamp inTime) {
-		this.inTime = inTime;
-	}
-	public Timestamp getOutTime() {
-		return outTime;
-	}
-	public void setOutTime(Timestamp outTime) {
-		this.outTime = outTime;
 	}
 	public Timestamp getOrderTime() {
 		return orderTime;
@@ -98,10 +84,10 @@ public class OrderBean {
 	}
 	@Override
 	public String toString() {
-		return "OrderBean [id=" + id + ", inTime=" + inTime + ", outTime=" + outTime + ", orderTime=" + orderTime
-				+ ", orderNumber=" + orderNumber + ", status=" + status + ", alipayNumber=" + alipayNumber
-				+ ", payMoney=" + payMoney + ", price=" + price + ", member=" + member + ", subcribeStatus="
-				+ subcribeStatus + ", comment=" + comment + ", lives=" + lives + "]";
+		return "OrderBean [id=" + id + ", orderTime=" + orderTime + ", orderNumber=" + orderNumber + ", status="
+				+ status + ", alipayNumber=" + alipayNumber + ", payMoney=" + payMoney + ", price=" + price
+				+ ", member=" + member + ", subcribeStatus=" + subcribeStatus + ", comment=" + comment + ", lives="
+				+ lives + "]";
 	}
 	
 	
