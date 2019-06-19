@@ -1,4 +1,4 @@
-package com.project.IService;
+package com.project.Service;
 
 import com.project.bean.PeopleBean;
 //入住人员业务接口
