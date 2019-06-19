@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.project.dao.IFoodDao">
+<resultMap type="FoodBean" id="map">
+<id property="id" column="id"/>
+<result column="name" property="name"/>
+<result column="prince" property="prince"/>
+<result column="img" property="img"/>
+<association property="type" select="com.project.dao.ITypeDao.findById" column="type" />
+</resultMap>
+<select id="findAll" resultMap="map">
+SELECT * FROM food;
+</select>
+<insert id="addFood">
+INSERT food (name , prince,type , img ) VALUES (#{name},#{prince},#{type.id},#{img});
+</insert>
+<select id="findById" parameterType="int" resultMap="map">
+select * from food where id = #{id}
+</select>
+</mapper>
