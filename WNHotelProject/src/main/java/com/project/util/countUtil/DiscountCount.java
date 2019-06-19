@@ -19,7 +19,7 @@ public class DiscountCount {
 		double price = 0;
 		List<LiveBean> lives = order.getLives();
 		for (LiveBean liveBean : lives) {
-			liveBean.getRoom().getType();
+			liveBean.getRoom().getPrice();
 		}
 		return price;
 	}
