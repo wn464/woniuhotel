@@ -1,5 +1,7 @@
 package com.project.dao;
 
-public class IUserDao {
+import com.project.bean.UserBean;
 
+public interface IUserDao {
+UserBean finduserbyid();
 }
