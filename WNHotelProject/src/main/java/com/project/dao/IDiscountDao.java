@@ -41,4 +41,9 @@ public interface IDiscountDao {
 	 * @return
 	 */
 	public int deletDiscountById(int id);
+	/**
+	 * 查询所有优惠
+	 * @return
+	 */
+	public List<DiscountBean> selectDiscountAll();
 }
