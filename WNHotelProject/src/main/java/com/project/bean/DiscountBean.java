@@ -14,6 +14,13 @@ public class DiscountBean {
 	private double number2;//数字段2
 	private double number3;//数字段3
 	private double number4;//数字段4
+	private int roomTypeId;
+	@Override
+	public String toString() {
+		return "DiscountBean [id=" + id + ", name=" + name + ", discountType=" + discountType + ", beginTime="
+				+ beginTime + ", endTime=" + endTime + ", vip=" + vip + ", number1=" + number1 + ", number2=" + number2
+				+ ", number3=" + number3 + ", number4=" + number4 + ", roomTypeId=" + roomTypeId + "]";
+	}
 	public int getId() {
 		return id;
 	}
@@ -74,12 +81,11 @@ public class DiscountBean {
 	public void setNumber4(double number4) {
 		this.number4 = number4;
 	}
-	@Override
-	public String toString() {
-		return "DiscountBean [id=" + id + ", name=" + name + ", discountType=" + discountType + ", beginTime="
-				+ beginTime + ", endTime=" + endTime + ", vip=" + vip + ", number1=" + number1 + ", number2=" + number2
-				+ ", number3=" + number3 + ", number4=" + number4 + "]";
+	public int getRoomTypeId() {
+		return roomTypeId;
 	}
-	
+	public void setRoomTypeId(int roomTypeId) {
+		this.roomTypeId = roomTypeId;
+	}
 	
 }
