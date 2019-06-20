@@ -13,6 +13,7 @@ import com.project.bean.LiveBean;
 public interface ILiveDao {
 
 	//添加入住信息
+	@Insert("insert into live (roomid,intime,outtime,orderid,phonenumber,people) values (#{roomid},#{inTime},#{outTime},#{orderid},#{phoneNumber},#{people})")
 	public int insertLiveBean(LiveBean liveBean);
 	
 	//通过时间段来查询这个时间段已经被预定过了的房间(ok)
