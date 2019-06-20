@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.project.dao.IVipDao">
+
+<insert id="insertVip" parameterType="VipBean">
+insert vip (discount,name,maxMoney) value(#{discount},#{name},#{maxMoney});
+</insert>
+
+<update id="updateVip" parameterType="VipBean">
+update vip set discount=#{discount},name=#{name},maxMoney=#{maxMoney} where id=#{id};
+</update>
+
+<delete id="deletVip" parameterType="int">
+DELETE FROM vip where id=#{id}
+</delete>
+
+<select id="selectVipById" resultType="VipBean" parameterType="int">
+select * from vip where id=#{id};
+</select>
+
+<select id="selectVipByMoney" resultType="VipBean" parameterType="double">
+select * from vip where maxMoney>=#{maxMoney};
+</select>
+
+<select id="selectVipAll">
+select * from vip ;
+</select>
+</mapper>
