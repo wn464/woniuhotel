@@ -1,6 +1,7 @@
 package com.project.Service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.project.Service.IMemberService;
 import com.project.bean.MemberBean;
@@ -10,6 +11,7 @@ import com.project.dao.IUserDao;
 /*
  * 会员  serviceimpl接口
  */
+@Service
 public class MemberServiceImpl implements IMemberService {
 	@Autowired
 	private IMemberDao dao;
@@ -67,6 +69,15 @@ public class MemberServiceImpl implements IMemberService {
 	public int updateVip(MemberBean member) {
 		// TODO Auto-generated method stub
 		return dao.updateVip(member);
+	}
+	
+	/*
+	 * 通过用户名查找
+	 */
+	@Override
+	public boolean selectByUsername(String userName) {
+		// TODO Auto-generated method stub
+		return dao.selectByUsername(userName);
 	}
 
 }

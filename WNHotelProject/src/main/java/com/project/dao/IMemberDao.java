@@ -35,5 +35,8 @@ public interface IMemberDao {
 	@Update("update member set vip=#{vip.id} where id = #{id}")
 	public int updateVip(MemberBean member);
 	
+	//通过用户名查找
+	@Select("select * from member where username = #{userName}")
+	public boolean selectByUsername(String userName);
 	
 }
