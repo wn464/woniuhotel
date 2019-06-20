@@ -26,11 +26,17 @@ public RoomBean selectroombyid(int rid);
  */
 public PageBean selectroombytype(TypeBean type,int page,int size);
 /**
- * 传入状态对象，修改房间状态
+ * 修改房间状态为可住状态
  * @param status
  * @return
  */
-public boolean updateroomstatus(MarkBean status,RoomBean room); 
+public boolean updateroomstatus(RoomBean room); 
+/**
+ * 修改房间为不可住状态
+ * @param room
+ * @return
+ */
+public boolean updateroomstatusin(RoomBean room);
 /**
  * 根据房间状态查询该状态下的所有房间
  * @param status
