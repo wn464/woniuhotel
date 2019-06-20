@@ -8,9 +8,9 @@ public interface IDiscountService {
 
 	public int deletDiscount(int id);
 	/**
-	 * 添加用户
+	 * 添加优惠
 	 * @param discount
-	 * @return
+	 * @return 
 	 */
 	public int insertDiscount(DiscountBean discount);
 	public DiscountBean selectDiscountById(int id);
@@ -30,4 +30,12 @@ public interface IDiscountService {
 	 * 查询所有优惠
 	 */
 	public List<DiscountBean> selectDiscountAll();
+	/**
+	 * 按消费查询所有优惠
+	 */
+	public List<DiscountBean>  selectDiscountByPrice(double price);
+	/**
+	 * 按vip查询所有消费
+	 */
+	public List<DiscountBean> selectDiscountByVipId(int id);
 }

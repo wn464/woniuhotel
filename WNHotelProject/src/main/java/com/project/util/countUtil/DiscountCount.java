@@ -54,4 +54,15 @@ public class DiscountCount {
 		price = MoneyUtil.multiply(price, discount.getNumber2());
 		return price;
 	}
+	/**
+	 * 会员折扣
+	 * @param price
+	 * @param order
+	 * @return
+	 */
+	public double getVipDiscountCount(double price,OrderBean order) {
+		double discount = order.getMember().getVip().getDiscount();
+		double res = MoneyUtil.multiply(price, discount);
+		return res;
+	}
 }
