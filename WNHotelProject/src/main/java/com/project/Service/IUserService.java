@@ -10,6 +10,7 @@ import com.project.bean.UserBean;
 /*
  * 操作员service 接口
  */
+
 public interface IUserService {
 
 	//通过id查找用户信息

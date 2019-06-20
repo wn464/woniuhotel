@@ -30,6 +30,8 @@ public interface IUserDao {
 		//修改操作员权限
 		@Update("update user set role = #{role.id} where id = #{id}")
 		public int updateRole(UserBean user);
+		
+		
 	
 	
 }

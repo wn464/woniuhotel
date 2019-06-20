@@ -29,5 +29,8 @@ public interface IMemberService {
 		//修改VIP等级
 		public int updateVip(MemberBean member);
 		
+		//通过用户名查找
+		public MemberBean selectByUsername(String userName);
+		
 		
 }
