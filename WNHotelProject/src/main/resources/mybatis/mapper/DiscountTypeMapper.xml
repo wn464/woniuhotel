@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.project.dao.IDiscountTypeDao">
+<insert id="insertDiscountType" parameterType="DiscountTypeBean">
+insert discounttype (name,message) values (#{name},#{message});
+</insert>
+
+<update id="updateDiscountType" parameterType="DiscountTypeBean">
+update discounttype set name=#{name} ,message=#{message} where id=#{id};
+</update>
+
+<delete id="deletDiscountType" parameterType="int">
+delete from discounttype where id=#{id};
+</delete>
+
+<select id="selectDiscountTypeAll" resultType="DiscountTypeBean">
+select * from discounttype;
+</select>
+
+<select id="selectDiscountTypeById" resultType="DiscountTypeBean" parameterType="int">
+select * from discounttype where id=#{id};
+</select>
+</mapper>
