@@ -11,6 +11,7 @@ import com.project.Service.IOrderService;
 import com.project.bean.LiveBean;
 import com.project.bean.OrderBean;
 import com.project.bean.PageBean;
+import com.project.dao.ILiveDao;
 import com.project.dao.IOrderDao;
 /**
  * 订单业务
@@ -21,10 +22,15 @@ import com.project.dao.IOrderDao;
 public class OrderServiceImp implements IOrderService {
 	@Autowired
 	private IOrderDao orderDao;
-
+	@Autowired
+	private ILiveDao liveDao;
 	//添加订单
 	@Override
 	public int insertOrder(OrderBean orderBean) {
+		List<LiveBean> liveBeans = orderBean.getLives();
+		for (LiveBean liveBean : liveBeans) {
+			liveDao.insertLiveBean(liveBean);
+		}
 		int num = orderDao.insertOrder(orderBean);
 		return num;
 	}
@@ -47,9 +53,10 @@ public class OrderServiceImp implements IOrderService {
 	
 	//通过入住信息分页查询订单
 	@Override
-	public List<OrderBean> selectOrderByAttr(LiveBean liveBean) {
-		List<OrderBean> list = orderDao.selectOrderByAttr(liveBean);
-		return list;
+	public List<OrderBean> selectOrderByAttr(String people,String time) {
+		
+//		List<OrderBean> list = orderDao.selectOrderByAttr();
+		return null;
 	}
 
 	//修改订单状态
