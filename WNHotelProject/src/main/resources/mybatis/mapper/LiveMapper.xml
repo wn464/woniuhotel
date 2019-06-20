@@ -4,13 +4,28 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.project.dao.ILiveDao">
 	<!-- 通过时间段来查询这个时间段已经被预定过了的房间 -->
-	<select id="selectTime" resultMap="map">
-		select roomid from live where '#{inTime}' between intime and outtime and '#{outTime}' between intime and outtime; 	
+	<select id="selectTime" resultType="Integer">
+		select roomid from live where #{inTime}  between intime and outtime and #{outTime} between intime and outtime; 	
 	</select>
-	<resultMap type="LiveBean" id="map">
+	<!-- 通过订单号查询入住信息 -->
+	<select id="findByorderid"  resultMap="mapp">
+		select * from live where orderid = #{orderid};
+	</select>
+	
+	<!-- 通过开房人名字和入住时间来查询入住信息  里面包含RoomBean -->
+	<select id="selectBypeopleAndDate" resultMap="mapp">
+		select * from live where people = #{people} and intime = #{time};
+	</select>
+	
+	<resultMap type="LiveBean" id="mapp">
 		  <id property="id" column="id" />
-		  <result property="roomid" column="roomid" />
 		  <result property="inTime" column="intime" />
 		  <result property="outTime" column="outtime" />
+		  <result property="phoneNumber" column="phonenumber"/>
+		  <result property="orderid" column="orderid"/>
+		  <result property="people" column="people"/>
+		  <association property="room" javaType="RoomBean" select="com.project.dao.IRoomDao.selectroombyid" column="roomid"></association>
 	</resultMap>
+		
+	
 </mapper>
