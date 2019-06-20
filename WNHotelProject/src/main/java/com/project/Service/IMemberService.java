@@ -30,7 +30,7 @@ public interface IMemberService {
 		public int updateVip(MemberBean member);
 		
 		//通过用户名查找
-		public boolean selectByUsername(String userName);
+		public MemberBean selectByUsername(String userName);
 		
 		
 }

@@ -15,6 +15,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.scheduling.annotation.EnableAsync;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
+import com.project.shiro.MemberRealm;
 import com.project.shiro.UserRealm;
 
 //添加配置注解
@@ -30,39 +31,44 @@ public class ShiroConfig {
 		//认证跳转地址
 		shiroFilter.setLoginUrl("/login");
 		//认证失败跳转
-		shiroFilter.setUnauthorizedUrl("/login");
+		shiroFilter.setUnauthorizedUrl("/failed.html");
 		Map<String,String> fmap = new LinkedHashMap<String,String>();
-//		fmap.put("/html/login.html", "anon");
-//		fmap.put("/html/reg.html", "anon");
-//		fmap.put("/login", "anon");
-//		fmap.put("/reg", "anon");
-//		fmap.put("/html/main.html", "authc");
-//		fmap.put("/loginout", "logout");
+
+		
+		fmap.put("/reg","anon");
+		fmap.put("/reg.html","anon");
+		fmap.put("/userReg","anon");
+		fmap.put("/reg.html","anon");
+		fmap.put("/js/**","anon");
 		fmap.put("/login", "anon");
-		fmap.put("/register", "anon");
-		fmap.put("/js/**", "anon");
-		fmap.put("/css/**", "anon");
-		fmap.put("/img/**", "anon");
-		fmap.put("/error", "anon");
+		fmap.put("/login.html","anon");
 		fmap.put("/**", "authc");
+		fmap.put("/logout","logout");
 		shiroFilter.setFilterChainDefinitionMap(fmap);
 		return shiroFilter;
 		
 	}
 	//生成安全管理器,注入realm
 	@Bean(name="securityManager")
-	public DefaultWebSecurityManager getDefaultSecurityManager(@Qualifier("myReaml") Realm realm) {
+	public DefaultWebSecurityManager getDefaultSecurityManager(@Qualifier("myReaml") Realm realm,@Qualifier("myReam2") Realm realm2 ) {
 		DefaultWebSecurityManager defaultSecurityManager = new DefaultWebSecurityManager();
 		defaultSecurityManager.setRealm(realm);
+		defaultSecurityManager.setRealm(realm2);
 		return defaultSecurityManager;
 	}
 	//生成Realm
 	//可以注入加密
 	@Bean(name = "myReaml")
 	public Realm getRealm(@Qualifier("hashedCredentialsMatcher") HashedCredentialsMatcher hashedCredentialsMatcher) {
-		UserRealm realm = new UserRealm();
+		MemberRealm realm = new MemberRealm();
 		realm.setCredentialsMatcher(hashedCredentialsMatcher);
 		return realm;
+	}
+	@Bean(name = "myReam2")
+	public Realm getRealm1(@Qualifier("hashedCredentialsMatcher") HashedCredentialsMatcher hashedCredentialsMatcher) {
+		UserRealm realm2 = new UserRealm();
+		realm2.setCredentialsMatcher(hashedCredentialsMatcher);
+		return realm2;
 	}
 	/**
 	 * 使用md5来进行密码加密

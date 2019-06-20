@@ -16,7 +16,7 @@ public interface IMemberDao {
 	public MemberBean login(String userName);
 	
 	//注册
-	@Insert("insert into member(username,password,phonenumber,money) values(#{username},#{password},#{phoneNumber},0)")
+	@Insert("insert into member(username,password,phonenumber,money) values(#{userName},#{password},#{phoneNumber},0)")
 	public int reg(MemberBean member);
 	
 	//查看个人用户信息
@@ -35,8 +35,7 @@ public interface IMemberDao {
 	@Update("update member set vip=#{vip.id} where id = #{id}")
 	public int updateVip(MemberBean member);
 	
-	//通过用户名查找
-	@Select("select * from member where username = #{userName}")
-	public boolean selectByUsername(String userName);
+	//通过用户名查找	
+	public MemberBean selectByUsername(String userName);
 	
 }

@@ -75,7 +75,7 @@ public class MemberServiceImpl implements IMemberService {
 	 * 通过用户名查找
 	 */
 	@Override
-	public boolean selectByUsername(String userName) {
+	public MemberBean selectByUsername(String userName) {
 		// TODO Auto-generated method stub
 		return dao.selectByUsername(userName);
 	}

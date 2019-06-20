@@ -14,6 +14,7 @@ public class Validation {
 			System.out.println("----------出 现 错  误----------");
 			List<FieldError> list = result.getFieldErrors();					//把错误信息封装到resultList中
 			for (FieldError fieldError : list) {
+				System.out.println(fieldError.getDefaultMessage());
 				resultList.add(fieldError.getDefaultMessage());
 			}
 		}

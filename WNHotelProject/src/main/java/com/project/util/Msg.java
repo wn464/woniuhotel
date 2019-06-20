@@ -16,16 +16,14 @@ public class Msg {
 	public static Msg success() {
 		Msg msg = new Msg();
 		msg.setCode(200);
-		msg.setMessage("处理成功");
+		msg.setMessage("请求成功");
 		return msg;
 	}
-	
-	
 	
 	public static Msg failed() {
 		Msg msg = new Msg();
 		msg.setCode(500);
-		msg.setMessage("处理失败");
+		msg.setMessage("请求失败");
 		return msg;
 	}
 	
