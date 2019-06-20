@@ -62,7 +62,7 @@ public interface IRoomDao {
   * @return
   */
  @Update("update room set status=#{status.id} where id=#{room.id}")
- public int updateroomstatus(@Param("status")MarkBean status ,@Param("room")RoomBean rooom);
+ public int updateroomstatus(@Param("status")MarkBean status ,@Param("room")RoomBean room);
  /**
   * 根据房间类型，查询当前类型下某一状态的房间
   * @param type
