@@ -39,8 +39,8 @@ public class RoomServiceImpl implements IRoomService{
 	}
 
 	@Override
-	public boolean updateroomstatus(MarkBean status, RoomBean room) {
-		int i =dao.updateroomstatus(status, room);
+	public boolean updateroomstatus( RoomBean room) {
+		int i =dao.updateroomstatus(room);
 		if(i>0) {
 			return true;
 		}
@@ -97,5 +97,14 @@ public class RoomServiceImpl implements IRoomService{
 	bean.setList(roomsb);
 	return bean;
 	}
+
+@Override
+public boolean updateroomstatusin(RoomBean room) {
+	int i=dao.updaterooomstatusin(room);
+	if(i>0) {
+		return true;
+	}
+	return false;
+}
 
 }

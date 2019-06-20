@@ -57,12 +57,19 @@ public interface IRoomDao {
   */
  public List<RoomBean> selectroombystatus(@Param("status")MarkBean status,@Param("page")int page,@Param("size")int size);
  /**
-  * 根据传入的房间状态，修改房间状态
+  * 将房间更改为可住状态
   * @param status
   * @return
   */
- @Update("update room set status=#{status.id} where id=#{room.id}")
- public int updateroomstatus(@Param("status")MarkBean status ,@Param("room")RoomBean room);
+ @Update("update room set status=3 where id=#{room.id}")
+ public int updateroomstatus(@Param("room")RoomBean room);
+ /**
+  * 将房间更改为不可住状态
+  * @param room
+  * @return
+  */
+ @Update("update room set status=4 where id=#{room.id}")
+ public int updaterooomstatusin(@Param("room")RoomBean room);
  /**
   * 根据房间类型，查询当前类型下某一状态的房间
   * @param type
