@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.project.dao.ILiveDao">
+	<!-- 通过时间段来查询这个时间段已经被预定过了的房间 -->
+	<select id="selectTime" resultMap="map">
+		select roomid from live where '#{inTime}' between intime and outtime and '#{outTime}' between intime and outtime; 	
+	</select>
+	<resultMap type="LiveBean" id="map">
+		  <id property="id" column="id" />
+		  <result property="roomid" column="roomid" />
+		  <result property="inTime" column="intime" />
+		  <result property="outTime" column="outtime" />
+	</resultMap>
+</mapper>
