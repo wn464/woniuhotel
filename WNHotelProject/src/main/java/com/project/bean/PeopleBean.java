@@ -11,7 +11,14 @@ public class PeopleBean {
 	private String name;//姓名
 	private String idCard;//身份证号
 	private MarkBean gender;
+	private int liveId;  //入住的id
 	
+	public int getLiveId() {
+		return liveId;
+	}
+	public void setLiveId(int liveId) {
+		this.liveId = liveId;
+	}
 	public int getId() {
 		return id;
 	}
@@ -39,7 +46,8 @@ public class PeopleBean {
 	}
 	@Override
 	public String toString() {
-		return "PeopleBean [id=" + id + ", name=" + name + ", idCard=" + idCard + ", gender=" + gender + "]";
+		return "PeopleBean [id=" + id + ", name=" + name + ", idCard=" + idCard + ", gender=" + gender + ", liveId="
+				+ liveId + "]";
 	}
 	
 	

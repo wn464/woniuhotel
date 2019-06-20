@@ -12,6 +12,7 @@ import com.project.bean.PeopleBean;
  */
 public interface IPeopleDao {
 	//添加入住人员信息
+	@Insert("insert into people () values()")
 	public int insertPeopleBean(PeopleBean peopleBean);
 	//删除入住人员信息
 	public int deletePeopleBean(int pid);
