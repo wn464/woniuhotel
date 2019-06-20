@@ -6,6 +6,9 @@ import org.apache.ibatis.annotations.Update;
 
 import com.project.bean.UserBean;
 
+/*
+ * 操作员 dao
+ */
 public interface IUserDao {
 	
 		//通过id查找用户信息

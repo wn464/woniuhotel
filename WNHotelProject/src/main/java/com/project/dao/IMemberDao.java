@@ -34,4 +34,6 @@ public interface IMemberDao {
 	//修改VIP等级
 	@Update("update member set vip=#{vip.id} where id = #{id}")
 	public int updateVip(MemberBean member);
+	
+	
 }
