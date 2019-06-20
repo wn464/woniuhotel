@@ -1,5 +1,7 @@
 package com.project.dao;
 
+import java.util.List;
+
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 
@@ -17,4 +19,6 @@ public interface ITypeDao {
 	 */
 	@Select("select *from type where id=#{tid}")
 public TypeBean selecttypeByid(@Param("tid")int tid);
+	@Select("select *froom type")
+	public List<TypeBean> selecttypeall();
 }
