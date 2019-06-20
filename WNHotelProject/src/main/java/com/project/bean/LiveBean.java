@@ -12,12 +12,19 @@ public class LiveBean {
 	private int id;//主键
 	private RoomBean room;//房间
 	private int roomid;
-	private PeopleBean people;//开房人
+	private int orderid;
+	private String people;//开房人名字
 	private int number;//入住人数
 	private String inTime;//入住时间
 	private String outTime;//退房时间
 	private String phoneNumber;//电话号码
 	private List<PeopleBean> peoples;//入住人员
+	public int getOrderid() {
+		return orderid;
+	}
+	public void setOrderid(int orderid) {
+		this.orderid = orderid;
+	}
 	public int getRoomid() {
 		return roomid;
 	}
@@ -42,10 +49,11 @@ public class LiveBean {
 	public void setRoom(RoomBean room) {
 		this.room = room;
 	}
-	public PeopleBean getPeople() {
+	
+	public String getPeople() {
 		return people;
 	}
-	public void setPeople(PeopleBean people) {
+	public void setPeople(String people) {
 		this.people = people;
 	}
 	public int getNumber() {
@@ -75,8 +83,9 @@ public class LiveBean {
 	}
 	@Override
 	public String toString() {
-		return "LiveBean [id=" + id + ", room=" + room + ", people=" + people + ", number=" + number + ", inTime="
-				+ inTime + ", outTime=" + outTime + ", phoneNumber=" + phoneNumber + ", peoples=" + peoples + "]";
+		return "LiveBean [id=" + id + ", room=" + room + ", roomid=" + roomid + ", orderid=" + orderid + ", people="
+				+ people + ", number=" + number + ", inTime=" + inTime + ", outTime=" + outTime + ", phoneNumber="
+				+ phoneNumber + ", peoples=" + peoples + "]";
 	}
 	
 	
