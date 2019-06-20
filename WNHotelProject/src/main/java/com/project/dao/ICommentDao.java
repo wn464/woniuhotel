@@ -11,6 +11,6 @@ public interface ICommentDao {
 	@Insert("insert into comment(orderId,message)values(#{orderId.orderNumber},#{message})")
 	public void insert(CommentBean bean);
     //查询评论
-	@Select("select * from comment where orderId=#{orderId.orderNumber}")
-	public CommentBean selectComment(OrderBean orderId);
+	@Select("select * from comment")
+	public CommentBean selectComment();
 }
