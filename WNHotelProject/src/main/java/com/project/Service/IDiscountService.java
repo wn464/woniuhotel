@@ -3,6 +3,7 @@ package com.project.Service;
 import java.util.List;
 
 import com.project.bean.DiscountBean;
+import com.project.bean.OrderBean;
 
 public interface IDiscountService {
 
@@ -38,4 +39,10 @@ public interface IDiscountService {
 	 * 按vip查询所有消费
 	 */
 	public List<DiscountBean> selectDiscountByVipId(int id);
+	/**
+	 * 查询可以获得的优惠
+	 * @param order
+	 * @return
+	 */
+	public List<DiscountBean> selectDiscountByOrder(OrderBean order);
 }

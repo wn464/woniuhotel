@@ -35,7 +35,7 @@ public interface IVipDao {
 	 * @param money
 	 * @return
 	 */
-	public VipBean selectVipByMoney(double money);
+	public List<VipBean> selectVipByMoney(double money);
 	/**
 	 * 查询vip，全部
 	 * @return
