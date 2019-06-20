@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.project.dao.IDiscountDao">
+<insert id="insertDiscount" parameterType="DiscountBean">
+insert discounts 
+(name,discountType,number1,number2,number3,number4,beginTime,endTime,vip,roomTypeId) 
+values 
+(#{name},#{discountType},#{number1},#{number2},#{number3},#{number4},#{beginTime},#{endTime},#{vip},#{roomTypeId});
+</insert>
+
+<update id="updateDiscount" parameterType="DiscountBean">
+update discounts set
+name=#{name},discountType=#{discountType},number1=#{number1},number2=#{number2},number3=#{number3},number4=#{number4},beginTime=#{beginTime},endTime=#{endTime},vip=#{vip},roomTypeId=#{roomTypeId}
+where id=#{id};
+</update>
+
+<select id="selectDiscountById" resultType="DiscountBean" parameterType="int">
+select * from discounts where id=#{id};
+</select>
+
+<select id="selectDiscountByName" resultType="DiscountBean" parameterType="string">
+select * from discounts where name like #{name};
+</select>
+
+<delete id="deletDiscountById" parameterType="int">
+delete from discounts where id=#{id};
+</delete>
+
+<select id="selectDiscountAll">
+select * from discounts;
+</select>
+
+</mapper>
