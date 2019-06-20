@@ -3,6 +3,7 @@ package com.project.dao;
 import java.util.List;
 
 import org.apache.ibatis.annotations.Param;
+import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 
 import com.project.bean.MarkBean;
@@ -15,6 +16,28 @@ import com.project.bean.TypeBean;
  *
  */
 public interface IRoomDao {
+	/**
+	 * 查询某一类型下，某一状态 的所有房间
+	 * @param type
+	 * @param status
+	 * @return
+	 */
+	@Select("select count(*) from room where type=#{type.id} and status=#{status.id}")
+	public int selectroomallbytypeandstatus(@Param("type")TypeBean type,@Param("status")MarkBean status);
+	/**
+	 * 查询某一状态房间下的所有房间
+	 * @param status
+	 * @return
+	 */
+	@Select("select count(*) from room where status=#{status.id}")
+	public int selectroomallbystatus(@Param("status")MarkBean status);
+	/**
+	 * 查询某一类型下有多少房间
+	 * @param type
+	 * @return
+	 */
+	@Select("select count(*)from room where type=#{type.id}")
+	public int selectroomallbytype(@Param("type")TypeBean type);
 	/**
 	 * 通过查询房间详情
 	 * @param rid房间id
