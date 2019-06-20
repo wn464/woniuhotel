@@ -6,6 +6,7 @@ import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 
 import com.project.bean.ServiceBean;
+import com.project.bean.TypeBean;
 
 /**
  * 房间服务对象实体

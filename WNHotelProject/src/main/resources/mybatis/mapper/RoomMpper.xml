@@ -3,6 +3,51 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   <mapper namespace="com.project.dao.IRoomDao">
+  <!--通过房间类型，查询此类型下某一状态的房间  -->
+  <select id="selectroombytypeandstatus" resultMap="rtsmap"> 
+  select *from room where type=#{type.id} and status=#{status.id} limit #{page},#{size}
+  </select>
+  <resultMap type="RoomBean" id="rtsmap">
+  <id property="id" column="id" />
+  <result property="name" column="name" />
+  <result property="img" column="img" />
+  <result property="phone" column="phone" />
+  <result property="location" column="location" />
+  <result property="message" column="message" />
+  <result property="area" column="area" />
+  <collection property="service" ofType="ServiceBean" select="com.project.dao.IServiceDao.selectservicebyrid" column="id" />
+  </resultMap>
+  <!--通过房间状态来查询房间  -->
+  <select id="selectroombystatus" resultMap="rsmap">
+  select *from room where status=#{status.id} limit #{page},#{size}
+  </select>
+  <resultMap type="RoomBean" id="rsmap">
+  <id property="id" column="id" />
+  <result property="name" column="name" />
+  <result property="img" column="img" />
+  <result property="phone" column="phone" />
+  <result property="location" column="location" />
+  <result property="message" column="message" />
+  <result property="area" column="area" />
+  <association property="type" javaType="TypeBean" select="com.project.dao.ITypeDao.selecttypeByid" column="type" />
+  <collection property="service" ofType="ServiceBean" select="com.project.dao.IServiceDao.selectservicebyrid" column="id" />
+  </resultMap>
+  <!--通过类型查询房间  -->
+  <select id="selectroombytype" resultMap="rtmap">
+  select *from room where type=#{type.id}  limit #{page},#{size}
+  </select>
+  <resultMap type="RoomBean" id="rtmap">
+  <id property="id" column="id" />
+  <result property="name" column="name" />
+  <result property="img" column="img" />
+  <result property="phone" column="phone" />
+  <result property="location" column="location" />
+  <result property="message" column="message" />
+  <result property="area" column="area" />
+  <association property="status" javaType="MarkBean" select="com.project.dao.IMarkDao.selectmarkbyid" column="status" />
+  <collection property="service" ofType="ServiceBean" select="com.project.dao.IServiceDao.selectservicebyrid" column="id" />
+  </resultMap>
+  <!--根据房间id查询房间详细信息  -->
   <select id="selectroombyid" resultMap="rmap">
   select *from room where id=#{rid}
   </select>

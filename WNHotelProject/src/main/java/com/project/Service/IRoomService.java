@@ -23,17 +23,26 @@ public RoomBean selectroombyid(int rid);
  * @param type房间类型
  * @return
  */
-public List<RoomBean> selectroombytype(TypeBean type);
+public List<RoomBean> selectroombytype(TypeBean type,int page,int size);
 /**
  * 传入状态对象，修改房间状态
  * @param status
  * @return
  */
-public boolean updateroomstatus(MarkBean status); 
+public boolean updateroomstatus(MarkBean status,RoomBean room); 
 /**
  * 根据房间状态查询该状态下的所有房间
  * @param status
  * @return
  */
-public List<RoomBean> selectroombystatus(MarkBean status);
+public List<RoomBean> selectroombystatus(MarkBean status,int page,int size);
+/**
+ * 根据类型查询给类型下某一状态的房间
+ * @param type
+ * @param status
+ * @param page
+ * @param size
+ * @return
+ */
+public List<RoomBean> selectroombytypeandstatus(TypeBean type,MarkBean status,int page,int size);
 }
