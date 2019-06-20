@@ -71,4 +71,10 @@ public class DiscountServiceImpl implements IDiscountService {
 		return list;
 	}
 
+	@Override
+	public List<DiscountBean> selectDiscountByVipIdAndPrice(int id, double price) {
+		List<DiscountBean> list = discountDao.selectDiscountByPriceOrVip(price, id, new Timestamp(System.currentTimeMillis()));
+		return list;
+	}
+
 }

@@ -9,7 +9,7 @@ import com.project.bean.TypeBean;
  * @author zxc
  *
  */
-public interface ITypeDao {
+public interface ITypeService {
 	/**
 	 * 查询所有房间类型
 	 * @return

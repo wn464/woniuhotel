@@ -78,5 +78,5 @@ public interface IRoomDao {
   * @param size
   * @return
   */
- public List<RoomBean> selectroombytypeandstatus(@Param("tyep")TypeBean type,@Param("status")MarkBean status,@Param("page")int page,@Param("size")int size);
+ public List<RoomBean> selectroombytypeandstatus(@Param("type")TypeBean type,@Param("status")MarkBean status,@Param("page")int page,@Param("size")int size);
 }

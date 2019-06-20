@@ -10,7 +10,7 @@ import com.project.bean.TypeBean;
 
 /**
  * 房间服务对象实体
- * @author lenovo
+ * @author zxc
  *
  */
 public interface IServiceDao {
