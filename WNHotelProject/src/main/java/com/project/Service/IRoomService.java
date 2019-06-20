@@ -29,7 +29,7 @@ public List<RoomBean> selectroombytype(TypeBean type);
  * @param status
  * @return
  */
-public boolean updateroomstatus(MarkBean status); 
+public boolean updateroomstatus(MarkBean status,RoomBean room); 
 /**
  * 根据房间状态查询该状态下的所有房间
  * @param status
