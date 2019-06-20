@@ -30,4 +30,10 @@ public List<RoomBean> selectroombytype(TypeBean type);
  * @return
  */
 public boolean updateroomstatus(MarkBean status); 
+/**
+ * 根据房间状态查询该状态下的所有房间
+ * @param status
+ * @return
+ */
+public List<RoomBean> selectroombystatus(MarkBean status);
 }
