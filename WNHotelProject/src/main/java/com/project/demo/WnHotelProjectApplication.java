@@ -8,7 +8,7 @@ import org.springframework.context.annotation.ComponentScan;
 
 @SpringBootApplication
 @ComponentScan("com.project.controller")
-@ComponentScan("com.project.service")
+@ComponentScan("com.project.Service")
 @ComponentScan("com.project.config")
 @MapperScan("com.project.dao")
 @ComponentScan("com.project.shiro")
