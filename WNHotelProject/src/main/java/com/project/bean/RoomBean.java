@@ -1,5 +1,6 @@
 package com.project.bean;
 
+import java.util.List;
 
 /**
  * 房间信息
@@ -17,7 +18,7 @@ public class RoomBean {
 	private String location;//详细位置
 	private String message;//描述
 	private String area;//面积
-	private ServiceBean service;//房间服务
+	private List<ServiceBean> service;//房间服务
 	private double price;//房间价格
 	
 	public double getPrice() {
@@ -81,10 +82,11 @@ public class RoomBean {
 	public void setArea(String area) {
 		this.area = area;
 	}
-	public ServiceBean getService() {
+
+	public List<ServiceBean> getService() {
 		return service;
 	}
-	public void setService(ServiceBean service) {
+	public void setService(List<ServiceBean> service) {
 		this.service = service;
 	}
 	@Override
