@@ -14,7 +14,7 @@ public class DiscountCount {
 	 * @param order
 	 * @return
 	 */
-	public double getCount(OrderBean order) {
+	public static double  getCount(OrderBean order) {
 		double price = 0;
 		List<LiveBean> lives = order.getLives();
 		for (LiveBean liveBean : lives) {

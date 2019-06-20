@@ -46,4 +46,15 @@ public PageBean selectroombystatus(MarkBean status,int page,int size);
  * @return
  */
 public PageBean selectroombytypeandstatus(TypeBean type,MarkBean status,int page,int size);
+/**
+ * 查询某时间段可住房间
+ * @param type
+ * @param inTime
+ * @param outTime
+ * @param page
+ * @param size
+ * @return
+ */
+
+public PageBean selectroombytypeantime(TypeBean type,String inTime,String outTime,int page,int size);
 }

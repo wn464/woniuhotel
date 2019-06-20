@@ -11,12 +11,19 @@ public class LiveBean {
 
 	private int id;//主键
 	private RoomBean room;//房间
+	private int roomid;
 	private PeopleBean people;//开房人
 	private int number;//入住人数
-	private Timestamp inTime;//入住时间
-	private Timestamp outTime;//退房时间
+	private String inTime;//入住时间
+	private String outTime;//退房时间
 	private String phoneNumber;//电话号码
 	private List<PeopleBean> peoples;//入住人员
+	public int getRoomid() {
+		return roomid;
+	}
+	public void setRoomid(int roomid) {
+		this.roomid = roomid;
+	}
 	public List<PeopleBean> getPeoples() {
 		return peoples;
 	}
@@ -47,16 +54,17 @@ public class LiveBean {
 	public void setNumber(int number) {
 		this.number = number;
 	}
-	public Timestamp getInTime() {
+	
+	public String getInTime() {
 		return inTime;
 	}
-	public void setInTime(Timestamp inTime) {
+	public void setInTime(String inTime) {
 		this.inTime = inTime;
 	}
-	public Timestamp getOutTime() {
+	public String getOutTime() {
 		return outTime;
 	}
-	public void setOutTime(Timestamp outTime) {
+	public void setOutTime(String outTime) {
 		this.outTime = outTime;
 	}
 	public String getPhoneNumber() {

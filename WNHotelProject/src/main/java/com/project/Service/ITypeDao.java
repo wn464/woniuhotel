@@ -6,7 +6,7 @@ import com.project.bean.TypeBean;
 
 /**
  * 房间类型实体类
- * @author lenovo
+ * @author zxc
  *
  */
 public interface ITypeDao {
