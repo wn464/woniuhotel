@@ -3,6 +3,7 @@ package com.project.Service;
 import java.util.List;
 import java.util.Map;
 
+import com.project.bean.LiveBean;
 import com.project.bean.OrderBean;
 import com.project.bean.PageBean;
 import com.project.bean.PeopleBean;
@@ -17,10 +18,10 @@ public interface IOrderService {
 	//添加订单
 	public int insertOrder(OrderBean orderBean);
 	//前台和后台通过状态查询订单
-	public PageBean selectOrderByState(int mid,int state);
-	//后台通过开房人属性查询订单
-	public PageBean selectOrderByAttr(PeopleBean peopleBean);
+	public PageBean selectOrderByState(int mid, int status, int page, int size);
+	//后台通过入住信息查询订单
+	public List<OrderBean> selectOrderByAttr(LiveBean liveBean);
 	//修改订单状态
-	public int updateOrderState(int oid,int state);
+	public int updateOrderState(int oid,int status);
 	
 }

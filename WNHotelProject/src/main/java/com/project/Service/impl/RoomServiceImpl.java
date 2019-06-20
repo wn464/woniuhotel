@@ -5,6 +5,9 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Isolation;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.project.Service.IRoomService;
 import com.project.bean.MarkBean;
@@ -39,8 +42,8 @@ public class RoomServiceImpl implements IRoomService{
 	}
 
 	@Override
-	public boolean updateroomstatus(MarkBean status, RoomBean room) {
-		int i =dao.updateroomstatus(status, room);
+	public boolean updateroomstatus( RoomBean room) {
+		int i =dao.updateroomstatus(room);
 		if(i>0) {
 			return true;
 		}
@@ -63,6 +66,7 @@ public class RoomServiceImpl implements IRoomService{
 	@Override
 	public PageBean selectroombytypeandstatus(TypeBean type, MarkBean status, int page, int size) {
 		PageBean bean = new PageBean();
+		System.out.println(66666);
 		List<RoomBean> list = dao.selectroombytypeandstatus(type, status, page, size);
 		int totalNumber = dao.selectroomallbytypeandstatus(type, status);
 		bean.setPage(page);
@@ -76,6 +80,7 @@ public class RoomServiceImpl implements IRoomService{
  * 
  */
 	@Override
+	@Transactional(isolation = Isolation.DEFAULT,propagation = Propagation.REQUIRED)
 	public PageBean selectroombytypeantime(TypeBean type, String inTime, String outTime, int page, int size) {
 		PageBean bean = new PageBean();
 		List<RoomBean> roomsa=	dao.selectroombytype(type, page, size);
@@ -97,5 +102,14 @@ public class RoomServiceImpl implements IRoomService{
 	bean.setList(roomsb);
 	return bean;
 	}
+
+@Override
+public boolean updateroomstatusin(RoomBean room) {
+	int i=dao.updaterooomstatusin(room);
+	if(i>0) {
+		return true;
+	}
+	return false;
+}
 
 }
