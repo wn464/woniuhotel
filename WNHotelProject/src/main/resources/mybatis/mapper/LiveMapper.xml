@@ -7,6 +7,10 @@
 	<select id="selectTime" resultType="Integer">
 		select roomid from live where #{inTime}  between intime and outtime and #{outTime} between intime and outtime; 	
 	</select>
+	<!-- 通过订单号查询入住信息 -->
+	<select id="findByorderid"  resultMap="mapp">
+		select * from live where orderid = #{orderid};
+	</select>
 	
 	<!-- 通过开房人名字和入住时间来查询入住信息  里面包含RoomBean -->
 	<select id="selectBypeopleAndDate" resultMap="mapp">
