@@ -14,7 +14,7 @@ public class OrderCount extends DiscountCount{
 	public boolean orderCheckVip(OrderBean order,DiscountBean discount) {
 		
 		if(discount.getVip()!=0) {
-			if(discount.getVip()!=order.getMember().getVip().getId()) {
+			if(discount.getVip()<order.getMember().getVip().getId()) {
 				return false;
 			}
 		}
