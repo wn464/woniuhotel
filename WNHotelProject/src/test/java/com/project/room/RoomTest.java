@@ -1,26 +1,30 @@
 package com.project.room;
 
 import org.junit.Test;
-
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.junit4.SpringRunner;
 import com.project.Service.IRoomService;
-import com.project.Service.impl.RoomServiceImpl;
-import com.project.bean.PageBean;
 import com.project.bean.RoomBean;
-import com.project.bean.TypeBean;
+import com.project.demo.WnHotelProjectApplication;
 
+
+@RunWith(SpringRunner.class)
+@SpringBootTest(classes = WnHotelProjectApplication.class)
 public class RoomTest {
-	IRoomService ro = new RoomServiceImpl();
-	@Test
-	public void test1() {		
-		RoomBean bean = ro.selectroombyid(1);
-		System.out.println(bean);
-	}
-	@Test
-	public void test2() {
-		TypeBean bean1 = new TypeBean();
-		bean1.setId(1);
-		PageBean page = ro.selectroombytype(bean1, 0, 1);
-		System.out.println(page);
-	}
+	    @Autowired
+	    private IRoomService ro;
+       
+	    @Test
+	    public void insertTest(){
+	    	RoomBean room = ro.selectroombyid(1);
+	    	System.out.println(room);
+	    }
+	    @Test
+	    public void test1() {
+	    	
+	    }
+
 
 }
