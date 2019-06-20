@@ -9,13 +9,13 @@
 <!-- 	通过状态分页查询订单 -->
 	<select id="selectOrderByState" resultMap="map">
 		select * from orders
-		<where>
-		status = #{status} 
-			<if test="memberId!=0">
-				and memberId = #{mid}
-			</if>
-		limit #{page},#{size}	
-		</where>
+<!-- 		<where> -->
+<!-- 		status = #{status}  -->
+<!-- 			<if test="memberId!=0"> -->
+<!-- 				and memberId = #{mid} -->
+<!-- 			</if> -->
+<!-- 		limit #{page},#{size}	 -->
+<!-- 		</where> -->
 		
 	</select>
 <!-- 	通过入住信息查询订单 -->
@@ -55,12 +55,12 @@
 		<result property="alipayNumber" column="alipayNumber"></result>
 		<result property="price" column="price"></result>
 		<result property="payMoney" column="payMoney"></result>
-		<association property="status" javaType="MarkBean" select="com.project.dao.IMarkDao.selectmarkbyid" column="status"/>
-		<association property="subcribeStatus" javaType="MarkBean" select="com.project.dao.IMarkDao.selectmarkbyid" column="subcribeStatus"/>
 		<association property="member" javaType="MemberBean" select="com.project.dao.IMemberDao.selectById" column="memberId"/>
+		<association property="status" javaType="MarkBean" select="com.project.dao.IMarkDao.selectmarkbyid" column="status"/>
+	    <association property="subscribeStatus" javaType="MarkBean" select="com.project.dao.IMarkDao.selectmarkbyid" column="subscribeStatus"/> 
 		
-		<association property="comment" javaType="CommentBean" select="com.project.dao.ICommentDao.selectCommentByOid" column="id"/>
-<!-- 			<collection  property="lives" ofType="LiveBean" select="com.project.dao.ILiveDao.selectLiveByOid" column="id"/> -->
+<!-- 		<association property="comment" javaType="CommentBean" select="com.project.dao.ICommentDao.selectCommentByOid" column="id"/> -->
+<!-- 		<collection  property="lives" ofType="LiveBean" select="com.project.dao.ILiveDao.selectLiveByOid" column="id"/> -->
 	</resultMap>
 	
 </mapper>
