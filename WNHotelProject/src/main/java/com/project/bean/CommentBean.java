@@ -8,7 +8,7 @@ package com.project.bean;
  */
 public class CommentBean {
    //注释
-	
+	//test
 	private int id;//主键ID
 	private OrderBean orderId;//订单号，可以根据显示用户，评论，避免sql死循环，不要直接查询，order不进行查询comment。
 	private String message;//订单完成后评论
