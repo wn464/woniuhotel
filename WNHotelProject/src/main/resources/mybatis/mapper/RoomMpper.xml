@@ -15,5 +15,7 @@
   <result property="message" column="message" />
   <result property="area" column="area" />
   <association property="type" javaType="TypeBean" select="com.project.dao.ITypeDao.selecttypeByid" column="type" />
+  <association property="status" javaType="MarkBean" select="com.project.dao.IMarkDao.selectmarkbyid" column="status" />
+  <collection property="service" ofType="ServiceBean" select="com.project.dao.IServiceDao.selectservicebyrid" column="id" />
   </resultMap>
   </mapper>
