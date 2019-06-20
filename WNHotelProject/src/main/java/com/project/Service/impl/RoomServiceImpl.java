@@ -86,9 +86,7 @@ public class RoomServiceImpl implements IRoomService{
 			if(roomBean.getId()==id) {
 				continue;
 			}
-			else {
 				roomsb.add(roomBean);
-			}
 		}
 	}
 	int totalNumber=dao.selectroomallbytype(type)-(ids.size());
