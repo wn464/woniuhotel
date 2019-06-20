@@ -1,3 +1,4 @@
+
 package com.project.demo;
 
 import org.mybatis.spring.annotation.MapperScan;
@@ -20,3 +21,4 @@ public class WnHotelProjectApplication {
 	}
 
 }
+
