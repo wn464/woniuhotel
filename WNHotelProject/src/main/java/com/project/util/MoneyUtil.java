@@ -59,4 +59,5 @@ public class MoneyUtil {
 		BigDecimal num = new BigDecimal(number);
 		return num.divide(start, scale, BigDecimal.ROUND_HALF_UP);
 	}
+	
 }

@@ -7,7 +7,9 @@ import org.springframework.stereotype.Service;
 
 import com.project.bean.UserBean;
 
-@Service
+/*
+ * 操作员service 接口
+ */
 public interface IUserService {
 
 	//通过id查找用户信息

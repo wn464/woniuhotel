@@ -19,6 +19,14 @@ public class RoomBean {
 	private String message;//描述
 	private String area;//面积
 	private ServiceBean service;//房间服务
+	private double price;//房间价格
+	
+	public double getPrice() {
+		return price;
+	}
+	public void setPrice(double price) {
+		this.price = price;
+	}
 	public int getId() {
 		return id;
 	}
@@ -83,7 +91,8 @@ public class RoomBean {
 	@Override
 	public String toString() {
 		return "RoomBean [id=" + id + ", name=" + name + ", type=" + type + ", img=" + img + ", status=" + status
-				+ ", phone=" + phone + ", location=" + location + ", message=" + message + ", area=" + area + "]";
+				+ ", phone=" + phone + ", location=" + location + ", message=" + message + ", area=" + area
+				+ ", service=" + service + ", price=" + price + "]";
 	}
 	
 	
