@@ -3,6 +3,7 @@ package com.project.Service;
 import java.util.List;
 
 import com.project.bean.MarkBean;
+import com.project.bean.PageBean;
 import com.project.bean.RoomBean;
 import com.project.bean.TypeBean;
 
@@ -23,7 +24,7 @@ public RoomBean selectroombyid(int rid);
  * @param type房间类型
  * @return
  */
-public List<RoomBean> selectroombytype(TypeBean type,int page,int size);
+public PageBean selectroombytype(TypeBean type,int page,int size);
 /**
  * 传入状态对象，修改房间状态
  * @param status
@@ -35,7 +36,7 @@ public boolean updateroomstatus(MarkBean status,RoomBean room);
  * @param status
  * @return
  */
-public List<RoomBean> selectroombystatus(MarkBean status,int page,int size);
+public PageBean selectroombystatus(MarkBean status,int page,int size);
 /**
  * 根据类型查询给类型下某一状态的房间
  * @param type
@@ -44,5 +45,5 @@ public List<RoomBean> selectroombystatus(MarkBean status,int page,int size);
  * @param size
  * @return
  */
-public List<RoomBean> selectroombytypeandstatus(TypeBean type,MarkBean status,int page,int size);
+public PageBean selectroombytypeandstatus(TypeBean type,MarkBean status,int page,int size);
 }
