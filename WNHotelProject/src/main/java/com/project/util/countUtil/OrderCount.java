@@ -3,8 +3,13 @@ package com.project.util.countUtil;
 
 import com.project.bean.DiscountBean;
 import com.project.bean.OrderBean;
+import com.project.dao.IVipDao;
 
 public class OrderCount extends DiscountCount{
+	public OrderCount(IVipDao vipDao) {
+		super(vipDao);
+		// TODO Auto-generated constructor stub
+	}
 	/**
 	 * 检查优惠是否满足
 	 * @param order
@@ -14,7 +19,7 @@ public class OrderCount extends DiscountCount{
 	public boolean orderCheckVip(OrderBean order,DiscountBean discount) {
 		
 		if(discount.getVip()!=0) {
-			if(discount.getVip()<order.getMember().getVip().getId()) {
+			if(discount.getVip()<order.getMember().getVip()) {
 				return false;
 			}
 		}

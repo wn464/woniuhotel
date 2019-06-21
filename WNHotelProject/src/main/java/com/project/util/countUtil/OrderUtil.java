@@ -3,10 +3,15 @@ package com.project.util.countUtil;
 
 import com.project.bean.DiscountBean;
 import com.project.bean.OrderBean;
+import com.project.dao.IVipDao;
 import com.project.util.MoneyUtil;
 
 public class OrderUtil extends OrderCount{
 
+	public OrderUtil(IVipDao vipDao) {
+		super(vipDao);
+		// TODO Auto-generated constructor stub
+	}
 	/**
 	 * 线上计费，需要获取order中用户的vip、居住信息，完整的优惠方案
 	 * @param order
@@ -36,15 +41,16 @@ public class OrderUtil extends OrderCount{
 			price = getFullDiscountCount(order, discount);
 			break;
 		case 2:
-			price = getFixDiscountCount(order, discount);
+			price = getEveryMulitDiscountCount(order, discount);
 			break;
 		case 3:
-			price = getEveryMulitDiscountCount(order, discount);
+			price = getFixDiscountCount(order, discount);
 			break;
 		default:
 			price = getCount(order);
 			break;
 		}
+		System.out.println("会员折扣之前："+price);
 		return getVipDiscountCount(price, order);
 	}
 }
