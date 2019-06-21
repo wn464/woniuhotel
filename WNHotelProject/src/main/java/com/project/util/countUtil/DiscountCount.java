@@ -5,10 +5,17 @@ import java.util.List;
 import com.project.bean.DiscountBean;
 import com.project.bean.LiveBean;
 import com.project.bean.OrderBean;
+import com.project.dao.IVipDao;
 import com.project.util.MoneyUtil;
 
 public class DiscountCount {
 
+	private IVipDao vipDao;
+	
+	public DiscountCount(IVipDao vipDao) {
+		super();
+		this.vipDao = vipDao;
+	}
 	/**
 	 * 初步统计金额
 	 * @param order
@@ -19,8 +26,10 @@ public class DiscountCount {
 		List<LiveBean> lives = order.getLives();
 		for (LiveBean liveBean : lives) {
 			double roomPrice = liveBean.getRoom().getPrice();
-			MoneyUtil.add(price, roomPrice);
+			System.out.println("房间价格"+roomPrice);
+			price = MoneyUtil.add(price, roomPrice);
 		}
+		System.out.println("初步计算价格："+price);
 		return price;
 	}
 	/**
@@ -61,8 +70,12 @@ public class DiscountCount {
 	 * @return
 	 */
 	public double getVipDiscountCount(double price,OrderBean order) {
-		double discount = order.getMember().getVip().getDiscount();
-		double res = MoneyUtil.multiply(price, discount);
+		double res = price;
+		//会员等级为0时，不计算
+		if(order.getMember().getVip()!=0) {
+			double discount = vipDao.selectVipById(order.getMember().getVip()).getDiscount();
+			res = MoneyUtil.multiply(price, discount);
+		}
 		return res;
 	}
 }
