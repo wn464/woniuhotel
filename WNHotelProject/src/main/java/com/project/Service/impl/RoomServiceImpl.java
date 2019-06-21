@@ -31,7 +31,7 @@ public class RoomServiceImpl implements IRoomService{
 	@Override
 	public PageBean selectroombytype(TypeBean type, int page, int size) {
 		PageBean bean = new PageBean();
-		List<RoomBean> list = dao.selectroombytype(type, page, size);
+		List<RoomBean> list = dao.selectroombytype(type, (page-1)*size, size);
 		int totalNumber = dao.selectroomallbytype(type);
 		bean.setPage(page);
 		bean.setSize(size);
@@ -53,7 +53,7 @@ public class RoomServiceImpl implements IRoomService{
 	@Override
 	public PageBean selectroombystatus(MarkBean status, int page, int size) {
 		PageBean bean = new PageBean();
-		List<RoomBean> list = dao.selectroombystatus(status, page, size);
+		List<RoomBean> list = dao.selectroombystatus(status, (page-1)*size, size);
 		int totalNumber = dao.selectroomallbystatus(status);
 		bean.setPage(page);
 		bean.setSize(size);
@@ -67,7 +67,7 @@ public class RoomServiceImpl implements IRoomService{
 	public PageBean selectroombytypeandstatus(TypeBean type, MarkBean status, int page, int size) {
 		PageBean bean = new PageBean();
 		System.out.println(66666);
-		List<RoomBean> list = dao.selectroombytypeandstatus(type, status, page, size);
+		List<RoomBean> list = dao.selectroombytypeandstatus(type, status, (page-1)*size, size);
 		int totalNumber = dao.selectroomallbytypeandstatus(type, status);
 		bean.setPage(page);
 		bean.setSize(size);
@@ -83,7 +83,7 @@ public class RoomServiceImpl implements IRoomService{
 	@Transactional(isolation = Isolation.DEFAULT,propagation = Propagation.REQUIRED)
 	public PageBean selectroombytypeantime(TypeBean type, String inTime, String outTime, int page, int size) {
 		PageBean bean = new PageBean();
-		List<RoomBean> roomsa=	dao.selectroombytype(type, page, size);
+		List<RoomBean> roomsa=	dao.selectroombytype(type, (page-1)*size, size);
 	List<Integer> ids=dao2.selectTime(inTime, outTime);
 	for (Integer id : ids) {
 		for (RoomBean roomBean : roomsa) {
