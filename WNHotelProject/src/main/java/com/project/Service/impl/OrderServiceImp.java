@@ -17,6 +17,7 @@ import com.project.bean.OrderBean;
 import com.project.bean.PageBean;
 import com.project.dao.ILiveDao;
 import com.project.dao.IOrderDao;
+import com.project.util.CreateOrderInfo;
 /**
  * 订单业务
  * @author x1c
@@ -28,17 +29,25 @@ public class OrderServiceImp implements IOrderService {
 	private IOrderDao orderDao;
 	@Autowired
 	private ILiveDao liveDao;
-	//添加订单
+	//添加并获取订单信息
 	@Override
-	public int insertOrder(OrderBean orderBean) {
-		int num = orderDao.insertOrder(orderBean);
-		int orderNumber = orderDao.selectNumberByOrderNumber(orderBean.getOrderNumber());
+	public OrderBean getOrder(OrderBean orderBean) {
+		//添加订单
+		String orderTime= CreateOrderInfo.getCreateTime();
+	  	orderBean.setOrderTime(orderTime);
+	    String orderNumber =  CreateOrderInfo.getOrderNumber();
+	    orderBean.setOrderNumber(orderNumber);
+	    System.out.println(orderBean);
+	    int num =orderDao.insertOrder(orderBean);
+		OrderBean orderBean2 = orderDao.selectOrderByOrderNumber(orderBean.getOrderNumber());
 		List<LiveBean> liveBeans = orderBean.getLives();
 		for (LiveBean liveBean : liveBeans) {
-			liveBean.setOrderid(orderNumber);
-			liveDao.insertLiveBean(liveBean);
+			liveBean.setOrderid(orderBean2.getId());
+			 num = liveDao.insertLiveBean(liveBean);
 		}
-		return num;
+		//生成订单
+		OrderBean orderBean3 = orderDao.selectOrderByOrderNumber(orderNumber);
+		return orderBean3;
 	}
 
 	//通过订单状态分页查询订单
@@ -60,14 +69,8 @@ public class OrderServiceImp implements IOrderService {
 	//通过入住信息查询订单
 	@Override
 	public List<OrderBean> selectOrderByAttr(String people,String time) {
-		
 		LiveBean liveBean = liveDao.selectBypeopleAndDate(people, time);
 		List<OrderBean> list = orderDao.selectOrderByAttr(liveBean);
-		List<LiveBean> lives = new ArrayList<LiveBean>();
-		lives.add(liveBean);
-		for (OrderBean orderBean : list) {
-			orderBean.setLives(lives);;
-		}
 		return list;
 	}
 
@@ -76,6 +79,18 @@ public class OrderServiceImp implements IOrderService {
 	public int updateOrderAttr(OrderBean orderBean) {
 		int num = orderDao.updateOrderAttr(orderBean);
 		return num;
+	}
+	//通过id查询订单
+	@Override
+	public OrderBean selectOrderById(int oid) {
+		OrderBean orderBean = orderDao.selectOrderById(oid);
+		return orderBean;
+	}
+	//通过订单号查询订单
+	@Override
+	public OrderBean selectOrderByOrderNumber(String orderNumber) {
+		OrderBean orderBean = orderDao.selectOrderByOrderNumber(orderNumber);
+		return orderBean;
 	}
 
 	

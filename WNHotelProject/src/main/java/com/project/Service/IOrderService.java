@@ -15,14 +15,20 @@ import com.project.bean.PeopleBean;
  */
 public interface IOrderService {
 
-	//添加订单
-	public int insertOrder(OrderBean orderBean);
+	//添加并获取订单信息
+	public OrderBean getOrder(OrderBean orderBean);
 	//前台和后台通过状态查询订单
 	public PageBean selectOrderByState(int mid, int status, int page, int size);
 	//后台通过入住信息查询订单
 	public List<OrderBean> selectOrderByAttr(String people, String time);
 	//修改订单状态
 	public int updateOrderAttr(OrderBean orderBean);
+	//通过订单id查询订单
+	public OrderBean selectOrderById(int oid);
+	//通过订单号查询订单
+	public OrderBean selectOrderByOrderNumber(String orderNumber);
+	
+	
 	
 	
 }

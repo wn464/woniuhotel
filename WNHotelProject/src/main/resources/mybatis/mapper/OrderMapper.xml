@@ -29,6 +29,9 @@
 			<if test="payMoney!=0.0">
 				payMoney = #{payMoney}
 			</if>
+<!-- 			<if test="price!=0.0"> -->
+<!-- 				price = #{price} -->
+<!-- 			</if> -->
 			<if test="subscribeStatus!=null">
 				subscribeStatus = #{subscribeStatus.id}
 			</if>
@@ -45,11 +48,14 @@
 	<select id="selectNumberByState" resultType="int">
 		select count(*) from orders where status = #{status}
 	</select>
-<!-- 	通过订单号查询订单id -->
-	<select id="selectNumberByOrderNumber" resultType="int">
-		select id from orders where orderNumber = #{orderNumber}
+<!-- 	通过订单号查询订单 -->
+	<select id="selectOrderByOrderNumber"  resultMap="map">
+		select * from orders where orderNumber = #{orderNumber}
 	</select>
-	
+<!-- 	通过订单id查询订单 -->
+	<select id="selectOrderById" parameterType="int" resultMap="map">
+		select * from orders where id = #{oid} 
+	</select>	
 	<resultMap id="map" type="OrderBean">
 		<id property="id" column="id"></id>
 		<result property="orderTime" column="orderTime"></result>
@@ -63,5 +69,6 @@
 <!-- 		<association property="comment" javaType="CommentBean" select="com.project.dao.ICommentDao.selectCommentByOid" column="id"/> -->
 		<collection  property="lives" ofType="LiveBean" select="com.project.dao.ILiveDao.findByorderid" column="id"/>
 	</resultMap>
+
 	
 </mapper>

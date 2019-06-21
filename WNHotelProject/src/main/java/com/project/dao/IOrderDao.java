@@ -28,7 +28,8 @@ public interface IOrderDao {
 	//根据状态查询订单总数量
 	public int selectNumberByState(int status);
 	//通过订单号查询订单id
-	public int selectNumberByOrderNumber(String orderNumber);
-	
+	public OrderBean selectOrderByOrderNumber(String orderNumber);
+	//通订单id查询订单
+	public OrderBean selectOrderById(int oid);
 	
 }
