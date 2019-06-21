@@ -41,6 +41,7 @@ public class MoneyUtil {
 		BigDecimal num1 = new BigDecimal(number1);
 		BigDecimal num2 = new BigDecimal(number2);
 		BigDecimal res = num1.add(num2);
+		System.out.println(num1+"+"+num2+"="+res);
 		return res.doubleValue();
 	}
 	/**

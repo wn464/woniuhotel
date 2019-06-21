@@ -28,7 +28,7 @@ select * from discounts where name like #{name};
 delete from discounts where id=#{id};
 </delete>
 
-<select id="selectDiscountAll">
+<select id="selectDiscountAll" resultType="DiscountBean">
 select * from discounts;
 </select>
 <select id="selectDiscountByPriceOrVip" resultType="DiscountBean">

@@ -5,6 +5,7 @@ import java.util.List;
 import org.apache.ibatis.annotations.Param;
 
 import com.project.bean.LiveBean;
+import com.project.bean.MarkBean;
 import com.project.bean.OrderBean;
 import com.project.bean.PageBean;
 import com.project.bean.PeopleBean;
@@ -22,9 +23,12 @@ public interface IOrderDao {
 	public List<OrderBean> selectOrderByState(@Param("mid")int mid,@Param("status")int status,@Param("page")int page,@Param("size")int size);
 	//后台通过开房人属性和状态分页查询订单
 	public List<OrderBean> selectOrderByAttr(LiveBean liveBean);
-	//修改订单状态
-	public int updateOrderState(@Param("oid")int oid,@Param("status")int status);
+	//修改订单属性
+	public int updateOrderAttr(OrderBean orderBean);
 	//根据状态查询订单总数量
 	public int selectNumberByState(int status);
+	//通过订单号查询订单id
+	public int selectNumberByOrderNumber(String orderNumber);
+	
 	
 }

@@ -22,8 +22,10 @@ import com.project.bean.TypeBean;
  */
 @RestController
 public class RoomHandler {
+
 	@Autowired
 	private IRoomService service;
+
 	/**
 	 * 根据房间id查询房间详细信息
 	 * @param rid房间id
