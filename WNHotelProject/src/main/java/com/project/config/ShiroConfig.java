@@ -42,7 +42,8 @@ public class ShiroConfig {
 		fmap.put("/js/**","anon");
 		fmap.put("/login", "anon");
 		fmap.put("/login.html","anon");
-		//fmap.put("/**", "authc");
+		fmap.put("/**", "anon");
+
 		fmap.put("/logout","logout");
 		shiroFilter.setFilterChainDefinitionMap(fmap);
 		return shiroFilter;
