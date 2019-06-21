@@ -12,6 +12,8 @@ public class CommentBean {
 	private int id;//主键ID
 	private OrderBean orderId;//订单号，可以根据显示用户，评论，避免sql死循环，不要直接查询，order不进行查询comment。
 	private String message;//订单完成后评论
+	private String name;
+	private String imgName;
 	public int getId() {
 		return id;
 	}
@@ -30,10 +32,26 @@ public class CommentBean {
 	public void setMessage(String message) {
 		this.message = message;
 	}
+	
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	public String getImgName() {
+		return imgName;
+	}
+	public void setImgName(String imgName) {
+		this.imgName = imgName;
+	}
 	@Override
 	public String toString() {
-		return "CommentBean [id=" + id + ", orderId=" + orderId + ", message=" + message + "]";
+		return "CommentBean [id=" + id + ", orderId=" + orderId + ", message=" + message + ", name=" + name
+				+ ", imgName=" + imgName + "]";
 	}
+	
+	
 	
 	
 }
