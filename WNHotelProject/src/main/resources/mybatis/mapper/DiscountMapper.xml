@@ -32,7 +32,7 @@ delete from discounts where id=#{id};
 select * from discounts;
 </select>
 <select id="selectDiscountByPriceOrVip" resultType="DiscountBean">
-select * from discounts where vip&lt; =#{vip} and number1&lt; =#{price} 
-and beginTime&lt; =#{time} and endTime&gt;=#{time};
+select * from discounts where vip&lt;=#{vip} and number1&lt;=#{price} 
+and beginTime&lt;=#{time} and endTime&gt;=#{time};
 </select>
 </mapper>
