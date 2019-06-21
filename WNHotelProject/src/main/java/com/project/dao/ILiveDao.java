@@ -23,7 +23,7 @@ public interface ILiveDao {
 	public LiveBean selectBypeopleAndDate(String people,String time);
 	
 	//通过订单号查询入住信息
-	public LiveBean findByorderid(String orderid);
+	public LiveBean findByorderid(int orderid);
 	
 	//删除入住信息
 	public int deleteLiveBean(int lid);

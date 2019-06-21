@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.TimerTask;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -23,7 +24,7 @@ import com.project.dao.IOrderDao;
  *
  */
 @Service
-public class OrderServiceImp implements IOrderService {
+public class OrderServiceImp implements IOrderService{
 	@Autowired
 	private IOrderDao orderDao;
 	@Autowired
@@ -77,6 +78,8 @@ public class OrderServiceImp implements IOrderService {
 		int num = orderDao.updateOrderAttr(orderBean);
 		return num;
 	}
+
+
 
 	
 
