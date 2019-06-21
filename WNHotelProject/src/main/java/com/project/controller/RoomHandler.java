@@ -5,7 +5,7 @@ package com.project.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
-
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -31,7 +31,8 @@ public class RoomHandler {
 	@GetMapping("/room{rid}")
 	public RoomBean selectroombyid(@PathVariable("rid")int rid) {
 	  System.out.println(rid);
-
+	  return null;
+	}
 	/**
 	 * 根据房间id查询房间详细信息
 	 * @param rid房间id
