@@ -34,7 +34,7 @@ public class ShiroConfig {
 		shiroFilter.setUnauthorizedUrl("/failed.html");
 		Map<String,String> fmap = new LinkedHashMap<String,String>();
 
-		
+		fmap.put("/**", "anon");
 		fmap.put("/reg","anon");
 		fmap.put("/reg.html","anon");
 		fmap.put("/userReg","anon");
@@ -42,7 +42,7 @@ public class ShiroConfig {
 		fmap.put("/js/**","anon");
 		fmap.put("/login", "anon");
 		fmap.put("/login.html","anon");
-		fmap.put("/**", "authc");
+		//fmap.put("/**", "authc");
 		fmap.put("/logout","logout");
 		shiroFilter.setFilterChainDefinitionMap(fmap);
 		return shiroFilter;
