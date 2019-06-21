@@ -22,8 +22,11 @@ public class CommentHandler {
 		return bean;
 	}
 	@RequestMapping("/add")
-	public void insertComment(CommentBean bean) {
-		service.insertComment(bean);
+	@ResponseBody
+	public int insertComment(CommentBean bean) {
+		int i = service.insertComment(bean);
+		System.out.println(i);
+		return i;
 	}
 	
 
