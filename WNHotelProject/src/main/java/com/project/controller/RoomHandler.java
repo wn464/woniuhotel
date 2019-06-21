@@ -28,7 +28,7 @@ public class RoomHandler {
 	@Autowired
 	private IRoomService service;
 
-	@GetMapping("/room{rid}")
+	@GetMapping("/room/{rid}")
 	public RoomBean selectroombyid(@PathVariable("rid")int rid) {
 	  System.out.println(rid);
 	  return null;
