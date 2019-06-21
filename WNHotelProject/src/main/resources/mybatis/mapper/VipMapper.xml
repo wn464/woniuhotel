@@ -21,10 +21,10 @@ select * from vip where id=#{id};
 </select>
 
 <select id="selectVipByMoney" resultType="VipBean" parameterType="double">
-select * from vip where maxMoney>=#{maxMoney};
+select * from vip where maxMoney&lt;=#{maxMoney};
 </select>
 
-<select id="selectVipAll">
+<select id="selectVipAll" resultType="VipBean">
 select * from vip ;
 </select>
 </mapper>

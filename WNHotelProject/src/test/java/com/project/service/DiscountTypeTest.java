@@ -1,4 +1,4 @@
-package com.project.room;
+package com.project.service;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -6,27 +6,18 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import com.project.Service.IRoomService;
-import com.project.bean.RoomBean;
+import com.project.Service.IDiscountTypeService;
 import com.project.demo.WnHotelProjectApplication;
-
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = WnHotelProjectApplication.class)
-public class RoomTest {
-	    @Autowired
-	    private IRoomService ro;
-       
-	    @Test
-	    public void insertTest(){
-	    	
-	    	RoomBean page=ro.selectroombyid(1);
-	    	System.out.println(page);
-	    }
-	    @Test
-	    public void test1() {
-	    	
-	    }
+public class DiscountTypeTest {
 
-
+	@Autowired
+	private IDiscountTypeService discountTypeService;
+	@Test
+	public void test1() {
+		System.out.println(discountTypeService.selectDiscountTypeAll());
+		System.out.println(discountTypeService.selectDiscountTypeById(1));
+	}
 }

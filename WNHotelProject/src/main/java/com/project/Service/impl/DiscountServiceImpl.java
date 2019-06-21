@@ -1,6 +1,7 @@
 package com.project.Service.impl;
 
 import java.sql.Timestamp;
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -55,25 +56,25 @@ public class DiscountServiceImpl implements IDiscountService {
 
 	@Override
 	public List<DiscountBean> selectDiscountByPrice(double price) {
-		List<DiscountBean> list = discountDao.selectDiscountByPriceOrVip(price, 0, new Timestamp(System.currentTimeMillis()));
+		List<DiscountBean> list = discountDao.selectDiscountByPriceOrVip(price, 0, new Timestamp(System.currentTimeMillis()).toString());
 		return list;
 	}
 
 	@Override
 	public List<DiscountBean> selectDiscountByVipId(int id) {
-		List<DiscountBean> list = discountDao.selectDiscountByPriceOrVip(0, id, new Timestamp(System.currentTimeMillis()));
+		List<DiscountBean> list = discountDao.selectDiscountByPriceOrVip(0, id, new Timestamp(System.currentTimeMillis()).toString());
 		return list;
 	}
 
 	@Override
 	public List<DiscountBean> selectDiscountByOrder(OrderBean order) {
-		List<DiscountBean> list = discountDao.selectDiscountByPriceOrVip(OrderUtil.getCount(order), order.getMember().getVip().getId(), new Timestamp(System.currentTimeMillis()));
+		List<DiscountBean> list = discountDao.selectDiscountByPriceOrVip(OrderUtil.getCount(order), order.getMember().getVip().getId(), new Timestamp(System.currentTimeMillis()).toString());
 		return list;
 	}
 
 	@Override
 	public List<DiscountBean> selectDiscountByVipIdAndPrice(int id, double price) {
-		List<DiscountBean> list = discountDao.selectDiscountByPriceOrVip(price, id, new Timestamp(System.currentTimeMillis()));
+		List<DiscountBean> list = discountDao.selectDiscountByPriceOrVip(price, id, new Timestamp(System.currentTimeMillis()).toString());
 		return list;
 	}
 
