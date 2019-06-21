@@ -3,12 +3,9 @@ package com.project.controller;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
-
 import com.project.Service.IRoomService;
 import com.project.bean.MarkBean;
 import com.project.bean.PageBean;
@@ -16,15 +13,16 @@ import com.project.bean.RoomBean;
 import com.project.bean.TypeBean;
 
 
-@RestController
+
 
 /***
  * 房间后端处理器
  * @author zxc
  *
  */
-@Controller
+@RestController
 public class RoomHandler {
+<<<<<<< HEAD
 	@Autowired
 	private IRoomService service;
 
@@ -33,6 +31,10 @@ public class RoomHandler {
 	  System.out.println(rid);
 	  return null;
 	}
+=======
+	@Autowired
+	private IRoomService service;
+>>>>>>> branch 'master' of https://github.com/wn464/woniuhotel.git
 	/**
 	 * 根据房间id查询房间详细信息
 	 * @param rid房间id
