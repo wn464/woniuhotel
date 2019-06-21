@@ -3,49 +3,51 @@
 <mapper namespace="com.project.dao.IOrderDao">
 <!-- 	添加订单 (除支付号、押金)-->
 	<insert id="insertOrder" parameterType="OrderBean">
-		insert into orders(orderTime,orderNumber,status,price,memberId,subscribeStatus)
-		values(#{orderTime},#{orderNumber},#{status.id},#{price},#{memberId},#{subcribeStatus.id})
+		insert into orders(orderTime,orderNumber,status,price,memberId,subscribeStatus,delState)
+		values(#{orderTime},#{orderNumber},#{status.id},#{price},#{member.id},#{subscribeStatus.id},#{delState})
 	</insert>
 <!-- 	通过状态分页查询订单 -->
-	<select id="selectOrderByState" resultMap="map">
+	<select id="selectOrderByState" parameterType="int" resultMap="map">
 		select * from orders
-<!-- 		<where> -->
-<!-- 		status = #{status}  -->
-<!-- 			<if test="memberId!=0"> -->
-<!-- 				and memberId = #{mid} -->
-<!-- 			</if> -->
-<!-- 		limit #{page},#{size}	 -->
-<!-- 		</where> -->
+		<where>
+		status = #{status} and memberId = #{mid}
+		limit #{page},#{size}	
+		</where>
 		
 	</select>
 <!-- 	通过入住信息查询订单 -->
 	<select id="selectOrderByAttr" parameterType="LiveBean" resultMap="map">
 		select * from orders where id = #{orderid} 
 	</select>
-<!-- 	修改订单状态 -->
-	<update id="updateOrderState" parameterType="int">
-		update orders set status = #{status} where id = #{oid}
+<!-- 	修改订单属性 -->
+	<update id="updateOrderAttr" parameterType="OrderBean">
+		update orders
+		<set>
+			<if test="alipayNumber!=null">
+				alipayNumber = #{alipayNumber}
+			</if>
+			<if test="payMoney!=0.0">
+				payMoney = #{payMoney}
+			</if>
+			<if test="subscribeStatus!=null">
+				subscribeStatus = #{subscribeStatus.id}
+			</if>
+			<if test="delState!=0">
+				delState = #{delState}
+			</if>
+			<if test="status!=null">
+				status= #{status.id} 
+			</if>
+		</set>
+		where id = #{id}
 	</update>
 <!-- 	查询数量 -->
 	<select id="selectNumberByState" resultType="int">
-		select count(*) from order
-		<where>
-			<if test="status==5">
-				and status==5
-			</if>
-			<if test="status==6">
-				and status==6
-			</if>
-			<if test="status==7">
-				and status==7
-			</if>
-			<if test="status==10">
-				and status==10
-			</if>
-			<if test="status==8">
-				and status==8
-			</if>
-		</where>
+		select count(*) from orders where status = #{status}
+	</select>
+<!-- 	通过订单号查询订单id -->
+	<select id="selectNumberByOrderNumber" resultType="int">
+		select id from orders where orderNumber = #{orderNumber}
 	</select>
 	
 	<resultMap id="map" type="OrderBean">
@@ -58,9 +60,8 @@
 		<association property="member" javaType="MemberBean" select="com.project.dao.IMemberDao.selectById" column="memberId"/>
 		<association property="status" javaType="MarkBean" select="com.project.dao.IMarkDao.selectmarkbyid" column="status"/>
 	    <association property="subscribeStatus" javaType="MarkBean" select="com.project.dao.IMarkDao.selectmarkbyid" column="subscribeStatus"/> 
-		
 <!-- 		<association property="comment" javaType="CommentBean" select="com.project.dao.ICommentDao.selectCommentByOid" column="id"/> -->
-<!-- 		<collection  property="lives" ofType="LiveBean" select="com.project.dao.ILiveDao.selectLiveByOid" column="id"/> -->
+		<collection  property="lives" ofType="LiveBean" select="com.project.dao.ILiveDao.findByorderid" column="id"/>
 	</resultMap>
 	
 </mapper>

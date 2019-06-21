@@ -16,9 +16,15 @@ public class OrderBean {
 	private MarkBean subscribeStatus;//订单是否处于预约状态subscribeStatus
 	private CommentBean comment;//订单评论，避免sql死循环，不要直接查询，由comment进行维护
 	private List<LiveBean> lives;//入住信息
+	private int delState;//入住信息
 	
 	
-	
+	public int getDelState() {
+		return delState;
+	}
+	public void setDelState(int delState) {
+		this.delState = delState;
+	}
 	public MarkBean getStatus() {
 		return status;
 	}
@@ -94,8 +100,9 @@ public class OrderBean {
 		return "OrderBean [id=" + id + ", orderTime=" + orderTime + ", orderNumber=" + orderNumber + ", status="
 				+ status + ", alipayNumber=" + alipayNumber + ", payMoney=" + payMoney + ", price=" + price
 				+ ", member=" + member + ", subscribeStatus=" + subscribeStatus + ", comment=" + comment + ", lives="
-				+ lives + "]";
+				+ lives + ", delState=" + delState + "]";
 	}
+	
 	
 	
 	

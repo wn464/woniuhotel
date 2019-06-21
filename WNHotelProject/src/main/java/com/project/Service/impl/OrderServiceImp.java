@@ -31,29 +31,29 @@ public class OrderServiceImp implements IOrderService {
 	//添加订单
 	@Override
 	public int insertOrder(OrderBean orderBean) {
+		int num = orderDao.insertOrder(orderBean);
+		int orderNumber = orderDao.selectNumberByOrderNumber(orderBean.getOrderNumber());
 		List<LiveBean> liveBeans = orderBean.getLives();
 		for (LiveBean liveBean : liveBeans) {
+			liveBean.setOrderid(orderNumber);
 			liveDao.insertLiveBean(liveBean);
 		}
-		int num = orderDao.insertOrder(orderBean);
 		return num;
 	}
 
 	//通过订单状态分页查询订单
 	@Override
 	public PageBean selectOrderByState(int mid, int status,int page,int size) {
-		page = (page-1)*size;
-		System.out.println("_________________");
-		List<OrderBean> list = orderDao.selectOrderByState(mid, status, page, size);
-		System.out.println("-=-=-=-"+list);
-//		int totalNumber  = orderDao.selectNumberByState(status);
 		PageBean pageBean = new PageBean();
-//		pageBean.setPage(page);
-//		pageBean.setSize(size);
-//		pageBean.setTotalNumber(totalNumber);
-//		int totalPage = (totalNumber%size==0)?totalNumber/size:(totalNumber/size)+1;
-//		pageBean.setTotalPage(totalPage);
-//		pageBean.setList(list);
+		pageBean.setPage(page);
+		page = (page-1)*size;
+		List<OrderBean> list = orderDao.selectOrderByState(mid, status, page, size);
+		int totalNumber  = orderDao.selectNumberByState(status);
+		pageBean.setSize(size);
+		pageBean.setTotalNumber(totalNumber);
+		int totalPage = (totalNumber%size==0)?totalNumber/size:(totalNumber/size)+1;
+		pageBean.setTotalPage(totalPage);
+		pageBean.setList(list);
 		return pageBean;
 	}
 	
@@ -63,27 +63,21 @@ public class OrderServiceImp implements IOrderService {
 		
 		LiveBean liveBean = liveDao.selectBypeopleAndDate(people, time);
 		List<OrderBean> list = orderDao.selectOrderByAttr(liveBean);
+		List<LiveBean> lives = new ArrayList<LiveBean>();
+		lives.add(liveBean);
 		for (OrderBean orderBean : list) {
-			System.out.println(orderBean);
-			List<LiveBean> lives = orderBean.getLives();
-			List<LiveBean> list2= new ArrayList<LiveBean>();
-			System.out.println("___"+list2);
-			list2.addAll(lives);
-			list2.add(liveBean);
-			
-			System.out.println("====="+list2);
-			
-			
+			orderBean.setLives(lives);;
 		}
-		System.out.println(list);
 		return list;
 	}
 
-	//修改订单状态
+	//修改订单属性
 	@Override
-	public int updateOrderState(int oid, int status) {
-		int num = orderDao.updateOrderState(oid, status);
+	public int updateOrderAttr(OrderBean orderBean) {
+		int num = orderDao.updateOrderAttr(orderBean);
 		return num;
 	}
+
+	
 
 }

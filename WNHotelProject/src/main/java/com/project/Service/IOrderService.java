@@ -22,6 +22,7 @@ public interface IOrderService {
 	//后台通过入住信息查询订单
 	public List<OrderBean> selectOrderByAttr(String people, String time);
 	//修改订单状态
-	public int updateOrderState(int oid,int status);
+	public int updateOrderAttr(OrderBean orderBean);
+	
 	
 }
