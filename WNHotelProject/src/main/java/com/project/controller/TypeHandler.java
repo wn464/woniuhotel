@@ -21,7 +21,7 @@ public class TypeHandler {
 	 * 查询所有房间类型
 	 * @return
 	 */
-	@GetMapping(value="/type")
+	//@GetMapping(value="/type")
 public List<TypeBean> findalltype(){
 		List<TypeBean> types=servcie.selecttypeall();
 		return types;

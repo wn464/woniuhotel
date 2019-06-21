@@ -1,6 +1,7 @@
 package com.project.dao;
 
 import java.sql.Timestamp;
+import java.util.Date;
 import java.util.List;
 
 import org.apache.ibatis.annotations.Param;
@@ -55,5 +56,5 @@ public interface IDiscountDao {
 	 * @param vip
 	 * @return
 	 */
-	public List<DiscountBean> selectDiscountByPriceOrVip(@Param("price")double price,@Param("vip")int vip,@Param("time")Timestamp time);
+	public List<DiscountBean> selectDiscountByPriceOrVip(@Param("price")double price,@Param("vip")int vip,@Param("time")String time);
 }
