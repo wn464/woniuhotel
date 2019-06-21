@@ -15,9 +15,9 @@ public class CommentServiceImpl implements ICommentService{
 	private ICommentDao dao;
 
 	@Override
-	public void insertComment(CommentBean bean) {
-		dao.insert(bean);
-		
+	public int insertComment(CommentBean bean) {
+		int i = dao.insert(bean);
+		return i;
 	}
 
 	@Override
