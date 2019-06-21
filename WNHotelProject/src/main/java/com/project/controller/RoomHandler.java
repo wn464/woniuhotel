@@ -22,19 +22,10 @@ import com.project.bean.TypeBean;
  */
 @RestController
 public class RoomHandler {
-<<<<<<< HEAD
+
 	@Autowired
 	private IRoomService service;
 
-	@GetMapping("/room/{rid}")
-	public RoomBean selectroombyid(@PathVariable("rid")int rid) {
-	  System.out.println(rid);
-	  return null;
-	}
-=======
-	@Autowired
-	private IRoomService service;
->>>>>>> branch 'master' of https://github.com/wn464/woniuhotel.git
 	/**
 	 * 根据房间id查询房间详细信息
 	 * @param rid房间id
