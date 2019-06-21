@@ -97,6 +97,7 @@ public class RoomHandler {
 		TypeBean type=new TypeBean();
 		type.setId(tid);
 		PageBean bean=service.selectroombytypeantime(type, inTime, outTime, page, size);
+		
 		return bean;
 	}
 }
