@@ -40,6 +40,13 @@ public interface IDiscountService {
 	 */
 	public List<DiscountBean> selectDiscountByVipId(int id);
 	/**
+	 * 通过vip和费用查询
+	 * @param id
+	 * @param price
+	 * @return
+	 */
+	public List<DiscountBean> selectDiscountByVipIdAndPrice(int id,double price);
+	/**
 	 * 查询可以获得的优惠
 	 * @param order
 	 * @return
