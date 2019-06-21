@@ -1,11 +1,13 @@
 package com.project.Service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.project.Service.IUserService;
 import com.project.bean.UserBean;
 import com.project.dao.IUserDao;
 
+@Service
 public class UserServiceImpl implements IUserService {
 	@Autowired
 	private IUserDao dao;

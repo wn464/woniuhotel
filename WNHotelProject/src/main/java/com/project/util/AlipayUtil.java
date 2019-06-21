@@ -30,19 +30,21 @@ public class AlipayUtil {
 	 */
 	public String pay(String out_trade_no ,double total_amount,String subject) throws AlipayApiException  {
 		//设置请求参数
-				AlipayTradePagePayRequest alipayRequest = new AlipayTradePagePayRequest();
-				alipayRequest.setReturnUrl(AlipayConfig.return_url);
-				alipayRequest.setNotifyUrl(AlipayConfig.notify_url);
-				AlipayTradePagePayRequest request = new AlipayTradePagePayRequest();
-				request.setBizContent("{" +
-						"\"out_trade_no\":\""+out_trade_no+"\"," +
-						"\"product_code\":\"FAST_INSTANT_TRADE_PAY\"," +
-						"\"total_amount\":"+total_amount+"," +
-						"\"subject\":\""+subject+"\"" +
-				"  }");
-				
-				AlipayTradePagePayResponse response = alipayClient.pageExecute(request);
-				return response.getBody();
+		AlipayTradePagePayRequest alipayRequest = new AlipayTradePagePayRequest();
+		//同步回调
+		alipayRequest.setReturnUrl(AlipayConfig.return_url);
+		//异步回调
+		alipayRequest.setNotifyUrl(AlipayConfig.notify_url);
+		AlipayTradePagePayRequest request = new AlipayTradePagePayRequest();
+		request.setBizContent("{" +
+				"\"out_trade_no\":\""+out_trade_no+"\"," +
+				"\"product_code\":\"FAST_INSTANT_TRADE_PAY\"," +
+				"\"total_amount\":"+total_amount+"," +
+				"\"subject\":\""+subject+"\"" +
+		"  }");
+		
+		AlipayTradePagePayResponse response = alipayClient.pageExecute(request);
+		return response.getBody();
 	}
 	//退款
 	/**
