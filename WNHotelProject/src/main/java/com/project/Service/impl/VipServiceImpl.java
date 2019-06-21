@@ -48,7 +48,7 @@ public class VipServiceImpl implements IVipService {
 				continue;
 			}
 			//查询最小的金额
-			if(vip.getMaxMoney()>vipBean.getMaxMoney()) {
+			if(vip.getMaxMoney()<vipBean.getMaxMoney()) {
 				vip=vipBean;
 			}
 		}
