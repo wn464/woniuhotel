@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -26,7 +27,7 @@ public class OrderHandler {
 	private IOrderService orderService;
 	
 	/*
-	 * 生成订单
+	 * 添加并生成订单
 	 */
 	@PostMapping
 	public OrderBean getOrder(OrderBean orderBean) {
@@ -47,8 +48,16 @@ public class OrderHandler {
 	 * 前台和后台通过订单状态分页查询订单
 	 */
 	@GetMapping(value = "/{mid}/{status}/{page}/{size}")
-	public String selectOrderByState(@PathVariable("mid")int mid, @PathVariable("")int status,int page,int size) {
+	public String selectOrderByState(@PathVariable("mid")int mid, @PathVariable("status")int status,@PathVariable("page")int page,@PathVariable("size")int size) {
 		PageBean pageBean = orderService.selectOrderByState(mid, status, page, size);
+		return "ok";
+	}
+	/*
+	 * 修改订单状态
+	 */
+	@PutMapping
+	public String  updateOrderStatus(OrderBean orderBean){
+		int num = orderService.updateOrderAttr(orderBean);
 		return "ok";
 	}
 	

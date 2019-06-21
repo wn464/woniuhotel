@@ -48,6 +48,7 @@ public class OrderServiceImp implements IOrderService{
 		}
 		//生成订单
 		OrderBean orderBean3 = orderDao.selectOrderByOrderNumber(orderNumber);
+		
 		return orderBean3;
 	}
 
@@ -81,7 +82,7 @@ public class OrderServiceImp implements IOrderService{
 		int num = orderDao.updateOrderAttr(orderBean);
 		return num;
 	}
-	//通过id查询订单
+	//通过订单id查询订单
 	@Override
 	public OrderBean selectOrderById(int oid) {
 		OrderBean orderBean = orderDao.selectOrderById(oid);
