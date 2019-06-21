@@ -8,7 +8,7 @@ import com.project.bean.PageBean;
 //评论业务层接口
 public interface ICommentService {
 	//添加评论
-	public void insertComment(CommentBean bean);
+	public int insertComment(CommentBean bean);
 	//查询评论
 	public PageBean selectComment(int page,int size);
 
