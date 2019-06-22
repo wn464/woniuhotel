@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title> ! !  Home</title>		<!--酒店主页-->
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta charset="utf-8">
+	<meta name="keywords" content="" />
+	<script type="application/x-javascript">
+		addEventListener("load", function () {
+			setTimeout(hideURLbar, 0);
+		}, false);
+		function hideURLbar() {
+			window.scrollTo(0, 1);
+		}
+	</script>
+	<link href="css/bootstrap.css" rel='stylesheet' type='text/css' />
+	<link href="css/style.css" rel='stylesheet' type='text/css' />
+	<link href="css/font-awesome.css" rel="stylesheet">
+	<link href="http://fonts.googleapis.com/css?family=Merriweather+Sans:300,300i,400,400i,700,700i,800" rel="stylesheet">
+	<link href="http://fonts.googleapis.com/css?family=Mallanna" rel="stylesheet">
+	<script type="text/javascript" src="http://api.map.baidu.com/api?v=3.0&ak=Z7QuDLumjH1HBTPlMeySGbrcpzRRqYkV"></script>
+	<style type="text/css">
+		#container {width: 1100px;height: 600px;overflow: hidden;margin:20px auto 0;font-family:"微软雅黑";}
+	</style>
+</head>
+<body>
+	<div class="top-bar_sub_w3ls_agileits">
+	</div>
+	<div class="header_w3layouts_agile-main">
+		<header class="header" id="home">
+			<div class="top-bar">
+				<nav class="navbar navbar-default">
+					<div class="navbar-header">
+			<!-- 二级菜单显示的位置-->
+						<div class="nav-container" id="1_menu" style="margin-left: -40px;">
+							<h1 class="nav"	>
+								<a href="index.html"><img src="images/lo.png" style="width: 100%;"/></a>
+							</h1>
+							<ul class="nav" id="menu_container">
+								<li>
+									<a href="index.html" >首页</a>
+								</li>
+								<li>
+									<a href="" >酒店位置</a>
+								</li>
+								<li>
+									<a href="#" >客房介绍</a>
+									<ul class="secondary-nav">
+										<li>
+											<a href="message.html">高级大床房</a>
+										</li>
+										<li>
+											<a href="message.html">豪华双床房</a>
+										</li>
+										<li>
+											<a href="message.html">家庭亲子房</a>
+										</li>
+										<li>
+											<a href="message.html">商务套房</a>
+										</li>
+										<li>
+											<a href="message.html">复式公寓房</a>
+										</li>
+									</ul>
+								</li>
+								<li>
+									<a href="ground.html">酒店场景</a>
+								</li>
+								<li>
+									<a href="#">休闲娱乐</a>
+									<ul class="secondary-nav">
+										<li>
+											<a href="#">沉香会馆KTV</a>
+										</li>
+										<li>
+											<a href="#">露天游泳池</a>
+										</li>
+										<li>
+											<a href="#">健身房</a>
+										</li>
+									</ul>
+								</li>
+								<li>
+									<a href="#">餐饮美食</a>
+									<ul class="secondary-nav">
+										<li>
+											<a href="#">东方咖啡厅</a>
+										</li>
+										<li>
+											<a href="#">新亚西餐厅</a>
+										</li>
+									</ul>
+								</li>
+								<li>
+									<a href="myorder.html">我的订单</a>
+								</li>
+								<li>
+									<a href="comment.html">酒店评价</a>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</nav>		
+			</div>
+		</header>
+<!-- 轮播图的显示区域-->
+		<div class="slider">
+			<div class="callbacks_container">
+				<ul class="rslides callbacks callbacks1" id="slider4">
+					<li>
+						<div class="banner-top">
+							<div class="banner-info">
+							</div>
+						</div>
+					</li>
+					<li>
+						<div class="banner-top1">
+							<div class="banner-info">
+							</div>
+						</div>
+					</li>
+					<li>
+						<div class="banner-top2">
+							<div class="banner-info">
+							</div>
+						</div>
+					</li>
+					<li>
+						<div class="banner-top3">
+							<div class="banner-info">
+							</div>
+						</div>
+					</li>
+				</ul>
+			</div>
+			<div class="clearfix"> </div>
+		</div>
+	</div>
+<!--搜索房间-->
+	<div>
+		<form action="#" method="get" name="queryPriceForm">
+			<div class="booking-wrapper" >
+				<ul class="booking-container">
+					<li>
+						<label>入住时间：</label>
+						<input type="date" class="input-times"/>
+					</li>
+					<li>
+						<label>离店时间： </label>
+						<input type="date" class="input-times"/>
+					</li>
+					<li>
+						<div class="select-wrap">
+							<label class="select-wrap-label">房间类型</label>
+							<select name="rn" class="booking-select">
+								<option value="1">高级大床房</option>
+								<option value="2">豪华双床房</option>
+								<option value="3">家庭亲子房</option>
+								<option value="4">商务套房</option>
+								<option value="5">复式公寓房</option>
+							</select>
+							<span class="selecticon"></span>
+						</div>
+					</li>
+					<li>
+						<a href="find.html" class="searchBtn" style="margin-left: 714px;">查询</a>
+					</li>
+				</ul>
+			</div>
+		</form>
+	</div>
+	 <div id="container"></div>
+	 
+<!-- 酒店介绍-->
+	<div class="banner_bottom">
+		<div class="banner_bottom_in">
+			<h3 class="header_w3layouts_agile" data-aos="fade-down">酒 店 介 绍</h3>
+			<p>京西酒店是一座极具东南亚风情的四星级涉外酒店，同时也是四川省首批"金叶级绿色旅游饭店"，隶属中国石油集团公司，兼具商旅、会议、度假、亲子住宿等全方位功能。酒店坐落于繁华的春熙路商圈内，呈现给您最原汁原味的成都生活，“用心极致，追求完美”的服务理念与此相得益彰，让您尽享尊贵之体验。</p>		
+			<div class="col-md-7 yoga-video" data-aos="flip-left">
+				<img src="images/tea.jpg" class="img-responsive" alt="">
+			</div>
+			<div class="col-md-5 join-form" data-aos="flip-right">
+				<div class="signin-form profile join-fm">
+					<h3 class="sign">酒店促销</h3>
+					<p><a href="#">星期一 ····························· 慵懒下午茶 </a></p>
+					<p><a href="#">星期二 ····························· 快乐鸡尾酒 </a></p>
+					<p><a href="#">星期三 ····························· 乐美牛排馆 </a></p>
+					<p><a href="#">星期四 ····························· 惬意茶餐厅 </a></p>
+				</div>
+			</div>
+			<div class="clearfix"></div>
+		</div>
+	</div>
+
+<!--底部-->
+	<footer class="contact-footer">
+		<div class="copy">
+			<h2 class="footer-logo">
+				<a href="#"><span style="color: white;">地址:中国·四川省·成都市太升北路2号</span></a>
+			</h2>
+			<p>电话:+86-28-86922233   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;传真:+86-28-86948796&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
+			<div class="clearfix"></div>
+		</div>
+	</footer>
+	<script type="text/javascript" src="js/jquery-2.2.3.min.js"></script>
+	<script type="text/javascript">
+		window.onload = function () {
+			document.getElementById("password1").onchange = validatePassword;
+			document.getElementById("password2").onchange = validatePassword;
+		}
+		function validatePassword() {
+			var pass2 = document.getElementById("password2").value;
+			var pass1 = document.getElementById("password1").value;
+			if (pass1 != pass2)
+				document.getElementById("password2").setCustomValidity("Passwords Don't Match");
+			else
+				document.getElementById("password2").setCustomValidity('');
+		}
+	</script>
+	<link href='css/aos.css' rel='stylesheet prefetch' type="text/css" media="all" />
+	<link href='css/aos-animation.css' rel='stylesheet prefetch' type="text/css" media="all" />
+	<script src='js/aos.js'></script>
+	<script src="js/aosindex.js"></script>
+	<script src="js/main.js"></script>
+	<script src="js/responsiveslides.min.js"></script>
+	<script>
+		$(function () {
+			$("#slider4").responsiveSlides({
+				auto: true,
+				pager: true,
+				nav: false,
+				speed: 1000,
+				namespace: "callbacks",
+				before: function () {
+					$('.events').append("<li>before event fired.</li>");
+				},
+				after: function () {
+					$('.events').append("<li>after event fired.</li>");
+				}
+			});
+		});
+	</script>
+	<script type="text/javascript" src="js/move-top.js"></script>
+	<script type="text/javascript" src="js/easing.js"></script>
+	<script type="text/javascript">
+		jQuery(document).ready(function ($) {
+			$(".scroll").click(function (event) {
+				event.preventDefault();
+				$('html,body').animate({
+					scrollTop: $(this.hash).offset().top
+				}, 900);
+			});
+		});
+	</script>
+	<script type="text/javascript">
+		$(document).ready(function () {
+			/*
+				var defaults = {
+		  			containerID: 'toTop', // fading element id
+					containerHoverID: 'toTopHover', // fading element hover id
+					scrollSpeed: 1200,
+					easingType: 'linear' 
+		 		};
+				*/
+			$().UItoTop({
+				easingType: 'easeOutQuart'
+			});
+		});
+	</script>
+	<a href="#home" class="scroll" id="toTop" style="display: block;">
+		<span id="toTopHover" style="opacity: 1;"> </span>
+	</a>
+	<script type="text/javascript" src="js/bootstrap.js"></script>
+	<script>
+			
+			$(function(){
+				
+				$(".top-bar_sub_w3ls_agileits").load("public.html");
+			})
+	</script>
+	
+	<script type="text/javascript">
+		var mp = new BMap.Map("container");
+		mp.centerAndZoom(new BMap.Point(104.3964,30.9093), 10);
+		mp.enableScrollWheelZoom();
+		
+		var canvasLayer = new BMap.CanvasLayer({
+		    update: update
+		});
+		
+		function update() {
+		    var ctx = this.canvas.getContext("2d");
+		
+		    if (!ctx) {
+		        return;
+		    }
+		
+		    ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
+		
+		    var temp = {};
+		    ctx.fillStyle = "rgba(50, 50, 255, 0.7)";
+		    ctx.beginPath();
+		    var data = [
+		        new BMap.Point(116.297047,39.979542),
+		       
+		    ];
+		
+		    for (var i = 0, len = data.length; i < len; i++) {
+		        var pixel = mp.pointToPixel(data[i]);
+		        ctx.fillRect(pixel.x, pixel.y, 30, 30);
+		    }
+		}
+		mp.addOverlay(canvasLayer);
+</script>
+</body>
+</html>

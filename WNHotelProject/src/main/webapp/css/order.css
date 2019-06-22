@@ -1,0 +1,104 @@
+#order-main,#o-address,#o-detailk,#gopay{
+	width: 1000px;
+	height: auto;
+	margin: 0 auto;
+	box-sizing: border-box;
+}
+#order-main{
+	padding-bottom:50px;
+	margin-bottom: 20px;
+}
+
+
+.d-total{
+	font-size: 20px;
+	text-align: right;
+	height: 50px;
+	line-height: 50px;
+	font-weight: bold;
+	color: darkred;
+}
+
+
+/* 订单 */
+
+#o-detail{
+	margin-top: 30px;
+}
+.d-number{
+	font-size: 20px;
+	padding:10px 0px;
+	box-sizing: border-box;
+	border-bottom: 1px solid #ccc;
+	
+	padding-left: 10px;
+}
+.d-goodlist{
+	
+}
+.g-item{
+	border-bottom: 1px solid #f1f1f1;
+	padding:10px 20px;
+	box-sizing: border-box;
+	height: 70px;
+}
+
+
+.g-item div{
+	float: left;
+	width: 30%;
+	text-align: center;
+	height: 100%;
+	overflow:hidden;
+}
+.item-count{}
+
+.item-img img{
+	height: 100%;
+}
+.item-name{
+	font-size: 16px;
+	
+}
+.item-price{
+	
+}
+/* 按钮  */
+#gopay{
+	text-align: right;
+}
+
+body{
+		padding: 0 !important;
+	}
+	.order{
+		width: 1200px;
+		margin: 50px auto;
+		box-shadow: 1px 1px 8px rgba(0,0,0,0.5);
+		padding: 30px 0 0 30px;
+	}
+	.floy{
+		height: 80px;
+	}
+	.floy h3{
+		color: darkgrey;
+		margin: 60px 0 60px 130px;
+		float: left;
+	}
+	img{
+		height: 100%;
+		width: 100%;
+	}
+	.itemimg{
+		width: 100px;
+		margin-left: 50px;
+	}
+	.floy #btn1{
+		float: right;
+		margin: 60px 160px 0 0;
+	}
+	.floy #btn2{
+		float: right;
+		margin: 60px 70px 0 0;
+	}
+	
