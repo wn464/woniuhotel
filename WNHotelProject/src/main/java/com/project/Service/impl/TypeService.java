@@ -22,5 +22,10 @@ private ITypeDao dao;
 		List<TypeBean> types=dao.selecttypeall();
 		return types;
 	}
+	@Override
+	public TypeBean selecttypebyid(int tid) {
+		TypeBean type=dao.selecttypeByid(tid);
+		return type;
+	}
 
 }

@@ -4,6 +4,7 @@ package com.project.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import com.project.Service.IRoomService;
@@ -31,9 +32,9 @@ public class RoomHandler {
 	 * @param rid房间id
 	 * @return
 	 */
-	@GetMapping(value="/room")
+	@GetMapping(value="/room/{rid}")
 	@ResponseBody
-	public RoomBean selectroombyid(Integer rid) {
+	public RoomBean selectroombyid(@PathVariable("rid")Integer rid) {
 		System.out.println(rid);
       RoomBean bean = service.selectroombyid(rid);
       return bean;
@@ -45,7 +46,7 @@ public class RoomHandler {
 	 * @param size每页显示条数
 	 * @return
 	 */
-	@GetMapping(value="/type")
+	@GetMapping(value="/room/type")
 	@ResponseBody
 	public PageBean selectroombytype(int tid, int page, int size) {
 		TypeBean type=new TypeBean();
