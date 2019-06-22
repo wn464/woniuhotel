@@ -29,12 +29,14 @@ public class ShiroConfig {
 		//注入安全管理器
 		shiroFilter.setSecurityManager(securityManager);
 		//认证跳转地址
-		shiroFilter.setLoginUrl("/login");
+		shiroFilter.setLoginUrl("/login.html");
 		//认证失败跳转
 		shiroFilter.setUnauthorizedUrl("/failed.html");
 		Map<String,String> fmap = new LinkedHashMap<String,String>();
 
-		fmap.put("/**", "anon");
+		
+		fmap.put("/user/discount","authc");
+		//fmap.put("/**", "anon");
 		fmap.put("/reg","anon");
 		fmap.put("/reg.html","anon");
 		fmap.put("/userReg","anon");

@@ -33,6 +33,6 @@ select * from discounts;
 </select>
 <select id="selectDiscountByPriceOrVip" resultType="DiscountBean">
 select * from discounts where vip&lt;=#{vip} and number1&lt;=#{price} 
-and beginTime&lt;=#{time} and endTime&gt;=#{time};
+and beginTime&lt;=#{time} and endTime&gt;=#{time} and id!=1;
 </select>
 </mapper>
