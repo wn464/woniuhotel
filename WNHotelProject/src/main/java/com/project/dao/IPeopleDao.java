@@ -3,7 +3,9 @@ package com.project.dao;
 import java.util.List;
 
 import org.apache.ibatis.annotations.Insert;
+import org.apache.ibatis.annotations.Select;
 
+import com.project.bean.OrderBean;
 import com.project.bean.PeopleBean;
 /**
  * 入住人员持久层
@@ -12,12 +14,12 @@ import com.project.bean.PeopleBean;
  */
 public interface IPeopleDao {
 	//添加入住人员信息
-	@Insert("insert into people (name,idCard,gender,liveid) values(name,idCard,gender,liveId)")
-	public int insertPeopleBean(PeopleBean peopleBean);
+	@Insert("insert into people (name,idCard,gender,liveid) values(#{0},#{1},#{2},#{3})")
+	public int insertPeopleBean(String name, String idCard,int gender,int liveId);
 	//删除入住人员信息
 	public int deletePeopleBean(int pid);
 	//模糊查询入住人员信息
-	public List<PeopleBean> selectPeopleBean(PeopleBean peopleBean);
+	public List<PeopleBean> selectPeopleBean(String name);
 	//修改入住人员信息
 	public int upstatePeopleBean(int pid);
 

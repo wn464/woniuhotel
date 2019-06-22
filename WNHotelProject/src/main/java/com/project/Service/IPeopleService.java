@@ -16,7 +16,7 @@ public interface IPeopleService {
 	//删除入住人员信息
 	public int deletePeopleBean(int pid);
 	//模糊查询入住人员信息
-	public List<PeopleBean> selectPeopleBean(PeopleBean peopleBean);
+	public List<PeopleBean> selectPeopleBean(String name);
 	//修改入住人员信息
 	public int upstatePeopleBean(int pid);
 }
