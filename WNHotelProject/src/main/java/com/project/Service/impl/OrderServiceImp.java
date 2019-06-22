@@ -6,11 +6,13 @@ import java.util.List;
 import java.util.Map;
 import java.util.TimerTask;
 
+import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Isolation;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.bind.annotation.PathVariable;
 
 import com.project.Service.IOrderService;
 import com.project.bean.LiveBean;
@@ -19,6 +21,7 @@ import com.project.bean.PageBean;
 import com.project.dao.ILiveDao;
 import com.project.dao.IOrderDao;
 import com.project.util.CreateOrderInfo;
+import com.project.util.timingutil.ordertiming;
 /**
  * 订单业务
  * @author x1c
@@ -48,7 +51,8 @@ public class OrderServiceImp implements IOrderService{
 		}
 		//生成订单
 		OrderBean orderBean3 = orderDao.selectOrderByOrderNumber(orderNumber);
-		
+		//开启定时器
+		ordertiming.ds(orderBean3.getId());
 		return orderBean3;
 	}
 
@@ -94,7 +98,36 @@ public class OrderServiceImp implements IOrderService{
 		OrderBean orderBean = orderDao.selectOrderByOrderNumber(orderNumber);
 		return orderBean;
 	}
-
+	//通过预定状态查询订单
+	@Override
+	public PageBean selectOrderBySubStatus(int subscribeStatus, int page, int size) {
+		PageBean pageBean = new PageBean();
+		pageBean.setPage(page);
+		page = (page-1)*size;
+		List<OrderBean> list = orderDao.selectOrderBySubStatus(subscribeStatus, page, size);
+		int totalNumber  = orderDao.selectNumberBySubStatus(subscribeStatus);
+		pageBean.setSize(size);
+		pageBean.setTotalNumber(totalNumber);
+		int totalPage = (totalNumber%size==0)?totalNumber/size:(totalNumber/size)+1;
+		pageBean.setTotalPage(totalPage);
+		pageBean.setList(list);
+		return pageBean;
+	}
+	//根据时间段查询订单
+	@Override
+	public PageBean selectOrderByTime(String startTime,String endTime,int page,int size){
+		PageBean pageBean = new PageBean();
+		pageBean.setPage(page);
+		page = (page-1)*size;
+		List<OrderBean> list = orderDao.selectOrderByTime(startTime, endTime, page, size);
+		int totalNumber  = orderDao.selectNumberByTime(startTime, endTime);
+		pageBean.setSize(size);
+		pageBean.setTotalNumber(totalNumber);
+		int totalPage = (totalNumber%size==0)?totalNumber/size:(totalNumber/size)+1;
+		pageBean.setTotalPage(totalPage);
+		pageBean.setList(list);
+		return pageBean;
+	}
 
 
 	

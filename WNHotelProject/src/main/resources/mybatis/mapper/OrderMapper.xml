@@ -6,15 +6,16 @@
 		insert into orders(orderTime,orderNumber,status,price,memberId,subscribeStatus,delState)
 		values(#{orderTime},#{orderNumber},#{status.id},#{price},#{member.id},#{subscribeStatus.id},#{delState})
 	</insert>
-<!-- 	通过状态分页查询订单 -->
+<!-- 	通过支付状态分页查询订单 -->
 	<select id="selectOrderByState" parameterType="int" resultMap="map">
-		select * from orders
-		<where>
-		status = #{status} and memberId = #{mid}
+		select * from orders where status = #{status} and memberId = #{mid} and delState = 10
 		limit #{page},#{size}	
-		</where>
-		
 	</select>
+<!-- 	通过预约状态分页查询订单 -->
+	<select id="selectOrderBySubStatus" parameterType="int" resultMap="map">
+		select * from orders where  subscribeStatus = #{subscribeStatus} limit #{page},#{size}	
+	</select>
+	
 <!-- 	通过入住信息查询订单 -->
 	<select id="selectOrderByAttr" parameterType="LiveBean" resultMap="map">
 		select * from orders where id = #{orderid} 
@@ -44,9 +45,17 @@
 		</set>
 		where id = #{id}
 	</update>
-<!-- 	查询数量 -->
+<!-- 	查询支付数量 -->
 	<select id="selectNumberByState" resultType="int">
 		select count(*) from orders where status = #{status}
+	</select>
+<!-- 	查询预定数量 -->
+	<select id="selectNumberBySubStatus" resultType="int">
+		select count(*) from orders where subscribeStatus = #{subscribeStatus}
+	</select>
+<!-- 	查询时间段内的数量 -->
+	<select id="selectNumberByTime" resultType="int">
+		select count(*) from orders where orderTime  between #{startTime} and #{endTime}
 	</select>
 <!-- 	通过订单号查询订单 -->
 	<select id="selectOrderByOrderNumber"  resultMap="map">
@@ -55,7 +64,11 @@
 <!-- 	通过订单id查询订单 -->
 	<select id="selectOrderById" parameterType="int" resultMap="map">
 		select * from orders where id = #{oid} 
-	</select>	
+	</select>
+<!-- 	通过订单时间查询订单 -->
+	<select id="selectOrderByTime" resultMap="map">
+		select * from orders where orderTime  between #{startTime} and #{endTime} limit #{page},#{size}	
+	</select>
 	<resultMap id="map" type="OrderBean">
 		<id property="id" column="id"></id>
 		<result property="orderTime" column="orderTime"></result>

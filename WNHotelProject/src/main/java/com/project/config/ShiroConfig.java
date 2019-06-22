@@ -43,7 +43,7 @@ public class ShiroConfig {
 		fmap.put("/images/**", "anon");
 		fmap.put("/public.html","anon");
 		fmap.put("/logout","logout");
-		fmap.put("/**", "authc");
+		fmap.put("/**", "anon");
 
 		
 		shiroFilter.setFilterChainDefinitionMap(fmap);

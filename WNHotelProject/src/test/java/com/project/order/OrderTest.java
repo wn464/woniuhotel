@@ -8,6 +8,7 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.web.bind.annotation.PathVariable;
 
 import com.alipay.api.domain.Member;
 import com.project.Service.ILiveService;
@@ -96,10 +97,25 @@ public class OrderTest {
 	    	orderService.updateOrderAttr(orderBean);
 	    }
 	    @Test
-	    public void stest(){
+	    public void selectOrderByOrderNumber(){
 	    	OrderBean orderBean = orderDao.selectOrderByOrderNumber("20190621173745416");
 	    	System.out.println(orderBean);
 	    }
+	    @Test
+	    public void selectOrderById(){
+	    	OrderBean orderBean = orderDao.selectOrderById(28);
+	    	System.out.println(orderBean);
+	    }
+	    @Test
+	    public void selectOrderByTime(){
+//	    	List<OrderBean> list = orderDao.selectOrderByTime(startTime, endTime, page, size)
+//	    for (OrderBean orderBean : list) {
+//			System.err.println(orderBean);
+//		}
+			
+	    }
+	    
+	    
 	   
 
 

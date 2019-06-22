@@ -27,6 +27,10 @@ public interface IOrderService {
 	public OrderBean selectOrderById(int oid);
 	//通过订单号查询订单
 	public OrderBean selectOrderByOrderNumber(String orderNumber);
+	//通过预定状态查询订单
+	public PageBean selectOrderBySubStatus(int subscribeStatus, int page, int size);
+	//通过时间段查询订单
+	public PageBean selectOrderByTime(String startTime, String endTime, int page, int size);
 	
 	
 	

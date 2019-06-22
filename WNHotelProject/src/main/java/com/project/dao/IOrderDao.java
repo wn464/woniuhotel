@@ -3,6 +3,7 @@ package com.project.dao;
 import java.util.List;
 
 import org.apache.ibatis.annotations.Param;
+import org.springframework.web.bind.annotation.PathVariable;
 
 import com.project.bean.LiveBean;
 import com.project.bean.MarkBean;
@@ -31,5 +32,13 @@ public interface IOrderDao {
 	public OrderBean selectOrderByOrderNumber(String orderNumber);
 	//通订单id查询订单
 	public OrderBean selectOrderById(int oid);
+	//通过预定状态查询订单
+	public List<OrderBean> selectOrderBySubStatus(int subscribeStatus, int page, int size);
+	//根据状态查询订单总数量
+	public int selectNumberBySubStatus(int subStatus);
+	//根据时间段查询订单
+	public List<OrderBean> selectOrderByTime(@PathVariable("startTime")String startTime,@PathVariable("endTime")String endTime,@Param("page")int page,@Param("size")int size);
+	//根据时间段查询订单总数量
+	public int selectNumberByTime(@PathVariable("startTime")String startTime,@PathVariable("endTime")String endTime);
 	
 }
