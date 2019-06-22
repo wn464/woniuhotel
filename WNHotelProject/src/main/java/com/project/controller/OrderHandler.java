@@ -53,15 +53,15 @@ public class OrderHandler {
 	/*
 	 * 前台通过状态分页查询订单
 	 */
-	@GetMapping("/state/{status}/{page}/{size}")
-	@ResponseBody
-	public PageBean selectOrderByState(@PathVariable("status")int status,@PathVariable("page")int page,@PathVariable("size")int size) {
+	@GetMapping("/state/{status}")
+	public String selectOrderByState(@PathVariable("status")int status) {
 	    Subject subject = SecurityUtils.getSubject();
 	    Session session = subject.getSession();
 	    session.setAttribute("id", 1);//测试使用
         int mid = (int) session.getAttribute("id");
-		PageBean pageBean = orderService.selectOrderByState(mid, status, page, size);
-		return pageBean;
+		PageBean pageBean = orderService.selectOrderByState(mid, status, 1, 4);
+		System.out.println(pageBean);
+		return "myorder.html";
 	}
 	/*
 	 * 后台通过状态分页查询订单

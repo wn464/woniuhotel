@@ -99,7 +99,7 @@
 									</ul>
 								</li>
 								<li>
-									<a href="myorder.html">我的订单</a>
+									<a href="#" id="myorder">我的订单</a>
 								</li>
 								<li>
 									<a href="comment.html">酒店评价</a>
@@ -226,6 +226,11 @@
 	</script> 
  
 	<script>
+	$("#myorder").click(function(){
+		location.href="/order/state/3"
+	})
+	
+	
 		$(function () {
 			$("#slider4").responsiveSlides({
 				auto: true,
