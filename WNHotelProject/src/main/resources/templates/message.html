@@ -126,7 +126,8 @@
 						<p th:text="${type.message}">配以中式风格的食盒、电视柜、衣柜等装饰品，极具特色。透过大大的落地窗，都市的繁华尽收眼底。装修简洁时尚，舒适大床非常适合旅游及商务出差的客人居住。</div>
 				</div>
 				<div class="col-md-4 about-gd1" data-aos="fade-down">
-					<img src="/images/73291f2e73869b7070198eeca69b2479.jpg" class="img-responsive">
+			
+					<img th:src="@{'/images/'+${type.img}}" class="img-responsive">
 				</div>
 				<div class="col-md-4 about-gd ab-right" data-aos="fade-right">
 					<div class="about-sub-gd">

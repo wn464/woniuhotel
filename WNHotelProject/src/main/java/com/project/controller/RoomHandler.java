@@ -58,10 +58,11 @@ public class RoomHandler {
 	 * @return
 	 */
 	@GetMapping(value="/room/type/{tid}/{page}/{size}")
-	public String selectroombytype(@PathVariable("tid")int tid,@PathVariable("page") int page,@PathVariable("size") int size) {
+	public String selectroombytype(@PathVariable("tid")int tid,@PathVariable("page") int page,@PathVariable("size") int size,ModelMap map) {
 		TypeBean type=new TypeBean();
 		type.setId(tid);
 		PageBean bean = service.selectroombytype(type, page, size);
+		map.addAttribute("page", bean);
 		return "room.html";
 	}
 	/**
