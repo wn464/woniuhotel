@@ -1,15 +1,23 @@
 package com.project.util.countUtil;
 
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
+import com.project.Service.IDiscountService;
+import com.project.Service.IVipService;
 import com.project.bean.DiscountBean;
 import com.project.bean.OrderBean;
-import com.project.dao.IVipDao;
 import com.project.util.MoneyUtil;
-
+@Component
 public class OrderUtil extends OrderCount{
 
-	public OrderUtil(IVipDao vipDao) {
-		super(vipDao);
+	@Autowired
+	private static  IVipService vipService;
+	@Autowired
+	private IDiscountService discountService;
+	public OrderUtil() {
+		super(vipService);
 		// TODO Auto-generated constructor stub
 	}
 	/**
@@ -52,5 +60,31 @@ public class OrderUtil extends OrderCount{
 		}
 		System.out.println("会员折扣之前："+price);
 		return getVipDiscountCount(price, order);
+	}
+	/**
+	 * 线下计费，需要获取order中用户的vip、居住信息，完整的优惠方案
+	 * @param order
+	 * @param discount 优惠折扣
+	 * @return 计算后金额
+	 * @throws Exception 优惠不匹配
+	 */
+	public double getUnderLineMoney(double price , int discountId,int vipId) throws Exception {
+		DiscountBean discount = discountService.selectDiscountById(discountId);
+		
+		switch (discount.getDiscountType()) {
+		case 1:
+			price = getFullDiscountCount(price, discount);
+			break;
+		case 2:
+			price = getEveryMulitDiscountCount(price, discount);
+			break;
+		case 3:
+			price = getFixDiscountCount(price, discount);
+			break;
+		default:
+			break;
+		}
+		System.out.println("会员折扣之前："+price);
+		return getVipDiscountCount(price, vipId);
 	}
 }

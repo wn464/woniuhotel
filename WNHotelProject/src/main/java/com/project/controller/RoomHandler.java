@@ -4,6 +4,11 @@ package com.project.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
+
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
+
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 
@@ -37,9 +42,6 @@ public class RoomHandler {
 	 * @return
 	 */
 	@GetMapping(value="/room/{rid}")
-
-
-
 	public String selectroombyid(@PathVariable("rid")Integer rid,ModelMap map) {
 
 		System.out.println(rid);

@@ -1,13 +1,14 @@
 package com.project.util.countUtil;
 
 
+import com.project.Service.IVipService;
 import com.project.bean.DiscountBean;
 import com.project.bean.OrderBean;
-import com.project.dao.IVipDao;
 
 public class OrderCount extends DiscountCount{
-	public OrderCount(IVipDao vipDao) {
-		super(vipDao);
+	
+	public OrderCount(IVipService vipService) {
+		super(vipService);
 		// TODO Auto-generated constructor stub
 	}
 	/**
