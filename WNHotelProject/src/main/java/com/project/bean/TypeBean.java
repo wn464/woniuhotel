@@ -10,17 +10,18 @@ public class TypeBean {
 	private int id;//主键id
 	private String name;//类型名称
 	private String message;//类型描述
-	private String srea;//面积
+	private String area;//面积
 	private String img;//类型图片
 	private int people;//以居住人数
 	private String seat;//房间所在楼层
 	
 	
-	public String getSrea() {
-		return srea;
+
+	public String getArea() {
+		return area;
 	}
-	public void setSrea(String srea) {
-		this.srea = srea;
+	public void setArea(String area) {
+		this.area = area;
 	}
 	public String getImg() {
 		return img;
@@ -60,7 +61,7 @@ public class TypeBean {
 	}
 	@Override
 	public String toString() {
-		return "TypeBean [id=" + id + ", name=" + name + ", message=" + message + ", srea=" + srea + ", img=" + img
+		return "TypeBean [id=" + id + ", name=" + name + ", message=" + message + ", area=" + area + ", img=" + img
 				+ ", people=" + people + ", seat=" + seat + "]";
 	}
 	

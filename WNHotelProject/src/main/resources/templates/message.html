@@ -1,7 +1,8 @@
 <!DOCTYPE html>
-<html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
 <head>
-	<title> ! !  Home</title>		<!--酒店主页-->
+	<title> ! !  Message</title>   <!--显示房间类型详情的页面-->
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta charset="utf-8">
 	<meta name="keywords" content="" />
@@ -13,25 +14,15 @@
 			window.scrollTo(0, 1);
 		}
 	</script>
-	<link href="css/bootstrap.css" rel='stylesheet' type='text/css' />
-	<link href="css/style.css" rel='stylesheet' type='text/css' />
-	<link href="css/font-awesome.css" rel="stylesheet">
+	<link href="/css/bootstrap.css" rel='stylesheet' type='text/css' />
+	<link href="/css/style.css" rel='stylesheet' type='text/css' />
+	<link href="/css/font-awesome.css" rel="stylesheet">
 	<link href="http://fonts.googleapis.com/css?family=Merriweather+Sans:300,300i,400,400i,700,700i,800" rel="stylesheet">
 	<link href="http://fonts.googleapis.com/css?family=Mallanna" rel="stylesheet">
-	<script type="text/javascript" src="http://api.map.baidu.com/api?v=3.0&ak=Z7QuDLumjH1HBTPlMeySGbrcpzRRqYkV"></script>
-	<script type="text/javascript" src="js/jquery-2.2.3.min.js"></script>
-	<link href='css/aos.css' rel='stylesheet prefetch' type="text/css" media="all" />
-	<link href='css/aos-animation.css' rel='stylesheet prefetch' type="text/css" media="all" />
-	<script src='js/aos.js'></script>
-	<script src="js/aosindex.js"></script>
-	<script src="js/main.js"></script>
-	<script src="js/responsiveslides.min.js"></script>
-	<style type="text/css">
-		#container {width: 1100px;height: 600px;overflow: hidden;margin:20px auto 0;font-family:"微软雅黑";}
-	</style>
 </head>
 <body>
 	<div class="top-bar_sub_w3ls_agileits">
+		
 	</div>
 	<div class="header_w3layouts_agile-main">
 		<header class="header" id="home">
@@ -39,16 +30,16 @@
 				<nav class="navbar navbar-default">
 					<div class="navbar-header">
 			<!-- 二级菜单显示的位置-->
-						<div class="nav-container" id="1_menu" style="margin-left: -40px;">
+						<div class="nav-container" id="1_menu" style=" margin-top: 50px;">
 							<h1 class="nav"	>
-								<a href="index.html"><img src="images/lo.png" style="width: 100%;"/></a>
+								<a href="index.html"><img src="/images/lo.png" style="width: 100%;"/></a>
 							</h1>
 							<ul class="nav" id="menu_container">
 								<li>
 									<a href="index.html" >首页</a>
 								</li>
 								<li>
-									<a href="" >酒店位置</a>
+									<a href="#" >酒店位置</a>
 								</li>
 								<li>
 									<a href="#" >客房介绍</a>
@@ -114,37 +105,50 @@
 		<div class="slider">
 			<div class="callbacks_container">
 				<ul class="rslides callbacks callbacks1" id="slider4">
-					<li>
-						<div class="banner-top">
-							<div class="banner-info">
-							</div>
-						</div>
-					</li>
-					<li>
-						<div class="banner-top1">
-							<div class="banner-info">
-							</div>
-						</div>
-					</li>
-					<li>
-						<div class="banner-top2">
-							<div class="banner-info">
-							</div>
-						</div>
-					</li>
-					<li>
-						<div class="banner-top3">
-							<div class="banner-info">
-							</div>
-						</div>
-					</li>
 				</ul>
 			</div>
 			<div class="clearfix"> </div>
 		</div>
 	</div>
-<!--搜索房间-->
-	<div>
+
+<!--房间详情-->
+	<div class="sec_video" style="background-color:white !important; height: 800px;">
+		<div class="container">
+			<div class="about-main about1" style="padding: 50px 0 0 200px; ">
+				<div class="col-md-4 about-gd" data-aos="fade-left">
+					<div class="about-sub-gd">
+						<h4 th:text="${type.name}">豪华大床房</h4>
+						 <p th:text="${type.area}">面积：28平方米</p>
+						<p>容纳人数：<span th:text="${type.people}">2</span>人</p>
+					</div>
+					<div class="about-sub-gd">
+						<h4></h4>
+						<p th:text="${type.message}">配以中式风格的食盒、电视柜、衣柜等装饰品，极具特色。透过大大的落地窗，都市的繁华尽收眼底。装修简洁时尚，舒适大床非常适合旅游及商务出差的客人居住。</div>
+				</div>
+				<div class="col-md-4 about-gd1" data-aos="fade-down">
+					<img src="/images/73291f2e73869b7070198eeca69b2479.jpg" class="img-responsive">
+				</div>
+				<div class="col-md-4 about-gd ab-right" data-aos="fade-right">
+					<div class="about-sub-gd">
+						<p th:text="${type.seat}">位置：10楼、11楼、12楼</p>
+						<p>客房温度：23~26℃   湿度：40~60%</p>
+					</div>
+					<div class="about-sub-gd">
+						<h4></h4>
+						<p></p>
+						<a  href="#" th:href="@{'/room/type/'+(${type.id})+'/1/6'}">
+							<button type="button" class="btn btn-warning" style="margin-left: 180px;">详情及预定</button>
+						</a>
+					</div>
+				</div>
+				<div class="clearfix"></div>
+			</div>
+		</div>
+	</div>
+	
+	
+	<!--搜索房间-->
+<!--	<div>
 		<form action="#" method="get" name="queryPriceForm">
 			<div class="booking-wrapper" >
 				<ul class="booking-container">
@@ -155,6 +159,18 @@
 					<li>
 						<label>离店时间： </label>
 						<input type="date" class="input-times"/>
+					</li>
+					<li>
+						<div class="select-wrap">
+							<label class="select-wrap-label">房间数量</label>
+							<select name="rn" class="booking-select">
+								<option value="1">1</option>
+								<option value="2">2</option>
+								<option value="3">3</option>
+								<option value="4">4</option>
+							</select>
+							<span class="selecticon"></span>
+						</div>
 					</li>
 					<li>
 						<div class="select-wrap">
@@ -170,34 +186,15 @@
 						</div>
 					</li>
 					<li>
-						<a href="find.html" class="searchBtn" style="margin-left: 714px;">查询</a>
+						<label class="searchBtn-labal"></label>
+						<a href="#" class="searchBtn">查询</a>
 					</li>
 				</ul>
 			</div>
 		</form>
 	</div>
-	 <div id="container"></div>
-	 
-<!-- 酒店介绍-->
-	<div class="banner_bottom">
-		<div class="banner_bottom_in">
-			<h3 class="header_w3layouts_agile" data-aos="fade-down">酒 店 介 绍</h3>
-			<p>京西酒店是一座极具东南亚风情的四星级涉外酒店，同时也是四川省首批"金叶级绿色旅游饭店"，隶属中国石油集团公司，兼具商旅、会议、度假、亲子住宿等全方位功能。酒店坐落于繁华的春熙路商圈内，呈现给您最原汁原味的成都生活，“用心极致，追求完美”的服务理念与此相得益彰，让您尽享尊贵之体验。</p>		
-			<div class="col-md-7 yoga-video" data-aos="flip-left">
-				<img src="images/tea.jpg" class="img-responsive" alt="">
-			</div>
-			<div class="col-md-5 join-form" data-aos="flip-right">
-				<div class="signin-form profile join-fm">
-					<h3 class="sign">酒店促销</h3>
-					<p><a href="#">星期一 ····························· 慵懒下午茶 </a></p>
-					<p><a href="#">星期二 ····························· 快乐鸡尾酒 </a></p>
-					<p><a href="#">星期三 ····························· 乐美牛排馆 </a></p>
-					<p><a href="#">星期四 ····························· 惬意茶餐厅 </a></p>
-				</div>
-			</div>
-			<div class="clearfix"></div>
-		</div>
-	</div>
+	-->
+
 
 <!--底部-->
 	<footer class="contact-footer">
@@ -209,8 +206,8 @@
 			<div class="clearfix"></div>
 		</div>
 	</footer>
-	
-	 <script>
+	<script type="text/javascript" src="/js/jquery-2.2.3.min.js"></script>
+	<script type="text/javascript">
 		window.onload = function () {
 			document.getElementById("password1").onchange = validatePassword;
 			document.getElementById("password2").onchange = validatePassword;
@@ -223,8 +220,13 @@
 			else
 				document.getElementById("password2").setCustomValidity('');
 		}
-	</script> 
- 
+	</script>
+	<link href='/css/aos.css' rel='stylesheet prefetch' type="text/css" media="all" />
+	<link href='/css/aos-animation.css' rel='stylesheet prefetch' type="text/css" media="all" />
+	<script src='/js/aos.js'></script>
+	<script src="/js/aosindex.js"></script>
+	<script src="/js/main.js"></script>
+	<script src="/js/responsiveslides.min.js"></script>
 	<script>
 		$(function () {
 			$("#slider4").responsiveSlides({
@@ -242,8 +244,8 @@
 			});
 		});
 	</script>
-	<script type="text/javascript" src="js/move-top.js"></script>
-	<script type="text/javascript" src="js/easing.js"></script>
+	<script type="text/javascript" src="/js/move-top.js"></script>
+	<script type="text/javascript" src="/js/easing.js"></script>
 	<script type="text/javascript">
 		jQuery(document).ready(function ($) {
 			$(".scroll").click(function (event) {
@@ -272,7 +274,7 @@
 	<a href="#home" class="scroll" id="toTop" style="display: block;">
 		<span id="toTopHover" style="opacity: 1;"> </span>
 	</a>
-	<script type="text/javascript" src="js/bootstrap.js"></script>
+	<script type="text/javascript" src="/js/bootstrap.js"></script>
 	<script>
 			
 			$(function(){
@@ -280,62 +282,5 @@
 				$(".top-bar_sub_w3ls_agileits").load("public.html");
 			})
 	</script>
-	
-	<script>
-	function begin(){
-		$.ajax({
-			url:"/typeall",
-			async:true,
-			type:"get",
-			success:function(message){
-				console.info(message)
-				var count="";
-				for(var i=0;i<message.length;i++){
-					count+="<li>";
-					count+="<a href='/type/"+message[i].id+"'>"+message[i].name+"</a>";
-				count+="</li>";
-				}
-				$(".secondary-nav").html(count);
-			}
-		})
-	};
-	begin();
-	
-	
-	
-	
-	
-		var mp = new BMap.Map("container");
-		mp.centerAndZoom(new BMap.Point(104.3964,30.9093), 10);
-		mp.enableScrollWheelZoom();
-		
-		var canvasLayer = new BMap.CanvasLayer({
-		    update: update
-		});
-		
-		function update() {
-		    var ctx = this.canvas.getContext("2d");
-		
-		    if (!ctx) {
-		        return;
-		    }
-		
-		    ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
-		
-		    var temp = {};
-		    ctx.fillStyle = "rgba(50, 50, 255, 0.7)";
-		    ctx.beginPath();
-		    var data = [
-		        new BMap.Point(116.297047,39.979542),
-		       
-		    ];
-		
-		    for (var i = 0, len = data.length; i < len; i++) {
-		        var pixel = mp.pointToPixel(data[i]);
-		        ctx.fillRect(pixel.x, pixel.y, 30, 30);
-		    }
-		}
-		mp.addOverlay(canvasLayer);
-</script>
 </body>
 </html>

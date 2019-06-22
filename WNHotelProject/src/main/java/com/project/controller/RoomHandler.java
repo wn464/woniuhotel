@@ -57,13 +57,12 @@ public class RoomHandler {
 	 * @param size每页显示条数
 	 * @return
 	 */
-	@GetMapping(value="/room/type")
-	@ResponseBody
-	public PageBean selectroombytype(int tid, int page, int size) {
+	@GetMapping(value="/room/type/{tid}/{page}/{size}")
+	public String selectroombytype(@PathVariable("tid")int tid,@PathVariable("page") int page,@PathVariable("size") int size) {
 		TypeBean type=new TypeBean();
 		type.setId(tid);
 		PageBean bean = service.selectroombytype(type, page, size);
-		return bean;
+		return "room.html";
 	}
 	/**
 	 * 查询所有可住房间
