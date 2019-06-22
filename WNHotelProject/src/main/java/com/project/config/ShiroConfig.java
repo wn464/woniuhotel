@@ -28,11 +28,14 @@ public class ShiroConfig {
 		ShiroFilterFactoryBean shiroFilter = new ShiroFilterFactoryBean();
 		//注入安全管理器
 		shiroFilter.setSecurityManager(securityManager);
-		//认证跳转地址
-		shiroFilter.setLoginUrl("/login.html");
+
+		//认证失败跳转地址
+		shiroFilter.setLoginUrl("/login");
+
 		//认证失败跳转
 		shiroFilter.setUnauthorizedUrl("/failed.html");
 		Map<String,String> fmap = new LinkedHashMap<String,String>();
+
 
 		
 		fmap.put("/user/discount","authc");
@@ -44,9 +47,21 @@ public class ShiroConfig {
 		fmap.put("/js/**","anon");
 		fmap.put("/login", "anon");
 		fmap.put("/login.html","anon");
+=======
+		fmap.put("/member/login", "anon");
+		fmap.put("/member/reg", "anon");
+		fmap.put("/user/reg", "anon");
+		fmap.put("/user/login", "anon");
+		fmap.put("/js/**", "anon");
+		fmap.put("/index.html", "anon");
+		fmap.put("/css/**", "anon");
+		fmap.put("/images/**", "anon");
+		fmap.put("/public.html","anon");
+		fmap.put("/logout","logout");
+>>>>>>> branch 'master' of https://github.com/wn464/woniuhotel.git
 		fmap.put("/**", "anon");
 
-		fmap.put("/logout","logout");
+		
 		shiroFilter.setFilterChainDefinitionMap(fmap);
 		return shiroFilter;
 		

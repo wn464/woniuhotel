@@ -21,7 +21,7 @@ public interface IMemberService {
 		public MemberBean selectById(int id);
 		
 		//修改密码
-		public int updatePassword(MemberBean member);
+		public int updatePassword(String password,String repassword,int id);
 		
 		//修改消费金额
 		public int updateMoney(double money,int id);

@@ -36,6 +36,7 @@ public class MemberRealm extends AuthorizingRealm{
 		SimpleAuthenticationInfo info =null;
 		if(bean!=null) {
 			ByteSource bytes = ByteSource.Util.bytes(username);
+			
 			info = new SimpleAuthenticationInfo(bean.getUserName(),bean.getPassword(),bytes,getName());
 		}
 		return info;

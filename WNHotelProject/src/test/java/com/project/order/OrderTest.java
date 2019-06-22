@@ -8,6 +8,7 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.web.bind.annotation.PathVariable;
 
 import com.alipay.api.domain.Member;
 import com.project.Service.ILiveService;
@@ -21,6 +22,7 @@ import com.project.bean.PageBean;
 import com.project.bean.RoomBean;
 import com.project.dao.ILiveDao;
 import com.project.dao.IMarkDao;
+import com.project.dao.IOrderDao;
 import com.project.demo.WnHotelProjectApplication;
 import com.project.util.CreateOrderInfo;
 
@@ -31,14 +33,12 @@ public class OrderTest {
 	    @Autowired
 	    private IOrderService orderService;
 	    @Autowired
+	    private IOrderDao orderDao;
+	    @Autowired
 	    private IMarkDao markdao;
 	    @Test
 	    public void insertTest(){
 	    OrderBean orderBean = new OrderBean();
-	    String orderTime= CreateOrderInfo.getCreateTime();
-	    orderBean.setOrderTime(orderTime);
-	    String orderNumber =  CreateOrderInfo.getOrderNumber();
-	    orderBean.setOrderNumber(orderNumber);
 	    LiveBean liveBean = new LiveBean();
 	    liveBean.setInTime("2019-06-20");
 	    liveBean.setOutTime("2019-06-21");
@@ -64,7 +64,7 @@ public class OrderTest {
 	    orderBean.setSubscribeStatus(subscriBean);
 	    
 	    orderBean.setDelState(9);
-	    int num = orderService.insertOrder(orderBean);
+	    OrderBean num = orderService.getOrder(orderBean);
 	    System.out.println("----"+num);
 	    }
 	    @Test
@@ -91,10 +91,31 @@ public class OrderTest {
 //		    subscriBean.setId(9);
 //		    orderBean.setSubscribeStatus(subscriBean);
 //	    	orderBean.setAlipayNumber("20190621102119950");
-	    	orderBean.setPayMoney(21.0);
+//	    	orderBean.setPayMoney(21.0);
+	    	orderBean.setPrice(25);
 	 	    System.out.println(orderBean);
 	    	orderService.updateOrderAttr(orderBean);
 	    }
+	    @Test
+	    public void selectOrderByOrderNumber(){
+	    	OrderBean orderBean = orderDao.selectOrderByOrderNumber("20190621173745416");
+	    	System.out.println(orderBean);
+	    }
+	    @Test
+	    public void selectOrderById(){
+	    	OrderBean orderBean = orderDao.selectOrderById(28);
+	    	System.out.println(orderBean);
+	    }
+	    @Test
+	    public void selectOrderByTime(){
+//	    	List<OrderBean> list = orderDao.selectOrderByTime(startTime, endTime, page, size)
+//	    for (OrderBean orderBean : list) {
+//			System.err.println(orderBean);
+//		}
+			
+	    }
+	    
+	    
 	   
 
 
