@@ -3,6 +3,10 @@ package com.project.controller;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
+
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -21,7 +25,7 @@ import com.project.bean.TypeBean;
  * @author zxc
  *
  */
-@RestController
+@Controller
 public class RoomHandler {
 
 	@Autowired
@@ -33,11 +37,16 @@ public class RoomHandler {
 	 * @return
 	 */
 	@GetMapping(value="/room/{rid}")
-	@ResponseBody
-	public RoomBean selectroombyid(@PathVariable("rid")Integer rid) {
+
+
+
+	public String selectroombyid(@PathVariable("rid")Integer rid,ModelMap map) {
+
 		System.out.println(rid);
       RoomBean bean = service.selectroombyid(rid);
-      return bean;
+      System.out.println("1111"+bean);
+      map.put("roomBean", bean);
+      return "order.html";
 	}
 	/**
 	 * 查询某一类型下所有房间

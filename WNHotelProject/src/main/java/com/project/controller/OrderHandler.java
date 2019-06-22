@@ -2,6 +2,9 @@ package com.project.controller;
 
 import java.util.List;
 
+import org.apache.shiro.SecurityUtils;
+import org.apache.shiro.session.Session;
+import org.apache.shiro.subject.Subject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -50,18 +53,22 @@ public class OrderHandler {
 	/*
 	 * 前台通过状态分页查询订单
 	 */
-	@GetMapping("/state")
+	@GetMapping("/state/{status}/{page}/{size}")
 	@ResponseBody
-	public PageBean selectOrderByState(int mid,int status,int page,int size) {
+	public PageBean selectOrderByState(@PathVariable("status")int status,@PathVariable("page")int page,@PathVariable("size")int size) {
+	    Subject subject = SecurityUtils.getSubject();
+	    Session session = subject.getSession();
+	    session.setAttribute("id", 1);//测试使用
+        int mid = (int) session.getAttribute("id");
 		PageBean pageBean = orderService.selectOrderByState(mid, status, page, size);
 		return pageBean;
 	}
 	/*
 	 * 后台通过状态分页查询订单
 	 */
-	@GetMapping("/subStatus")
+	@GetMapping("/subStatus/{subscribeStatus}/{page}/{size}")
 	@ResponseBody
-	public PageBean selectOrderBySubStatus(int subscribeStatus,int page,int size) {
+	public PageBean selectOrderBySubStatus(@PathVariable("subscribeStatus")int subscribeStatus,@PathVariable("page")int page,@PathVariable("size")int size) {
 		PageBean pageBean = orderService.selectOrderBySubStatus(subscribeStatus,page,size);
 		return pageBean;
 	}
@@ -77,9 +84,9 @@ public class OrderHandler {
 	/*
 	 * 通过时间段查询订单
 	 */
-	@GetMapping("/time")
+	@GetMapping("/time/{startTime}/{endTime}/{page}/{size}")
 	@ResponseBody
-	public PageBean selectOrderByTime(String startTime, String endTime, int page, int size){
+	public PageBean selectOrderByTime(@PathVariable("startTime")String startTime, @PathVariable("endTime")String endTime, @PathVariable("page")int page, @PathVariable("size")int size){
 		PageBean pageBean = orderService.selectOrderByTime(startTime, endTime, page, size);
 		return pageBean;
 	}

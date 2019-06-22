@@ -63,37 +63,38 @@
 	<a href="index.html"><h2 style=" margin: 50px 0 0 100px ; color: gray;">主页</h2></a>
 	<div class="order">
 		<div class="one">
-			<h3 style="margin-left: -50px;">豪华双床房</h3>
+			<h3 style="margin-left: -50px;" th:text = "${roomBean.type.name}">豪华双床房</h3>
 			<div class="imgagess">
-				<img src="images/60fd8c59bffb880984b759cc3c8450fb.jpg"/>
+				<img src="images/60fd8c59bffb880984b759cc3c8450fb.jpg" th:src="${roomBean.img}"/>
 			</div>
-			<h4><span>房间号：</span>201</h4>
-			<h4><span>应付金额：</span>￥299</h4>
-			<h4><span>房间位置：</span>酒店六楼</h4>
+			<h4><span>房间号：</span><span th:text = "${roomBean.name}">201</span></h4>
+			<h4><span>应付金额：</span><span th:text = "${roomBean.price}" id="price">￥299</span></h4>
+			<h4><span>房间位置：</span><span th:text = "${roomBean.location}" >酒店六楼</span></h4>
+			<input type="hidden" th:text = "${roomBean.id}" id="rid">
 		</div>
 		<div class="tow">
 			<h3>入住信息</h3>
 		<form class="form-horizontal" role="form" >
   			<div class="form-group">
-		    	<label class="col-sm-2 control-label">入住时间 </label>
+		    	<label class="col-sm-2 control-label" id = "inTime">入住时间 </label>
 			    <div class="col-sm-10">
 			      <input type="date" class="form-control" >
 			    </div>
 			</div>
 			<div class="form-group">
-			    <label class="col-sm-2 control-label">离店时间 </label>
+			    <label class="col-sm-2 control-label" id = "outTime">退房时间 </label>
 			    <div class="col-sm-10">
 			     <input type="date" class="form-control" >
 			    </div>
 			</div>
 			<div class="form-group">
-			    <label class="col-sm-2 control-label">入 住 人</label>
+			    <label class="col-sm-2 control-label" id= "people">入 住 人</label>
 			    <div class="col-sm-10">
 			     <input type="text" class="form-control" >
 			    </div>
 			</div>
 			<div class="form-group">
-			    <label class="col-sm-2 control-label">联系方式 </label>
+			    <label class="col-sm-2 control-label" id = "phoneNumber">联系方式 </label>
 			    <div class="col-sm-10">
 			     <input type="text" class="form-control" >
 			    </div>
@@ -120,7 +121,7 @@
 			    <div class="col-sm-offset-2 col-sm-10">
 			<!--点击跳转支付宝支付页面-->
 			        <a href="#">
-			        	<button type="submit" class="btn btn-info" id="btn" >提交 </button>
+			        	<button type="submit" class="btn btn-info" id="btn" id="getInfo()">提交</button>
 			        </a>
 			    </div>
 		  	</div>
@@ -145,6 +146,25 @@
 				
 				$(".top-bar_sub_w3ls_agileits").load("public.html");
 			})
+			//获取订单信息
+			function getInfo(){
+				var price = $("#price")
+				var rid = $("#rid")
+				var people = $("#people")
+				var inTime = $("#inTime")
+				var outTime = $("#outTime")
+				var phoneNumber = $("#phoneNumber")
+				
+				$.ajax({
+					url:"/order",
+					type:"post",
+					data:"price="+price+"&lives[0].roomid="+rid+"&lives[0].people="
+					+people+"&lives[0].inTime="+inTime+"&lives[0].outTime="+outTime+"&lives[0].phoneNumber="+phoneNumber,
+					success:function(mes){
+						window.location.reload();
+						}
+					})
+			}
 	</script>
 </body>
 </html>
