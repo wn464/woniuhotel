@@ -37,17 +37,6 @@ public class ShiroConfig {
 		Map<String,String> fmap = new LinkedHashMap<String,String>();
 
 
-		
-		fmap.put("/user/discount","authc");
-		//fmap.put("/**", "anon");
-		fmap.put("/reg","anon");
-		fmap.put("/reg.html","anon");
-		fmap.put("/userReg","anon");
-		fmap.put("/reg.html","anon");
-		fmap.put("/js/**","anon");
-		fmap.put("/login", "anon");
-		fmap.put("/login.html","anon");
-=======
 		fmap.put("/member/login", "anon");
 		fmap.put("/member/reg", "anon");
 		fmap.put("/user/reg", "anon");
@@ -58,7 +47,6 @@ public class ShiroConfig {
 		fmap.put("/images/**", "anon");
 		fmap.put("/public.html","anon");
 		fmap.put("/logout","logout");
->>>>>>> branch 'master' of https://github.com/wn464/woniuhotel.git
 		fmap.put("/**", "anon");
 
 		
