@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  <mapper namespace="com.project.dao.IPeopleDao">
+  <!--根据名字模糊查询入住人员信息  -->
+  <select id="selectPeopleBean" parameterType="String" resultMap="map"> 
+  select * from people where name like CONCAT('%',#{name},'%');
+  </select>
+  <resultMap type="PeopleBean" id="map">
+  <id property="id" column="id" />
+  <result property="name" column="name" />
+  <result property="idCard" column="idCard" />
+  <result property="liveId" column="liveid" />
+  <association property="gender" javaType="MarkBean" select="com.project.mapping.MarkMapping.xml.findById" column="gender" />
+  </resultMap>
+  </mapper>
