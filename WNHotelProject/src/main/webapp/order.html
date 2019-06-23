@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title> ! !  Order</title>	<!--用户登陆后，点击预定所跳转的页面，显示用户需要填写的预订信息-->
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta charset="utf-8">
+	<meta name="keywords" content="" />
+	<link href="css/bootstrap.css" rel='stylesheet' type='text/css' />
+	<link href="css/style.css" rel='stylesheet' type='text/css' />
+	<link rel="stylesheet" href="css/bootstrap.css" />
+</head>
+<style>
+	.imgagess{
+		width: 280px;
+		height: 170px;
+		margin-top: -20px;
+		margin-bottom: 40px;
+	}
+	.imgagess img {
+		width: 100%;
+		height: 100%;
+	}
+	.order{
+		height: 650px;
+		width: 1300px;
+		margin: 50px auto;
+		box-shadow: 1px 1px 8px rgba(0,0,0,0.5);
+		padding-top: 50px;
+	}
+	.order h3{
+		color: darkgrey;
+		margin-bottom: 70px;
+	}
+	.order .form-group .col-sm-10 input{
+		width: 260px;
+	}
+	.one {
+		width: 500px;
+		height: 100%;
+		float: left;
+		padding-left: 200px;
+	}
+	.tow {
+		width: 600px;
+		height: 100%;
+		float: right;
+	}
+	#btn{
+		margin: 20px 0 0 230px;
+	}
+	.one h4{
+		margin-bottom: 26px;
+		color: #218DB5;
+	}
+	.one h4 span{
+		color: gray;
+	}
+</style>
+<body>
+	<div class="top-bar_sub_w3ls_agileits">
+	</div>
+	<!--订单部分-->
+	<a href="index.html"><h2 style=" margin: 50px 0 0 100px ; color: gray;">主页</h2></a>
+	<div class="order">
+		<div class="one">
+			<h3 style="margin-left: -50px;">豪华双床房</h3>
+			<div class="imgagess">
+				<img src="images/60fd8c59bffb880984b759cc3c8450fb.jpg"/>
+			</div>
+			<h4><span>房间号：</span>201</h4>
+			<h4><span>应付金额：</span>￥299</h4>
+			<h4><span>房间位置：</span>酒店六楼</h4>
+		</div>
+		<div class="tow">
+			<h3>入住信息</h3>
+		<form class="form-horizontal" role="form" >
+  			<div class="form-group">
+		    	<label class="col-sm-2 control-label">入住时间 </label>
+			    <div class="col-sm-10">
+			      <input type="date" class="form-control" >
+			    </div>
+			</div>
+			<div class="form-group">
+			    <label class="col-sm-2 control-label">离店时间 </label>
+			    <div class="col-sm-10">
+			     <input type="date" class="form-control" >
+			    </div>
+			</div>
+			<div class="form-group">
+			    <label class="col-sm-2 control-label">入 住 人</label>
+			    <div class="col-sm-10">
+			     <input type="text" class="form-control" >
+			    </div>
+			</div>
+			<div class="form-group">
+			    <label class="col-sm-2 control-label">联系方式 </label>
+			    <div class="col-sm-10">
+			     <input type="text" class="form-control" >
+			    </div>
+			</div>
+			<div class="form-group">
+			    <label class="col-sm-2 control-label">联系邮箱</label>
+			    <div class="col-sm-10">
+			     <input type="text" class="form-control" >
+			    </div>
+			</div>
+			<div class="form-group">
+			    <label class="col-sm-2 control-label">到店时间</label>
+			    <div class="col-sm-10">
+			     <input type="time" class="form-control" >
+			    </div>
+			</div>
+			<div class="form-group">
+			    <label class="col-sm-2 control-label"> 备 注 </label>
+			    <div class="col-sm-10">
+			     <input type="text" class="form-control" >
+			    </div>
+			</div>
+			<div class="form-group">
+			    <div class="col-sm-offset-2 col-sm-10">
+			<!--点击跳转支付宝支付页面-->
+			        <a href="#">
+			        	<button type="submit" class="btn btn-info" id="btn" >提交 </button>
+			        </a>
+			    </div>
+		  	</div>
+		</form>
+		</div>
+	</div>
+<!--底部-->
+	<footer class="contact-footer">
+		<div class="copy">
+			<h2 class="footer-logo">
+				<a href="#"><span style="color: white;">地址:中国·四川省·成都市太升北路2号</span></a>
+			</h2>
+			<p>电话:+86-28-86922233   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;传真:+86-28-86948796&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
+			<div class="clearfix"></div>
+		</div>
+	</footer>
+	<script type="text/javascript" src="js/jquery-2.2.3.min.js"></script>
+	<script type="text/javascript" src="js/bootstrap.js"></script>
+	<script>
+			
+			$(function(){
+				
+				$(".top-bar_sub_w3ls_agileits").load("public.html");
+			})
+	</script>
+</body>
+</html>

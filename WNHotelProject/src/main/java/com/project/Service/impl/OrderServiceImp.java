@@ -4,12 +4,15 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.TimerTask;
 
+import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Isolation;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.bind.annotation.PathVariable;
 
 import com.project.Service.IOrderService;
 import com.project.bean.LiveBean;
@@ -17,28 +20,40 @@ import com.project.bean.OrderBean;
 import com.project.bean.PageBean;
 import com.project.dao.ILiveDao;
 import com.project.dao.IOrderDao;
+import com.project.util.CreateOrderInfo;
+import com.project.util.timingutil.ordertiming;
 /**
  * 订单业务
  * @author x1c
  *
  */
 @Service
-public class OrderServiceImp implements IOrderService {
+public class OrderServiceImp implements IOrderService{
 	@Autowired
 	private IOrderDao orderDao;
 	@Autowired
 	private ILiveDao liveDao;
-	//添加订单
+	//添加并获取订单信息
 	@Override
-	public int insertOrder(OrderBean orderBean) {
-		int num = orderDao.insertOrder(orderBean);
-		int orderNumber = orderDao.selectNumberByOrderNumber(orderBean.getOrderNumber());
+	public OrderBean getOrder(OrderBean orderBean) {
+		//添加订单
+		String orderTime= CreateOrderInfo.getCreateTime();
+	  	orderBean.setOrderTime(orderTime);
+	    String orderNumber =  CreateOrderInfo.getOrderNumber();
+	    orderBean.setOrderNumber(orderNumber);
+	    System.out.println(orderBean);
+	    int num =orderDao.insertOrder(orderBean);
+		OrderBean orderBean2 = orderDao.selectOrderByOrderNumber(orderBean.getOrderNumber());
 		List<LiveBean> liveBeans = orderBean.getLives();
 		for (LiveBean liveBean : liveBeans) {
-			liveBean.setOrderid(orderNumber);
-			liveDao.insertLiveBean(liveBean);
+			liveBean.setOrderid(orderBean2.getId());
+			 num = liveDao.insertLiveBean(liveBean);
 		}
-		return num;
+		//生成订单
+		OrderBean orderBean3 = orderDao.selectOrderByOrderNumber(orderNumber);
+		//开启定时器
+		ordertiming.ds(orderBean3.getId());
+		return orderBean3;
 	}
 
 	//通过订单状态分页查询订单
@@ -60,14 +75,8 @@ public class OrderServiceImp implements IOrderService {
 	//通过入住信息查询订单
 	@Override
 	public List<OrderBean> selectOrderByAttr(String people,String time) {
-		
 		LiveBean liveBean = liveDao.selectBypeopleAndDate(people, time);
 		List<OrderBean> list = orderDao.selectOrderByAttr(liveBean);
-		List<LiveBean> lives = new ArrayList<LiveBean>();
-		lives.add(liveBean);
-		for (OrderBean orderBean : list) {
-			orderBean.setLives(lives);;
-		}
 		return list;
 	}
 
@@ -77,7 +86,48 @@ public class OrderServiceImp implements IOrderService {
 		int num = orderDao.updateOrderAttr(orderBean);
 		return num;
 	}
+	//通过订单id查询订单
+	@Override
+	public OrderBean selectOrderById(int oid) {
+		OrderBean orderBean = orderDao.selectOrderById(oid);
+		return orderBean;
+	}
+	//通过订单号查询订单
+	@Override
+	public OrderBean selectOrderByOrderNumber(String orderNumber) {
+		OrderBean orderBean = orderDao.selectOrderByOrderNumber(orderNumber);
+		return orderBean;
+	}
+	//通过预定状态查询订单
+	@Override
+	public PageBean selectOrderBySubStatus(int subscribeStatus, int page, int size) {
+		PageBean pageBean = new PageBean();
+		pageBean.setPage(page);
+		page = (page-1)*size;
+		List<OrderBean> list = orderDao.selectOrderBySubStatus(subscribeStatus, page, size);
+		int totalNumber  = orderDao.selectNumberBySubStatus(subscribeStatus);
+		pageBean.setSize(size);
+		pageBean.setTotalNumber(totalNumber);
+		int totalPage = (totalNumber%size==0)?totalNumber/size:(totalNumber/size)+1;
+		pageBean.setTotalPage(totalPage);
+		pageBean.setList(list);
+		return pageBean;
+	}
+	//根据时间段查询订单
+	@Override
+	public PageBean selectOrderByTime(String startTime,String endTime,int page,int size){
+		PageBean pageBean = new PageBean();
+		pageBean.setPage(page);
+		page = (page-1)*size;
+		List<OrderBean> list = orderDao.selectOrderByTime(startTime, endTime, page, size);
+		int totalNumber  = orderDao.selectNumberByTime(startTime, endTime);
+		pageBean.setSize(size);
+		pageBean.setTotalNumber(totalNumber);
+		int totalPage = (totalNumber%size==0)?totalNumber/size:(totalNumber/size)+1;
+		pageBean.setTotalPage(totalPage);
+		pageBean.setList(list);
+		return pageBean;
+	}
 
-	
 
 }

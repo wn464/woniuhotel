@@ -19,6 +19,6 @@ public interface ITypeDao {
 	 */
 	@Select("select *from type where id=#{tid}")
 public TypeBean selecttypeByid(@Param("tid")int tid);
-	@Select("select *froom type")
+	@Select("select *from type")
 	public List<TypeBean> selecttypeall();
 }

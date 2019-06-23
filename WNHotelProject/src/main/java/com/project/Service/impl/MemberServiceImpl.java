@@ -46,9 +46,11 @@ public class MemberServiceImpl implements IMemberService {
 	 * 修改密码
 	 */
 	@Override
-	public int updatePassword(MemberBean member) {
+	public int updatePassword(String password,String repassword,int id) {
 		// TODO Auto-generated method stub
-		return dao.updatePassword(member);
+		
+		
+		return 0;
 	}
 
 	/*
