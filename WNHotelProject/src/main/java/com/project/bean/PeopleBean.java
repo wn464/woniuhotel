@@ -12,7 +12,7 @@ public class PeopleBean {
 	private String idCard;//身份证号
 	private MarkBean gender;
 	private int liveId;  //入住的id
-	
+	private int gende;
 	public int getLiveId() {
 		return liveId;
 	}
@@ -44,11 +44,20 @@ public class PeopleBean {
 	public void setGender(MarkBean gender) {
 		this.gender = gender;
 	}
+	
+	public int getGende() {
+		return gende;
+	}
+	public void setGende(int gende) {
+		this.gende = gende;
+	}
 	@Override
 	public String toString() {
 		return "PeopleBean [id=" + id + ", name=" + name + ", idCard=" + idCard + ", gender=" + gender + ", liveId="
-				+ liveId + "]";
+				+ liveId + ", gende=" + gende + "]";
 	}
+	
+	
 	
 	
 	
