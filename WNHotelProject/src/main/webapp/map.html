@@ -1,10 +1,125 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="UTF-8">
-		<title></title>
-		<script src="http://map.baidu.com/"></script>
-	</head>
-	<body>
-	</body>
+<head>
+	<title> ! !  Home</title>		<!--酒店主页-->
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta charset="utf-8">
+	<meta name="keywords" content="" />
+	<script type="application/x-javascript">
+		addEventListener("load", function () {
+			setTimeout(hideURLbar, 0);
+		}, false);
+		function hideURLbar() {
+			window.scrollTo(0, 1);
+		}
+	</script>
+	<link href="css/bootstrap.css" rel='stylesheet' type='text/css' />
+	<link href="css/style.css" rel='stylesheet' type='text/css' />
+	<link href="css/font-awesome.css" rel="stylesheet">
+	<link href="http://fonts.googleapis.com/css?family=Merriweather+Sans:300,300i,400,400i,700,700i,800" rel="stylesheet">
+	<link href="http://fonts.googleapis.com/css?family=Mallanna" rel="stylesheet">
+	<script type="text/javascript" src="http://api.map.baidu.com/api?v=3.0&ak=Z7QuDLumjH1HBTPlMeySGbrcpzRRqYkV"></script>
+	<script type="text/javascript" src="js/jquery-2.2.3.min.js"></script>
+	<link href='css/aos.css' rel='stylesheet prefetch' type="text/css" media="all" />
+	<link href='css/aos-animation.css' rel='stylesheet prefetch' type="text/css" media="all" />
+	<script src='js/aos.js'></script>
+	<script src="js/aosindex.js"></script>
+	<script src="js/main.js"></script>
+	<script src="js/responsiveslides.min.js"></script>
+	<style type="text/css">
+		#container {width: 1100px;height: 600px;overflow: hidden;margin:20px auto 0;font-family:"微软雅黑";
+		
+		text-align: center;
+		}
+	</style>
+</head>
+<body>
+
+	
+
+
+	 <div id="container"></div>
+	 
+
+
+
+
+ 
+	<script type="text/javascript" src="js/move-top.js"></script>
+	<script type="text/javascript" src="js/easing.js"></script>
+
+	
+	</script>
+	<a href="#home" class="scroll" id="toTop" style="display: block;">
+		<span id="toTopHover" style="opacity: 1;"> </span>
+	</a>
+	<script type="text/javascript" src="js/bootstrap.js"></script>
+
+	
+	<script>
+	
+		var mp = new BMap.Map("container");
+		  
+		 
+		
+	 	mp.centerAndZoom(new BMap.Point(104.3964,30.9093), 10);
+		mp.enableScrollWheelZoom();
+		mp.centerAndZoom(new BMap.Point(104.06792346,30.67994285), 15);
+		mp.enableScrollWheelZoom(true);
+		var myGeo = new BMap.Geocoder(); 
+	///*  将地址解析结果显示在地图上,并调整地图视野
+		/* myGeo.getPoint("成都科技财富中心", function(point){
+			if (point) {
+				mp.centerAndZoom(point, 16);
+				mp.addOverlay(new BMap.Marker(point));
+			}else{
+				alert("您选择地址没有解析到结果!");
+			}
+		}, "成都市"); */
+
+		var canvasLayer = new BMap.CanvasLayer({
+		    update: update
+		});
+		
+		function update() {
+		    var ctx = this.canvas.getContext("2d");
+		
+		    if (!ctx) {
+		        return;
+		    } 
+		
+		    ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
+		
+		    var temp = {};
+		    ctx.fillStyle = "rgba(50, 50, 255, 0.7)";
+		    ctx.beginPath();
+		    var data = [
+		        new BMap.Point(116.297047,39.979542),
+		       
+		    ];
+		
+		    for (var i = 0, len = data.length; i < len; i++) {
+		        var pixel = mp.pointToPixel(data[i]);
+		        ctx.fillRect(pixel.x, pixel.y, 30, 30);
+		    }
+		}
+		
+		var point = new BMap.Point(104.06792346,30.67994285,10);
+		var marker = new BMap.Marker(point);  // 创建标注
+		mp.addOverlay(marker);              // 将标注添加到地图中
+		mp.centerAndZoom(point, 15);
+		var opts = {
+		  width : 200,     // 信息窗口宽度
+		  height: 100,     // 信息窗口高度
+		  title : "阿里玖玖超级大酒店" , // 信息窗口标题
+		  enableMessage:true,//设置允许信息窗发送短息
+		  message:"亲耐滴，晚上一起吃个饭吧？戳下面的链接看下地址喔~"
+		}
+		var infoWindow = new BMap.InfoWindow("地址：成都市青羊区政府正大门,右转250米，再转左250米即可", opts);  // 创建信息窗口对象 
+		marker.addEventListener("click", function(){ 
+			mp.openInfoWindow(infoWindow,point); //开启信息窗口
+		}); 
+		
+</script>
+</body>
 </html>
