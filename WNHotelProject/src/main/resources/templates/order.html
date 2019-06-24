@@ -146,17 +146,15 @@
 	<script type="text/javascript" src="/js/jquery-2.2.3.min.js"></script>
 	<script type="text/javascript" src="/js/bootstrap.js"></script>
 	
-	var rid = 0
-	<script th:inline="javascript">
-	rid = /*[[${roomBean.id}]]*/;
-	</script>
 	
-	<script type="text/javascript">
+	
+	<script type="text/javascript" th:inline="javascript">
 		$(function(){
 			$(".top-bar_sub_w3ls_agileits").load("/public.html");
 		})
 		//获取订单信息
 		function getInfo(){
+			var rid = /*[[${roomBean.id}]]*/;
 			var price = $("#price").text()
 			var people = $("#people").val()
 			var inTime = $("#inTime").val()
