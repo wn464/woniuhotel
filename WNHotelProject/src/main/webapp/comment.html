@@ -9,13 +9,25 @@
 	<link href="css/style.css" rel='stylesheet' type='text/css' />
 	<link rel="stylesheet" type="text/css" href="css/order.css"/>
 	<link rel="stylesheet" href="css/bootstrap.css" />
-</head>
-<style>
+	<style>
+	.message {
+	font-weight:bold;/*加粗*/
+	text-align:center;   /* 水平居中 */
+	margin-top: 85px;
+	font-size: 20px;
+    }
 	.mesing{
 		background-color: pink;
 		margin-left: 50px;
 	}
-</style>
+	.itemimg img{
+	      height:140px;
+	      weight:20px;
+	      margin-top: 20px;
+	}
+    </style>
+</head>
+
 <body>
 	<div class="top-bar_sub_w3ls_agileits">
 		
@@ -64,7 +76,7 @@
 	</div>
 	
 <!--底部-->
-	<footer class="contact-footer">
+	<footer class="contact-footer" >
 		<div class="copy">
 			<h2 class="footer-logo">
 				<a href="#"><span style="color: white;">地址:中国·四川省·成都市太升北路2号</span></a>
@@ -76,19 +88,38 @@
 	<script type="text/javascript" src="js/jquery-2.2.3.min.js"></script>
 	<script type="text/javascript" src="js/bootstrap.js"></script>
 	<script>
+	goods();
 	 function goods(){
    	  $.ajax({
-   		  url:"/show",
+   		  url:"/findComment",
    		  type:"post",
    		  async:true,
    		  dataType:"json",
    		  success:function(mes){
-   			  
-   		  }
-			$(function(){
-				
-				$(".top-bar_sub_w3ls_agileits").load("public.html");
-			})
+   			  var stu ="";
+   			  for(var i=0;i<mes.length;i++){
+   				  stu+="<div id='order-main'>"
+   				        +"<div id='o-detail'>"
+  				        +"<h1 class='d-number'>"
+  					    +"用户："+mes[i].name
+  				        +"</h1>"
+	  				    +"<div class='d-goodlist'>"
+	  					+"<div class='g-item' style='height: 220px !important;'>"
+	  					+"<div class='itemimg'>"
+	  					+"<img src='images/"+mes[i].imgName+"'>"
+	  					+"</div>"    
+	  					+"<div class='message'>"	
+	  					+"<p >"+mes[i].message+"</p>"
+	  					+"</div>"
+	  					+"</div>"
+	  				    +"</div>"
+	  			        +"</div>"
+	  		            +"</div>";   				  
+   			  }
+   			  $(".order").html(stu);
+   			  }
+   		  })
+}
 	</script>
 </body>
 </html>

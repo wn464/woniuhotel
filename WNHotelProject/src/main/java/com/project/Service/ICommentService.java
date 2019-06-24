@@ -11,5 +11,7 @@ public interface ICommentService {
 	public int insertComment(CommentBean bean);
 	//查询评论
 	public PageBean selectComment(int page,int size);
+	//查询所有评论
+	public List<CommentBean> selectAllComment();
 
 }
