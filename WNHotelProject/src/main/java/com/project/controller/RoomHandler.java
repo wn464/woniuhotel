@@ -67,7 +67,9 @@ public class RoomHandler {
 		
 		int dl=0;
 		if(scb.getSession(false)!=null) {
-			dl=1;
+			if(scb.getSession(false).getAttribute("id")!=null) {
+				dl=1;
+			}
 		};
 		map.addAttribute("dl",dl);
 		map.addAttribute("page", bean);
