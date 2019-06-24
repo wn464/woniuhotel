@@ -25,7 +25,7 @@ select * from discounts where name like #{name};
 </select>
 
 <delete id="deletDiscountById" parameterType="int">
-delete from discounts where id=#{id};
+delete from discounts where id=#{id} and id!=1;
 </delete>
 
 <select id="selectDiscountAll" resultType="DiscountBean">
