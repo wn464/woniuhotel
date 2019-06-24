@@ -2,6 +2,9 @@ package com.project.controller;
 
 
 
+import org.apache.catalina.security.SecurityUtil;
+import org.apache.shiro.SecurityUtils;
+import org.apache.shiro.subject.Subject;
 import org.springframework.beans.factory.annotation.Autowired;
 
 
@@ -60,6 +63,13 @@ public class RoomHandler {
 		TypeBean type=new TypeBean();
 		type.setId(tid);
 		PageBean bean = service.selectroombytype(type, page, size);
+		Subject scb=SecurityUtils.getSubject();
+		
+		int dl=0;
+		if(scb.getSession(false)!=null) {
+			dl=1;
+		};
+		map.addAttribute("dl",dl);
 		map.addAttribute("page", bean);
 		return "room.html";
 	}

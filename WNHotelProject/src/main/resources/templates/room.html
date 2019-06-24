@@ -51,10 +51,9 @@
 					 <img src="/images/60fd8c59bffb880984b759cc3c8450fb.jpg" th:src="@{'/images/'+${page.list[0].img}}"/>   
 						</div>
 						<p th:text="'房间号：'+(${page.list[0].name})">房间号：201</p>
-						<p  th:text="'标准价：￥'+(${page.list[0].price})">标准价：￥299</p>
 					 <p th:text="'房间位置：'+(${page.list[0].area})">房间位置： 酒店六楼</p>
 						<p th:text="${page.list[0].message}">房间详细信息描述</p>
-						<button type="button" class="btn btn-info">会员价：￥269</button>
+						<button type="button" class="btn btn-info" th:text="${dl}==0?'标准价：￥'+(${page.list[0].price}):'会员价：￥'+(${page.list[0].price})">会员价：￥269</button>
 			<!--如果当日的房间状态为已入住，则显示为今日已满   a链接也改为不可点击状态-->
 			<!--如果当日的房间状态为已入住，则显示为今日已满   a链接也改为不可点击状态-->
 			<!--如果当日的房间状态为已入住，则显示为今日已满   a链接也改为不可点击状态-->
@@ -73,10 +72,9 @@
 							<img  src="#" th:src="@{'/images/'+${page.list[1].img}}"/>
 						</div>
 						<p th:text="'房间号：'+(${page.list[1].name})">房间号：201</p>
-						<p th:text="'标准价：￥'+(${page.list[1].price})">标准价：￥299</p>
 						<p  th:text="'房间位置：'+(${page.list[1].area})">房间位置：酒店六楼</p>
 						<p th:text="${page.list[1].message}">房间详细信息描述</p>
-						<button type="button" class="btn btn-info">会员价：￥269</button>
+						<button type="button" class="btn btn-info" th:text="${dl}==0?'标准价：￥'+(${page.list[1].price}):'会员价：￥'+(${page.list[1].price})">会员价：￥269</button>
 						<a href="##" th:if="${page.list[1].status.id}==4" th:href="@{#}">
 							<button type="button" class="btn btn-warning" th:text="${page.list[1].status.id}==3?立即预定:今日已满" style="background-color:gray">立即预定</button>
 						</a>
@@ -93,10 +91,10 @@
 							<img src="/images/60fd8c59bffb880984b759cc3c8450fb.jpg" th:src="@{'/images/'+${page.list[2].img}}"/>
 						</div>
 						<p th:text="'房间号：'+(${page.list[2].name})">房间号：201</p>
-						<p th:text="'标准价：￥'+(${page.list[2].price})">标准价：￥299</p>
+					
 						<p th:text="'房间位置：'+(${page.list[2].area})">房间位置：酒店六楼</p>
 						<p th:text="${page.list[2].message}">房间详细信息描述</p>
-						<button type="button" class="btn btn-info">会员价：￥269</button>
+						<button type="button" class="btn btn-info" th:text="${dl}==0?'标准价：￥'+(${page.list[2].price}):'会员价：￥'+(${page.list[2].price})">会员价：￥269</button>
 					<a href="##" th:if="${page.list[2].status.id}==4" th:href="@{#}">
 							<button type="button" class="btn btn-warning" th:text="${page.list[2].status.id}==3?立即预定:今日已满" style="background-color:gray">立即预定</button>
 						</a>
@@ -111,10 +109,9 @@
 							<img src="/images/60fd8c59bffb880984b759cc3c8450fb.jpg" th:src="@{'/images/'+${page.list[3].img}}"/>
 						</div>
 						<p th:text="'房间号：'+(${page.list[3].name})">房间号：201</p>
-						<p th:text="'标准价：￥'+(${page.list[3].price})">标准价：￥299</p>
 						<p th:text="'房间位置：'+(${page.list[3].area})">房间位置：酒店六楼</p>
 						<p th:text="${page.list[3].message}">房间详细信息描述</p>
-						<button type="button" class="btn btn-info">会员价：￥269</button>
+				<button type="button" class="btn btn-info" th:text="${dl}==0?'标准价：￥'+(${page.list[3].price}):'会员价：￥'+(${page.list[3].price})">会员价：￥269</button>
 						<a href="##" th:if="${page.list[3].status.id}==4" th:href="@{#}">
 							<button type="button" class="btn btn-warning" th:text="${page.list[3].status.id}==3?立即预定:今日已满" style="background-color:gray">立即预定</button>
 						</a>
@@ -131,10 +128,9 @@
 							<img src="/images/60fd8c59bffb880984b759cc3c8450fb.jpg"  th:src="@{'/images/'+${page.list[4].img}}"/>
 						</div>
 						<p th:text="'房间号：'+(${page.list[4].name})">房间号：201</p>
-						<p th:text="'标准价：￥'+(${page.list[4].price})">标准价：￥299</p>
 						<p th:text="'房间位置：'+(${page.list[4].area})">房间位置：酒店六楼</p>
 						<p th:text="${page.list[4].message}">房间详细信息描述</p>
-						<button type="button" class="btn btn-info">会员价：￥269</button>
+					<button type="button" class="btn btn-info" th:text="${dl}==0?'标准价：￥'+(${page.list[4].price}):'会员价：￥'+(${page.list[4].price})">会员价：￥269</button>
 						<a href="##" th:if="${page.list[4].status.id}==4" th:href="@{#}">
 							<button type="button" class="btn btn-warning" th:text="${page.list[4].status.id}==3?立即预定:今日已满" style="background-color:gray">立即预定</button>
 						</a>
@@ -149,10 +145,10 @@
 							<img src="/images/60fd8c59bffb880984b759cc3c8450fb.jpg"  th:src="@{'/images/'+${page.list[5].img}}"/>
 						</div>
 						<p th:text="'房间号：'+(${page.list[5].name})">房间号：201</p>
-						<p th:text="'标准价：￥'+(${page.list[5].price})">标准价：￥299</p>
+					
 						<p th:text="'房间位置：'+(${page.list[5].area})">房间位置：酒店六楼</p>
 						<p th:text="${page.list[5].message}">房间详细信息描述</p>
-						<button type="button" class="btn btn-info">会员价：￥269</button>
+						<button type="button" class="btn btn-info" th:text="${dl}==0?'标准价：￥'+(${page.list[5].price}):'会员价：￥'+(${page.list[5].price})">会员价：￥269</button>
 						<a href="##" th:if="${page.list[5].status.id}==4" th:href="@{#}">
 							<button type="button" class="btn btn-warning" th:text="${page.list[5].status.id}==3?立即预定:今日已满" style="background-color:gray">立即预定</button>
 						</a>
