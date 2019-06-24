@@ -11,16 +11,12 @@ import com.project.bean.MemberBean;
  */
 public interface IMemberDao {
 	
-	//登录
-	@Select("select * from member where username=#{userName}")
-	public MemberBean login(String userName);
 	
 	//注册
 	@Insert("insert into member(username,password,phonenumber,money) values(#{userName},#{password},#{phoneNumber},0)")
 	public int reg(MemberBean member);
 	
 	//查看个人用户信息
-	@Select("select * from member where id=#{id}")
 	public MemberBean selectById(int id);
 	
 	//修改密码
