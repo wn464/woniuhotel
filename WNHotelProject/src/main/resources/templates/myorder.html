@@ -82,11 +82,29 @@
 					</div>
 				</div>
 			<div id="gopay" >
-				<button class="btn btn-danger">评价</button>
+				<button class="btn btn-danger" id="pingjia" data-toggle="modal" data-target="#myModal01">评价</button>
 			</div>
 			</div>
 		</div>
 	</div>
+	
+	<div class="modal fade" id="myModal01" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+		<div class="modal-dialog" role="document">
+	    	<div class="modal-content">
+	      		<div class="modal-header">
+	        		<h4 class="modal-title" id="myModalLabel">评 价</h4>
+	      		</div>
+	      		<div class="modal-body">
+	      			
+	    		</div>
+	    		<div class="modal-footer">
+	        		
+	    		</div>
+			</div>
+		</div>
+	</div>
+							                	
+	
 <!--底部-->
 	<footer class="contact-footer">
 		<div class="copy">
@@ -103,18 +121,30 @@
 		$("#myorder").click(function(){
 			location.href="/order/state/6"
 		})
-		
-		$("#noorder").click(function(){
-			var str = $("#gopay").html();
-			var num = "";
-			$("#gopay").html(num);
-			
-			location.href="/order/state/5"
+		$("#noorder").click(function(){	
+			location.href="/order/state/5";	
+		})
+		$("#pingjia").click(function(){
+			var sta = $("#span1").text();
+			if(sta=="未支付"){
+				var str = "<h4>  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 未支付的订单不能进行评价</h4> "
+				$(".modal-body").html(str)
+				var num = "<button type='button' class='btn btn-default' data-dismiss='modal'>取消</button>";
+				$(".modal-footer").html(num);
+			}else{
+				var str = ""
+				
+				
+				$(".modal-body").html(str)
+				var num = "<button type='button' class='btn btn-primary'>提价</button>";
+				num += "<button type='button' class='btn btn-default' data-dismiss='modal'>取消</button>"
+				$(".modal-footer").html(num);
+			}
 		})
 		
 		
 		$(function(){			
-			$(".top-bar_sub_w3ls_agileits").load("public.html");
+			$(".top-bar_sub_w3ls_agileits").load("/public.html");
 		})
 	</script>
 </body>
