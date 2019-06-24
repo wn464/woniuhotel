@@ -7,6 +7,7 @@ import org.apache.shiro.session.Session;
 import org.apache.shiro.subject.Subject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -15,8 +16,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.alipay.api.domain.Member;
 import com.project.Service.IOrderService;
 import com.project.bean.LiveBean;
+import com.project.bean.MemberBean;
 import com.project.bean.OrderBean;
 import com.project.bean.PageBean;
 
@@ -32,17 +35,27 @@ public class OrderHandler {
 	private IOrderService orderService;
 	
 	/*
-	 * 前台预定同时生成订单
+	 * 前台预定同时生成订单(线下预定时通过mname查询mid，添加mid)
 	 */
 	@PostMapping
 	@ResponseBody
-	public OrderBean getOrder(OrderBean orderBean) {
-		//获取session的用户id
+	public String getOrder(OrderBean orderBean) {
+		Subject subject = SecurityUtils.getSubject();
+	    Session session = subject.getSession();
+	    session.setAttribute("id", 7);//测试使用
+        int mid = (int) session.getAttribute("id");
+        MemberBean memberBean = new MemberBean();
+        memberBean.setId(mid);
+        orderBean.setMember(memberBean);
 		OrderBean orderBean2 = orderService.getOrder(orderBean);
-		return orderBean2;
+		int oid = orderBean2.getId();
+		String id = String.valueOf(oid);
+		return id;
 	}
+
+
 	/*
-	 * 后台按照入住人员信息查询订单
+	 * 后台按照预定人员信息(姓名和入住时间)模糊查询订单
 	 */
 	@GetMapping("/attr")
 	@ResponseBody
@@ -54,22 +67,23 @@ public class OrderHandler {
 	 * 前台通过状态分页查询订单
 	 */
 	@GetMapping("/state/{status}")
-	public String selectOrderByState(@PathVariable("status")int status) {
+	public String selectOrderByState(@PathVariable("status")int status,ModelMap map) {
 	    Subject subject = SecurityUtils.getSubject();
 	    Session session = subject.getSession();
 	    session.setAttribute("id", 1);//测试使用
         int mid = (int) session.getAttribute("id");
-		PageBean pageBean = orderService.selectOrderByState(mid, status, 1, 4);
-		System.out.println(pageBean);
+		PageBean bean = orderService.selectOrderByState(mid, status, 1, 4);
+		map.put("bean",bean);
+		System.out.println(bean);
 		return "myorder.html";
 	}
 	/*
 	 * 后台通过状态分页查询订单
 	 */
-	@GetMapping("/subStatus/{subscribeStatus}/{page}/{size}")
+	@GetMapping("/subStatus/{subscribeStatus}")
 	@ResponseBody
-	public PageBean selectOrderBySubStatus(@PathVariable("subscribeStatus")int subscribeStatus,@PathVariable("page")int page,@PathVariable("size")int size) {
-		PageBean pageBean = orderService.selectOrderBySubStatus(subscribeStatus,page,size);
+	public PageBean selectOrderBySubStatus(@PathVariable("subscribeStatus")int subscribeStatus) {
+		PageBean pageBean = orderService.selectOrderBySubStatus(subscribeStatus,1,2);
 		return pageBean;
 	}
 	/*
@@ -84,12 +98,20 @@ public class OrderHandler {
 	/*
 	 * 通过时间段查询订单
 	 */
-	@GetMapping("/time/{startTime}/{endTime}/{page}/{size}")
+	@GetMapping("/time/{startTime}/{endTime}")
 	@ResponseBody
-	public PageBean selectOrderByTime(@PathVariable("startTime")String startTime, @PathVariable("endTime")String endTime, @PathVariable("page")int page, @PathVariable("size")int size){
-		PageBean pageBean = orderService.selectOrderByTime(startTime, endTime, page, size);
+	public PageBean selectOrderByTime(@PathVariable("startTime")String startTime, @PathVariable("endTime")String endTime){
+		PageBean pageBean = orderService.selectOrderByTime(startTime, endTime, 1, 2);
 		return pageBean;
 	}
-	
+	/*
+	 * 通过订单id查询订单
+	 */
+	@GetMapping("/{oid}")
+	public String selectOrderById(@PathVariable("oid")int oid,ModelMap map){
+		OrderBean orderBean = orderService.selectOrderById(oid);
+		map.put("orderBean", orderBean);
+		return "pay.html";
+	}
 	
 }

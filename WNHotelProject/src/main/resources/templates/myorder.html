@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
 	<title> ! !  MyOrder</title>	<!--用户登录后，点击我的订单所跳转的页面，该页面显示当前用户的所有订单-->
 	<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -20,6 +20,9 @@
 		width: 260px;
 		background-color: pink;
 	}
+	#span1{
+		 margin-right: 620px;
+	}
 </style>
 <body>
 	<div class="top-bar_sub_w3ls_agileits">
@@ -33,19 +36,22 @@
 	</div>
 	
 	<!--默认显示已支付的订单   未支付的订单不能评价-->
-	<div class="order">
-		<div id="order-main">
+	<div class="order" th:each="order,iterStat : ${bean.list}">
+		<div id="order-main" >
 			<div id="o-detail">
 				<h1 class='d-number'>
-					<span style="margin-right: 730px;">已支付</span>
-					<span>订单号：</span><span>12385643</span>
+					<span id="span1" th:text="${order.status.name}">已支付</span>
+					<span>订单号：</span>
+					<span th:text="${order.orderNumber}">12385643</span>
 				</h1>
 				<div class='d-goodlist'>
 					<div class='g-item' style="height: 220px !important;">
 						<div class='itemimg'>
-							<img src="/images/efbf701e0c3721e94d44e0ade0db3f33.jpg">
+							<img src="/images/efbf701e0c3721e94d44e0ade0db3f33.jpg" th:src="@{'/images/'+${order.lives[0].room.type.img}}" >
 						</div>    
 						<div class="mesing">
+							<p th:text="${order.lives[0].room.type.name}"></p>
+							<p th:text="${order.price}"></p>
 							
 						</div>
 						<div class="mesing">

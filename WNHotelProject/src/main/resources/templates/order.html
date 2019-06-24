@@ -5,9 +5,9 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta charset="utf-8">
 	<meta name="keywords" content="" />
-	<link href="css/bootstrap.css" rel='stylesheet' type='text/css' />
-	<link href="css/style.css" rel='stylesheet' type='text/css' />
-	<link rel="stylesheet" href="css/bootstrap.css" />
+	<link href="/css/bootstrap.css" rel='stylesheet' type='text/css' />
+	<link href="/css/style.css" rel='stylesheet' type='text/css' />
+	<link rel="stylesheet" href="/css/bootstrap.css" />
 </head>
 <style>
 	.imgagess{
@@ -60,49 +60,54 @@
 	<div class="top-bar_sub_w3ls_agileits">
 	</div>
 	<!--订单部分-->
-	<a href="index.html"><h2 style=" margin: 50px 0 0 100px ; color: gray;">主页</h2></a>
+	<a href="/index.html"><h2 style=" margin: 50px 0 0 100px ; color: gray;">主页</h2></a>
 	<div class="order">
 		<div class="one">
 			<h3 style="margin-left: -50px;" th:text = "${roomBean.type.name}">豪华双床房</h3>
 			<div class="imgagess">
-				<img src="images/60fd8c59bffb880984b759cc3c8450fb.jpg" th:src="${roomBean.img}"/>
+				<img src="/images/60fd8c59bffb880984b759cc3c8450fb.jpg" th:src="@{/images/{name}(name=${roomBean.img})}" />
 			</div>
 			<h4><span>房间号：</span><span th:text = "${roomBean.name}">201</span></h4>
 			<h4><span>应付金额：</span><span th:text = "${roomBean.price}" id="price">￥299</span></h4>
 			<h4><span>房间位置：</span><span th:text = "${roomBean.location}" >酒店六楼</span></h4>
-			<input type="hidden" th:text = "${roomBean.id}" id="rid">
 		</div>
 		<div class="tow">
 			<h3>入住信息</h3>
 		<form class="form-horizontal" role="form" >
+		 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+		 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+		 <span style="font-size: 12px;color: red;display: none;" id="span0">请输入完整入住信息！</span>
   			<div class="form-group">
-		    	<label class="col-sm-2 control-label" id = "inTime">入住时间 </label>
+  			
+		    	<label class="col-sm-2 control-label" >入住时间 </label>
 			    <div class="col-sm-10">
-			      <input type="date" class="form-control" >
+			      <input type="date" class="form-control" id = "inTime" >
 			    </div>
 			</div>
 			<div class="form-group">
-			    <label class="col-sm-2 control-label" id = "outTime">退房时间 </label>
+			    <label class="col-sm-2 control-label" >退房时间 </label>
 			    <div class="col-sm-10">
-			     <input type="date" class="form-control" >
+			     <input type="date" class="form-control" id = "outTime">
 			    </div>
 			</div>
 			<div class="form-group">
-			    <label class="col-sm-2 control-label" id= "people">入 住 人</label>
+			    <label class="col-sm-2 control-label" >入 住 人</label>
 			    <div class="col-sm-10">
-			     <input type="text" class="form-control" >
+			     <input type="text" class="form-control" id= "people">
 			    </div>
 			</div>
 			<div class="form-group">
-			    <label class="col-sm-2 control-label" id = "phoneNumber">联系方式 </label>
+			    <label class="col-sm-2 control-label" >联系方式 </label>
 			    <div class="col-sm-10">
-			     <input type="text" class="form-control" >
+			     <input type="text" class="form-control" id = "phoneNumber" style="Float:left;">
+			     <span style="font-size: 12px;color: red;display: none;Float:left;height: 14px;" id="span-phone">手机号不合法！</span>
 			    </div>
 			</div>
 			<div class="form-group">
 			    <label class="col-sm-2 control-label">联系邮箱</label>
 			    <div class="col-sm-10">
-			     <input type="text" class="form-control" >
+			     <input type="text" class="form-control" id="email" style="Float:left;">
+			     <span style="font-size: 12px;color: red;display: none;Float:left" id="span-email">邮箱不合法！</span>
 			    </div>
 			</div>
 			<div class="form-group">
@@ -121,7 +126,7 @@
 			    <div class="col-sm-offset-2 col-sm-10">
 			<!--点击跳转支付宝支付页面-->
 			        <a href="#">
-			        	<button type="submit" class="btn btn-info" id="btn" id="getInfo()">提交</button>
+			        	<button type="button" class="btn btn-info" id="btn" onclick="getInfo()">结算</button>
 			        </a>
 			    </div>
 		  	</div>
@@ -138,33 +143,69 @@
 			<div class="clearfix"></div>
 		</div>
 	</footer>
-	<script type="text/javascript" src="js/jquery-2.2.3.min.js"></script>
-	<script type="text/javascript" src="js/bootstrap.js"></script>
-	<script>
-			
-			$(function(){
-				
-				$(".top-bar_sub_w3ls_agileits").load("public.html");
-			})
-			//获取订单信息
-			function getInfo(){
-				var price = $("#price")
-				var rid = $("#rid")
-				var people = $("#people")
-				var inTime = $("#inTime")
-				var outTime = $("#outTime")
-				var phoneNumber = $("#phoneNumber")
-				
+	<script type="text/javascript" src="/js/jquery-2.2.3.min.js"></script>
+	<script type="text/javascript" src="/js/bootstrap.js"></script>
+	
+	var rid = 0
+	<script th:inline="javascript">
+	rid = /*[[${roomBean.id}]]*/;
+	</script>
+	
+	<script type="text/javascript">
+		$(function(){
+			$(".top-bar_sub_w3ls_agileits").load("/public.html");
+		})
+		//获取订单信息
+		function getInfo(){
+			var price = $("#price").text()
+			var people = $("#people").val()
+			var inTime = $("#inTime").val()
+			var outTime = $("#outTime").val()
+			var phoneNumber = $("#phoneNumber").val()
+			if (inTime==""||people==""||outTime==""||phoneNumber=="") {
+					$("#span0").css("display","inline")
+			}else {
 				$.ajax({
 					url:"/order",
 					type:"post",
-					data:"price="+price+"&lives[0].roomid="+rid+"&lives[0].people="
-					+people+"&lives[0].inTime="+inTime+"&lives[0].outTime="+outTime+"&lives[0].phoneNumber="+phoneNumber,
+					data:"price="+price+"&lives[0].roomid="+rid+"&lives[0].people="+people+"&lives[0].inTime="+inTime+
+					"&lives[0].outTime="+outTime+"&lives[0].phoneNumber="+phoneNumber+
+					"&status.id=5&subscribeStatus.id=9&delState=10",
 					success:function(mes){
-						window.location.reload();
+						window.location.href="/order/"+mes;
 						}
 					})
 			}
+		}
+		$("#inTime,#outTime,#price").blur(function () {
+			$("#span0").css("display","none")
+		})
+		////验证手机是否合法
+		$("#phoneNumber").blur(function () {
+		    phone = this.value;
+		    RegCellPhone = /^(1)([0-9]{10})?$/;
+		    falg=phone.search(RegCellPhone);
+		    if (falg==-1){
+		    	$("#span-phone").css("display","inline")
+		    	
+		    }
+		});
+		$("#phoneNumber").focus(function () {
+		    $("#span-phone").css("display","none")
+		  });
+		//验证邮箱是否合法
+		$("#email").blur(function (){
+			strEmail = this.value;
+		    var flag = strEmail.search(/^\w+((-\w+)|(\.\w+))*\@[A-Za-z0-9]+((\.|-)[A-Za-z0-9]+)*\.[A-Za-z0-9]+$/);
+		    if (flag == -1){
+		    	$("#span-email").css("display","inline")
+		    }
+		})
+		$("#email").focus(function () {
+		    $("#span-email").css("display","none")
+		  });
 	</script>
+			
+	
 </body>
 </html>
