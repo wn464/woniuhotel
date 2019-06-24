@@ -45,6 +45,7 @@ public class RoomHandler {
 	public String selectroombyid(@PathVariable("rid")Integer rid,ModelMap map) {
       RoomBean bean = service.selectroombyid(rid);
       map.put("roomBean", bean);
+      System.out.println(bean);
       return "order.html";
 	}
 	/**

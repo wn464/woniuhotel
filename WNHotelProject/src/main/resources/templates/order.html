@@ -65,7 +65,7 @@
 		<div class="one">
 			<h3 style="margin-left: -50px;" th:text = "${roomBean.type.name}">豪华双床房</h3>
 			<div class="imgagess">
-				<img src="/images/60fd8c59bffb880984b759cc3c8450fb.jpg" th:src="/images/"+"@{roomBean.img}" />
+				<img src="/images/60fd8c59bffb880984b759cc3c8450fb.jpg" th:src="@{/images/{name}(name=${roomBean.img})}" />
 			</div>
 			<h4><span>房间号：</span><span th:text = "${roomBean.name}">201</span></h4>
 			<h4><span>应付金额：</span><span th:text = "${roomBean.price}" id="price">￥299</span></h4>

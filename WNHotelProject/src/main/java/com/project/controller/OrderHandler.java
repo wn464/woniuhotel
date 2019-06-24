@@ -98,10 +98,10 @@ public class OrderHandler {
 	/*
 	 * 通过时间段查询订单
 	 */
-	@GetMapping("/time/{startTime}/{endTime}/{page}/{size}")
+	@GetMapping("/time/{startTime}/{endTime}")
 	@ResponseBody
-	public PageBean selectOrderByTime(@PathVariable("startTime")String startTime, @PathVariable("endTime")String endTime, @PathVariable("page")int page, @PathVariable("size")int size){
-		PageBean pageBean = orderService.selectOrderByTime(startTime, endTime, page, size);
+	public PageBean selectOrderByTime(@PathVariable("startTime")String startTime, @PathVariable("endTime")String endTime){
+		PageBean pageBean = orderService.selectOrderByTime(startTime, endTime, 1, 2);
 		return pageBean;
 	}
 	/*
