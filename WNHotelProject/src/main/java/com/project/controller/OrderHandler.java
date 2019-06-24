@@ -67,19 +67,15 @@ public class OrderHandler {
 	 * 前台通过状态分页查询订单
 	 */
 	@GetMapping("/state/{status}")
-
-	@ResponseBody
-
-	public String selectOrderByState(@PathVariable("status")int status) {
-
+	public String selectOrderByState(@PathVariable("status")int status,ModelMap map) {
 	    Subject subject = SecurityUtils.getSubject();
 	    Session session = subject.getSession();
 	    session.setAttribute("id", 1);//测试使用
         int mid = (int) session.getAttribute("id");
-		PageBean pageBean = orderService.selectOrderByState(mid, status, 1, 2);
-		System.out.println(pageBean);
+		PageBean bean = orderService.selectOrderByState(mid, status, 1, 4);
+		map.put("bean",bean);
+		System.out.println(bean);
 		return "myorder.html";
-
 	}
 	/*
 	 * 后台通过状态分页查询订单
