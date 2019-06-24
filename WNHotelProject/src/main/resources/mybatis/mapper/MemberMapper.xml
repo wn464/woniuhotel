@@ -3,6 +3,8 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.project.dao.IMemberDao">
+
+	<!-- 通过用户名查找 -->
 	<select id="selectByUsername" resultMap="map">
 	
 		select * from member where username = #{userName}
@@ -11,5 +13,20 @@
 	<resultMap type="MemberBean" id="map">
 		<id property="id" column="id"/>
 		<result property="userName" column="username"/>
+		<result property="phoneNumber" column="phoneNumber"/>
+	</resultMap>
+	
+	
+	<!-- 查找个人信息 -->
+	<select id="selectById" resultMap="map1">
+		select * from member where id=#{id}
+	</select>
+	
+	<resultMap type="MemberBean" id="map1">
+		<id property="id" column="id"/>
+		<result property="userName" column="username"/>
+		<result property="phoneNumber" column="phoneNumber"/>
+		<result property="money" column="money"/>
+		<association property="vip" javaType="VipBean" select="com.project.dao.IVipDao.selectVipById" column="vip"/>
 	</resultMap>
 </mapper> 
