@@ -13,7 +13,6 @@ public class task extends TimerTask {
 	private int orderid;
 	
 	public task(IOrderService service,int ordernumber) {
-		System.out.println(service);
 		System.out.println("开始计时。15分钟后修改订单状态"+ordernumber);
 		this.orderid=ordernumber;
 		this.service=service;
