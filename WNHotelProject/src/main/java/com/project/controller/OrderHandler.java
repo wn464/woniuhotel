@@ -67,9 +67,7 @@ public class OrderHandler {
 	 * 前台通过状态分页查询订单
 	 */
 	@GetMapping("/state/{status}")
-
 	@ResponseBody
-
 	public String selectOrderByState(@PathVariable("status")int status) {
 
 	    Subject subject = SecurityUtils.getSubject();
@@ -114,7 +112,34 @@ public class OrderHandler {
 	@GetMapping("/{oid}")
 	public String selectOrderById(@PathVariable("oid")int oid,ModelMap map){
 		OrderBean orderBean = orderService.selectOrderById(oid);
+		List<LiveBean> list = orderBean.getLives();
+		for (LiveBean liveBean : list) {
+			String outTimeString = liveBean.getOutTime();
+			String inTimeString = liveBean.getInTime();
+			
+			//截取日期
+			String otime = outTimeString.substring(outTimeString.length()-2,outTimeString.length());
+			int ot =Integer.parseInt(otime);
+			String intime = inTimeString.substring(inTimeString.length()-2,inTimeString.length());
+			int it =Integer.parseInt(intime);
+			int day = ot - it;
+			
+			//截取月份
+			String omouth =outTimeString.substring(outTimeString.length()-4,outTimeString.length()-3);
+			String inmouth =inTimeString.substring(inTimeString.length()-4,inTimeString.length()-3);
+			int om =Integer.parseInt(omouth);
+			int im = Integer.parseInt(inmouth);
+			if ((om-im)>0) {
+				day = day+(om-im)*30;
+			}
+			double price = liveBean.getRoom().getPrice()*day;
+			System.out.println("-------"+orderBean);
+			orderBean.setPrice(price);
+			
+		}
 		map.put("orderBean", orderBean);
+		
+		
 		return "pay.html";
 	}
 	
