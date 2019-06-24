@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title> ! !  MyOrder</title>	<!--用户登录后，点击我的订单所跳转的页面，该页面显示当前用户的所有订单-->
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta charset="utf-8">
+	<meta name="keywords" content="" />
+	<link href="/css/bootstrap.css" rel='stylesheet' type='text/css' />
+	<link href="/css/style.css" rel='stylesheet' type='text/css' />
+	<link rel="stylesheet" type="text/css" href="/css/order.css"/>
+	<link rel="stylesheet" href="/css/bootstrap.css" />
+</head>
+<style>
+	.mesing{
+		background-color: pink;
+		margin-left: 20px;
+	}
+	.imga{
+		height: 200px;
+		width: 260px;
+		background-color: pink;
+	}
+	#div-left{
+		margin-right: 60px;
+	}
+	#div-right{
+		margin-left:90px;
+		height: 300px;
+	}
+	#div-right p{
+		float: left;
+		font-size: 16px;
+		
+	}
+	#ul1{
+		margin-left: 120px;
+		margin-top: -90px;
+		float: left;
+		width: 360px;
+		height: 180px;
+	}
+	#ul2{
+		margin-left: 220px;
+		margin-top: -90px;
+		float: left;
+		width: 200px;
+		height: 180px;
+	}
+	li{
+		font-size: 20px;
+		width: 250px;
+		height: 70px;
+		color: #a9a9a9;
+	}
+</style>
+<body>
+	<div class="top-bar_sub_w3ls_agileits">
+	</div>
+	<a href="/index.html"><h2 style="float: right; margin: 60px 100px 0 0 ; color: gray;">主页</h2></a>
+	<!--订单部分-->
+	<div class="floy">
+		<h3>订 单 详 情 </h3>
+	</div>
+	<div class="order">
+		<div id="order-main">
+			<div id="o-detail">
+				<h1 class='d-number'>
+					订单号：<span style="margin-right: 590px;">12345678</span>
+					<span>下单时间：</span><span>20:00</span>
+				</h1>
+				<div class='d-goodlist'>
+					<div class='g-item' style="height: 700px !important;">
+						<br />	<br />
+						<div class='itemimg'style="height: 500px;width: 900px; !important;" id="div-left">
+							<img src="/images/efbf701e0c3721e94d44e0ade0db3f33.jpg" style="height: 350px;width: 650px; 420px !important;">
+						</div>    
+							<ul id="ul1">
+								<li>房间类型：<span>豪华双人房</span></li>
+								<li>入住时间：<span>2019-02-02</span></li>
+								<li>退房时间：<span>2019-02-03</span></li>
+								
+							</ul>
+							<ul id="ul2">
+								<li>预定用户：<span>小王</span></li>
+								<li>手机号码：<span>15377865432</span></li>
+								<li>应付金额：<span style="color: black;font-weight: 600;font-size: 20px;">1000</span></li>
+							</ul>
+							<ul style="margin-left: 460px;">
+								<li><button type="button" class="btn btn-primary" id="btn1" style="width: 100px;height: 40px;">支付</button></li>
+							</ul>
+						
+					</div>
+				</div>
+			
+			</div>
+		</div>
+	</div>
+	
+	
+	</div>
+<!--底部-->
+	<footer class="contact-footer">
+		<div class="copy" style="">
+			<h2 class="footer-logo">
+				<a href="#"><span style="color: white;">地址:中国·四川省·成都市太升北路2号</span></a>
+			</h2>
+			<p>电话:+86-28-86922233   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;传真:+86-28-86948796&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
+			<div class="clearfix"></div>
+		</div>
+	</footer>
+	<script type="text/javascript" src="/js/jquery-2.2.3.min.js"></script>
+	<script type="text/javascript" src="/js/bootstrap.js"></script>
+	<script>
+			
+			$(function(){
+				
+				$(".top-bar_sub_w3ls_agileits").load("/public.html");
+			})
+	</script>
+</body>
+</html>

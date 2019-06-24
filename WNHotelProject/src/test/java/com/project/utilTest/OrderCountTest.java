@@ -34,12 +34,12 @@ public class OrderCountTest {
 	public void test() {
 		LiveBean live = new LiveBean();
 		live.setOrderid(1);
-		List<OrderBean> list = orderDao.selectOrderByAttr(live);
+		OrderBean order = orderDao.selectOrderByAttr(live);
 		//System.out.println("list="+list);
-		OrderBean order=null;
-		for (OrderBean orderBean : list) {
-			 order = orderBean;
-		}
+//		OrderBean order=null;
+//		for (OrderBean orderBean : list) {
+//			 order = orderBean;
+//		}
 		System.out.println("order"+order);
 		DiscountBean discount=discountService.selectDiscountById(1);
 		System.out.println("discount"+discount);

@@ -14,9 +14,26 @@
 	
 	<!-- 通过开房人名字和入住时间来查询入住信息  里面包含RoomBean -->
 	<select id="selectBypeopleAndDate" resultMap="mapp">
-		select * from live where people = #{people} and intime = #{time};
+		select * from live where people like CONCAT('%',#{people},'%') and intime = #{time};
 	</select>
-	
+	<update id="updateLiveBean" parameterType="LiveBean">
+		update live
+		<set>
+			<if test="people!=null">
+				people = #{people}
+			</if>
+			<if test="phoneNumber!=null">
+				phoneNumber = #{phoneNumber}
+			</if>
+			<if test="inTime!=null">
+				inTime = #{inTime}
+			</if>
+			<if test="outTime!=null">
+				outTime = #{outTime}
+			</if>
+		</set>
+		where id = #{id}
+	</update>
 	<resultMap type="LiveBean" id="mapp">
 		  <id property="id" column="id" />
 		  <result property="inTime" column="intime" />

@@ -36,6 +36,8 @@ public class OrderTest {
 	    private IOrderDao orderDao;
 	    @Autowired
 	    private IMarkDao markdao;
+	    @Autowired
+	    private ILiveService liveService;
 	    @Test
 	    public void insertTest(){
 	    OrderBean orderBean = new OrderBean();
@@ -114,7 +116,14 @@ public class OrderTest {
 //		}
 			
 	    }
-	    
+	    @Test
+	    public void updatelivebean(){
+	    	LiveBean liveBean = new LiveBean();
+	    	liveBean.setId(46);
+	    	liveBean.setPhoneNumber("111111");
+	    	liveService.updateLiveBean(liveBean);
+	    	
+	    }
 	    
 	   
 
