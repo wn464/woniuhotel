@@ -30,6 +30,8 @@ public class OrderCountTest {
 	private IDiscountService discountService;
 	@Autowired
 	private IVipDao vipDao;
+	@Autowired
+	private OrderUtil orderutil;
 	@Test
 	public void test() {
 		LiveBean live = new LiveBean();
@@ -44,7 +46,7 @@ public class OrderCountTest {
 		DiscountBean discount=discountService.selectDiscountById(1);
 		System.out.println("discount"+discount);
 		try {
-			System.out.println("费用"+new OrderUtil(vipDao).getUnderLineMoney(order, discount));
+			System.out.println("费用"+orderutil.getUnderLineMoney(order, discount));
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

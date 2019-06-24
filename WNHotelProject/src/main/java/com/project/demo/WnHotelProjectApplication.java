@@ -23,9 +23,6 @@ import com.project.util.timingutil.ordertiming;
 public class WnHotelProjectApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(WnHotelProjectApplication.class, args);
-		ordertiming.ds(123);
-		
-		ordertiming.ds(666);
 	}
 
 }

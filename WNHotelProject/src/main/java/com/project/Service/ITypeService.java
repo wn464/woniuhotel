@@ -15,4 +15,10 @@ public interface ITypeService {
 	 * @return
 	 */
 List<TypeBean> selecttypeall();
+/**
+ * 查询某一类型详情
+ * @param tid
+ * @return
+ */
+TypeBean selecttypebyid(int tid);
 }

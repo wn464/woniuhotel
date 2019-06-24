@@ -19,6 +19,13 @@
 	<link href="http://fonts.googleapis.com/css?family=Merriweather+Sans:300,300i,400,400i,700,700i,800" rel="stylesheet">
 	<link href="http://fonts.googleapis.com/css?family=Mallanna" rel="stylesheet">
 	<script type="text/javascript" src="http://api.map.baidu.com/api?v=3.0&ak=Z7QuDLumjH1HBTPlMeySGbrcpzRRqYkV"></script>
+	<script type="text/javascript" src="js/jquery-2.2.3.min.js"></script>
+	<link href='css/aos.css' rel='stylesheet prefetch' type="text/css" media="all" />
+	<link href='css/aos-animation.css' rel='stylesheet prefetch' type="text/css" media="all" />
+	<script src='js/aos.js'></script>
+	<script src="js/aosindex.js"></script>
+	<script src="js/main.js"></script>
+	<script src="js/responsiveslides.min.js"></script>
 	<style type="text/css">
 		#container {width: 1100px;height: 600px;overflow: hidden;margin:20px auto 0;font-family:"微软雅黑";}
 	</style>
@@ -92,7 +99,7 @@
 									</ul>
 								</li>
 								<li>
-									<a href="myorder.html">我的订单</a>
+									<a href="#" id="myorder">我的订单</a>
 								</li>
 								<li>
 									<a href="comment.html">酒店评价</a>
@@ -202,8 +209,8 @@
 			<div class="clearfix"></div>
 		</div>
 	</footer>
-	<script type="text/javascript" src="js/jquery-2.2.3.min.js"></script>
-	<script type="text/javascript">
+	
+	 <script>
 		window.onload = function () {
 			document.getElementById("password1").onchange = validatePassword;
 			document.getElementById("password2").onchange = validatePassword;
@@ -216,14 +223,14 @@
 			else
 				document.getElementById("password2").setCustomValidity('');
 		}
-	</script>
-	<link href='css/aos.css' rel='stylesheet prefetch' type="text/css" media="all" />
-	<link href='css/aos-animation.css' rel='stylesheet prefetch' type="text/css" media="all" />
-	<script src='js/aos.js'></script>
-	<script src="js/aosindex.js"></script>
-	<script src="js/main.js"></script>
-	<script src="js/responsiveslides.min.js"></script>
+	</script> 
+ 
 	<script>
+	$("#myorder").click(function(){
+		location.href="/order/state/3"
+	})
+	
+	
 		$(function () {
 			$("#slider4").responsiveSlides({
 				auto: true,
@@ -279,7 +286,30 @@
 			})
 	</script>
 	
-	<script type="text/javascript">
+	<script>
+	function begin(){
+		$.ajax({
+			url:"/typeall",
+			async:true,
+			type:"get",
+			success:function(message){
+				console.info(message)
+				var count="";
+				for(var i=0;i<message.length;i++){
+					count+="<li>";
+					count+="<a href='/type/"+message[i].id+"'>"+message[i].name+"</a>";
+				count+="</li>";
+				}
+				$(".secondary-nav").html(count);
+			}
+		})
+	};
+	begin();
+	
+	
+	
+	
+	
 		var mp = new BMap.Map("container");
 		mp.centerAndZoom(new BMap.Point(104.3964,30.9093), 10);
 		mp.enableScrollWheelZoom();
