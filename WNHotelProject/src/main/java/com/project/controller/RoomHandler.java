@@ -86,9 +86,9 @@ public class RoomHandler {
 	 * @param size每页显示条数
 	 * @return
 	 */
-	@GetMapping(value="/typestatus")
+	@GetMapping(value="/typestatus/{tid}/{page}/{size}")
 	@ResponseBody
-	public PageBean selectroombytypeandstatus(int tid, int page, int size) {
+	public PageBean selectroombytypeandstatus(@PathVariable("tid")int tid,@PathVariable("page") int page,@PathVariable("size") int size) {
 		TypeBean type=new TypeBean();
 		type.setId(tid);
 		MarkBean status=new MarkBean();
