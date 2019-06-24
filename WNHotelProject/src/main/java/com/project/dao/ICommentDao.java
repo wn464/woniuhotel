@@ -17,4 +17,6 @@ public interface ICommentDao {
 	public List<CommentBean> selectComment(int page,int size);
 	@Select("select count(*) from comment ")
 	public int selectAll();
+	@Select("select * from comment")
+	public List<CommentBean> selectAllComment();
 }
