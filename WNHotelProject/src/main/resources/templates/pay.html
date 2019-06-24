@@ -86,7 +86,7 @@
 								<li>应付金额：<span style="color: black;font-weight: 600;font-size: 20px;" th:text="${orderBean.price}">1000</span></li>
 							</ul>
 							<ul style="margin-left: 460px;">
-								<li><button type="button" class="btn btn-primary" id="btn1" style="width: 100px;height: 40px;">支付</button></li>
+								<li><button type="button" class="btn btn-primary" id="btn1" style="width: 100px;height: 40px;" onclick="pay()">支付</button></li>
 							</ul>
 						
 					</div>
@@ -110,10 +110,16 @@
 	</footer>
 	<script type="text/javascript" src="/js/jquery-2.2.3.min.js"></script>
 	<script type="text/javascript" src="/js/bootstrap.js"></script>
-	<script>
+	<script th:inline="javascript">
 			$(function(){
 				$(".top-bar_sub_w3ls_agileits").load("/public.html");
 			})
+			
+			function pay(){
+				var oid = /*[[${orderBean.id}]]*/;
+				window.location.href="/pay/"+oid;
+			}
+			
 	</script>
 </body>
 </html>

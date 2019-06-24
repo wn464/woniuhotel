@@ -22,6 +22,7 @@ import com.project.bean.LiveBean;
 import com.project.bean.MemberBean;
 import com.project.bean.OrderBean;
 import com.project.bean.PageBean;
+//import com.project.util.countUtil.OrderUtil;
 
 /**
  * 订单接口
@@ -33,6 +34,8 @@ import com.project.bean.PageBean;
 public class OrderHandler {
 	@Autowired
 	private IOrderService orderService;
+//	@Autowired
+//	private OrderUtil orderutil;
 	
 	/*
 	 * 前台预定同时生成订单(线下预定时通过mname查询mid，添加mid)
@@ -41,15 +44,23 @@ public class OrderHandler {
 	@ResponseBody
 	public String getOrder(OrderBean orderBean) {
 		Subject subject = SecurityUtils.getSubject();
-	    Session session = subject.getSession();
-	    session.setAttribute("id", 7);//测试使用
-        int mid = (int) session.getAttribute("id");
-        MemberBean memberBean = new MemberBean();
-        memberBean.setId(mid);
-        orderBean.setMember(memberBean);
-		OrderBean orderBean2 = orderService.getOrder(orderBean);
-		int oid = orderBean2.getId();
-		String id = String.valueOf(oid);
+	    Session session = subject.getSession(false);
+//	    session.setAttribute("id", 7);//测试使用
+	    String id = null;
+	    if (session!=null) {
+	    	int mid = (int) session.getAttribute("id");
+	        MemberBean memberBean = new MemberBean();
+	        memberBean.setId(mid);
+	        orderBean.setMember(memberBean);
+			OrderBean orderBean2 = orderService.getOrder(orderBean);
+			int oid = orderBean2.getId();
+			id = String.valueOf(oid);
+		}else {
+			OrderBean orderBean2 = orderService.getOrder(orderBean);
+			int oid = orderBean2.getId();
+			id = String.valueOf(oid);
+		}
+        
 		return id;
 	}
 
@@ -133,13 +144,14 @@ public class OrderHandler {
 				day = day+(om-im)*30;
 			}
 			double price = liveBean.getRoom().getPrice()*day;
-			System.out.println("-------"+orderBean);
 			orderBean.setPrice(price);
 			
+			OrderBean orderBean2 = new OrderBean();
+			orderBean2.setId(orderBean.getId());
+			orderBean2.setPrice(price);
+			orderService.updateOrderAttr(orderBean2);
 		}
 		map.put("orderBean", orderBean);
-		
-		
 		return "pay.html";
 	}
 	
