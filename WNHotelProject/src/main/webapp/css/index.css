@@ -1,0 +1,59 @@
+.father1{
+	width: 1000px;
+	height: 700px;
+	background-color: #FCFCFC;
+	margin: 0 auto;
+}
+.top1{
+	width: 100%;
+	height: 50px;
+	padding: 100px 0 80px 100px;
+	font-size: 30px;
+	line-height: 50px;
+}
+#btn2{
+	margin: 20px 0 0 350px;
+}
+/*login界面的css*/
+.bgc{
+	margin: 100px auto;
+	width: 1200px;
+	height: 800px;
+	background: url(/images/5.jpg) no-repeat;
+}
+.top2{
+	width: 40%;
+	height: 300px;
+	margin: 0 auto;
+	padding-top: 100px;
+}
+.loging{
+	height: 130px;
+	width: 100%;
+	font-size: 24px;
+	color: lightsteelblue;
+}
+.loging1{
+	height: 80px;
+	width: 100%;
+	font-size: 24px;
+	color: lightsteelblue;
+}
+
+#btn3{
+	margin: 30px 0 0 60px;
+}
+#btnn{
+	margin: 30px 20px 0 20px;
+}
+
+/*注册界面的css*/
+.bgc1{
+	margin: 100px auto;
+	width: 900px;
+	height: 800px;
+	background: url(/images/12.jpg) no-repeat;
+}
+#btn4{
+	margin: 30px 0 0 120px;
+}

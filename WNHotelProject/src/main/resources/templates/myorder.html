@@ -12,8 +12,9 @@
 </head>
 <style>
 	.mesing{
-		background-color: pink;
 		margin-left: 20px;
+		padding-left: 40px;
+		padding-top: 20px;
 	}
 	.imga{
 		height: 200px;
@@ -23,6 +24,11 @@
 	#span1{
 		 margin-right: 620px;
 	}
+	.mesing span{
+		font-size: 16px;
+		line-height: 35px;
+		color: gray;
+	}
 </style>
 <body>
 	<div class="top-bar_sub_w3ls_agileits">
@@ -31,8 +37,8 @@
 	<!--订单部分-->
 	<div class="floy">
 		<h3>订 单 详 情 </h3>
-		<h3><a href="#">已支付</a></h3>
-		<h3><a href="#">未支付</a></h3>
+		<h3><a href="#" id="myorder">已支付</a></h3>
+		<h3><a href="#" id="noorder">未支付</a></h3>
 	</div>
 	
 	<!--默认显示已支付的订单   未支付的订单不能评价-->
@@ -50,11 +56,27 @@
 							<img src="/images/efbf701e0c3721e94d44e0ade0db3f33.jpg" th:src="@{'/images/'+${order.lives[0].room.type.img}}" >
 						</div>    
 						<div class="mesing">
-							<p th:text="${order.lives[0].room.type.name}"></p>
-							<p th:text="${order.price}"></p>
+							<span>房间类型 ：</span><span th:text="${order.lives[0].room.type.name}"></span>
+							<br>
+							<span>房间号 ：</span><span th:text="${order.lives[0].room.name}"></span>
+							<br>
+							<span>房间位置 ：</span><span th:text="${order.lives[0].room.type.area}"></span>
+							<br>
+							<span>房间面积 ：</span><span th:text="${order.lives[0].room.area}"></span>
+							<br>
+							<span>支付价格 ：</span><span th:text="${order.price}"></span>
 							
 						</div>
 						<div class="mesing">
+							<span>下单人 ：</span><span th:text="${order.lives[0].people}"></span>
+							<br>
+							<span>联系电话 ：</span><span th:text="${order.lives[0].phoneNumber}"></span>
+							<br>
+							<span>入住时间 ：</span><span th:text="${order.lives[0].inTime}"></span>
+							<br>
+							<span>离店时间 ：</span><span th:text="${order.lives[0].outTime}"></span>
+							<br>
+							<span>下单时间 ：</span><span th:text="${order.orderTime}"></span>
 							
 						</div>
 					</div>
@@ -78,12 +100,19 @@
 	<script type="text/javascript" src="/js/jquery-2.2.3.min.js"></script>
 	<script type="text/javascript" src="/js/bootstrap.js"></script>
 	<script>
-		function str(){
+		$("#myorder").click(function(){
+			location.href="/order/state/6"
+		})
+		
+		$("#noorder").click(function(){
+			var str = $("#gopay").html();
+			var num = "";
+			$("#gopay").html(num);
 			
-		}
-		str()
-	
-	
+			location.href="/order/state/5"
+		})
+		
+		
 		$(function(){			
 			$(".top-bar_sub_w3ls_agileits").load("public.html");
 		})
