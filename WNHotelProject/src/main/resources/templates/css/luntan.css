@@ -1,0 +1,91 @@
+*{
+	margin: 0;
+	padding: 0;
+}
+body{
+	background: url(../img/14.gif) no-repeat;
+}
+.father{
+	width: 1000px;
+	height: 1000px;
+	background-color: #FCFCFC;
+	margin: 0 auto;
+}
+.top{
+	width: 100%;
+	height: 70px;
+}
+.font{
+	display: block;
+	font-size: 26px;
+	line-height: 70px;
+	text-align: center;
+}
+.center{
+	height: 280px;
+	border: 1px solid gainsboro;
+}
+img{
+	width: 100%;
+	height: 100%;
+}
+.image{
+	width: 150px;
+	height: 200px;
+	background-color: pink;
+	float: left;
+	margin: 40px 150px;
+}
+.message{
+	width: 300px;
+	height: 150px;
+	float: left;
+	margin-top: 80px;
+}
+.message h5{
+	margin-top: 13px;
+}
+.bottom{
+	height: 580px;
+	width: 100%;
+	border: 1px solid lightgray;
+	margin-top: 10px;
+}
+.tab{
+	width: 80%;
+	height: 240px;
+	margin: 10px auto;
+	padding-top: 30px;
+}
+.th1{
+	background-color: darkgrey;
+}
+.tr1{
+	width: 100%; 
+	height: 190px; 
+	margin-top: -19px; 
+	overflow-y:scroll; 
+}
+td{
+	height: 20px;
+}
+.mess{
+	width: 60%;
+	height: 280px;
+	margin: 10px auto;
+}
+.test{
+	width: 240px;
+	height: 160px;
+	margin-bottom: 20px;
+}
+#btn1{
+	margin-left: 200px;
+	margin-bottom: 30px;
+}
+
+.atic{
+	background-color: #149BDF;
+	color: white;
+}
+

@@ -68,7 +68,8 @@ public class OrderHandler {
 	 */
 	@GetMapping("/state/{status}")
 	public String selectOrderByState(@PathVariable("status")int status,ModelMap map) {
-	    Subject subject = SecurityUtils.getSubject();
+	    System.out.println(status);
+		Subject subject = SecurityUtils.getSubject();
 	    Session session = subject.getSession();
 	    session.setAttribute("id", 1);//测试使用
         int mid = (int) session.getAttribute("id");
