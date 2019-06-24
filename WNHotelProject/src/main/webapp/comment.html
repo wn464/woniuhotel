@@ -76,7 +76,15 @@
 	<script type="text/javascript" src="js/jquery-2.2.3.min.js"></script>
 	<script type="text/javascript" src="js/bootstrap.js"></script>
 	<script>
-			
+	 function goods(){
+   	  $.ajax({
+   		  url:"/show",
+   		  type:"post",
+   		  async:true,
+   		  dataType:"json",
+   		  success:function(mes){
+   			  
+   		  }
 			$(function(){
 				
 				$(".top-bar_sub_w3ls_agileits").load("public.html");
