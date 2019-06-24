@@ -150,16 +150,16 @@
 				<ul class="booking-container">
 					<li>
 						<label>入住时间：</label>
-						<input type="date" class="input-times"/>
+						<input id="in" type="date" class="input-times"/>
 					</li>
 					<li>
 						<label>离店时间： </label>
-						<input type="date" class="input-times"/>
+						<input id="out" type="date" class="input-times"/>
 					</li>
 					<li>
 						<div class="select-wrap">
 							<label class="select-wrap-label">房间类型</label>
-							<select name="rn" class="booking-select">
+							<select id="type" name="rn" class="booking-select">
 								<option value="1">高级大床房</option>
 								<option value="2">豪华双床房</option>
 								<option value="3">家庭亲子房</option>
@@ -170,7 +170,7 @@
 						</div>
 					</li>
 					<li>
-						<a href="find.html" class="searchBtn" style="margin-left: 714px;">查询</a>
+						<a onclick="put()" class="searchBtn" style="margin-left: 714px;">查询</a>
 					</li>
 				</ul>
 			</div>
@@ -341,6 +341,15 @@
 		    }
 		}
 		mp.addOverlay(canvasLayer);
+// 		*********************************************传值**********************
+      function put(){
+    	  var inTime=$("#in").val();
+          var outTime=$("#out").val();
+          var tid=$("#type option:selected");
+          url ="findaa.html?tid="+tid+"&inTime="+intime+"&outTime="+outTime";
+          window.location.href = url;
+}
+     
 </script>
 </body>
 </html>
