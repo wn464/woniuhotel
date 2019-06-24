@@ -23,7 +23,7 @@ public class MemberServiceImpl implements IMemberService {
 	@Override
 	public MemberBean login(String userName) {
 		// TODO Auto-generated method stub
-		return dao.login(userName);
+		return dao.selectByUsername(userName);
 	}
 	
 	/*

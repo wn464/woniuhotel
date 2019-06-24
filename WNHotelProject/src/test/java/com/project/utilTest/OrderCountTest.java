@@ -10,6 +10,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 import com.project.Service.IDiscountService;
 import com.project.Service.IOrderService;
+import com.project.Service.IVipService;
 import com.project.bean.DiscountBean;
 import com.project.bean.LiveBean;
 import com.project.bean.OrderBean;
@@ -31,23 +32,33 @@ public class OrderCountTest {
 	@Autowired
 	private IVipDao vipDao;
 	@Autowired
-	private OrderUtil orderutil;
+	private IVipService vipService;
+	
 	@Test
 	public void test() {
-		LiveBean live = new LiveBean();
-		live.setOrderid(1);
-		OrderBean order = orderDao.selectOrderByAttr(live);
+		OrderUtil orderutil = new OrderUtil(vipService, discountService);
+//		LiveBean live = new LiveBean();
+//		live.setOrderid(1);
+//		OrderBean order = orderDao.selectOrderByAttr(live);
 		//System.out.println("list="+list);
 //		OrderBean order=null;
 //		for (OrderBean orderBean : list) {
 //			 order = orderBean;
 //		}
-		System.out.println("order"+order);
-		DiscountBean discount=discountService.selectDiscountById(1);
-		System.out.println("discount"+discount);
+//		System.out.println("order"+order);
+//		DiscountBean discount=discountService.selectDiscountById(1);
+//		System.out.println("discount"+discount);
+//		try {
+//			System.out.println("费用"+orderutil.getUnderLineMoney(order, discount));
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//		}
 		try {
-			System.out.println("费用"+orderutil.getUnderLineMoney(order, discount));
+			//System.out.println(orderutil.getOnLineMoney(5000, 1));
+			//System.out.println(orderutil.getUnderLineMoney(5000, 1));
+			System.out.println(orderutil.getUnderLineMoney(5000));
 		} catch (Exception e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}

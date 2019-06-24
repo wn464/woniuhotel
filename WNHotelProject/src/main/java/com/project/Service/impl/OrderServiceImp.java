@@ -54,7 +54,7 @@ public class OrderServiceImp implements IOrderService{
 		//生成订单
 		OrderBean orderBean3 = orderDao.selectOrderByOrderNumber(orderNumber);
 		//开启定时器
-		ordertiming.ds(orderBean3.getId());
+		ordertiming.ds(orderBean3.getId(),this);
 		return orderBean3;
 	}
 

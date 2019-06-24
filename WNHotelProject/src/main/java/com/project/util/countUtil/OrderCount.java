@@ -1,14 +1,17 @@
 package com.project.util.countUtil;
 
 
+
+import com.project.Service.IDiscountService;
 import com.project.Service.IVipService;
 import com.project.bean.DiscountBean;
 import com.project.bean.OrderBean;
 
 public class OrderCount extends DiscountCount{
 	
-	public OrderCount(IVipService vipService) {
-		super(vipService);
+	
+	public OrderCount(IVipService vipService, IDiscountService discountService) {
+		super(vipService, discountService);
 		// TODO Auto-generated constructor stub
 	}
 	/**
@@ -17,7 +20,7 @@ public class OrderCount extends DiscountCount{
 	 * @param discount
 	 * @return
 	 */
-	public boolean orderCheckVip(OrderBean order,DiscountBean discount) {
+	protected boolean orderCheckVip(OrderBean order,DiscountBean discount) {
 		
 		if(discount.getVip()!=0) {
 			if(discount.getVip()<order.getMember().getVip()) {
@@ -32,7 +35,7 @@ public class OrderCount extends DiscountCount{
 	 * @param discount
 	 * @return
 	 */
-	public boolean orderCheckMoney(OrderBean order,DiscountBean discount) {
+	protected boolean orderCheckMoney(OrderBean order,DiscountBean discount) {
 		if(discount.getNumber1()!=0) {
 			double price = getCount(order);
 			if (price<discount.getNumber1()) {
@@ -47,7 +50,7 @@ public class OrderCount extends DiscountCount{
 	 * @param discount
 	 * @return
 	 */
-	public boolean orderCheck(OrderBean order,DiscountBean discount) {
+	protected boolean orderCheck(OrderBean order,DiscountBean discount) {
 		if(orderCheckMoney(order, discount) && orderCheckVip(order, discount)) {
 			return true;
 		}
