@@ -9,16 +9,17 @@ import com.project.bean.MarkBean;
 import com.project.bean.OrderBean;
 
 public class task extends TimerTask {
-	@Autowired
  private IOrderService service;
 	private int orderid;
 	
 	public task(IOrderService service,int ordernumber) {
+		System.out.println("开始计时。15分钟后修改订单状态"+ordernumber);
 		this.orderid=ordernumber;
 		this.service=service;
 	}
 	@Override
 	public void run() {
+		
 		OrderBean oder=service.selectOrderById(orderid);
 		/**
 		 * 判断订单是否已支付

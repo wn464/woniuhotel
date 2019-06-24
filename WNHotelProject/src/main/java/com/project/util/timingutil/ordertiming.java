@@ -18,9 +18,8 @@ import com.project.Service.IOrderService;
  *
  */
 public class ordertiming{
-	@Autowired
-	private static  IOrderService service;
-public static void ds(int number){
+	
+public static void ds(int number ,IOrderService service){
 	Timer timer=new Timer();
 	timer.schedule(new task(service ,number),1000*60*15);
 }
