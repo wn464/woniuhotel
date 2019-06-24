@@ -33,4 +33,14 @@ public class CommentServiceImpl implements ICommentService{
 		return bean;
 	}
 
+	@Override
+	public List<CommentBean> selectAllComment() {
+		List<CommentBean> list = dao.selectAllComment();
+		for (CommentBean commentBean : list) {
+			String name = commentBean.getName().substring(0,1)+"**";
+			commentBean.setName(name);
+		}
+		return list;
+	}
+
 }

@@ -9,6 +9,7 @@ import com.project.Service.IVipService;
 import com.project.bean.DiscountBean;
 import com.project.bean.OrderBean;
 import com.project.util.MoneyUtil;
+import com.project.util.TimeUtil;
 @Component
 public class OrderUtil extends OrderCount{
 
@@ -63,12 +64,12 @@ public class OrderUtil extends OrderCount{
 	}
 	/**
 	 * 线下计费，需要获取order中用户的vip、居住信息，完整的优惠方案
-	 * @param order
-	 * @param discount 优惠折扣
+	 * @param price订单价格
+	 * @param discountId 优惠折扣id
 	 * @return 计算后金额
 	 * @throws Exception 优惠不匹配
 	 */
-	public double getUnderLineMoney(double price , int discountId,int vipId) throws Exception {
+	public double getUnderLineMoney(double price, int discountId,int vipId) throws Exception {
 		DiscountBean discount = discountService.selectDiscountById(discountId);
 		
 		switch (discount.getDiscountType()) {

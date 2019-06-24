@@ -16,5 +16,5 @@ public interface ILiveService {
 	//查询入住信息
 	public LiveBean selectLiveBean(LiveBean liveBean);
 	//修改入住信息
-	public int updateLiveBean(int lid);
+	public int updateLiveBean(LiveBean liveBean);
 }

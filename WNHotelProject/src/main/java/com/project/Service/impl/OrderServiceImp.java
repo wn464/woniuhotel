@@ -36,14 +36,16 @@ public class OrderServiceImp implements IOrderService{
 	//添加并获取订单信息
 	@Override
 	public OrderBean getOrder(OrderBean orderBean) {
-		//添加订单
+		//生成订单时间
 		String orderTime= CreateOrderInfo.getCreateTime();
 	  	orderBean.setOrderTime(orderTime);
+	  	//生成订单号
 	    String orderNumber =  CreateOrderInfo.getOrderNumber();
 	    orderBean.setOrderNumber(orderNumber);
-	    System.out.println(orderBean);
+	    //添加订单
 	    int num =orderDao.insertOrder(orderBean);
 		OrderBean orderBean2 = orderDao.selectOrderByOrderNumber(orderBean.getOrderNumber());
+		//添加入住信息
 		List<LiveBean> liveBeans = orderBean.getLives();
 		for (LiveBean liveBean : liveBeans) {
 			liveBean.setOrderid(orderBean2.getId());
@@ -75,8 +77,15 @@ public class OrderServiceImp implements IOrderService{
 	//通过入住信息查询订单
 	@Override
 	public List<OrderBean> selectOrderByAttr(String people,String time) {
-		LiveBean liveBean = liveDao.selectBypeopleAndDate(people, time);
-		List<OrderBean> list = orderDao.selectOrderByAttr(liveBean);
+		List<OrderBean> list = new ArrayList<OrderBean>();
+		//通过姓名和时间模糊查询开房信息
+		List<LiveBean> liveBean = liveDao.selectBypeopleAndDate(people, time);
+		OrderBean orderBean = null;
+		for (LiveBean liveBean2 : liveBean) {
+			//通过入住信息（orderid）查询订单
+			orderBean = orderDao.selectOrderByAttr(liveBean2);
+			list.add(orderBean);
+		}
 		return list;
 	}
 

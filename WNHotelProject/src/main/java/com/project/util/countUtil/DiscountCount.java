@@ -7,6 +7,7 @@ import com.project.bean.DiscountBean;
 import com.project.bean.LiveBean;
 import com.project.bean.OrderBean;
 import com.project.util.MoneyUtil;
+import com.project.util.TimeUtil;
 
 public class DiscountCount {
 
@@ -23,9 +24,12 @@ public class DiscountCount {
 	 */
 	public static double  getCount(OrderBean order) {
 		double price = 0;
+		
+		//double roomPriceCount;//房间价格计算
 		List<LiveBean> lives = order.getLives();
 		for (LiveBean liveBean : lives) {
 			double roomPrice = liveBean.getRoom().getPrice();
+			//roomPriceCount=MoneyUtil.multiply(roomPrice, TimeUtil.countTime(liveBean.getInTime(), liveBean.getOutTime()))
 			System.out.println("房间价格"+roomPrice);
 			price = MoneyUtil.add(price, roomPrice);
 		}
@@ -39,7 +43,8 @@ public class DiscountCount {
 	 * @return
 	 */
 	public double getFullDiscountCount(OrderBean order,DiscountBean discount) {
-		double price = getCount(order);
+		//double price = getCount(order);
+		double price = order.getPrice();
 		price = MoneyUtil.subtract(price, discount.getNumber2());
 		return price;
 	}
@@ -54,7 +59,8 @@ public class DiscountCount {
 	 * @return
 	 */
 	public double getEveryMulitDiscountCount(OrderBean order,DiscountBean discount) {
-		double price = getCount(order);
+		//double price = getCount(order);
+		double price = order.getPrice();
 		int i = (int)price/(int)discount.getNumber1();
 		price = MoneyUtil.subtract(price, discount.getNumber2()*i);
 		return price;
@@ -68,7 +74,8 @@ public class DiscountCount {
 	 * 满额折扣
 	 */
 	public double getFixDiscountCount(OrderBean order,DiscountBean discount) {
-		double price = getCount(order);
+		//double price = getCount(order);
+		double price = order.getPrice();
 		price = MoneyUtil.multiply(price, discount.getNumber2());
 		return price;
 	}

@@ -22,8 +22,8 @@ public interface IOrderDao {
 	public int insertOrder(OrderBean orderBean);
 	//前台和后台通过状态分页查询订单
 	public List<OrderBean> selectOrderByState(@Param("mid")int mid,@Param("status")int status,@Param("page")int page,@Param("size")int size);
-	//后台通过开房人属性和状态分页查询订单
-	public List<OrderBean> selectOrderByAttr(LiveBean liveBean);
+	//后台通过开房人属性(oid)查询订单
+	public OrderBean selectOrderByAttr(LiveBean liveBean);
 	//修改订单属性
 	public int updateOrderAttr(OrderBean orderBean);
 	//根据状态查询订单总数量

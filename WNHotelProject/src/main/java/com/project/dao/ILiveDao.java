@@ -20,14 +20,11 @@ public interface ILiveDao {
 	public List<Integer> selectTime(String inTime,String outTime);
 	
 	//通过开房人名字和入住时间来查询入住信息  里面包含RoomBean(ok)
-	public LiveBean selectBypeopleAndDate(String people,String time);
+	public List<LiveBean> selectBypeopleAndDate(String people,String time);
 	
 	//通过订单号查询入住信息
 	public LiveBean findByorderid(int orderid);
 	
-	//删除入住信息
-	public int deleteLiveBean(int lid);
-	
 	//修改入住信息
-	public int updateLiveBean(int lid);
+	public int updateLiveBean(LiveBean liveBean);
 }
