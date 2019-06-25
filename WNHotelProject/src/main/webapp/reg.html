@@ -5,7 +5,8 @@
 		<title></title>
 		<link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css"/>
 		<link rel="stylesheet" type="text/css" href="/css/index.css"/>
-		<script type="text/javascript" src="/js/jquery-3.2.0.js" ></script>
+		<script type="text/javascript" src="/js/jquery-2.2.3.min.js" ></script>
+
 	</head>
 	<body>
 		<div class="bgc1">
@@ -13,18 +14,19 @@
 				<div class="loging1">
 					请 注 册 您 的 账 户
 				</div>
-				<form class="form-horizontal" action="/reg" method="post">
+				<form class="form-horizontal" action="/member/reg" method="post">
 					<div class="control-group">
 					    <label class="control-label" for="inputEmail">用户名</label>
 					    <div class="controls">
-					    	<input type="text" id="username"  name="name"  >
+					    	<input type="text" id="userName"  name="userName"  >
+					    	<span id="sp1"></span>
 					    </div>
 					</div>
 					<div class="control-group">
 					    <label class="control-label" for="inputEmail">手机号</label>
 					    <div class="controls">
-					    	<input type="text" id="phone"  name="phone"  style="width: 130px">
-					    	
+					    	<input type="text" id="phone"  name="phoneNumber"  style="width: 130px">
+					    	<span id="sp2"></span>
 					    </div>
 					</div>
 					<input type="button" value="验证码" style="margin-top: -90px; margin-left: 340px";>
@@ -37,10 +39,11 @@
 					<div class="control-group">
 					    <label class="control-label" for="inputPassword">密&nbsp;&nbsp;&nbsp;&nbsp;码</label>
 					    <div class="controls">
-					    	<input type="password" id="Password" name="pwd" >
+					    	<input type="password" id="password" name="password" >
+					    	<span id="sp4"></span>
 					    </div>
 					</div>
-					
+	
 					<div class="control-group">
 					    <div class="controls">
 						    <button type='submin' class='btn btn-info' id="btn4"> 注 册 </button>
@@ -49,5 +52,72 @@
 				</form>
 			</div>
 		</div>
+		
+		<script type="text/javascript">	
+			//用户名验证
+			$(function(){
+				$("#userName").blur(function(){
+					var userName = $("#userName").val();
+					if(userName.length<4||userName.length>12){
+						$("#sp1").html("<h5 style='color:red'>用户名长度必须为4-12位<h5>");
+					}
+					
+					$.ajax({
+						url:"/member/yz",
+						data:"userName="+userName,
+						type:"get",
+						dataType:"json",
+						success:function(mes){
+							if(mes==1){
+								if(userName.length>=4&&userName.length<=12){
+									$("#sp1").html("<h5 style='color:red'>用户名已存在<h5>");
+								}
+							}else{
+								if(userName.length>=4&&userName.length<=12){
+									$("#sp1").html("<h5 style='color:green'>用户可用<h5>");
+								}
+							}
+						}
+					})		
+				})
+				
+			})
+			
+			//手机号验证
+			$(function(){
+				$("#phone").blur(function(){
+					
+					var myreg = /^(((13[0-9]{1})|(14[0-9]{1})|(17[0]{1})|(15[0-3]{1})|(15[5-9]{1})|(18[0-9]{1}))+\d{8})$/; 
+					
+					if(!myreg.test($("#phone").val())){
+						$("#sp2").html("<h5 style='color:red'>请输入正确的手机号<h5>");
+					}else{
+						$("#sp2").html("<h5 style='color:green'>手机号正确<h5>");
+					}
+					
+				})
+			})
+			
+			//密码长度验证
+			$(function(){
+				$("#password").blur(function(){
+					var password = $("#password").val();
+					
+					if(password.length<6||password.length>12){
+						$("#sp4").html("<span style='color:red'>密码长度必须是6-12位<span>")
+					}
+					if(password.length>=6&&password.length<=12){
+						$("#sp4").html("<span style='color:green'>密码格式正确<span>")
+					}
+					
+				})
+				
+			})
+			
+			
+			
+			
+		</script>
+		
 	</body>
 </html>

@@ -11,8 +11,7 @@ import com.project.bean.MemberBean;
  * 会员 service
  */
 public interface IMemberService {
-		//登录
-		public MemberBean login(String userName);
+		
 		
 		//注册
 		public int reg(MemberBean member);
