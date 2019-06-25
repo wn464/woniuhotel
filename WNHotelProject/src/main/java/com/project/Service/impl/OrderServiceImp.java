@@ -126,11 +126,11 @@ public class OrderServiceImp implements IOrderService{
 	}
 	//根据时间段查询订单
 	@Override
-	public PageBean selectOrderByTime(String startTime,String endTime,int page,int size){
+	public PageBean selectOrderByTime(int subscribeStatus,String startTime,String endTime,int page,int size){
 		PageBean pageBean = new PageBean();
 		pageBean.setPage(page);
 		page = (page-1)*size;
-		List<OrderBean> list = orderDao.selectOrderByTime(startTime, endTime, page, size);
+		List<OrderBean> list = orderDao.selectOrderByTime(subscribeStatus,startTime, endTime, page, size);
 		int totalNumber  = orderDao.selectNumberByTime(startTime, endTime);
 		pageBean.setSize(size);
 		pageBean.setTotalNumber(totalNumber);
@@ -139,6 +139,8 @@ public class OrderServiceImp implements IOrderService{
 		pageBean.setList(list);
 		return pageBean;
 	}
+
+	
 
 
 }

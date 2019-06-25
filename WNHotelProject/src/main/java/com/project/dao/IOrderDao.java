@@ -37,8 +37,8 @@ public interface IOrderDao {
 	//根据状态查询订单总数量
 	public int selectNumberBySubStatus(int subStatus);
 	//根据时间段查询订单
-	public List<OrderBean> selectOrderByTime(@PathVariable("startTime")String startTime,@PathVariable("endTime")String endTime,@Param("page")int page,@Param("size")int size);
+	public List<OrderBean> selectOrderByTime(@Param("subscribeStatus")int subscribeStatus,@Param("startTime")String startTime,@Param("endTime")String endTime,@Param("page")int page,@Param("size")int size);
 	//根据时间段查询订单总数量
-	public int selectNumberByTime(@PathVariable("startTime")String startTime,@PathVariable("endTime")String endTime);
+	public int selectNumberByTime(@Param("startTime")String startTime,@Param("endTime")String endTime);
 	
 }

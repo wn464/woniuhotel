@@ -113,10 +113,10 @@ public class OrderHandler {
 	/*
 	 * 通过时间段查询订单
 	 */
-	@GetMapping("/time/{startTime}/{endTime}")
+	@GetMapping("/time/{subscribeStatus}/{startTime}/{endTime}/{page}/{size}")
 	@ResponseBody
-	public PageBean selectOrderByTime(@PathVariable("startTime")String startTime, @PathVariable("endTime")String endTime){
-		PageBean pageBean = orderService.selectOrderByTime(startTime, endTime, 1, 2);
+	public PageBean selectOrderByTime(@PathVariable("subscribeStatus")int subscribeStatus,@PathVariable("startTime")String startTime, @PathVariable("endTime")String endTime,@PathVariable("page")int page,@PathVariable("size")int size){
+		PageBean pageBean = orderService.selectOrderByTime(subscribeStatus,startTime, endTime, page, size);
 		return pageBean;
 	}
 	/*
