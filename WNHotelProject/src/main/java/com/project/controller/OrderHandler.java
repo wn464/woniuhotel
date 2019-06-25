@@ -71,7 +71,6 @@ public class OrderHandler {
 	@GetMapping("/attr")
 	public String selectOrderByAttr(LiveBean liveBean,ModelMap map) {
 		List<OrderBean> list = orderService.selectOrderByAttr(liveBean.getPeople(), liveBean.getInTime());
-		System.out.println(list);
 		map.put("list", list);
 		return "admin/findOrder.html";
 	}
