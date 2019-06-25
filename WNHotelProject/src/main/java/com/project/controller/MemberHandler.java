@@ -99,7 +99,7 @@ public class MemberHandler {
 					System.out.println("认证成功");
 					//把 id 和 用户名存到session  后续用的到
 					MemberBean bean = service.selectByUsername(member.getUserName());
-					map.put("bean",bean);
+					
 					Session session = subject.getSession();
 					session.setAttribute("id", bean.getId());
 					session.setAttribute("userName", bean.getUserName());
@@ -116,6 +116,17 @@ public class MemberHandler {
 		return null;
 	}
 	
+	//跳转动态页面
+	@GetMapping("/member/jump")
+	@ResponseBody
+	public MemberBean jump() {
+		Subject subject = SecurityUtils.getSubject();
+		Session session = subject.getSession();
+		String userName = (String) session.getAttribute("userName");
+		MemberBean bean = service.selectByUsername(userName);
+		
+		return bean;
+	}
 	
 	
 }

@@ -22,8 +22,8 @@
 	<script type="text/javascript" src="js/jquery-2.2.3.min.js"></script>
 	<link href='css/aos.css' rel='stylesheet prefetch' type="text/css" media="all" />
 	<link href='css/aos-animation.css' rel='stylesheet prefetch' type="text/css" media="all" />
-	<script src='js/aos.js'></script>
-	<script src="js/aosindex.js"></script>
+	<!-- <script src='js/aos.js'></script>
+	<script src="js/aosindex.js"></script> -->
 	<script src="js/main.js"></script>
 	<script src="js/responsiveslides.min.js"></script>
 	<style type="text/css">
@@ -210,20 +210,9 @@
 		</div>
 	</footer>
 	
-	 <script>
-		window.onload = function () {
-			document.getElementById("password1").onchange = validatePassword;
-			document.getElementById("password2").onchange = validatePassword;
-		}
-		function validatePassword() {
-			var pass2 = document.getElementById("password2").value;
-			var pass1 = document.getElementById("password1").value;
-			if (pass1 != pass2)
-				document.getElementById("password2").setCustomValidity("Passwords Don't Match");
-			else
-				document.getElementById("password2").setCustomValidity('');
-		}
-	</script> 
+	 <script type="text/javascript" src="js/move-top.js"></script>
+	<script type="text/javascript" src="js/easing.js"></script>
+	<script type="text/javascript" src="js/bootstrap.js"></script>
  
 	<script>
 	$("#myorder").click(function(){
@@ -246,10 +235,7 @@
 				}
 			});
 		});
-	</script>
-	<script type="text/javascript" src="js/move-top.js"></script>
-	<script type="text/javascript" src="js/easing.js"></script>
-	<script type="text/javascript">
+	
 		jQuery(document).ready(function ($) {
 			$(".scroll").click(function (event) {
 				event.preventDefault();
@@ -258,8 +244,7 @@
 				}, 900);
 			});
 		});
-	</script>
-	<script type="text/javascript">
+	
 		$(document).ready(function () {
 			/*
 				var defaults = {
@@ -273,20 +258,17 @@
 				easingType: 'easeOutQuart'
 			});
 		});
-	</script>
-	<a href="#home" class="scroll" id="toTop" style="display: block;">
-		<span id="toTopHover" style="opacity: 1;"> </span>
-	</a>
-	<script type="text/javascript" src="js/bootstrap.js"></script>
-	<script>
-			
+	
 			$(function(){
 				
 				$(".top-bar_sub_w3ls_agileits").load("public.html");
 			})
-	</script>
+			
+			
+			
+			
+			
 	
-	<script>
 	function begin(){
 		$.ajax({
 			url:"/typeall",
