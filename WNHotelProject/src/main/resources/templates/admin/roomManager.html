@@ -336,42 +336,7 @@
     	})
     }
     typebegin();
-    
-    function cx(page){
-    	var type=$("#inlineFormInputGroup").val();
-    	$.ajax({
-    		url:"/aftertypestatus/"+type+"/"+page+"/4",
-    		type:"get",
-    		async:true,
-    		success:function(msg)
-    			var coun="";
-    			for(var i=0;i<msg.list.length;i++){
-    				coun+=" <tr>" ;
-                    coun+=" <td>"+msg.list[i].name+"</td>";
-                    coun+=" <td>"+msg.list[i].type.name+"</td>";
-                     coun+="<td>￥"+msg.list[i].price+"</td>";
-                     coun+="<td>待入住</td>";
-                     coun+="<td><a href=''#' class='badge badge-rounded bg-green' data-toggle='modal' data-target='#myModal'>入住</a>";
-                     coun+="<a href='#' class='badge badge-rounded bg-green'>打扫</a>";
-                    coun+=" <a href='#' class='badge badge-rounded bg-green'>报修</a></td>";
-					 coun+="</tr>";
-    			}
-    			$("#house").html(coun);
-    			$("#page").html(msg.page);
-    	    	$("#totalpage").html(msg.totalpage);
-    	    	$("#syy").click(function(){
-    	    		if(msg.page==1){
-    	    			return;
-    	    		}else{
-    	    			cx(msg.page-1)
-    	    		}
-    	    	})
-    		}
-    	})
-    } 
-    
-    
-    
+   
     function syy(){
     	var page=$("#page").html();
     	var totalpage=$("#totalpage").html();
