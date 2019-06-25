@@ -1,42 +1,22 @@
-package com.project.controller;
+package com.project.controller.after;
 
-
-
-import java.util.List;
-
-import org.apache.catalina.security.SecurityUtil;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.subject.Subject;
 import org.springframework.beans.factory.annotation.Autowired;
-
-
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
-
-
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.ModelMap;
-
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
+
 import com.project.Service.IRoomService;
 import com.project.bean.MarkBean;
 import com.project.bean.PageBean;
 import com.project.bean.RoomBean;
 import com.project.bean.TypeBean;
 
-
-
-
-/***
- * 房间后端处理器
- * @author zxc
- *
- */
 @Controller
-public class RoomHandler {
+public class roomcontroller {
 
 	@Autowired
 	private IRoomService service;
@@ -46,7 +26,7 @@ public class RoomHandler {
 	 * @param rid房间id
 	 * @return
 	 */
-	@GetMapping(value="/room/{rid}")
+	@GetMapping(value="/afterroom/{rid}")
 	public String selectroombyid(@PathVariable("rid")Integer rid,ModelMap map) {
       RoomBean bean = service.selectroombyid(rid);
       map.put("roomBean", bean);
@@ -60,7 +40,7 @@ public class RoomHandler {
 	 * @param size每页显示条数
 	 * @return
 	 */
-	@GetMapping(value="/room/type/{tid}/{page}/{size}")
+	@GetMapping(value="/afterroom/type/{tid}/{page}/{size}")
 	public String selectroombytype(@PathVariable("tid")int tid,@PathVariable("page") int page,@PathVariable("size") int size,ModelMap map) {
 		TypeBean type=new TypeBean();
 		type.setId(tid);
@@ -83,9 +63,17 @@ public class RoomHandler {
 	 * @param size每页显示条数
 	 * @return
 	 */
-	@GetMapping(value="/status")
+	@GetMapping(value="/afterstatus/{page}/{size}")
+	public String selectroombystatus(@PathVariable("page")int page,@PathVariable("size") int size,ModelMap map) {
+		MarkBean status=new MarkBean();
+		status.setId(3);
+		PageBean bean = service.selectroombystatus(status, page, size);
+		map.addAttribute("page", bean);
+		return "/admin/roomManager.html";
+	}
+	@GetMapping(value="/afterstatustwo/{page}/{size}")
 	@ResponseBody
-	public PageBean selectroombystatus(int page, int size) {
+	public PageBean selectroombystatustwo(@PathVariable("page")int page,@PathVariable("size") int size) {
 		MarkBean status=new MarkBean();
 		status.setId(3);
 		PageBean bean = service.selectroombystatus(status, page, size);
@@ -98,7 +86,7 @@ public class RoomHandler {
 	 * @param size每页显示条数
 	 * @return
 	 */
-	@GetMapping(value="/typestatus/{tid}/{page}/{size}")
+	@GetMapping(value="/aftertypestatus/{tid}/{page}/{size}")
 	@ResponseBody
 	public PageBean selectroombytypeandstatus(@PathVariable("tid")int tid,@PathVariable("page") int page,@PathVariable("size") int size) {
 		TypeBean type=new TypeBean();
@@ -117,37 +105,13 @@ public class RoomHandler {
 	 * @param size
 	 * @return
 	 */
-	@GetMapping(value="/time/{tid}/{inTime}/{outTime}/{page}/{size}")
-	public String selectroombytypeantime(@PathVariable("tid")int tid, @PathVariable("inTime")String inTime, @PathVariable("outTime")String outTime, @PathVariable("page")int page, @PathVariable("size")int size,ModelMap map) {
-		System.out.println("类型"+tid);
-		System.out.println("入住时间"+inTime);
-		System.out.println(("离店时间"+outTime));
+	@GetMapping(value="/aftertime")
+	@ResponseBody
+	public PageBean selectroombytypeantime(int tid, String inTime, String outTime, int page, int size) {
 		TypeBean type=new TypeBean();
 		type.setId(tid);
 		PageBean bean=service.selectroombytypeantime(type, inTime, outTime, page, size);
-		System.out.println("分页："+bean);
-		List<RoomBean> list = (List<RoomBean>) bean.getList();
-		for (RoomBean roombean : list) {
-			String img =roombean.getImg();
-			roombean.setImg("/images/"+img);
-		}
-		map.put("room",bean);
-		map.put("tid",tid);
-		map.put("inTime",inTime);
-		map.put("outTime",outTime);
-		map.put("page",page);
-		map.put("size",size);
-		return "findaa.html";
-	}
-	@GetMapping(value="/timea/{tid}/{inTime}/{outTime}/{page}/{size}")
-	@ResponseBody
-	public PageBean selectroombytypeantime2(@PathVariable("tid")int tid, @PathVariable("inTime")String inTime, @PathVariable("outTime")String outTime, @PathVariable("page")int page, @PathVariable("size")int size,ModelMap map) {
-//		System.out.println(tid);
-//		System.out.println(inTime);
-//		System.out.println((outTime));
-		TypeBean type=new TypeBean();
-		type.setId(tid);
-		PageBean bean=service.selectroombytypeantime(type, inTime, outTime, page, size);	
+		
 		return bean;
 	}
 }
