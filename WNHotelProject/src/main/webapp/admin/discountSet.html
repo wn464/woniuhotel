@@ -1,355 +1,567 @@
 <!DOCTYPE html>
-<html><head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Bootstrap Material Admin </title>
-    <meta name="description" content="">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="robots" content="all,follow">
-    <!-- Bootstrap CSS-->
-    <link rel="stylesheet" href="vendor/bootstrap/css/bootstrap.min.css">
-    <!-- Font Awesome CSS-->
-    <link rel="stylesheet" href="vendor/font-awesome/css/font-awesome.min.css">
-    <!-- Fontastic Custom icon font-->
-    <link rel="stylesheet" href="css/fontastic.css">
-    <!-- Google fonts - Poppins -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,700">
-    <!-- theme stylesheet-->
-    <link rel="stylesheet" href="css/style.default.css" id="theme-stylesheet"><link id="new-stylesheet" rel="stylesheet"><link id="new-stylesheet" rel="stylesheet"><link id="new-stylesheet" rel="stylesheet"><link id="new-stylesheet" rel="stylesheet"><link id="new-stylesheet" rel="stylesheet"><link id="new-stylesheet" rel="stylesheet"><link id="new-stylesheet" rel="stylesheet"><link id="new-stylesheet" rel="stylesheet">
-    <!-- Custom stylesheet - for your changes-->
-    <link rel="stylesheet" href="css/custom.css">
-    <!-- Favicon-->
-    <link rel="shortcut icon" href="img/favicon.ico">
-    <!-- Tweaks for older IEs--><!--[if lt IE 9]>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Bootstrap Material Admin</title>
+<meta name="description" content="">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="all,follow">
+<!-- Bootstrap CSS-->
+<link rel="stylesheet" href="vendor/bootstrap/css/bootstrap.min.css">
+<!-- Font Awesome CSS-->
+<link rel="stylesheet"
+	href="vendor/font-awesome/css/font-awesome.min.css">
+<!-- Fontastic Custom icon font-->
+<link rel="stylesheet" href="css/fontastic.css">
+<!-- Google fonts - Poppins -->
+<link rel="stylesheet"
+	href="https://fonts.googleapis.com/css?family=Poppins:300,400,700">
+<!-- theme stylesheet-->
+<link rel="stylesheet" href="css/style.default.css"
+	id="theme-stylesheet">
+<link id="new-stylesheet" rel="stylesheet">
+<link id="new-stylesheet" rel="stylesheet">
+<link id="new-stylesheet" rel="stylesheet">
+<link id="new-stylesheet" rel="stylesheet">
+<link id="new-stylesheet" rel="stylesheet">
+<link id="new-stylesheet" rel="stylesheet">
+<link id="new-stylesheet" rel="stylesheet">
+<link id="new-stylesheet" rel="stylesheet">
+<!-- Custom stylesheet - for your changes-->
+<link rel="stylesheet" href="css/custom.css">
+<!-- Favicon-->
+<link rel="shortcut icon" href="img/favicon.ico">
+<!-- Tweaks for older IEs-->
+<!--[if lt IE 9]>
         <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
         <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script><![endif]-->
-  <style type="text/css">/* Chart.js */
-@-webkit-keyframes chartjs-render-animation{from{opacity:0.99}to{opacity:1}}@keyframes chartjs-render-animation{from{opacity:0.99}to{opacity:1}}.chartjs-render-monitor{-webkit-animation:chartjs-render-animation 0.001s;animation:chartjs-render-animation 0.001s;}</style><style type="text/css">/* Chart.js */
-@-webkit-keyframes chartjs-render-animation{from{opacity:0.99}to{opacity:1}}@keyframes chartjs-render-animation{from{opacity:0.99}to{opacity:1}}.chartjs-render-monitor{-webkit-animation:chartjs-render-animation 0.001s;animation:chartjs-render-animation 0.001s;}</style><style type="text/css">/* Chart.js */
-@-webkit-keyframes chartjs-render-animation{from{opacity:0.99}to{opacity:1}}@keyframes chartjs-render-animation{from{opacity:0.99}to{opacity:1}}.chartjs-render-monitor{-webkit-animation:chartjs-render-animation 0.001s;animation:chartjs-render-animation 0.001s;}</style><style type="text/css">/* Chart.js */
-@-webkit-keyframes chartjs-render-animation{from{opacity:0.99}to{opacity:1}}@keyframes chartjs-render-animation{from{opacity:0.99}to{opacity:1}}.chartjs-render-monitor{-webkit-animation:chartjs-render-animation 0.001s;animation:chartjs-render-animation 0.001s;}</style></head>
-  <body class="" style="">
-    <div class="page">
-      <!-- Main Navbar-->
-      <header class="header">
-        <nav class="navbar">
-          <!-- Search Box-->
-          <div class="search-box">
-            <button class="dismiss"><i class="icon-close"></i></button>
-            <form id="searchForm" action="#" role="search">
-              <input type="search" placeholder="What are you looking for..." class="form-control">
-            </form>
-          </div>
-          <div class="container-fluid">
-            <div class="navbar-holder d-flex align-items-center justify-content-between">
-              <!-- Navbar Header-->
-              <div class="navbar-header">
-                <!-- Navbar Brand --><a href="index.html" class="navbar-brand d-none d-sm-inline-block">
-                  <div class="brand-text d-none d-lg-inline-block"><span>酒店管理  </span><strong>后台系统</strong></div>
-                  <div class="brand-text d-none d-sm-inline-block d-lg-none"><strong>BD</strong></div></a>
-                <!-- Toggle Button--><a id="toggle-btn" href="#" class="menu-btn active"><span></span><span></span><span></span></a>
-              </div>
-              <!-- Navbar Menu -->
-              <ul class="nav-menu list-unstyled d-flex flex-md-row align-items-md-center">
-                
-                
-                <!-- Notifications-->
-                <li class="nav-item dropdown"> <a id="notifications" rel="nofollow" data-target="#" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link"><i class="fa fa-bell-o"></i><span class="badge bg-red badge-corner">12</span></a>
-                  <ul aria-labelledby="notifications" class="dropdown-menu">
-                    <li><a rel="nofollow" href="#" class="dropdown-item"> 
-                        <div class="notification">
-                          <div class="notification-content"><i class="fa fa-envelope bg-green"></i>You have 6 new messages </div>
-                          <div class="notification-time"><small>4 minutes ago</small></div>
-                        </div></a></li>
-                    <li><a rel="nofollow" href="#" class="dropdown-item"> 
-                        <div class="notification">
-                          <div class="notification-content"><i class="fa fa-twitter bg-blue"></i>You have 2 followers</div>
-                          <div class="notification-time"><small>4 minutes ago</small></div>
-                        </div></a></li>
-                    <li><a rel="nofollow" href="#" class="dropdown-item"> 
-                        <div class="notification">
-                          <div class="notification-content"><i class="fa fa-upload bg-orange"></i>Server Rebooted</div>
-                          <div class="notification-time"><small>4 minutes ago</small></div>
-                        </div></a></li>
-                    <li><a rel="nofollow" href="#" class="dropdown-item"> 
-                        <div class="notification">
-                          <div class="notification-content"><i class="fa fa-twitter bg-blue"></i>You have 2 followers</div>
-                          <div class="notification-time"><small>10 minutes ago</small></div>
-                        </div></a></li>
-                    <li><a rel="nofollow" href="#" class="dropdown-item all-notifications text-center"> <strong>view all notifications                                            </strong></a></li>
-                  </ul>
-                </li>
-                <!-- Messages                        -->
-                
-                <!-- Languages dropdown    -->
-                
-                <!-- Logout    -->
-                <li class="nav-item"><a href="login.html" class="nav-link logout"> <span class="d-none d-sm-inline">注销</span><i class="fa fa-sign-out"></i></a></li>
-              </ul>
-            </div>
-          </div>
-        </nav>
-      </header>
-      <div class="page-content d-flex align-items-stretch"> 
-        <!-- Side Navbar -->
-        <nav class="side-navbar">
-          
-          
-          <!-- Sidebar Navidation Menus--><span class="heading"></span>
-          <ul class="list-unstyled">
-                    <li><a href="findRoom.html"> <i class="icon-home"></i>旅客入住</a></li>
-                              <li><a href="roomManager.html"> <i class="icon-grid"></i>房间管理</a></li>
-                              <li><a href="findOrder.html"> <i class="fa fa-bar-chart"></i>订单查询</a></li>
-                              <li><a href="findOrder.html"> <i class="icon-padnote"></i>旅客结账</a></li>
-                              
-                              <li><a href="login.html"> <i class="icon-interface-windows"></i>注销</a></li>
-                    </ul><span class="heading">管理员</span>
-                    <ul class="list-unstyled">
-                      <li> <a href="orderSet.html"> <i class="icon-flask"></i>订单修改</a></li>
-                      <li> <a href="roomSet.html"> <i class="icon-screen"></i>房间修改</a></li>
-                      <li> <a href="discountSet.html"> <i class="icon-mail"></i>优惠管理</a></li>
-                      <li> <a href="vipSet.html"> <i class="icon-picture"></i>vip管理</a></li>
-                    <li> <a href="roleSet.html"> <i class="icon-interface-windows"></i>权限管理</a></li></ul>
-        </nav>
-        <div class="content-inner" style="padding-bottom: 59.0476px;">
-          <!-- Page Header-->
-          <header class="page-header">
-            <div class="container-fluid">
-              <h2 class="no-margin-bottom">优惠</h2>
-            </div>
-          </header>
-          <!-- Dashboard Counts Section-->
-          <section class="dashboard-counts no-padding-bottom">
-            <div class="container-fluid">
-              <div class="row bg-white has-shadow">
-                <!-- Item -->
-                <div class="col-xl-3 col-sm-6">
-                  <div class="item d-flex align-items-center">
-                    <div class="icon bg-violet"><i class="icon-user"></i></div>
-                    <div class="title"><a  href="findRoom.html">
-												<span>旅客<br>入住</span>
-											</a>
-											
-                      
-                    </div>
-                    
-                  </div>
-                </div>
-                <!-- Item -->
-                <div class="col-xl-3 col-sm-6" >
-                  <div class="item d-flex align-items-center">
-                    <div class="icon bg-red"><i class="icon-padnote"></i></div>
-                    <div class="title">
-											<a  href="roomManager.html"><span>房间<br>管理</span></a>
-											
-                      
-                    </div>
-                    
-                  </div>
-                </div>
-                <!-- Item -->
-                <div class="col-xl-3 col-sm-6">
-                  <div class="item d-flex align-items-center">
-                    <div class="icon bg-green"><i class="icon-bill"></i></div>
-                    <div class="title">
-                      <a href="findOrder.html"><span>订单<br>查询</span></a>
-                    </div>
-                    
-                  </div>
-                </div>
-                <!-- Item -->
-                <div class="col-xl-3 col-sm-6">
-                  <div class="item d-flex align-items-center">
-                    <div class="icon bg-orange"><i class="icon-check"></i></div>
-                    <div class="title">
-                      <a href="findOrder.html"><span>旅客<br>结账</span></a>
-                      
-                    </div>
-                    
-                  </div>
-                </div>
-              </div>
-            </div>
-    <div class="container-fluid">
-              <div class="row">
-                
-                <div class="col-lg-12">                           
-                  <div class="card">
-                    
-                    <div class="card-header d-flex align-items-center">
-                      <h3 class="h4">添加优惠</h3>
-                    </div>
-                    <div class="card-body">
-                      <form class="form-horizontal">
-    <div class="form-group row">
-                          <label for="inlineFormInputGroup" class="col-sm-3 form-control-label">优惠名称</label>
-                          <input id="inlineFormInputGroup" placeholder="优惠名称" class="col-sm-9" type="text">
-                        </div>
-    <div class="form-group row">
-                          <label for="inlineFormInputGroup" class="col-sm-3 form-control-label">优惠类型</label>
-                         
-                        <select id="inlineFormInputGroup" placeholder="优惠类型" class="col-sm-9">
-                              <option>满额定金额折扣</option>
-        <option>满额定金额减免</option><option>没满额定金额减免</option></select><small class="help-block-none">参数1：活动门槛，参数2：活动优惠，￥300为300，减免填减免金额，折扣填折扣比例，9折为0.9</small></div>
+<style type="text/css">/* Chart.js */
+@
+-webkit-keyframes chartjs-render-animation {
+	from {opacity: 0.99
+}
 
-                        
-                        
-<div class="form-group row">
-                          <label for="inlineFormInputGroup" class="col-sm-3 form-control-label">开始时间</label>
-                          <input id="inlineFormInputGroup" placeholder="开始时间" class="col-sm-9" type="text">
-                        </div>
-<div class="form-group row">
-                          <label for="inlineFormInputGroup" class="col-sm-3 form-control-label">结束时间</label>
-                          <input id="inlineFormInputGroup" placeholder="结束时间" class="col-sm-9" type="text">
-                        </div><div class="form-group row">
-                          <label for="inlineFormInputGroup" class="col-sm-3 form-control-label">参数1</label>
-                          <input id="inlineFormInputGroup" placeholder="参数1" class="col-sm-9" type="text">
-                        </div><div class="form-group row">
-                          <label for="inlineFormInputGroup" class="col-sm-3 form-control-label">参数2</label>
-                          <input id="inlineFormInputGroup" placeholder="参数2" class="col-sm-9" type="text">
-                        </div>
-                        <div class="form-group">
-                          <button type="submit" class="btn btn-primary">添加</button>
-                        </div>
-                      </form>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-lg-12">
-                  <div class="card">
-                    
-                    <div class="card-header d-flex align-items-center">
-                      <h3 class="h4">优惠信息</h3>
-                    </div>
-                    <div class="card-body">
-                      <div class="table-responsive">                       
-                        <table class="table table-striped table-hover">
-                          <thead>
-                            <tr>
-                              
-                              <th>优惠编号</th>
-    <th>优惠名称</th>
-                              <th>优惠类型</th>
-<th>开始时间</th>
-<th>结束时间</th>
-    <th>参数1</th>
-<th>参数2</th>
-                              
-    						  <th>操作</th>
-  
-                            </tr>
-                          </thead>
-                          <tbody>
-                            <tr>
-                              
-                              <td>1</td>
-                              <td>全场9折优惠</td>
-                              <td>满额定金额折扣</td>
-<td>2019-06-01</td>
-<td>2019-07-01</td>
-                            <td>0</td>
-<td>0.9</td>
-        <td>
-    <a href="#" class="badge badge-rounded bg-green" data-toggle="modal" data-target="#myModal">修改</a>
-                      <a href="#" class="badge badge-rounded bg-green" data-toggle="modal" data-target="#myModal">删除</a></td></tr>
-                            
-                            
-                          </tbody>
-                        </table>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                
-              <div class="col-lg-12">                           
-                  <div class="card">
-                    
-                    <div class="card-header d-flex align-items-center">
-                      <h3 class="h4">修改</h3>
-                    </div>
-                    <div class="card-body">
-                      <form class="form-horizontal"><p>优惠名称：全场9折</p>
-    
-    <div class="form-group row">
-                          <label for="inlineFormInputGroup" class="col-sm-3 form-control-label">优惠名称</label>
-                          <input id="inlineFormInputGroup" placeholder="优惠名称" class="col-sm-9" type="text">
-                        </div>
-    <div class="form-group row">
-                          <label for="inlineFormInputGroup" class="col-sm-3 form-control-label">优惠类型</label>
-                         
-                        <select id="inlineFormInputGroup" placeholder="优惠类型" class="col-sm-9">
-                              <option>满额定金额折扣</option>
-        <option>满额定金额减免</option><option>没满额定金额减免</option></select><small class="help-block-none">参数1：活动门槛，参数2：活动优惠，￥300为300，减免填减免金额，折扣填折扣比例，9折为0.9</small></div>
+to {
+	opacity: 1
+}
 
-                        
-                        
-<div class="form-group row">
-                          <label for="inlineFormInputGroup" class="col-sm-3 form-control-label">开始时间</label>
-                          <input id="inlineFormInputGroup" placeholder="开始时间" class="col-sm-9" type="datetime-local">
-                        </div>
-<div class="form-group row">
-                          <label for="inlineFormInputGroup" class="col-sm-3 form-control-label">结束时间</label>
-                          <input id="inlineFormInputGroup" placeholder="结束时间" class="col-sm-9" type="datetime-local">
-                        </div><div class="form-group row">
-                          <label for="inlineFormInputGroup" class="col-sm-3 form-control-label">参数1</label>
-                          <input id="inlineFormInputGroup" placeholder="参数1" class="col-sm-9" type="text">
-                        </div><div class="form-group row">
-                          <label for="inlineFormInputGroup" class="col-sm-3 form-control-label">参数2</label>
-                          <input id="inlineFormInputGroup" placeholder="参数2" class="col-sm-9" type="text">
-                        </div>
-                        <div class="form-group">
-                          <button type="submit" class="btn btn-primary">修改</button>
-                        </div>
-                      </form>
-                    </div>
-                  </div>
-                </div></div>
-            </div>
-          </section>
+}
+@
+keyframes chartjs-render-animation {
+	from {opacity: 0.99
+}
 
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          <section class="updates no-padding-top">
-            <div class="container-fluid">
-              <div class="row">
-                <!-- Recent Updates-->
-                
-                <!-- Daily Feeds -->
-                
-                <!-- Recent Activities -->
-                
-              </div>
-            </div>
-          </section>
-          <!-- Page Footer-->
-          <footer class="main-footer">
-            <div class="container-fluid">
-              <div class="row">
-                <div class="col-sm-6">
-                  <p>Your company © 2017-2019</p>
-                </div>
-                
-              </div>
-            </div>
-          </footer>
-        </div>
-      </div>
-    </div>
+to {
+	opacity: 1
+}
 
-    <!-- JavaScript files-->
-    <script src="vendor/jquery/jquery.min.js"></script>
-    <script src="vendor/popper.js/umd/popper.min.js"> </script>
-    <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
-    <script src="vendor/jquery.cookie/jquery.cookie.js"> </script>
-    <script src="vendor/jquery-validation/jquery.validate.min.js"></script>
-    <!-- Main File-->
-    <script src="js/front.js"></script>
-  
-</body></html>
+}
+.chartjs-render-monitor {
+	-webkit-animation: chartjs-render-animation 0.001s;
+	animation: chartjs-render-animation 0.001s;
+}
+</style>
+<style type="text/css">/* Chart.js */
+@
+-webkit-keyframes chartjs-render-animation {
+	from {opacity: 0.99
+}
+
+to {
+	opacity: 1
+}
+
+}
+@
+keyframes chartjs-render-animation {
+	from {opacity: 0.99
+}
+
+to {
+	opacity: 1
+}
+
+}
+.chartjs-render-monitor {
+	-webkit-animation: chartjs-render-animation 0.001s;
+	animation: chartjs-render-animation 0.001s;
+}
+</style>
+<style type="text/css">/* Chart.js */
+@
+-webkit-keyframes chartjs-render-animation {
+	from {opacity: 0.99
+}
+
+to {
+	opacity: 1
+}
+
+}
+@
+keyframes chartjs-render-animation {
+	from {opacity: 0.99
+}
+
+to {
+	opacity: 1
+}
+
+}
+.chartjs-render-monitor {
+	-webkit-animation: chartjs-render-animation 0.001s;
+	animation: chartjs-render-animation 0.001s;
+}
+</style>
+<style type="text/css">/* Chart.js */
+@
+-webkit-keyframes chartjs-render-animation {
+	from {opacity: 0.99
+}
+
+to {
+	opacity: 1
+}
+
+}
+@
+keyframes chartjs-render-animation {
+	from {opacity: 0.99
+}
+
+to {
+	opacity: 1
+}
+
+}
+.chartjs-render-monitor {
+	-webkit-animation: chartjs-render-animation 0.001s;
+	animation: chartjs-render-animation 0.001s;
+}
+</style>
+</head>
+<body class="" style="">
+	<div class="page">
+		<!-- Main Navbar-->
+		<header class="header">
+			<nav class="navbar">
+				<!-- Search Box-->
+				<div class="search-box">
+					<button class="dismiss">
+						<i class="icon-close"></i>
+					</button>
+					<form id="searchForm" action="#" role="search">
+						<input type="search" placeholder="What are you looking for..."
+							class="form-control">
+					</form>
+				</div>
+				<div class="container-fluid">
+					<div
+						class="navbar-holder d-flex align-items-center justify-content-between">
+						<!-- Navbar Header-->
+						<div class="navbar-header">
+							<!-- Navbar Brand -->
+							<a href="index.html"
+								class="navbar-brand d-none d-sm-inline-block">
+								<div class="brand-text d-none d-lg-inline-block">
+									<span>酒店管理 </span><strong>后台系统</strong>
+								</div>
+								<div class="brand-text d-none d-sm-inline-block d-lg-none">
+									<strong>BD</strong>
+								</div>
+							</a>
+							<!-- Toggle Button-->
+							<a id="toggle-btn" href="#" class="menu-btn active"><span></span><span></span><span></span></a>
+						</div>
+						<!-- Navbar Menu -->
+						<ul
+							class="nav-menu list-unstyled d-flex flex-md-row align-items-md-center">
+
+
+							<!-- Notifications-->
+							<li class="nav-item dropdown"><a id="notifications"
+								rel="nofollow" data-target="#" href="#" data-toggle="dropdown"
+								aria-haspopup="true" aria-expanded="false" class="nav-link"><i
+									class="fa fa-bell-o"></i><span
+									class="badge bg-red badge-corner">12</span></a>
+								<ul aria-labelledby="notifications" class="dropdown-menu">
+									<li><a rel="nofollow" href="#" class="dropdown-item">
+											<div class="notification">
+												<div class="notification-content">
+													<i class="fa fa-envelope bg-green"></i>You have 6 new
+													messages
+												</div>
+												<div class="notification-time">
+													<small>4 minutes ago</small>
+												</div>
+											</div>
+									</a></li>
+									<li><a rel="nofollow" href="#" class="dropdown-item">
+											<div class="notification">
+												<div class="notification-content">
+													<i class="fa fa-twitter bg-blue"></i>You have 2 followers
+												</div>
+												<div class="notification-time">
+													<small>4 minutes ago</small>
+												</div>
+											</div>
+									</a></li>
+									<li><a rel="nofollow" href="#" class="dropdown-item">
+											<div class="notification">
+												<div class="notification-content">
+													<i class="fa fa-upload bg-orange"></i>Server Rebooted
+												</div>
+												<div class="notification-time">
+													<small>4 minutes ago</small>
+												</div>
+											</div>
+									</a></li>
+									<li><a rel="nofollow" href="#" class="dropdown-item">
+											<div class="notification">
+												<div class="notification-content">
+													<i class="fa fa-twitter bg-blue"></i>You have 2 followers
+												</div>
+												<div class="notification-time">
+													<small>10 minutes ago</small>
+												</div>
+											</div>
+									</a></li>
+									<li><a rel="nofollow" href="#"
+										class="dropdown-item all-notifications text-center"> <strong>view
+												all notifications </strong></a></li>
+								</ul></li>
+							<!-- Messages                        -->
+
+							<!-- Languages dropdown    -->
+
+							<!-- Logout    -->
+							<li class="nav-item"><a href="login.html"
+								class="nav-link logout"> <span class="d-none d-sm-inline">注销</span><i
+									class="fa fa-sign-out"></i></a></li>
+						</ul>
+					</div>
+				</div>
+			</nav>
+		</header>
+		<div class="page-content d-flex align-items-stretch">
+			<!-- Side Navbar -->
+			<nav class="side-navbar">
+
+
+				<!-- Sidebar Navidation Menus-->
+				<span class="heading"></span>
+				<ul class="list-unstyled">
+					<li><a href="findRoom.html"> <i class="icon-home"></i>旅客入住
+					</a></li>
+					<li><a href="roomManager.html"> <i class="icon-grid"></i>房间管理
+					</a></li>
+					<li><a href="findOrder.html"> <i class="fa fa-bar-chart"></i>订单查询
+					</a></li>
+					<li><a href="findOrder.html"> <i class="icon-padnote"></i>旅客结账
+					</a></li>
+
+					<li><a href="login.html"> <i
+							class="icon-interface-windows"></i>注销
+					</a></li>
+				</ul>
+				<span class="heading">管理员</span>
+				<ul class="list-unstyled">
+					<li><a href="orderSet.html"> <i class="icon-flask"></i>订单修改
+					</a></li>
+					<li><a href="roomSet.html"> <i class="icon-screen"></i>房间修改
+					</a></li>
+					<li><a href="discountSet.html"> <i class="icon-mail"></i>优惠管理
+					</a></li>
+					<li><a href="vipSet.html"> <i class="icon-picture"></i>vip管理
+					</a></li>
+					<li><a href="roleSet.html"> <i
+							class="icon-interface-windows"></i>权限管理
+					</a></li>
+				</ul>
+			</nav>
+			<div class="content-inner" style="padding-bottom: 59.0476px;">
+				<!-- Page Header-->
+				<header class="page-header">
+					<div class="container-fluid">
+						<h2 class="no-margin-bottom">优惠</h2>
+					</div>
+				</header>
+				<!-- Dashboard Counts Section-->
+				<section class="dashboard-counts no-padding-bottom">
+					<div class="container-fluid">
+						<div class="row bg-white has-shadow">
+							<!-- Item -->
+							<div class="col-xl-3 col-sm-6">
+								<div class="item d-flex align-items-center">
+									<div class="icon bg-violet">
+										<i class="icon-user"></i>
+									</div>
+									<div class="title">
+										<a href="findRoom.html"> <span>旅客<br>入住
+										</span>
+										</a>
+
+
+									</div>
+
+								</div>
+							</div>
+							<!-- Item -->
+							<div class="col-xl-3 col-sm-6">
+								<div class="item d-flex align-items-center">
+									<div class="icon bg-red">
+										<i class="icon-padnote"></i>
+									</div>
+									<div class="title">
+										<a href="roomManager.html"><span>房间<br>管理
+										</span></a>
+
+
+									</div>
+
+								</div>
+							</div>
+							<!-- Item -->
+							<div class="col-xl-3 col-sm-6">
+								<div class="item d-flex align-items-center">
+									<div class="icon bg-green">
+										<i class="icon-bill"></i>
+									</div>
+									<div class="title">
+										<a href="findOrder.html"><span>订单<br>查询
+										</span></a>
+									</div>
+
+								</div>
+							</div>
+							<!-- Item -->
+							<div class="col-xl-3 col-sm-6">
+								<div class="item d-flex align-items-center">
+									<div class="icon bg-orange">
+										<i class="icon-check"></i>
+									</div>
+									<div class="title">
+										<a href="findOrder.html"><span>旅客<br>结账
+										</span></a>
+
+									</div>
+
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="container-fluid">
+						<div class="row">
+
+							<div class="col-lg-12">
+								<div class="card">
+
+									<div class="card-header d-flex align-items-center">
+										<h3 class="h4">添加优惠</h3>
+									</div>
+									<div class="card-body">
+										<form class="form-horizontal" id="insertForm">
+											<div class="form-group row">
+												<label for="inlineFormInputGroup"
+													class="col-sm-3 form-control-label">优惠名称</label> <input
+													id="inlineFormInputGroup" placeholder="优惠名称"
+													class="col-sm-9" type="text" name="name">
+											</div>
+											<div class="form-group row">
+												<label for="discountType1"
+													class="col-sm-3 form-control-label">优惠类型</label> <select
+													id="discountType1" placeholder="优惠类型" class="col-sm-9" name="discountType">
+													<option>满额定金额折扣</option>
+													<option>满额定金额减免</option>
+													<option>没满额定金额减免</option>
+												</select><small class="help-block-none">参数1：活动门槛，参数2：活动优惠，￥300为300，减免填减免金额，折扣填折扣比例，9折为0.9</small>
+											</div>
+
+
+
+											<div class="form-group row">
+												<label for="inlineFormInputGroup"
+													class="col-sm-3 form-control-label">开始时间</label> <input
+													id="inlineFormInputGroup" placeholder="开始时间"
+													class="col-sm-9" type="datetime-local" name="beginTime">
+											</div>
+											<div class="form-group row">
+												<label for="inlineFormInputGroup"
+													class="col-sm-3 form-control-label">结束时间</label> <input
+													id="inlineFormInputGroup" placeholder="结束时间"
+													class="col-sm-9" type="datetime-local" name="endTime">
+											</div>
+											<div class="form-group row">
+												<label for="inlineFormInputGroup"
+													class="col-sm-3 form-control-label">参数1</label> <input
+													id="inlineFormInputGroup" placeholder="参数1"
+													class="col-sm-9" type="text" name="number1">
+											</div>
+											<div class="form-group row">
+												<label for="inlineFormInputGroup"
+													class="col-sm-3 form-control-label">参数2</label> <input
+													id="inlineFormInputGroup" placeholder="参数2"
+													class="col-sm-9" type="text" name="number2">
+											</div>
+											<div class="form-group">
+												<button type="button" class="btn btn-primary" onclick="insert()">添加</button>
+											</div>
+										</form>
+									</div>
+								</div>
+							</div>
+							<div class="col-lg-12">
+								<div class="card">
+
+									<div class="card-header d-flex align-items-center">
+										<h3 class="h4">优惠信息</h3>
+									</div>
+									<div class="card-body">
+										<div class="table-responsive">
+											<table class="table table-striped table-hover">
+												<thead>
+													<tr>
+
+														<th>优惠编号</th>
+														<th>优惠名称</th>
+														<th>优惠类型</th>
+														<th>开始时间</th>
+														<th>结束时间</th>
+														<th>参数1</th>
+														<th>参数2</th>
+														<th>操作</th>
+
+													</tr>
+												</thead>
+												<tbody id="discountTableTbody">
+													<tr>
+
+														<td>1</td>
+														<td>全场9折优惠</td>
+														<td>满额定金额折扣</td>
+														<td>2019-06-01</td>
+														<td>2019-07-01</td>
+														<td>0</td>
+														<td>0.9</td>
+														<td><a href="#" class="badge badge-rounded bg-green"
+															data-toggle="modal" data-target="#myModal">修改</a> <a
+															href="#" class="badge badge-rounded bg-green"
+															data-toggle="modal" data-target="#myModal">删除</a></td>
+													</tr>
+
+
+												</tbody>
+											</table>
+										</div>
+									</div>
+								</div>
+							</div>
+
+							<div class="col-lg-12">
+								<div class="card">
+
+									<div class="card-header d-flex align-items-center">
+										<h3 class="h4">修改</h3>
+									</div>
+									<div class="card-body">
+										<form class="form-horizontal" id="setForm">
+											<p >优惠名称：<span id="showSetName"></span></p>
+
+											<div class="form-group row">
+												<label for="setName"
+													class="col-sm-3 form-control-label">优惠名称</label> <input
+													id="setName" placeholder="优惠名称"
+													class="col-sm-9" type="text" name="name">
+											</div>
+											<div class="form-group row">
+												<label for="discountType2"
+													class="col-sm-3 form-control-label">优惠类型</label> <select
+													id="discountType2" placeholder="优惠类型" class="col-sm-9" name="discountType">
+													<option>满额定金额折扣</option>
+													<option>满额定金额减免</option>
+													<option>没满额定金额减免</option>
+												</select><small class="help-block-none">参数1：活动门槛，参数2：活动优惠，￥300为300，减免填减免金额，折扣填折扣比例，9折为0.9</small>
+											</div>
+
+
+
+											<div class="form-group row">
+												<label for="setBeginTime"
+													class="col-sm-3 form-control-label">开始时间</label> <input
+													id="setBeginTime" placeholder="开始时间"
+													class="col-sm-9" type="datetime-local" name="beginTime">
+											</div>
+											<div class="form-group row">
+												<label for="setEndTime"
+													class="col-sm-3 form-control-label">结束时间</label> <input
+													id="setEndTime" placeholder="结束时间"
+													class="col-sm-9" type="datetime-local" name="endTime">
+											</div>
+											<div class="form-group row">
+												<label for="setNumber1"
+													class="col-sm-3 form-control-label">参数1</label> <input
+													id="setNumber1" placeholder="参数1"
+													class="col-sm-9" type="text" name="number1">
+											</div>
+											<div class="form-group row">
+												<label for="setNumber2"
+													class="col-sm-3 form-control-label">参数2</label> <input
+													id="setNumber2" placeholder="参数2"
+													class="col-sm-9" type="text" name="number2">
+											</div>
+											<div class="form-group">
+												<button type="button" class="btn btn-primary" onclick="update()">修改</button>
+											</div>
+										</form>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</section>
+
+
+				<section class="updates no-padding-top">
+					<div class="container-fluid">
+						<div class="row">
+							<!-- Recent Updates-->
+
+							<!-- Daily Feeds -->
+
+							<!-- Recent Activities -->
+
+						</div>
+					</div>
+				</section>
+				<!-- Page Footer-->
+				<footer class="main-footer">
+					<div class="container-fluid">
+						<div class="row">
+							<div class="col-sm-6">
+								<p>Your company © 2017-2019</p>
+							</div>
+
+						</div>
+					</div>
+				</footer>
+			</div>
+		</div>
+	</div>
+
+	<!-- JavaScript files-->
+	<script src="vendor/jquery/jquery.min.js"></script>
+	<script src="vendor/popper.js/umd/popper.min.js">
+		
+	</script>
+	<script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+	<script src="vendor/jquery.cookie/jquery.cookie.js">
+		
+	</script>
+	<script src="vendor/jquery-validation/jquery.validate.min.js"></script>
+	<!-- Main File-->
+	<script src="js/front.js"></script>
+	<script src="js/discountSet.js"></script>
+</body>
+</html>
