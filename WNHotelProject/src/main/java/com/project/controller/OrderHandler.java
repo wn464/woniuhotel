@@ -121,7 +121,7 @@ public class OrderHandler {
 		return pageBean;
 	}
 	/*
-	 * 通过订单id查询订单
+	 * 通过订单id查询订单(统计价格)
 	 */
 	@GetMapping("/{oid}")
 	public String selectOrderById(@PathVariable("oid")int oid,ModelMap map){
@@ -156,6 +156,17 @@ public class OrderHandler {
 		}
 		map.put("orderBean", orderBean);
 		return "pay.html";
+	}
+	
+	
+	/*
+	 * 通过订单id查询订单(后台统计人员)
+	 */
+	@GetMapping("/people/{oid}")
+	public String selectById(@PathVariable("oid")int oid,ModelMap map){
+		OrderBean orderBean = orderService.selectOrderById(oid);
+		map.put("orderBean", orderBean);
+		return "admin/people.html";
 	}
 	
 }
