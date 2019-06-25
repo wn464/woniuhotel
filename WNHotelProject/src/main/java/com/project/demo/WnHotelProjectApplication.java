@@ -14,12 +14,11 @@ import com.project.util.timingutil.ordertiming;
 @SpringBootApplication
 @EnableScheduling
 @ComponentScan("com.project.controller")
+@ComponentScan("com.project.controller.after")
 @ComponentScan("com.project.Service")
 @ComponentScan("com.project.config")
 @MapperScan("com.project.dao")
 @ComponentScan("com.project.shiro")
-//@ComponentScan("com.project.util.timingutil")
-//@ComponentScan("com.project.util")
 @EnableCaching  //开启缓存
 public class WnHotelProjectApplication {
 	public static void main(String[] args) {

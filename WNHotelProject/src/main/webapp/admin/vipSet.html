@@ -28,7 +28,7 @@
 @-webkit-keyframes chartjs-render-animation{from{opacity:0.99}to{opacity:1}}@keyframes chartjs-render-animation{from{opacity:0.99}to{opacity:1}}.chartjs-render-monitor{-webkit-animation:chartjs-render-animation 0.001s;animation:chartjs-render-animation 0.001s;}</style><style type="text/css">/* Chart.js */
 @-webkit-keyframes chartjs-render-animation{from{opacity:0.99}to{opacity:1}}@keyframes chartjs-render-animation{from{opacity:0.99}to{opacity:1}}.chartjs-render-monitor{-webkit-animation:chartjs-render-animation 0.001s;animation:chartjs-render-animation 0.001s;}</style><style type="text/css">/* Chart.js */
 @-webkit-keyframes chartjs-render-animation{from{opacity:0.99}to{opacity:1}}@keyframes chartjs-render-animation{from{opacity:0.99}to{opacity:1}}.chartjs-render-monitor{-webkit-animation:chartjs-render-animation 0.001s;animation:chartjs-render-animation 0.001s;}</style></head>
-  <body class="" style="">
+  <body class="" >
     <div class="page">
       <!-- Main Navbar-->
       <header class="header">
@@ -185,21 +185,21 @@
                       <h3 class="h4">添加会员</h3>
                     </div>
                     <div class="card-body">
-                      <form class="form-horizontal">
+                      <form class="form-horizontal" id="insertFrom">
     <div class="form-group row">
                           <label for="inlineFormInputGroup" class="col-sm-3 form-control-label">会员名称</label>
-                          <input id="inlineFormInputGroup" placeholder="会员名称" class="col-sm-9" type="text">
+                          <input id="inlineFormInputGroup" placeholder="会员名称" class="col-sm-9" type="text" name="name">
                         </div>
                         
                         <div class="form-group row">
                           <label for="inlineFormInputGroup" class="col-sm-3 form-control-label">会员门槛</label>
-                          <input id="inlineFormInputGroup" placeholder="会员门槛" class="col-sm-9" type="text">
+                          <input id="inlineFormInputGroup" placeholder="会员门槛" class="col-sm-9" type="text" name="maxMoney">
                         </div><div class="form-group row">
                           <label for="inlineFormInputGroup" class="col-sm-3 form-control-label">会员折扣</label>
-                          <input id="inlineFormInputGroup" placeholder="会员折扣" class="col-sm-9" type="text">
+                          <input id="inlineFormInputGroup" placeholder="会员折扣" class="col-sm-9" type="text" name="discount">
                         </div>
                         <div class="form-group">
-                          <button type="submit" class="btn btn-primary">添加</button>
+                          <button type="button" class="btn btn-primary" onclick="insert()">添加</button>
                         </div>
                       </form>
                     </div>
@@ -226,7 +226,7 @@
   
                             </tr>
                           </thead>
-                          <tbody>
+                          <tbody id="vipTableTbody">
                             <tr>
                               
                               <td>1</td>
@@ -257,22 +257,22 @@
                       <h3 class="h4">修改会员</h3>
                     </div>
                     <div class="card-body">
-    <p>会员等级为：普通会员</p>
-                      <form class="form-horizontal">
+    <p>会员等级为：<span id="showSetName">普通会员</span></p>
+                      <form class="form-horizontal" id="setFrom">
     <div class="form-group row">
-                          <label for="inlineFormInputGroup" class="col-sm-3 form-control-label">会员名称</label>
-                          <input id="inlineFormInputGroup" placeholder="会员名称" class="col-sm-9" type="text">
+                          <label for="setName" class="col-sm-3 form-control-label">会员名称</label>
+                          <input id="setName" placeholder="会员名称" class="col-sm-9" type="text" name="name">
                         </div>
                         
                         <div class="form-group row">
-                          <label for="inlineFormInputGroup" class="col-sm-3 form-control-label">会员门槛</label>
-                          <input id="inlineFormInputGroup" placeholder="会员门槛" class="col-sm-9" type="text">
+                          <label for="setMaxMoney" class="col-sm-3 form-control-label">会员门槛</label>
+                          <input id="setMaxMoney" placeholder="会员门槛" class="col-sm-9" type="text" name="maxMoney">
                         </div><div class="form-group row">
-                          <label for="inlineFormInputGroup" class="col-sm-3 form-control-label">会员折扣</label>
-                          <input id="inlineFormInputGroup" placeholder="会员折扣" class="col-sm-9" type="text">
+                          <label for="setDiscount" class="col-sm-3 form-control-label">会员折扣</label>
+                          <input id="setDiscount" placeholder="会员折扣" class="col-sm-9" type="text" name="discount">
                         </div>
                         <div class="form-group">
-                          <button type="submit" class="btn btn-primary">修改</button>
+                          <button type="button" class="btn btn-primary" onclick="update()">修改</button>
                         </div>
                       </form>
                     </div>
@@ -316,33 +316,7 @@
         </div>
       </div>
     </div>
-<div id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" class="modal fade text-left" style="display: none;" aria-hidden="true">
-                        <div role="document" class="modal-dialog">
-                          <div class="modal-content">
-                            <div class="modal-header">
-                              <h4 id="exampleModalLabel" class="modal-title">入住</h4>
-                              <button type="button" data-dismiss="modal" aria-label="Close" class="close"><span aria-hidden="true">×</span></button>
-                            </div>
-                            <div class="modal-body">
-                              <p>输入开房信息，非会员直接提交，会员请输入手机号</p>
-                              <form>
-                                <div class="form-group">
-                                  <label>姓名</label>
-                                  <input type="text" placeholder="姓名" class="form-control">
-                                </div>
-                                <div class="form-group">       
-                                  <label>电话号码</label>
-                                  <input type="text" placeholder="电话号码" class="form-control">
-                                </div>
-                                <div class="form-group">       
-                                  <input type="submit" value="提交入住" class="btn btn-primary">
-                                </div>
-                              </form>
-                            </div>
-                            
-                          </div>
-                        </div>
-                      </div>
+
     <!-- JavaScript files-->
     <script src="vendor/jquery/jquery.min.js"></script>
     <script src="vendor/popper.js/umd/popper.min.js"> </script>
@@ -351,5 +325,5 @@
     <script src="vendor/jquery-validation/jquery.validate.min.js"></script>
     <!-- Main File-->
     <script src="js/front.js"></script>
-  
+  	<script src="js/vipSet.js"></script>
 </body></html>

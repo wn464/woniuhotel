@@ -69,10 +69,11 @@ public class OrderHandler {
 	 * 后台按照预定人员信息(姓名和入住时间)模糊查询订单
 	 */
 	@GetMapping("/attr")
-	@ResponseBody
-	public List<OrderBean> selectOrderByAttr(LiveBean liveBean) {
+	public String selectOrderByAttr(LiveBean liveBean,ModelMap map) {
 		List<OrderBean> list = orderService.selectOrderByAttr(liveBean.getPeople(), liveBean.getInTime());
-		return list;
+		System.out.println(list);
+		map.put("list", list);
+		return "admin/findOrder.html";
 	}
 	/*
 	 * 前台通过状态分页查询订单
@@ -84,9 +85,12 @@ public class OrderHandler {
 	    session.setAttribute("id", 1);//测试使用
         int mid = (int) session.getAttribute("id");
 		PageBean bean = orderService.selectOrderByState(mid, status, 1, 50);
+		System.out.println(bean);
 		map.put("bean",bean);
+		
 		return "myorder.html";
 	}
+	
 	/*
 	 * 后台通过状态分页查询订单
 	 */
@@ -102,16 +106,18 @@ public class OrderHandler {
 	@PutMapping
 	@ResponseBody
 	public String updateOrderStatus(OrderBean orderBean){
+		System.out.println(orderBean);
 		int num = orderService.updateOrderAttr(orderBean);
 		return "ok";
 	}
 	/*
 	 * 通过时间段查询订单
 	 */
-	@GetMapping("/time/{startTime}/{endTime}")
+	@GetMapping("/time/{subscribeStatus}/{startTime}/{endTime}/{page}/{size}")
 	@ResponseBody
-	public PageBean selectOrderByTime(@PathVariable("startTime")String startTime, @PathVariable("endTime")String endTime){
-		PageBean pageBean = orderService.selectOrderByTime(startTime, endTime, 1, 2);
+	public PageBean selectOrderByTime(@PathVariable("subscribeStatus")int subscribeStatus,@PathVariable("startTime")String startTime, @PathVariable("endTime")String endTime,@PathVariable("page")int page,@PathVariable("size")int size){
+		
+		PageBean pageBean = orderService.selectOrderByTime(subscribeStatus,startTime, endTime, page, size);
 		return pageBean;
 	}
 	/*

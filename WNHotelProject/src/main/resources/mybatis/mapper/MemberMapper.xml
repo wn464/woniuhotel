@@ -24,9 +24,9 @@
 	
 	<resultMap type="MemberBean" id="map1">
 		<id property="id" column="id"/>
-		<result property="userName" column="username"/>
+		<result property="userName" column="userName"/>
 		<result property="phoneNumber" column="phoneNumber"/>
 		<result property="money" column="money"/>
-		<association property="vip" javaType="VipBean" select="com.project.dao.IVipDao.selectVipById" column="vip"/>
+		<association property="vipBean" javaType="VipBean" select="com.project.dao.IVipDao.selectVipById" column="vip"/>
 	</resultMap>
 </mapper> 

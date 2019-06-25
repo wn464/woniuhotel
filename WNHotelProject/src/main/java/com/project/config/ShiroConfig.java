@@ -1,9 +1,13 @@
 package com.project.config;
 
+import java.util.ArrayList;
 import java.util.LinkedHashMap;
+import java.util.List;
 import java.util.Map;
 
+import org.apache.shiro.authc.Authenticator;
 import org.apache.shiro.authc.credential.HashedCredentialsMatcher;
+import org.apache.shiro.authc.pam.AtLeastOneSuccessfulStrategy;
 import org.apache.shiro.mgt.DefaultSecurityManager;
 import org.apache.shiro.realm.AuthorizingRealm;
 import org.apache.shiro.realm.Realm;
@@ -15,6 +19,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.scheduling.annotation.EnableAsync;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
+import com.project.shiro.LoginAuthenticator;
 import com.project.shiro.MemberRealm;
 import com.project.shiro.UserRealm;
 
@@ -58,8 +63,12 @@ public class ShiroConfig {
 	@Bean(name="securityManager")
 	public DefaultWebSecurityManager getDefaultSecurityManager(@Qualifier("myReaml") Realm realm,@Qualifier("myReam2") Realm realm2 ) {
 		DefaultWebSecurityManager defaultSecurityManager = new DefaultWebSecurityManager();
-		defaultSecurityManager.setRealm(realm);
-		defaultSecurityManager.setRealm(realm2);
+		defaultSecurityManager.setAuthenticator(new LoginAuthenticator());
+		List<Realm> realms = new ArrayList<>();
+        //添加多个Realm
+		realms.add(realm);
+		realms.add(realm2);
+		defaultSecurityManager.setRealms(realms);
 		return defaultSecurityManager;
 	}
 	//生成Realm

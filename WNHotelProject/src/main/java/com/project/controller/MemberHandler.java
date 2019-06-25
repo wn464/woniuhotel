@@ -2,7 +2,11 @@ package com.project.controller;
 
 import java.util.List;
 
+import org.apache.shiro.SecurityUtils;
+import org.apache.shiro.authc.UsernamePasswordToken;
 import org.apache.shiro.crypto.hash.SimpleHash;
+import org.apache.shiro.session.Session;
+import org.apache.shiro.subject.Subject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -16,6 +20,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.project.Service.IMemberService;
 import com.project.bean.MemberBean;
+import com.project.shiro.LoginToken;
+import com.project.shiro.LoginType;
 
 @Controller
 public class MemberHandler {
@@ -23,6 +29,10 @@ public class MemberHandler {
 	@Autowired
 	private IMemberService service;
 	
+	
+	/*
+	 * 注册
+	 */
 	@PostMapping("/member/reg")
 	public String reg(ModelMap map,@Validated MemberBean member,BindingResult result) {
 		System.out.println(member);
@@ -55,7 +65,6 @@ public class MemberHandler {
 		}		
 		
 	}
-	
 	//验证用户名是否存在
 	@GetMapping("/member/yz")
 	@ResponseBody
@@ -63,10 +72,62 @@ public class MemberHandler {
 		MemberBean member= service.selectByUsername(userName);
 		if(member!=null) {
 			return "1";
-			
 		}
 		return "2";
+	}
+	
+	
+	/*
+	 * 登录
+	 */
+	@PostMapping("/member/login")
+	@ResponseBody
+	public String login(ModelMap map, @Validated MemberBean member,BindingResult result) {
+		System.out.println(member);
+		if(result.hasErrors()) {
+			System.out.println("----------出现错误----------");
+			List<FieldError> fieldErrors = result.getFieldErrors();
+			for (FieldError fieldError : fieldErrors) {
+				System.out.println(fieldError.getDefaultMessage());
+			}
+			return "1";
+		}else {
+			Subject subject = SecurityUtils.getSubject();
+			if(!subject.isAuthenticated()) {
+				UsernamePasswordToken token = new LoginToken(member.getUserName(),member.getPassword(),LoginType.user.toString());
+
+				try {
+					subject.login(token);
+					System.out.println("认证成功");
+					//把 id 和 用户名存到session  后续用的到
+					MemberBean bean = service.selectByUsername(member.getUserName());
+					
+					Session session = subject.getSession();
+					session.setAttribute("id", bean.getId());
+					session.setAttribute("userName", bean.getUserName());
+					
+					return "2";
+				}catch (Exception e) {
+					System.out.println("认证失败");
+					return "1";
+				}
+			}
+			
+			
+		}
+		return null;
+	}
+	
+	//跳转动态页面
+	@GetMapping("/member/jump")
+	@ResponseBody
+	public MemberBean jump() {
+		Subject subject = SecurityUtils.getSubject();
+		Session session = subject.getSession();
+		String userName = (String) session.getAttribute("userName");
+		MemberBean bean = service.selectByUsername(userName);
 		
+		return bean;
 	}
 	
 	

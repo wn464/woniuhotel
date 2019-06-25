@@ -30,7 +30,7 @@ public interface IOrderService {
 	//通过预定状态查询订单
 	public PageBean selectOrderBySubStatus(int subscribeStatus, int page, int size);
 	//通过时间段查询订单
-	public PageBean selectOrderByTime(String startTime, String endTime, int page, int size);
+	public PageBean selectOrderByTime(int subscribeStatus,String startTime, String endTime, int page, int size);
 	
 	
 	

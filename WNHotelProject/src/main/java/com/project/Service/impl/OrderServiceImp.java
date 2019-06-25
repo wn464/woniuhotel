@@ -80,8 +80,10 @@ public class OrderServiceImp implements IOrderService{
 		List<OrderBean> list = new ArrayList<OrderBean>();
 		//通过姓名和时间模糊查询开房信息
 		List<LiveBean> liveBean = liveDao.selectBypeopleAndDate(people, time);
+		
 		OrderBean orderBean = null;
 		for (LiveBean liveBean2 : liveBean) {
+			System.out.println("--------"+liveBean2);
 			//通过入住信息（orderid）查询订单
 			orderBean = orderDao.selectOrderByAttr(liveBean2);
 			list.add(orderBean);
@@ -124,11 +126,11 @@ public class OrderServiceImp implements IOrderService{
 	}
 	//根据时间段查询订单
 	@Override
-	public PageBean selectOrderByTime(String startTime,String endTime,int page,int size){
+	public PageBean selectOrderByTime(int subscribeStatus,String startTime,String endTime,int page,int size){
 		PageBean pageBean = new PageBean();
 		pageBean.setPage(page);
 		page = (page-1)*size;
-		List<OrderBean> list = orderDao.selectOrderByTime(startTime, endTime, page, size);
+		List<OrderBean> list = orderDao.selectOrderByTime(subscribeStatus,startTime, endTime, page, size);
 		int totalNumber  = orderDao.selectNumberByTime(startTime, endTime);
 		pageBean.setSize(size);
 		pageBean.setTotalNumber(totalNumber);
@@ -137,6 +139,8 @@ public class OrderServiceImp implements IOrderService{
 		pageBean.setList(list);
 		return pageBean;
 	}
+
+	
 
 
 }

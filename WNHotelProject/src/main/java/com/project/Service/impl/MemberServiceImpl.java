@@ -16,16 +16,6 @@ public class MemberServiceImpl implements IMemberService {
 	@Autowired
 	private IMemberDao dao;
 	
-	
-	/*
-	 * //登录
-	 */
-	@Override
-	public MemberBean login(String userName) {
-		// TODO Auto-generated method stub
-		return dao.selectByUsername(userName);
-	}
-	
 	/*
 	 * 注册
 	 */

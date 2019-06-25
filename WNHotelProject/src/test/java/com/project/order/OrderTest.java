@@ -20,9 +20,12 @@ import com.project.bean.MemberBean;
 import com.project.bean.OrderBean;
 import com.project.bean.PageBean;
 import com.project.bean.RoomBean;
+import com.project.bean.VipBean;
 import com.project.dao.ILiveDao;
 import com.project.dao.IMarkDao;
+import com.project.dao.IMemberDao;
 import com.project.dao.IOrderDao;
+import com.project.dao.IVipDao;
 import com.project.demo.WnHotelProjectApplication;
 import com.project.util.CreateOrderInfo;
 
@@ -38,6 +41,10 @@ public class OrderTest {
 	    private IMarkDao markdao;
 	    @Autowired
 	    private ILiveService liveService;
+	    @Autowired
+	    private IMemberDao member;
+	    @Autowired
+	    private IVipDao vip;
 	    @Test
 	    public void insertTest(){
 	    OrderBean orderBean = new OrderBean();
@@ -77,6 +84,13 @@ public class OrderTest {
 			}
 	    }
 	    @Test
+	    public void selectmember(){
+	    	MemberBean memberBean = member.selectById(7);
+//	    	VipBean vipBean = vip.selectVipById(1);
+	    	System.out.println(memberBean);
+	    }
+	    
+	    @Test
 	    public void selectByState(){
 	    	PageBean pageBean = orderService.selectOrderByState(1, 6,1, 2);
 	    	System.out.println("---------"+pageBean);
@@ -106,7 +120,6 @@ public class OrderTest {
 	    @Test
 	    public void selectOrderById(){
 	    	OrderBean orderBean = orderDao.selectOrderById(28);
-	    	System.out.println(orderBean);
 	    }
 	    @Test
 	    public void selectOrderByTime(){
