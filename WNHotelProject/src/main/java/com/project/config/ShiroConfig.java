@@ -1,6 +1,8 @@
 package com.project.config;
 
+import java.util.ArrayList;
 import java.util.LinkedHashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.apache.shiro.authc.Authenticator;
@@ -62,8 +64,11 @@ public class ShiroConfig {
 	public DefaultWebSecurityManager getDefaultSecurityManager(@Qualifier("myReaml") Realm realm,@Qualifier("myReam2") Realm realm2 ) {
 		DefaultWebSecurityManager defaultSecurityManager = new DefaultWebSecurityManager();
 		defaultSecurityManager.setAuthenticator(new LoginAuthenticator());
-		defaultSecurityManager.setRealm(realm);
-		defaultSecurityManager.setRealm(realm2);
+		List<Realm> realms = new ArrayList<>();
+        //添加多个Realm
+		realms.add(realm);
+		realms.add(realm2);
+		defaultSecurityManager.setRealms(realms);
 		return defaultSecurityManager;
 	}
 	//生成Realm

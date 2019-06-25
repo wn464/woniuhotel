@@ -20,6 +20,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.project.Service.IMemberService;
 import com.project.bean.MemberBean;
+import com.project.shiro.LoginToken;
+import com.project.shiro.LoginType;
 
 @Controller
 public class MemberHandler {
@@ -92,8 +94,8 @@ public class MemberHandler {
 		}else {
 			Subject subject = SecurityUtils.getSubject();
 			if(!subject.isAuthenticated()) {
-				UsernamePasswordToken token = new UsernamePasswordToken(member.getUserName(),member.getPassword());
-			
+				UsernamePasswordToken token = new LoginToken(member.getUserName(),member.getPassword(),LoginType.user.toString());
+
 				try {
 					subject.login(token);
 					System.out.println("认证成功");
