@@ -4,6 +4,7 @@ import org.apache.shiro.authc.AuthenticationException;
 import org.apache.shiro.authc.AuthenticationInfo;
 import org.apache.shiro.authc.AuthenticationToken;
 import org.apache.shiro.authc.SimpleAuthenticationInfo;
+import org.apache.shiro.authc.UsernamePasswordToken;
 import org.apache.shiro.authz.AuthorizationInfo;
 import org.apache.shiro.authz.SimpleAuthorizationInfo;
 import org.apache.shiro.realm.AuthorizingRealm;
@@ -31,11 +32,14 @@ public class MemberRealm extends AuthorizingRealm{
 	@Override
 	protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken token) throws AuthenticationException {
 		
-		String username = token.getPrincipal().toString();				//获取用户名
-		MemberBean bean = service.login(username);
+		
+		String userName = token.getPrincipal().toString();
+		
+		System.out.println("我来了");//获取用户名
+		MemberBean bean = service.selectByUsername(userName);
 		SimpleAuthenticationInfo info =null;
 		if(bean!=null) {
-			ByteSource bytes = ByteSource.Util.bytes(username);
+			ByteSource bytes = ByteSource.Util.bytes(userName);
 			
 			info = new SimpleAuthenticationInfo(bean.getUserName(),bean.getPassword(),bytes,getName());
 		}

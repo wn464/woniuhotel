@@ -1,11 +1,14 @@
 <!DOCTYPE html>
-<html>
+<html >
 	<head>
 		<meta charset="UTF-8">
 		<title></title>
 		<link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css"/>
+		<link href="/css/stylealert.css" rel="stylesheet" />
 		<link rel="stylesheet" type="text/css" href="/css/index.css">
-		<script type="text/javascript" src="/js/jquery-3.2.0.js" ></script>
+		<script src="/js/jquery-1.7.1.min.js"></script>
+		<script src="/js/ui.js"></script>
+		
 	</head>
 	<body>
 		<div class="bgc">
@@ -13,17 +16,18 @@
 				<div class="loging">
 					欢 迎 登 录 
 				</div>
-				<form class="form-horizontal" action="/login" method="post">
+					<div class="form-horizontal" >
+					<h3 style="color:red" ></h3> 
 					<div class="control-group">
 					    <label class="control-label" for="inputEmail">用户名</label>
 					    <div class="controls">
-					    	<input type="text" id="username" name="name" placeholder="用户名">
+					    	<input type="text" id="userName" name="userName" placeholder="用户名">
 					    </div>
 					</div>
 					<div class="control-group">
 					    <label class="control-label" for="inputPassword">密&nbsp;&nbsp;&nbsp;&nbsp;码</label>
 					    <div class="controls">
-					    	<input type="password" id="Password" name="pwd" placeholder="Password">
+					    	<input type="password" id="Password" name="password" placeholder="Password">
 					    </div>
 					</div>
 					<div class="control-group">
@@ -32,11 +36,33 @@
 					    	<input type="checkbox" name="rember"> 记住密码
 					    </label>
 					    <a href="/reg.html"><button type='button' class='btn btn-info' id="btnn">注册 </button></a>
-					    <button type='submit' class='btn btn-info' id="btnn">登录</button>
+					    <button class='btn btn-info' id="btnn" onclick='login()'>登录</button>
+					    
 				    </div>
 				</div>
-				</form>
+				</div>
 			</div>
 		</div>
+		<script type="text/javascript">
+			function login(){
+				var userName=$("#userName").val();
+				var password=$("#passowrd").val();
+				$.ajax({
+					url:"/member/login",
+					data:"userName="+userName+"&password="+password,
+					dataType:"json",
+					type:"post",
+					success:function(mes){
+						if(mes==1){
+							mizhu.alert('','用户名或者密码错误');
+						}else{
+							location.href="/index.html";
+						}  
+					}
+				})
+			}
+		
+		</script>
+		
 	</body>
 </html>
