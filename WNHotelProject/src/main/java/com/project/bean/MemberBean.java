@@ -20,6 +20,7 @@ public class MemberBean {
 	private VipBean vipBean;//vip等级
 	private double money;//消费金额
 	private int vip;
+	
 	public int getId() {
 		return id;
 	}
@@ -68,8 +69,9 @@ public class MemberBean {
 	@Override
 	public String toString() {
 		return "MemberBean [id=" + id + ", userName=" + userName + ", password=" + password + ", phoneNumber="
-				+ phoneNumber + ", vip=" + vip + ", money=" + money + "]";
+				+ phoneNumber + ", vipBean=" + vipBean + ", money=" + money + ", vip=" + vip + "]";
 	}
+	
 	
 	
 }
