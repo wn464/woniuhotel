@@ -80,8 +80,10 @@ public class OrderServiceImp implements IOrderService{
 		List<OrderBean> list = new ArrayList<OrderBean>();
 		//通过姓名和时间模糊查询开房信息
 		List<LiveBean> liveBean = liveDao.selectBypeopleAndDate(people, time);
+		
 		OrderBean orderBean = null;
 		for (LiveBean liveBean2 : liveBean) {
+			System.out.println("--------"+liveBean2);
 			//通过入住信息（orderid）查询订单
 			orderBean = orderDao.selectOrderByAttr(liveBean2);
 			list.add(orderBean);
