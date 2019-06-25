@@ -14,6 +14,7 @@ import com.project.util.timingutil.ordertiming;
 @SpringBootApplication
 @EnableScheduling
 @ComponentScan("com.project.controller")
+@ComponentScan("com.project.controller.after")
 @ComponentScan("com.project.Service")
 @ComponentScan("com.project.config")
 @MapperScan("com.project.dao")
