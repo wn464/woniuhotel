@@ -40,6 +40,9 @@ function del(id){
 			async: false,
 			data:"id="+id,
 			type:"delete",
+			error:function(){
+				alert("删除失败");
+			},
 			success:function(mes){
 				if(mes==1){
 					alert("删除成功");
@@ -127,7 +130,7 @@ function getdiscountType(){
 	})
 }
 function update(){
-	var update = $("#setForm").serializeArray();setForm
+	var update = $("#setForm").serializeArray();
 	var data ='';
 	data +="id="+discoountId;
 	data +="&name="+update[0].value;
