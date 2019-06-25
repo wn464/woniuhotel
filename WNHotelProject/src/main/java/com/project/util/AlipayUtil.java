@@ -6,6 +6,8 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.springframework.context.annotation.Configuration;
+
 import com.alipay.api.AlipayApiException;
 import com.alipay.api.AlipayClient;
 import com.alipay.api.DefaultAlipayClient;
@@ -15,7 +17,6 @@ import com.alipay.api.request.AlipayTradeRefundRequest;
 import com.alipay.api.response.AlipayTradePagePayResponse;
 import com.alipay.api.response.AlipayTradeRefundResponse;
 import com.project.config.AlipayConfig;
-
 public class AlipayUtil {
 
 	private static AlipayClient alipayClient = new DefaultAlipayClient(AlipayConfig.gatewayUrl, AlipayConfig.app_id, AlipayConfig.merchant_private_key, "json", AlipayConfig.charset, AlipayConfig.alipay_public_key, AlipayConfig.sign_type);
@@ -28,22 +29,21 @@ public class AlipayUtil {
 	 * @return 返回一个表单提交，请内部派送给前端
 	 * @throws AlipayApiException
 	 */
-	public String pay(String out_trade_no ,double total_amount,String subject) throws AlipayApiException  {
+	public static String pay(String out_trade_no ,double total_amount,String subject) throws AlipayApiException  {
 		//设置请求参数
 		AlipayTradePagePayRequest alipayRequest = new AlipayTradePagePayRequest();
 		//同步回调
 		alipayRequest.setReturnUrl(AlipayConfig.return_url);
 		//异步回调
 		alipayRequest.setNotifyUrl(AlipayConfig.notify_url);
-		AlipayTradePagePayRequest request = new AlipayTradePagePayRequest();
-		request.setBizContent("{" +
+		alipayRequest.setBizContent("{" +
 				"\"out_trade_no\":\""+out_trade_no+"\"," +
 				"\"product_code\":\"FAST_INSTANT_TRADE_PAY\"," +
 				"\"total_amount\":"+total_amount+"," +
 				"\"subject\":\""+subject+"\"" +
 		"  }");
 		
-		AlipayTradePagePayResponse response = alipayClient.pageExecute(request);
+		AlipayTradePagePayResponse response = alipayClient.pageExecute(alipayRequest);
 		return response.getBody();
 	}
 	//退款
@@ -53,7 +53,7 @@ public class AlipayUtil {
 	 * @param total_amount 订单总金额
 	 * @throws AlipayApiException 
 	 */
-	public boolean refund(String out_trade_no,double total_amount) throws AlipayApiException {
+	public static boolean refund(String out_trade_no,double total_amount) throws AlipayApiException {
 		//详细文档：alipay.trade.page.pay
 		AlipayTradeRefundRequest request = new AlipayTradeRefundRequest();
 		request.setBizContent("{" +
@@ -79,7 +79,8 @@ public class AlipayUtil {
 	 * @return 返回支付宝订单
 	 * @throws Exception 
 	 */
-	public String returnUrl(HttpServletRequest request) throws Exception {
+	public static String[] returnUrl(HttpServletRequest request) throws Exception {
+		System.out.println("-------return----------------");
 		Map<String,String> params = new HashMap<String,String>();
 		Map<String,String[]> requestParams = request.getParameterMap();
 		for (Iterator<String> iter = requestParams.keySet().iterator(); iter.hasNext();) {
@@ -111,8 +112,10 @@ public class AlipayUtil {
 		String total_amount = new String(request.getParameter("total_amount").getBytes("ISO-8859-1"),"UTF-8");
 		
 		System.out.println("trade_no:"+trade_no+"<br/>out_trade_no:"+out_trade_no+"<br/>total_amount:"+total_amount);
-	
-		return trade_no;
+		String str[] = new String[2];
+		str[0] = out_trade_no;
+		str[1] = trade_no;
+		return str;
 			
 		}else {
 		throw new Exception("回调错误");
