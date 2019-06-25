@@ -18,7 +18,8 @@ import com.project.util.timingutil.ordertiming;
 @ComponentScan("com.project.config")
 @MapperScan("com.project.dao")
 @ComponentScan("com.project.shiro")
-@ComponentScan("com.project.util.timingutil")
+//@ComponentScan("com.project.util.timingutil")
+//@ComponentScan("com.project.util")
 @EnableCaching  //开启缓存
 public class WnHotelProjectApplication {
 	public static void main(String[] args) {

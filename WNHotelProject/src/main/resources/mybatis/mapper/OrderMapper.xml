@@ -30,9 +30,9 @@
 			<if test="payMoney!=0.0">
 				payMoney = #{payMoney}
 			</if>
-<!-- 			<if test="price!=0.0"> -->
-<!-- 				price = #{price} -->
-<!-- 			</if> -->
+			<if test="price!=0.0">
+				price = #{price}
+			</if>
 			<if test="subscribeStatus!=null">
 				subscribeStatus = #{subscribeStatus.id}
 			</if>
