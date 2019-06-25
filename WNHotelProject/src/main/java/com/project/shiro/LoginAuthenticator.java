@@ -20,13 +20,18 @@ public class LoginAuthenticator extends ModularRealmAuthenticator {
         LoginToken loginToken = (LoginToken) authenticationToken;
         // 登录类型
         String loginType = loginToken.getLoginType();
+        System.out.println("loginType:"+loginType);
         // 所有Realm
         Collection<Realm> realms = getRealms();
         // 登录类型对应的所有Realm
         Collection<Realm> typeRealms = new ArrayList<>();
         for (Realm realm : realms) {
-            if (realm.getName().contains(loginType))
+        	System.out.println("realmName:"+realm.getName());
+            if (realm.getName().contains(loginType)) {
+            	System.out.println("添加realm");
                 typeRealms.add(realm);
+            }
+            	
         }
 
         // 判断是单Realm还是多Realm

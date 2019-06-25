@@ -83,7 +83,6 @@ public class OrderServiceImp implements IOrderService{
 		
 		OrderBean orderBean = null;
 		for (LiveBean liveBean2 : liveBean) {
-			System.out.println("--------"+liveBean2);
 			//通过入住信息（orderid）查询订单
 			orderBean = orderDao.selectOrderByAttr(liveBean2);
 			list.add(orderBean);
