@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -82,5 +83,11 @@ public class DiscountHandler {
 	public int deleteDiscountById(int id) {
 		int res = discountService.deletDiscount(id);
 		return res;
+	}
+	@GetMapping("/admin/dicount/{id}")
+	@ResponseBody
+	public DiscountBean selectDiscountById(@PathVariable int id) {
+		DiscountBean discount = discountService.selectDiscountById(id);
+		return discount;
 	}
 }
