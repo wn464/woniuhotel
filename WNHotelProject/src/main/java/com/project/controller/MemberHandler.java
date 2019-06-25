@@ -81,6 +81,7 @@ public class MemberHandler {
 	@PostMapping("/member/login")
 	@ResponseBody
 	public String login(ModelMap map, @Validated MemberBean member,BindingResult result) {
+		System.out.println(member);
 		if(result.hasErrors()) {
 			System.out.println("----------出现错误----------");
 			List<FieldError> fieldErrors = result.getFieldErrors();
@@ -90,12 +91,11 @@ public class MemberHandler {
 			return "1";
 		}else {
 			Subject subject = SecurityUtils.getSubject();
-		
 			if(!subject.isAuthenticated()) {
 				UsernamePasswordToken token = new UsernamePasswordToken(member.getUserName(),member.getPassword());
 			
 				try {
-					
+					subject.login(token);
 					System.out.println("认证成功");
 					//把 id 和 用户名存到session  后续用的到
 					MemberBean bean = service.selectByUsername(member.getUserName());

@@ -26,9 +26,9 @@ public class UserServiceImpl implements IUserService {
 	 * 登录 （通过用户名查找用户）
 	 */
 	@Override
-	public UserBean login(String username) {
+	public UserBean selectByUserName(String username) {
 		// TODO Auto-generated method stub
-		return dao.login(username);
+		return dao.selectByUserName(username);
 	}
 
 	/*

@@ -38,7 +38,7 @@ public class UserRealm extends AuthorizingRealm{
 		Set<String> set = new HashSet<String>();
 		
 		//获取数据库中的角色
-		UserBean user = service.login((String)username);
+		UserBean user = service.selectByUserName((String)username);
 		RoleBean bean = service1.findRoleById(user.getId());
 		
 		if ("superAdmin".equals(bean.getRole())) {
@@ -55,7 +55,7 @@ public class UserRealm extends AuthorizingRealm{
 	protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken token) throws AuthenticationException {
 
 		String username = token.getPrincipal().toString();				//获取用户名
-		UserBean bean = service.login(username);
+		UserBean bean = service.selectByUserName(username);
 		SimpleAuthenticationInfo info =null;
 		if(bean!=null) {
 			ByteSource bytes = ByteSource.Util.bytes(username);
