@@ -2,7 +2,7 @@ package com.project.shiro;
 
 public enum LoginType {
 
-	user("user"),admin("admin");
+	user("Member"),admin("User");
 
 	private String type;
 	private  LoginType(String type) {
