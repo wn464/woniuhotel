@@ -141,24 +141,24 @@
 		</div>
 		<div id="big" style="float: left;">
 		<div id="all" class="hotel-box clearfix">
-			<div id="right">
+			<div id="right" th:each="room,iterStat : ${room.list}">
 				<div class="img">
-					<img src="" />
+<!-- 					<img src="" th:src="${room.img}"/> -->
 				</div>
 				<div class="message">
 					<div class="info-box">
 							<div class="hotel-main">
-								<h3>高级标准间</h3>
+								<h3 th:text="${room.type}">高级标准间</h3>
 
 								<div class="detail-info">
-									<span class="hotel-area"><em>28m²</em></span>
+									<span class="hotel-area" th:text="${room.area}"><em>28m²</em></span>
 									<span class="hotel-number">最大入住<em>2</em>人</span>
 									
 										<p class="hotel-des">单人床 宽90-130厘米</p>
 									
 									<!--<a onclick="showRoomDetail('RT05','高级标准间')" class="more" style="cursor:pointer">预订</a>-->
 								</div>
-                                  <h3>房间单价：500￥</h3>
+                                  <h3 th:text="${room.price}">房间单价：500￥</h3>
                                 
 								<!--<div class="fold-box" onClick="changeRoomRateShowStatus(this)" style="display:flex;align-items:Center;height:56px;right:0px;top:0px;width:26px">
 									<span class="icon-up" ></span>
@@ -169,7 +169,7 @@
 						</div>
 				</div>
 				<div class="din">
-					<input type="button" style="width: 100px;" value="预订" class="btn btn-primary"/>
+					<input onclick="window.location.href('order.html')" type="button" style="width: 100px;" value="预订" class="btn btn-primary"/>
 				</div>
 			
 		    </div>
@@ -185,13 +185,36 @@
 	</div>
 	<script type="text/javascript" src="js/jquery-2.2.3.min.js"></script>
 	<script type="text/javascript" src="js/bootstrap.js"></script>
+<!-- 	<script> -->
+<!-- 	(function ($) { -->
+<!-- 		  $.getUrlParam = function (name) { -->
+<!-- 		   var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)"); -->
+<!-- 		   var r = window.location.search.substr(1).match(reg); -->
+<!-- 		   if (r != null) return unescape(r[2]); return null; -->
+<!-- 		  } -->
+<!-- 		 })(jQuery); -->
+<!-- 	</script> -->
 	<!--/***********方法**************/-->
 	<script>
-	val();
+//     var thisURL = document.URL；
+//     var getval = thisURL.split('?')[1];
+//     var tid =getval.split("=")[1];
+//     alert(tid);
+//     var inTime = getval.split("=")[2];
+//     alert(inTime);
+//     var outTime = getval.spilt("=")[3];
+//     alert(outTime);
+// 	$(function(){
+// 		val();
+// 	})
+	
 	function val(){
-		var tid = $.query.get("tid");
-		var inTime = $.query.get("inTime");
-		var outTime = $.query.get("outTime");
+		var tid = $.getUrlParam("tid");
+		alert(tid);
+		var inTime = $.getUrlParam("inTime");
+		alert(inTime);
+		var outTime = $.getUrlParam("outTime");
+		alert(outTime);
 		var page=1;
 		var size=2;
 		find(tid,intime,outTime,page,size);
@@ -207,7 +230,7 @@
 	   			  var stu ="";
 	   			  for(var i=0;i<mes.list.length;i++){
 	   				  stu+="<div class='img'>"
-					           +"<img src='"+mes.list[i].img+"' />"
+					           +"<img src='images"+mes.list[i].img+"' />"
 				            +"</div>"
 				            +"<div class='message'>"
 					        +"<div class='info-box'>"
