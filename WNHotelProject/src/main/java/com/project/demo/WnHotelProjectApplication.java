@@ -7,12 +7,16 @@ import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cache.annotation.EnableCaching;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.scheduling.annotation.EnableScheduling;
+import org.springframework.web.socket.config.annotation.EnableWebSocket;
+import org.springframework.web.socket.server.standard.ServerEndpointExporter;
 
 import com.project.util.timingutil.ordertiming;
 @SpringBootApplication
 @EnableScheduling
+@EnableWebSocket
 @ComponentScan("com.project.controller")
 @ComponentScan("com.project.controller.after")
 @ComponentScan("com.project.Service")
@@ -25,5 +29,9 @@ public class WnHotelProjectApplication {
 		SpringApplication.run(WnHotelProjectApplication.class, args);
 	}
 
+	@Bean  
+    public ServerEndpointExporter serverEndpointExporter() {  
+        return new ServerEndpointExporter();  
+    }  
 }
 
