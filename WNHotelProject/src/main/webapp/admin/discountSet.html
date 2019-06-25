@@ -362,17 +362,17 @@ to {
 										<h3 class="h4">添加优惠</h3>
 									</div>
 									<div class="card-body">
-										<form class="form-horizontal">
+										<form class="form-horizontal" id="insertForm">
 											<div class="form-group row">
 												<label for="inlineFormInputGroup"
 													class="col-sm-3 form-control-label">优惠名称</label> <input
 													id="inlineFormInputGroup" placeholder="优惠名称"
-													class="col-sm-9" type="text">
+													class="col-sm-9" type="text" name="name">
 											</div>
 											<div class="form-group row">
 												<label for="discountType1"
 													class="col-sm-3 form-control-label">优惠类型</label> <select
-													id="discountType1" placeholder="优惠类型" class="col-sm-9">
+													id="discountType1" placeholder="优惠类型" class="col-sm-9" name="discountType">
 													<option>满额定金额折扣</option>
 													<option>满额定金额减免</option>
 													<option>没满额定金额减免</option>
@@ -385,28 +385,28 @@ to {
 												<label for="inlineFormInputGroup"
 													class="col-sm-3 form-control-label">开始时间</label> <input
 													id="inlineFormInputGroup" placeholder="开始时间"
-													class="col-sm-9" type="text">
+													class="col-sm-9" type="datetime-local" name="beginTime">
 											</div>
 											<div class="form-group row">
 												<label for="inlineFormInputGroup"
 													class="col-sm-3 form-control-label">结束时间</label> <input
 													id="inlineFormInputGroup" placeholder="结束时间"
-													class="col-sm-9" type="text">
+													class="col-sm-9" type="datetime-local" name="endTime">
 											</div>
 											<div class="form-group row">
 												<label for="inlineFormInputGroup"
 													class="col-sm-3 form-control-label">参数1</label> <input
 													id="inlineFormInputGroup" placeholder="参数1"
-													class="col-sm-9" type="text">
+													class="col-sm-9" type="text" name="number1">
 											</div>
 											<div class="form-group row">
 												<label for="inlineFormInputGroup"
 													class="col-sm-3 form-control-label">参数2</label> <input
 													id="inlineFormInputGroup" placeholder="参数2"
-													class="col-sm-9" type="text">
+													class="col-sm-9" type="text" name="number2">
 											</div>
 											<div class="form-group">
-												<button type="submit" class="btn btn-primary">添加</button>
+												<button type="button" class="btn btn-primary" onclick="insert()">添加</button>
 											</div>
 										</form>
 									</div>
@@ -466,19 +466,19 @@ to {
 										<h3 class="h4">修改</h3>
 									</div>
 									<div class="card-body">
-										<form class="form-horizontal">
-											<p>优惠名称：全场9折</p>
+										<form class="form-horizontal" id="setForm">
+											<p >优惠名称：<span id="showSetName"></span></p>
 
 											<div class="form-group row">
-												<label for="inlineFormInputGroup"
+												<label for="setName"
 													class="col-sm-3 form-control-label">优惠名称</label> <input
-													id="inlineFormInputGroup" placeholder="优惠名称"
-													class="col-sm-9" type="text">
+													id="setName" placeholder="优惠名称"
+													class="col-sm-9" type="text" name="name">
 											</div>
 											<div class="form-group row">
 												<label for="discountType2"
 													class="col-sm-3 form-control-label">优惠类型</label> <select
-													id="discountType2" placeholder="优惠类型" class="col-sm-9">
+													id="discountType2" placeholder="优惠类型" class="col-sm-9" name="discountType">
 													<option>满额定金额折扣</option>
 													<option>满额定金额减免</option>
 													<option>没满额定金额减免</option>
@@ -488,31 +488,31 @@ to {
 
 
 											<div class="form-group row">
-												<label for="inlineFormInputGroup"
+												<label for="setBeginTime"
 													class="col-sm-3 form-control-label">开始时间</label> <input
-													id="inlineFormInputGroup" placeholder="开始时间"
-													class="col-sm-9" type="datetime-local">
+													id="setBeginTime" placeholder="开始时间"
+													class="col-sm-9" type="datetime-local" name="beginTime">
 											</div>
 											<div class="form-group row">
-												<label for="inlineFormInputGroup"
+												<label for="setEndTime"
 													class="col-sm-3 form-control-label">结束时间</label> <input
-													id="inlineFormInputGroup" placeholder="结束时间"
-													class="col-sm-9" type="datetime-local">
+													id="setEndTime" placeholder="结束时间"
+													class="col-sm-9" type="datetime-local" name="endTime">
 											</div>
 											<div class="form-group row">
-												<label for="inlineFormInputGroup"
+												<label for="setNumber1"
 													class="col-sm-3 form-control-label">参数1</label> <input
-													id="inlineFormInputGroup" placeholder="参数1"
-													class="col-sm-9" type="text">
+													id="setNumber1" placeholder="参数1"
+													class="col-sm-9" type="text" name="number1">
 											</div>
 											<div class="form-group row">
-												<label for="inlineFormInputGroup"
+												<label for="setNumber2"
 													class="col-sm-3 form-control-label">参数2</label> <input
-													id="inlineFormInputGroup" placeholder="参数2"
-													class="col-sm-9" type="text">
+													id="setNumber2" placeholder="参数2"
+													class="col-sm-9" type="text" name="number2">
 											</div>
 											<div class="form-group">
-												<button type="submit" class="btn btn-primary">修改</button>
+												<button type="button" class="btn btn-primary" onclick="update()">修改</button>
 											</div>
 										</form>
 									</div>
