@@ -84,9 +84,12 @@ public class OrderHandler {
 	    session.setAttribute("id", 1);//测试使用
         int mid = (int) session.getAttribute("id");
 		PageBean bean = orderService.selectOrderByState(mid, status, 1, 50);
+		System.out.println(bean);
 		map.put("bean",bean);
+		
 		return "myorder.html";
 	}
+	
 	/*
 	 * 后台通过状态分页查询订单
 	 */

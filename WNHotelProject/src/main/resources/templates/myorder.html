@@ -61,14 +61,22 @@
 		<h3>订 单 详 情 </h3>
 		<h3><a href="#" id="myorder">已支付</a></h3>
 		<h3><a href="#" id="noorder">未支付</a></h3>
+		<h3><a href="#" id="time">已超时</a></h3>
 	</div>
 	
-	<!--默认显示已支付的订单   未支付的订单不能评价-->
+	<!--默认显示已支付的订单   未支付的订单不能
+
+-->
+<div style="margin-bottom: 550px" >
+
 	<div class="order" th:each="order,iterStat : ${bean.list}">
 		<div id="order-main" >
 			<div id="o-detail">
 				<h1 class='d-number'>
-					<span id="span1" th:text="${order.status.name}">已支付</span>
+					<span id="span1" th:if="${order.subscribeStatus==null}" th:text="待支付"></span>
+					<span id="span1" th:if="${order.subscribeStatus!=null&&order.subscribeStatus.id==8}" th:text="已入住"></span>
+					<span id="span1" th:if="${order.subscribeStatus!=null&&order.subscribeStatus.id==7}" th:text="已超时"></span>
+					<span id="span1" th:if="${order.subscribeStatus!=null&&order.subscribeStatus.id==9}" th:text="已预约"></span>
 					<span>订单号：</span>
 					<span th:text="${order.orderNumber}">12385643</span>
 				</h1>
@@ -104,8 +112,12 @@
 					</div>
 				</div>
 			<div id="gopay" >
-				<button class="btn btn-danger" id="pingjia" data-toggle="modal" data-target="#myModal01">评价</button>
-			</div>
+			 <button id="pay"  class="btn btn-danger" th:if="${order.subscribeStatus==null}" th:text="支付" ></button>
+			 <button id="pingjia" data-toggle="modal" data-target="#myModal01" class="btn btn-danger" th:if="${order.subscribeStatus!=null&&order.subscribeStatus.id==8}" th:text="评价" ></button>
+			 <button  class="btn btn-danger" th:if="${order.subscribeStatus!=null&&order.subscribeStatus.id==7}" th:text="超时" ></button>
+			 <button id="goback"  class="btn btn-danger" th:if="${order.subscribeStatus!=null&&order.subscribeStatus.id==9}" th:text="退款" ></button>
+			 
+			 </div>
 			</div>
 		</div>
 	</div>
@@ -117,13 +129,21 @@
 	        		<h4 class="modal-title" id="myModalLabel">评 价</h4>
 	      		</div>
 	      		<div class="modal-body">
-	      			
+	      			<form action='/add' method='post' enctype='multipart/form-data'>
+	      			<div id='md_right'><div class='div1'></div>
+	      			<br/><input type='file' name='imageName' id='inp' accept='image/*'>
+	      			<label for='img_input'></label></div></br>
+	      			<span>评论内容 ： &nbsp;</span>
+	      			<input type='textarea' class='test' name='mess' id='textar'><br>
+	      			<div class='modal-footer'>
+	      			<button type='submit' class='btn btn-primary' id='getup'>提交</button>
+	      			<button type='button' class='btn btn-default' data-dismiss='modal'>取消</button></div></form>
 	    		</div>
 			</div>
 		</div>
 	</div>
 							                	
-	
+	</div>
 <!--底部-->
 	<footer class="contact-footer">
 		<div class="copy">
@@ -134,6 +154,7 @@
 			<div class="clearfix"></div>
 		</div>
 	</footer>
+	
 	<script type="text/javascript" src="/js/jquery-2.2.3.min.js"></script>
 	<script type="text/javascript" src="/js/bootstrap.js"></script>
 	<script>
@@ -143,28 +164,17 @@
 		$("#noorder").click(function(){	
 			location.href="/order/state/5";	
 		})
-		$("#pingjia").click(function(){
-			var sta = $("#span1").text();
-			if(sta=="未支付"){
-				var str = "<h4>  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 未支付的订单不能进行评价</h4> "
-				$(".modal-body").html(str)
-				var num = "<button type='button' class='btn btn-default' data-dismiss='modal'>取消</button>";
-				$(".modal-footer").html(num);
-			}else{
-				var str = ""
-				str+="<form action='/add' method='post' enctype='multipart/form-data'>";
-				str+="<div id='md_right'><div class='div1'></div>";
-				str+="<br/><input type='file' name='imageName' id='inp' accept='image/*'><label for='img_input'></label></div></br>";
-				str +="<span>评论内容 ： &nbsp;</span>";
-				str+="<input type='textarea' class='test' name='mess' id='textar'><br>";
-				str+="<div class='modal-footer'>";
-				str+="<button type='submit' class='btn btn-primary' id='getup'>提交</button>";
-				str+="<button type='button' class='btn btn-default' data-dismiss='modal'>取消</button></div></form>"
-				$(".modal-body").html(str)
-			}
+		$("#time").click(function(){
+			location.href="/order/state/7"
 		})
 		
+		$("#pay").click(function(){
+			alert("跳转到支付页面 ")
+		})
 		
+		$("#goback").click(function(){
+			alert("跳转到退款页面")
+		})
 		
 		$("#inp").on("change", function(e) {
 			var file = e.target.files[0]; //获取图片资源
