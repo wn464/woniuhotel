@@ -27,6 +27,6 @@
 		<result property="userName" column="userName"/>
 		<result property="phoneNumber" column="phoneNumber"/>
 		<result property="money" column="money"/>
-		<association property="vip" javaType="VipBean" select="com.project.dao.IVipDao.selectVipById" column="vip"/>
+		<association property="vipBean" javaType="VipBean" select="com.project.dao.IVipDao.selectVipById" column="vip"/>
 	</resultMap>
 </mapper> 

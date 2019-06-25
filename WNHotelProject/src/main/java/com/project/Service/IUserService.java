@@ -17,7 +17,7 @@ public interface IUserService {
 	public UserBean selectUserById(int id);
 	
 	//登录时 通过用户名查找用户
-	public UserBean login(String username);
+	public UserBean selectByUserName(String username);
 	
 	//添加用户
 	public int reg(UserBean user);
