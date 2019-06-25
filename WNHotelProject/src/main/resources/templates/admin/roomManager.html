@@ -45,7 +45,7 @@
             <div class="navbar-holder d-flex align-items-center justify-content-between">
               <!-- Navbar Header-->
               <div class="navbar-header">
-                <!-- Navbar Brand --><a href="index.html" class="navbar-brand d-none d-sm-inline-block">
+                <!-- Navbar Brand --><a href="/admin/index.html" class="navbar-brand d-none d-sm-inline-block">
                   <div class="brand-text d-none d-lg-inline-block"><span>酒店管理  </span><strong>后台系统</strong></div>
                   <div class="brand-text d-none d-sm-inline-block d-lg-none"><strong>BD</strong></div></a>
                 <!-- Toggle Button--><a id="toggle-btn" href="#" class="menu-btn active"><span></span><span></span><span></span></a>
@@ -98,16 +98,14 @@
           
           <!-- Sidebar Navidation Menus--><span class="heading"></span>
           <ul class="list-unstyled">
-                    <li><a href="findRoom.html"> <i class="icon-home"></i>旅客入住</a></li>
-                             <li><a href="roomManager.html"> <i class="icon-grid"></i>房间管理</a></li>
-                             <li><a href="findOrder.html"> <i class="fa fa-bar-chart"></i>订单查询</a></li>
-                             <li><a href="findOrder.html"> <i class="icon-padnote"></i>旅客结账</a></li>
-                             
-                             <li><a href="login.html"> <i class="icon-interface-windows"></i>注销</a></li>
+                  
+                    <li><a href="findRoom.html"> <i class="icon-home"></i>顾客管理</a></li>
+                    <li><a href="/admin/findOrder.html"> <i class="fa fa-bar-chart"></i>订单操作</a></li>
+                	<li><a href="/afterstatus/1/4"> <i class="icon-grid"></i>房间管理</a></li>
+                   	<li><a href="login.html"> <i class="icon-interface-windows"></i>注销</a></li>
                    </ul><span class="heading">管理员</span>
                    <ul class="list-unstyled">
-                     <li> <a href="orderSet.html"> <i class="icon-flask"></i>订单修改</a></li>
-                     <li> <a href="roomSet.html"> <i class="icon-screen"></i>房间修改</a></li>
+                     
                      <li> <a href="discountSet.html"> <i class="icon-mail"></i>优惠管理</a></li>
                      <li> <a href="vipSet.html"> <i class="icon-picture"></i>vip管理</a></li>
                    <li> <a href="roleSet.html"> <i class="icon-interface-windows"></i>权限管理</a></li></ul>
@@ -122,48 +120,33 @@
           <!-- Dashboard Counts Section-->
           <section class="dashboard-counts no-padding-bottom">
             <div class="container-fluid">
-              <div class="row bg-white has-shadow">
-                <!-- Item -->
-                <div class="col-xl-3 col-sm-6">
-                  <div class="item d-flex align-items-center">
-                    <div class="icon bg-violet"><i class="icon-user"></i></div>
-                    <div class="title"><a  href="findRoom.html">
-												<span>旅客<br>入住</span>
-											</a>
-											
-                      
-                    </div>
-                    
-                  </div>
-                </div>
-                <!-- Item -->
-                <div class="col-xl-3 col-sm-6" >
-                  <div class="item d-flex align-items-center">
-                    <div class="icon bg-red"><i class="icon-padnote"></i></div>
-                    <div class="title">
-											<a  href="roomManager.html"><span>房间<br>管理</span></a>
-											
-                      
-                    </div>
-                    
-                  </div>
-                </div>
-                <!-- Item -->
+              <div class="row bg-white has-shadow"  style="padding-left: 180px">
+              <!-- Item -->
                 <div class="col-xl-3 col-sm-6">
                   <div class="item d-flex align-items-center">
                     <div class="icon bg-green"><i class="icon-bill"></i></div>
                     <div class="title">
-                      <a href="findOrder.html"><span>订单<br>查询</span></a>
+                      <a href="/afterstatus/1/4"><span>查询<br>房间</span></a>
                     </div>
-                    
                   </div>
                 </div>
+                <!-- Item -->
+               
+                <div class="col-xl-3 col-sm-6" style="margin: 0 100px;" >
+                  <div class="item d-flex align-items-center">
+                    <div class="icon bg-red"><i class="icon-padnote"></i></div>
+                    <div class="title">
+				<a  href="#"><span>修改<br>房间</span></a>
+                    </div>
+                  </div>
+                </div>
+                
                 <!-- Item -->
                 <div class="col-xl-3 col-sm-6">
                   <div class="item d-flex align-items-center">
                     <div class="icon bg-orange"><i class="icon-check"></i></div>
                     <div class="title">
-                      <a href="findOrder.html"><span>旅客<br>结账</span></a>
+                      <a href="#"><span>添加<br>房间</span></a>
                       
                     </div>
                     
@@ -186,26 +169,31 @@
                       <h3 class="h4">筛选房间</h3>
                     </div>
                     <div class="card-body">
-                      <div class="form-inline">
+                      <form class="form-inline">
     <div class="form-group">
                           <label for="inlineFormInputGroup" class="sr-only">房间类型</label>
-                          <select id="inlineFormInputGroup"  class="mr-3 form-control">
-                              <option>默认</option>
-					        <option>入住</option>
-					        <option>未入住</option>
-					        <option>故障</option>
-					        <option>打扫</option>
-      					 </select>
+                          <select id="inlineFormInputGroup" placeholder="房间类" class="mr-3 form-control">
+                              <option>
+                                  经济双人间
+                              </option>
+        </select>
                         </div>
-                        
-                        
-                      
-                          <button onclick="cx(1)" class="btn btn-primary">查询</button>
-                        
-                      </div>
+                        <div class="form-group">
+                          <label for="inlineFormInput" class="sr-only">入住时间</label>
+                          <input id="inlineFormInput" type="date" placeholder="入住时间" class="mr-3 form-control">
+                        </div>
+                        <div class="form-group">
+                          <label for="inlineFormInputGroup" class="sr-only">退房时间</label>
+                          <input id="inlineFormInputGroup" type="date" placeholder="退房时间" class="mr-3 form-control">
+                        </div>
+                        <div class="form-group">
+                          <button type="submit" class="btn btn-primary">查询</button>
+                        </div>
+                      </form>
                     </div>
                   </div>
                 </div>
+          
                 <div class="col-lg-12">
                   <div class="card">
                     
