@@ -110,4 +110,18 @@ public boolean updateroomstatusin(RoomBean room) {
 	return false;
 }
 
+@Override
+public PageBean selectroomall(int page, int size) {
+	PageBean bean = new PageBean();
+	
+	List<RoomBean> list = dao.selectroomall( (page-1)*size, size);
+	int totalNumber=dao.selectroomallnumber();
+	bean.setPage(page);
+	bean.setSize(size);
+	bean.setList(list);
+	bean.setTotalNumber(totalNumber);
+	bean.setTotalPage((totalNumber%size==0)?(totalNumber/size):(totalNumber/size+1));
+	return bean;
+}
+
 }

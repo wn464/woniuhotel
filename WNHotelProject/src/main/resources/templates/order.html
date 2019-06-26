@@ -69,7 +69,7 @@
 			</div>
 			<h4><span>房间号：</span><span th:text = "${roomBean.name}">201</span></h4>
 			<h4><span>应付金额：</span><span th:text = "${roomBean.price}" id="price">￥299</span></h4>
-			<h4><span>房间位置：</span><span th:text = "${roomBean.location}" >酒店六楼</span></h4>
+			<h4><span>房间位置：</span><span th:text = "${roomBean.area}" >酒店六楼</span></h4>
 		</div>
 		<div class="tow">
 			<h3>入住信息</h3>
@@ -168,7 +168,7 @@
 					type:"post",
 					data:"price="+price+"&lives[0].roomid="+rid+"&lives[0].people="+people+"&lives[0].inTime="+inTime+
 					"&lives[0].outTime="+outTime+"&lives[0].phoneNumber="+phoneNumber+
-					"&status.id=5&subscribeStatus.id=9&delState=10",
+					"&status.id=5&delState=10",
 					success:function(mes){
 						window.location.href="/order/"+mes;
 						}

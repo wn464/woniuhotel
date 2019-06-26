@@ -68,6 +68,7 @@ public class RoomHandler {
 		
 		int dl=0;
 		if(scb.getSession(false)!=null) {
+			System.out.println("------==========");
 			if(scb.getSession(false).getAttribute("id")!=null) {
 				dl=1;
 			}
@@ -151,15 +152,16 @@ public class RoomHandler {
 	}
 	
 	/**
-	 * 根据房间id查询房间详细信息
+	 * 点击入住跳转预约界面
 	 * @param rid房间id
 	 * @return
 	 */
-	@GetMapping(value="/rooms/{rid}")
-	public String selectroombyid1(@PathVariable("rid")Integer rid,ModelMap map) {
+	@GetMapping(value="/rooms/{rid}/{inTime}/{outTime}")
+	public String selectroombyid1(@PathVariable("rid")Integer rid,@PathVariable("inTime")String inTime,@PathVariable("outTime")String outTime,ModelMap map) {
       RoomBean bean = service.selectroombyid(rid);
-      System.out.println(bean);
       map.put("roomBean", bean);
+      map.put("inTime",inTime);
+      map.put("outTime", outTime);
       return "admin/subscribe.html";
 	}
 }

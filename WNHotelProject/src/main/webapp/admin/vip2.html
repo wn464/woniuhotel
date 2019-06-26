@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css"/>
+		<title></title>
+	</head>
+	<style type="text/css">
+		.top{
+			margin-top: -10px;
+			height: 50px;
+			width: 100%;
+			background-color: black;
+		}
+		.top h5{
+			color: white;
+			font-size: 22px;
+			font-weight: 500;
+			text-align: center;
+			line-height: 50px;
+		}
+		.header{
+			height: 65px;
+			width: 100%;
+			background-color: white;
+		}
+		.header li{
+			height: 60px;
+			width: 80px;
+			line-height: 65px;
+			list-style: none;
+			float: left;
+			margin-left: 460px;
+		}
+		.bottom{
+			border-bottom: 3px solid sandybrown;
+		}
+		.bottom a {
+			color: black!important;
+		}
+		.header li a{
+			margin-left: 4px;
+			color: darkgrey;
+			font-size: 18px;
+			font-weight: 700;
+		}
+		a:hover{
+			text-decoration: none;
+		}
+		.mess{
+			height: 642px;
+			width: 89.9%;
+			background-color: ghostwhite;
+			padding: 20px 0 0 160px;
+		}
+		.message{
+			width: 690px;
+			height: 140px;
+			background-color: white;
+			border-radius: 15px;
+			overflow: hidden;
+			padding: 30px;
+		}
+		.message h4{
+			margin: 5px 150px 0 70px;
+			float: left;
+		}
+		.message span{
+			float: left;
+			height: 81%;
+			width: 117px;
+			border-left: 1px solid lavender;
+		}
+		.message span i{
+			margin-left: 35px;
+		}
+		.message span p {
+			margin-left: 40px;
+			margin-top: 13px;
+			margin-bottom: 14px;
+			font-size: 18px;
+		}
+		.message span h5{
+			font-size: 18px;
+			color: darkgrey;
+			font-weight: 500;
+			margin-left: 20px;
+			margin-top: 40px;
+		}
+		.change{
+			width: 1000px;
+			height: 320px;
+			margin-top: 20px;
+			background-color: white;
+			border-radius: 15px;
+			overflow: hidden;
+			padding: 30px;
+		}
+		.change p{
+			height: 30px;
+			width: 74px;
+			color: black;
+			font-size: 18px;
+			border-bottom: 2px solid sandybrown;
+			margin-bottom: 50px;
+			margin-left: 80px;
+		}
+		.change span{
+			display: block;
+			margin-left: 210px;
+		}
+		.form-group{
+			margin-bottom: 25px;
+		}
+		.form-control{
+			width: 300px;
+		}
+		.btn{
+			margin-left: 420px;
+		}
+		
+	</style>
+	<body>
+		<script type="text/javascript" src="js/bootstrap.js" ></script>
+		<div class="top">
+			<h5>会员中心</h5>
+		</div>
+		<div class="header">
+			<ul>
+				<li><a href="vip.html">会员首页</a></li>
+				<li class="bottom"><a href="vip2.html">账号管理</a></li>
+			</ul>
+		</div>
+		<div class="mess">
+			<div class="message">
+				<h4>13923231010</h4>
+				<span>
+					<i><img src="img/vip1.png"/></i>
+					<p>VIP1</p>
+					<h5>会员等级</h5>
+				</span>
+				<span> 
+					<i><img src="img/vip2.png"/></i>
+					<p> &nbsp; 0</p>
+					<h5>消费金额</h5>
+				</span>
+				<span>
+					<i><img src="img/vip3.png"/></i>
+					<p> &nbsp; 0</p> 
+					<h5>&nbsp; 经验值</h5>
+				</span>
+			</div>
+			<div class="change">
+				<p>修改密码</p>
+				<span>
+					<form class="form-horizontal" role="form">
+						<div class="form-group">
+							<label for="inputEmail3" class="col-sm-2 control-label">
+								请输入旧密码   : &nbsp;&nbsp;
+							</label>
+						    <div class="col-sm-10">
+						    	<input type="text" class="form-control" >
+						    </div>
+						</div>
+						<div class="form-group">
+							<label for="inputEmail3" class="col-sm-2 control-label"></label>
+						    <div class="col-sm-10">
+						<!--旧密码输入错误时，显示错误信息的位置-->
+						    	<h6> &nbsp;&nbsp;&nbsp; <!--密码输入错误--></h6>
+						    </div>
+						</div>	
+						<div class="form-group">
+							<label for="inputPassword3" class="col-sm-2 control-label">
+								请输入新密码 : &nbsp;&nbsp;
+							</label>
+						    <div class="col-sm-10">
+						    	<input type="password" class="form-control" id="inputPassword3">
+						    </div>
+						</div>
+						<div class="form-group">
+							<label for="inputEmail3" class="col-sm-2 control-label"></label>
+						    <div class="col-sm-10">
+						<!--新密码不符合规范时，显示错误信息的位置-->
+						    	<h6> &nbsp;&nbsp;&nbsp; <!--密码不符合规范--></h6>
+						    </div>
+						</div>
+						<div class="form-group">
+							<div class="col-sm-offset-2 col-sm-10">
+						    	<button type="submit" class="btn btn-danger">提交</button>
+						    </div>
+						</div>
+					</form>
+				</span>
+				
+			</div>
+		</div>
+	</body>
+</html>
