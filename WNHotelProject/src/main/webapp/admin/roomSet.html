@@ -97,25 +97,37 @@
           
           <!-- Sidebar Navidation Menus--><span class="heading"></span>
           <ul class="list-unstyled">
-                 
+                   <li><a href="findRoom.html"> <i class="icon-home"></i>旅客入住</a></li>
+                             <li><a href="roomManager.html"> <i class="icon-grid"></i>房间管理</a></li>
+                             <li><a href="findOrder.html"> <i class="fa fa-bar-chart"></i>订单查询</a></li>
+                             <li><a href="findOrder.html"> <i class="icon-padnote"></i>旅客结账</a></li>
+                             
+                             <li><a href="login.html"> <i class="icon-interface-windows"></i>注销</a></li>
+                   </ul><span class="heading">管理员</span>
+                   <ul class="list-unstyled">
+                     <li> <a href="orderSet.html"> <i class="icon-flask"></i>订单修改</a></li>
+                     <li> <a href="roomSet.html"> <i class="icon-screen"></i>房间修改</a></li>
+                     <li> <a href="discountSet.html"> <i class="icon-mail"></i>优惠管理</a></li>
+                     <li> <a href="vipSet.html"> <i class="icon-picture"></i>vip管理</a></li>
+                   <li> <a href="roleSet.html"> <i class="icon-interface-windows"></i>权限管理</a></li></ul>
         </nav>
         <div class="content-inner" style="padding-bottom: 59.0476px;">
           <!-- Page Header-->
           <header class="page-header">
             <div class="container-fluid">
-              <h2 class="no-margin-bottom">添加房间</h2>
+              <h2 class="no-margin-bottom">房间</h2>
             </div>
           </header>
           <!-- Dashboard Counts Section-->
           <section class="dashboard-counts no-padding-bottom">
             <div class="container-fluid">
-              <div class="row bg-white has-shadow" style="padding-left: 180px">
-               
-                  <!-- Item -->
-                <div class="col-xl-3 col-sm-6" >
+              <div class="row bg-white has-shadow">
+                <!-- Item -->
+                <div class="col-xl-4 col-sm-6">
                   <div class="item d-flex align-items-center">
-                    <div class="icon bg-green"><i class="icon-bill"></i></div>
+                    <div class="icon bg-violet"><i class="icon-user"></i></div>
                     <div class="title">
+<<<<<<< HEAD
                       <a href="/afterroomall/1/4"><span>查询<br>房间</span></a>
                     </div>
                     
@@ -140,17 +152,46 @@
                     <div class="title">
                       <a href="/admin/roomSet.html"><span>添加<br>房间</span></a>
                       
+=======
+                    <a  href="javascript:addPage()"><span>房间<br>添加</span></a>
+											
+>>>>>>> branch 'master' of https://github.com/wn464/woniuhotel.git
                       
                     </div>
                     
                   </div>
                 </div>
+                <!-- Item -->
+                <div class="col-xl-4 col-sm-6" >
+                  <div class="item d-flex align-items-center">
+                    <div class="icon bg-red"><i class="icon-padnote"></i></div>
+                    <div class="title">
+											<a  href="javascript:findPage()"><span>房间<br>查询</span></a>
+											
+                      
+                    </div>
+                    
+                  </div>
+                </div>
+                
+                <!-- Item -->
+                <div class="col-xl-4 col-sm-6">
+                  <div class="item d-flex align-items-center">
+                    <div class="icon bg-orange"><i class="icon-check"></i></div>
+                    <div class="title">
+                      <a href="javascript:setPage()"><span>房间<br>修改</span></a>
+                      
+                    </div>
+                    
+                  </div>
+                </div>
+              
               </div>
             </div>
     <div class="container-fluid">
               <div class="row">
                 
-                <div class="col-lg-12">                           
+                <div class="col-lg-12" id="insert">                           
                   <div class="card">
                     
                     <div class="card-header d-flex align-items-center">
@@ -160,11 +201,18 @@
                       <form class="form-horizontal">
     			<div class="form-group row">
                           <label for="inlineFormInputGroup" class="col-sm-3 form-control-label">房间名称</label>
-                          <input id="inlineFormInputGroup" placeholder="房间名称" class="col-sm-9" type="text">
+                          <input id="inlineFormInputGroup" placeholder="房间名称" class="col-sm-9" type="text" name="name">
                         </div>
+<<<<<<< HEAD
     			<div class="form-group row">
                           <label for="inlineFormInputGroup" class="col-sm-3 form-control-label">房间类型</label>
                         <select id="inlineFormInputGroup" placeholder="房间类型" class="col-sm-9">
+=======
+    <div class="form-group row">
+                          <label for="insertType" class="col-sm-3 form-control-label">房间类型</label>
+                         
+                        <select placeholder="房间类型" class="col-sm-9" id="insertType" name="type.id">
+>>>>>>> branch 'master' of https://github.com/wn464/woniuhotel.git
                               <option>高级大床房</option>
 						        <option>豪华双床房</option>
 						        <option>家庭亲子房</option>
@@ -204,6 +252,115 @@
                     </div>
                   </div>
                 </div>
+<<<<<<< HEAD
+=======
+                <div class="col-lg-12" id="find">
+                  <div class="card">
+                    
+                    <div class="card-header d-flex align-items-center">
+                      <h3 class="h4">房间信息</h3>
+                    </div>
+                    <div class="card-body">
+                      <div class="table-responsive">                       
+                        <table class="table table-striped table-hover">
+                          <thead>
+                            <tr>
+                              
+                              <th>房间编号</th>
+    <th>房间名称</th>
+                              <th>房间类型</th>
+<th>房间图片</th>
+<th>房间状态</th>
+    <th>房间电话</th>
+<th>房间地址</th>
+                              
+    						  <th>房间说明</th><th>房间面积</th><th>房间价格</th><th>房间操作</th>
+  
+                            </tr>
+                          </thead>
+                          <tbody id="findTableTbody">
+                            <tr>
+                              
+                              <td>1</td>
+                              <td>601</td>
+                              <td>高级大床房</td>
+<td>601.jpg</td>
+<td>可住</td>
+                            <td>null</td>
+<td>null</td>
+        <td>环境优雅，支持点餐服务</td>
+<td>酒店六楼</td><td>299</td><td><a class="badge badge-rounded bg-green">修改</a><a class="badge badge-rounded bg-green">删除</a></td></tr>
+                            
+                            
+                          </tbody>
+                        </table>
+                        <ul class="pagination">
+						    <li class="page-link" onclick="before()">Previous</li>
+						    <li class="page-link" id="page">1</li>
+						    <li class="page-link">/</li>
+						    <li class="page-link" id="totalPage">4</li>
+						    <li class="page-link" onclick="after()">Next</li>
+						    <li>一共<span id="totalNumber">30</span>个结果</li>
+						  </ul>
+						  
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+              <div class="col-lg-12" id="set">                           
+                  <div class="card">
+                    
+                    <div class="card-header d-flex align-items-center">
+                      <h3 class="h4">修改房间</h3>
+                    </div>
+                    <div class="card-body">
+    <p>房间名称：601</p>
+                      <form class="form-horizontal">
+    <div class="form-group row">
+                          <label for="inlineFormInputGroup" class="col-sm-3 form-control-label">房间名称</label>
+                          <input id="inlineFormInputGroup" placeholder="房间名称" class="col-sm-9" type="text">
+                        </div>
+    <div class="form-group row">
+                          <label for="inlineFormInputGroup" class="col-sm-3 form-control-label">房间类型</label>
+                         
+                        <select id="inlineFormInputGroup" placeholder="房间类型" class="col-sm-9">
+                              <option>高级大床房</option>
+        <option>豪华双床房</option><option>家庭亲子房</option></select></div>
+
+                        
+                        
+<div class="form-group row">
+                          <label for="inlineFormInputGroup" class="col-sm-3 form-control-label">房间图片</label>
+                          <input id="inlineFormInputGroup" placeholder="房间图片" class="col-sm-9" type="file">
+                        </div>
+<div class="form-group row">
+                          <label for="inlineFormInputGroup" class="col-sm-3 form-control-label">电话号码</label>
+                          <input id="inlineFormInputGroup" placeholder="电话号码" class="col-sm-9" type="text">
+                        </div><div class="form-group row">
+                          <label for="inlineFormInputGroup" class="col-sm-3 form-control-label">地址</label>
+                          <input id="inlineFormInputGroup" placeholder="地址" class="col-sm-9" type="text">
+                        </div>
+<div class="form-group row">
+                          <label for="inlineFormInputGroup" class="col-sm-3 form-control-label">说明</label>
+                          <input id="inlineFormInputGroup" placeholder="说明" class="col-sm-9" type="text">
+                        </div>
+<div class="form-group row">
+                          <label for="inlineFormInputGroup" class="col-sm-3 form-control-label">面积</label>
+                          <input id="inlineFormInputGroup" placeholder="面积" class="col-sm-9" type="text">
+                        </div><div class="form-group row">
+                          <label for="inlineFormInputGroup" class="col-sm-3 form-control-label">价格</label>
+                          <input id="inlineFormInputGroup" placeholder="价格" class="col-sm-9" type="text">
+                        </div>
+                        <div class="form-group">
+                          <button type="submit" class="btn btn-primary">修改</button>
+                        </div>
+                      </form>
+                    </div>
+                  </div>
+                </div></div>
+            </div>
+>>>>>>> branch 'master' of https://github.com/wn464/woniuhotel.git
           </section>
 
           
@@ -248,7 +405,6 @@
     <script src="vendor/jquery.cookie/jquery.cookie.js"> </script>
     <script src="vendor/jquery-validation/jquery.validate.min.js"></script>
     <!-- Main File-->
-     <script src="/admin/js/head.js"></script>
     <script src="js/front.js"></script>
-  
+  <script src="js/roomSet.js"></script>
 </body></html>
