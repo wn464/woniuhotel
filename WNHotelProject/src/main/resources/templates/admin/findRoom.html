@@ -98,68 +98,27 @@
           
           <!-- Sidebar Navidation Menus--><span class="heading"></span>
           <ul class="list-unstyled">
-                    <li><a href="/afterstatus/1/4"> <i class="icon-home"></i>旅客入住</a></li>
-                    <li><a href="/afterroomall/1/4"> <i class="icon-grid"></i>房间管理</a></li>
-                    <li><a href="charts.html"> <i class="fa fa-bar-chart"></i>订单查询</a></li>
-                    <li><a href="forms.html"> <i class="icon-padnote"></i>旅客结账</a></li>
-                    
-                    <li><a href="login.html"> <i class="icon-interface-windows"></i>注销</a></li>
+                   <li><a href="/afterstatus/1/4"> <i class="icon-home"></i>顾客管理</a></li>
+               <li><a href="/admin/findOrder.html"> <i class="fa fa-bar-chart"></i>订单操作</a></li>
+           		<li><a href="/afterroomall/1/4"> <i class="icon-grid"></i>房间管理</a></li>
+              	<li><a href="login.html"> <i class="icon-interface-windows"></i>注销</a></li>
           </ul><span class="heading">管理员</span>
           <ul class="list-unstyled">
-            <li> <a href="#"> <i class="icon-flask"></i>订单修改</a></li>
-            <li> <a href="#"> <i class="icon-screen"></i>房间修改</a></li>
-            <li> <a href="#"> <i class="icon-mail"></i>优惠管理</a></li>
-            <li> <a href="#"> <i class="icon-picture"></i>vip管理</a></li>
-          <li> <a href="#"> <i class="icon-interface-windows"></i>权限管理</a></li></ul>
+          
+          <li> <a href="/admin/discountSet.html"> <i class="icon-mail"></i>优惠管理</a></li>
+       <li> <a href="/admin/vipSet.html"> <i class="icon-picture"></i>vip管理</a></li>
+     <li> <a href="/admin/roleSet.html"> <i class="icon-interface-windows"></i>权限管理</a></li></ul>
         </nav>
         <div class="content-inner" style="padding-bottom: 59.0476px;">
           <!-- Page Header-->
           <header class="page-header">
             <div class="container-fluid">
-              <h2 class="no-margin-bottom">主页</h2>
+              <h2 class="no-margin-bottom">顾客管理</h2>
             </div>
           </header>
           <!-- Dashboard Counts Section-->
           <section class="dashboard-counts no-padding-bottom">
-            <div class="container-fluid">
-              <div class="row bg-white has-shadow">
-                <!-- Item -->
-                <div class="col-xl-3 col-sm-6">
-                  <div class="item d-flex align-items-center">
-                    <div class="icon bg-violet"><i class="icon-user"></i></div>
-                    <div class="title"><a  href="/afterstatus/1/4">
-												<span>旅客<br>入住</span>
-											</a>
-											
-                      
-                    </div>
-                    
-                  </div>
-                </div>
-             
-                <!-- Item -->
-                <div class="col-xl-3 col-sm-6">
-                  <div class="item d-flex align-items-center">
-                    <div class="icon bg-green"><i class="icon-bill"></i></div>
-                    <div class="title">
-                      <a href="findOrder.html"><span>订单<br>查询</span></a>
-                    </div>
-                    
-                  </div>
-                </div>
-                <!-- Item -->
-                <div class="col-xl-3 col-sm-6">
-                  <div class="item d-flex align-items-center">
-                    <div class="icon bg-orange"><i class="icon-check"></i></div>
-                    <div class="title">
-                      <a href="findOrder.html"><span>旅客<br>结账</span></a>
-                      
-                    </div>
-                    
-                  </div>
-                </div>
-              </div>
-            </div>
+           
     <div class="container-fluid">
               <div class="row">
                 
@@ -227,9 +186,8 @@
                               <td th:text="${RoomBean.price}">￥200</td>
                               <td>待入住</td>
                               <td>
-   					 		<button  class="badge badge-rounded bg-green" onclick="rz()">入住</button>
+   					 		<a href="#" class="badge badge-rounded bg-green">入住</a>
                      		 </td>
-                     		 <td hidden th:text="${RoomBean.id}" id="rid">121</td>
                      	 </tr>
                          </tbody>
                         </table>
@@ -433,7 +391,6 @@
   	}
   }
   function ne(mess){
-	  
   	var count="";
 		for(var i=0;i<mess.length;i++){
 			count+=" <tr>" ;
@@ -442,8 +399,7 @@
            count+="<td>￥"+mess[i].price+"</td>";
            count+="<td>待入住</td>";
            count+="<td>";
-          count+=" <button class='badge badge-rounded bg-green' onclick='rz()'>入住</button></td>";
-          count+="<td hidden th:text="${RoomBean.id}" id="rid">121</td>"
+          count+=" <a href='#' class='badge badge-rounded bg-green'>入住</a></td>";
 			 count+="</tr>";
 		}
 		$("#house").html(count);
@@ -455,9 +411,6 @@
   	$("#xs").html("");
   });
   
-  function rz(rid){
-	  
-  }
   </script>
 </body>
 </html>
