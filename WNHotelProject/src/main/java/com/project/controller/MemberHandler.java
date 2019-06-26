@@ -149,9 +149,14 @@ public class MemberHandler {
 	@ResponseBody
 	public MemberBean selectById() {
 		Subject subject = SecurityUtils.getSubject();
-		int id = (int) subject.getSession().getAttribute("id");//获取当前登录的id
-		MemberBean bean = service.selectById(id);
-		return bean;
+		if(subject.getSession().getAttribute("id")!=null) {
+			int id = (int) subject.getSession().getAttribute("id");//获取当前登录的id
+			MemberBean bean = service.selectById(id);
+			System.out.println(bean);
+			return bean;
+		}else {
+			return null;
+		}
 		
 	}
 	
@@ -160,20 +165,29 @@ public class MemberHandler {
 	 */
 	@PutMapping("/user/update")
 	@ResponseBody
-	public String updataPassword(String password,String repassword) {
-		Subject subject = SecurityUtils.getSubject();
-		String userName =  (String) subject.getSession().getAttribute("userName");	//获取当前登录的用户名
-		
-		//将输入的原密码加密
-		Object obj = new SimpleHash("MD5",password,userName,1024);
-		
-		MemberBean member = service.selectByUsername(userName);
-		
-		if(member.getPassword().equals(obj.toString())) {
-			service.updatePassword(repassword, member.getId());		//如果旧密码匹配 执行修改密码sql
-			return "1";					//1是修改成功
+	public String updataPassword(String password, String repassword) {
+		System.out.println(repassword.length());
+		if(repassword.length()<6||repassword.length()>12) {
+			return "3";						//3前台输入是密码长度不合格
+		}else {
+			Subject subject = SecurityUtils.getSubject();
+			String userName =  (String) subject.getSession().getAttribute("userName");	//获取当前登录的用户名
+
+			MemberBean member = service.selectByUsername(userName);
+			
+			//将输入的原密码加密
+			Object obj = new SimpleHash("MD5",password,userName,1024);
+			
+			if(member.getPassword().equals(obj.toString())) {
+				//将输入的新密码加密
+				Object obj1 = new SimpleHash("MD5",repassword,userName,1024);
+				int num = service.updatePassword(obj1.toString(), member.getId());		//如果旧密码匹配 执行修改密码sql
+				System.out.println("用户的id是："+member.getId());
+				System.out.println("返回值是："+num);
+				return "1";					//1是修改成功
+			}
+			return "2";						//2是修改失败	
 		}
-		return "2";						//2是修改失败
 		
 	}
 }

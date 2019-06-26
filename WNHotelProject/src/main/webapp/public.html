@@ -25,13 +25,20 @@
 				type:"get",
 				dataType:"json",
 				success:function(mes){
-					 console.info(mes)
-					if(mes!=null){
-						str="";
-						str+="<a href='#' class='sign'>"+mes.userName+"</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"
+					str="";
+					if(mes.vipBean!=null){
+						
+						str+="<a href='/vip.html' class='sign' title='点击进入个人信息'>"+mes.userName+"&nbsp;&nbsp;&nbsp;"+"VIP"+mes.vipBean.id+"</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"
 						str+="<a href='/logout'  class='sign'> 注销 </a>"
+						
 						$("#header").html(str);
-					} 
+					}else{
+						str+="<a href='/vip.html' class='sign' title='点击进入个人信息'>"+mes.userName+"&nbsp;&nbsp;&nbsp;</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"
+						str+="<a href='/logout'  class='sign'> 注销 </a>"
+						
+						$("#header").html(str);
+						
+					}
 				}
 			})
 			
