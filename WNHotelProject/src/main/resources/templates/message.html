@@ -43,7 +43,7 @@
 								</li>
 								<li>
 									<a href="#" >客房介绍</a>
-									<ul class="secondary-nav">
+									<ul class="secondary-nav" id="fjxq">
 										<li>
 											<a href="message.html">高级大床房</a>
 										</li>
@@ -282,6 +282,26 @@
 				
 				$(".top-bar_sub_w3ls_agileits").load("/public.html");
 			})
+			
+			
+			function begin(){
+		$.ajax({
+			url:"/typeall",
+			async:true,
+			type:"get",
+			success:function(message){
+				console.info(message)
+				var count="";
+				for(var i=0;i<message.length;i++){
+					count+="<li>";
+					count+="<a href='/type/"+message[i].id+"'>"+message[i].name+"</a>";
+				count+="</li>";
+				}
+				$("#fjxq").html(count);
+			}
+		})
+	};
+	begin();
 	</script>
 </body>
 </html>
