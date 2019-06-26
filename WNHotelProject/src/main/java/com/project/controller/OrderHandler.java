@@ -38,7 +38,7 @@ public class OrderHandler {
 //	private OrderUtil orderutil;
 	
 	/*
-	 * 前台预定同时生成订单(线下预定时通过mname查询mid，添加mid)
+	 * 前台预定同时生成订单（线上散客、会员下单）
 	 */
 	@PostMapping
 	@ResponseBody
@@ -171,30 +171,18 @@ public class OrderHandler {
 	
 	
 	/*
-	 * 后台线下开单
+	 * 线下散客、会员开单
 	 */
 	@PostMapping("/after")
 	@ResponseBody
 	public String getOrder1(OrderBean orderBean) {
-		Subject subject = SecurityUtils.getSubject();
-	    Session session = subject.getSession(false);
-//	    session.setAttribute("id", 7);//测试使用
 	    String id = null;
-	    if (session!=null) {
-	    	int mid = (int) session.getAttribute("id");
-	        MemberBean memberBean = new MemberBean();
-	        memberBean.setId(mid);
-	        orderBean.setMember(memberBean);
-			OrderBean orderBean2 = orderService.getOrder(orderBean);
-			int oid = orderBean2.getId();
-			id = String.valueOf(oid);
-		}else {
-			OrderBean orderBean2 = orderService.getOrder(orderBean);
-			int oid = orderBean2.getId();
-			id = String.valueOf(oid);
-		}
-        
+		OrderBean orderBean2 = orderService.getOrder(orderBean);
+		int oid = orderBean2.getId();
+		id = String.valueOf(oid);
 		return id;
 	}
+	
+	
 	
 }
