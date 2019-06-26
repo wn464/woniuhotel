@@ -170,11 +170,11 @@
                               
                               
                             </tr>
-<!--                             <tr> -->
-<!--                               <th scope="row">状态</th> -->
+                            <tr>
+                              <th scope="row">状态</th>
 <!--                               <td th:if="${orderBean.subscribeStatus.id==9}" th:text="预约"></td> -->
 <!--                               <td th:if="${orderBean.subscribeStatus.id==8}" th:text="立即入住"></td> -->
-<!--                             </tr> -->
+                            </tr>
                             
                             <tr>
                               <th scope="row"  >额外优惠</th>
@@ -287,17 +287,24 @@
     <script src="/admin/vendor/jquery/jquery.min.js"></script>
     <script src="/admin/vendor/popper.js/umd/popper.min.js"> </script>
     <script src="/admin/vendor/bootstrap/js/bootstrap.min.js"></script>
+    
     <script src="/admin/vendor/jquery.cookie/jquery.cookie.js"> </script>
     <script src="/admin/vendor/jquery-validation/jquery.validate.min.js"></script>
     <!-- Main File-->
     <script src="/admin/js/front.js"></script>
-  	<script type="text/javascript" th:inline="javascript">
-  		function cashPay(){
+   <script type="text/javascript">
+		function cashPay(){
+			var sid = /*[[${orderBean.subscribeStatus.id}]]*/;
+		  	if (sid==9) {
+				alert("预定成功！")
+				window.location.href="/admin/index.htr
+			}
+		  	else {
   			if (confirm("完成结账，是否继续添加入住人员")) {
   				var oid = /*[[${orderBean.id}]]*/;
   				window.location.href="/order/people/"+oid
 			}
-  			
+			}
 		}
   	</script>
 </body></html>

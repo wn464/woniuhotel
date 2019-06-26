@@ -182,6 +182,13 @@ public class OrderHandler {
 		subscribeStatus.setId(8);
 		orderBean2.setSubscribeStatus(subscribeStatus);
 		orderService.updateOrderAttr(orderBean2);
+		//修改支付状态
+		OrderBean orderBean3 = new OrderBean();
+		orderBean3.setId(oid);
+		MarkBean staBean = new MarkBean();
+		staBean.setId(6);
+		orderBean3.setStatus(staBean);
+		orderService.updateOrderAttr(orderBean3);
 		OrderBean orderBean = orderService.selectOrderById(oid);
 		map.put("orderBean", orderBean);
 		return "admin/people.html";
@@ -266,7 +273,6 @@ public class OrderHandler {
 				orderBean2.setId(orderBean.getId());
 				orderService.updateOrderAttr(orderBean2);
 			}
-			System.out.println("______________________"+orderService.selectOrderById(orderBean.getId()));
 			return "admin/count1.html";
 		}
 		//非会员下单
@@ -296,7 +302,6 @@ public class OrderHandler {
 				orderBean2.setId(orderBean.getId());
 				orderService.updateOrderAttr(orderBean2);
 			}
-			System.out.println("______________________"+orderService.selectOrderById(orderBean.getId()));
 			return "admin/count1.html";
 		}
 		
