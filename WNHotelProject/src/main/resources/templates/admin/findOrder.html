@@ -28,7 +28,7 @@
 @-webkit-keyframes chartjs-render-animation{from{opacity:0.99}to{opacity:1}}@keyframes chartjs-render-animation{from{opacity:0.99}to{opacity:1}}.chartjs-render-monitor{-webkit-animation:chartjs-render-animation 0.001s;animation:chartjs-render-animation 0.001s;}</style><style type="text/css">/* Chart.js */
 @-webkit-keyframes chartjs-render-animation{from{opacity:0.99}to{opacity:1}}@keyframes chartjs-render-animation{from{opacity:0.99}to{opacity:1}}.chartjs-render-monitor{-webkit-animation:chartjs-render-animation 0.001s;animation:chartjs-render-animation 0.001s;}</style><style type="text/css">/* Chart.js */
 @-webkit-keyframes chartjs-render-animation{from{opacity:0.99}to{opacity:1}}@keyframes chartjs-render-animation{from{opacity:0.99}to{opacity:1}}.chartjs-render-monitor{-webkit-animation:chartjs-render-animation 0.001s;animation:chartjs-render-animation 0.001s;}</style></head>
-  <body class="" style="">
+  <body class="" style="" onload="window.scrollTo(0,document.body.scrollHeight); " >
     <div class="page">
       <!-- Main Navbar-->
       <header class="header">
@@ -92,21 +92,19 @@
       </header>
       <div class="page-content d-flex align-items-stretch"> 
         <!-- Side Navbar -->
+         <!-- Side Navbar -->
         <nav class="side-navbar">
           
           
           <!-- Sidebar Navidation Menus--><span class="heading"></span>
           <ul class="list-unstyled">
-                    <li><a href="/admin/index.html"> <i class="icon-home"></i>旅客入住</a></li>
-                    <li><a href="/admin/tables.html"> <i class="icon-grid"></i>房间管理</a></li>
-                    <li><a href="/charts.html"> <i class="fa fa-bar-chart"></i>订单查询</a></li>
-                    <li><a href="/forms.html"> <i class="icon-padnote"></i>旅客结账</a></li>
-                    
-                    <li><a href="/login.html"> <i class="icon-interface-windows"></i>注销</a></li>
+                   <li><a href="findRoom.html"> <i class="icon-home"></i>顾客管理</a></li>
+                    <li><a href="findOrder.html"> <i class="fa fa-bar-chart"></i>订单操作</a></li>
+                    <li><a href="roomManager.html"> <i class="icon-grid"></i>房间管理</a></li>
+                   	<li><a href="login.html"> <i class="icon-interface-windows"></i>注销</a></li>
           </ul><span class="heading">管理员</span>
           <ul class="list-unstyled">
-            <li> <a href="#"> <i class="icon-flask"></i>订单修改</a></li>
-            <li> <a href="#"> <i class="icon-screen"></i>房间修改</a></li>
+            
             <li> <a href="#"> <i class="icon-mail"></i>优惠管理</a></li>
             <li> <a href="#"> <i class="icon-picture"></i>vip管理</a></li>
           <li> <a href="#"> <i class="icon-interface-windows"></i>权限管理</a></li></ul>
@@ -115,69 +113,46 @@
           <!-- Page Header-->
           <header class="page-header">
             <div class="container-fluid">
-              <h2 class="no-margin-bottom">主页</h2>
+              <h2 class="no-margin-bottom">查询预定</h2>
             </div>
           </header>
           <!-- Dashboard Counts Section-->
           <section class="dashboard-counts no-padding-bottom">
             <div class="container-fluid">
-              <div class="row bg-white has-shadow">
-                <!-- Item -->
-                <div class="col-xl-3 col-sm-6">
-                  <div class="item d-flex align-items-center">
-                    <div class="icon bg-violet"><i class="icon-user"></i></div>
-                    <div class="title"><a  href="/admin/findRoom.html">
-												<span>旅客<br>入住</span>
-											</a>
-											
-                      
-                    </div>
-                    
-                  </div>
-                </div>
-                <!-- Item -->
+              <div class="row bg-white has-shadow" style="padding-left: 180px">
+                  <!-- Item -->
                 <div class="col-xl-3 col-sm-6" >
-                  <div class="item d-flex align-items-center">
-                    <div class="icon bg-red"><i class="icon-padnote"></i></div>
-                    <div class="title">
-											<a  href="/admin/roomManager.html"><span>房间<br>管理</span></a>
-											
-                      
-                    </div>
-                    
-                  </div>
-                </div>
-                <!-- Item -->
-                <div class="col-xl-3 col-sm-6">
                   <div class="item d-flex align-items-center">
                     <div class="icon bg-green"><i class="icon-bill"></i></div>
                     <div class="title">
-                      <a href="/findOrder.html"><span>订单<br>查询</span></a>
+                      <a href="findOrder.html"><span>查询<br>预定</span></a>
                     </div>
                     
                   </div>
                 </div>
+                
+                <!-- Item -->
+                
+                <div class="col-xl-3 col-sm-6" style="margin: 0 100px;">
+                  <div class="item d-flex align-items-center">
+                    <div class="icon bg-red"><i class="icon-padnote"></i></div>
+                    <div class="title">
+					<a  href="orderSet.html"><span>查询<br>订单</span></a>
+                    </div>
+                  </div>
+                </div>
+                
+                
                 <!-- Item -->
                 <div class="col-xl-3 col-sm-6">
                   <div class="item d-flex align-items-center">
                     <div class="icon bg-orange"><i class="icon-check"></i></div>
                     <div class="title">
-                      <a href="/findOrder.html"><span>旅客<br>结账</span></a>
-                      
+                      <a href="/admin/delorder.html"><span>删除<br>订单</span></a>
                     </div>
-                    
                   </div>
                 </div>
-                <!-- Item -->
-                <div class="col-xl-3 col-sm-6">
-                  <div class="item d-flex align-items-center">
-                    <div class="icon bg-orange"><i class="icon-check"></i></div>
-                    <div class="title"><span>旅客<br>结账</span>
-                      
-                    </div>
-                    
-                  </div>
-                </div>
+
               </div>
             </div>
     <div class="container-fluid">
@@ -200,14 +175,9 @@
                           <label for="inlineFormInputGroup" class="col-sm-3 form-control-label">姓名</label>
                           <input id="inlineFormInputGroup" placeholder="姓名" class="col-sm-9" type="text" name = "people">
                         </div>
-                        
-                        <div class="form-group row">
-                          <label for="inlineFormInputGroup" class="col-sm-3 form-control-label">电话号码</label>
-                          <input id="inlineFormInputGroup" placeholder="电话号码" class="col-sm-9" type="text" name ="phoneNumber">
-                        </div>
                         <div class="form-group row">
                           <label for="inlineFormInputGroup" class="col-sm-3 form-control-label">入住时间</label>
-                          <input id="inlineFormInputGroup" placeholder="入住时间" class="col-sm-9" type="date" style="border: 0.5px solid #a9a9a9;color:#a9a9a9 " name="inTime">
+                          <input id="inlineFormInputGroup" placeholder="入住时间" class="col-sm-9" type="date" style="border: 0.5px solid #a9a9a9;color:#757575 " name="inTime">
                         </div>
                         <div class="form-group">
                           <button type="submit" class="btn btn-primary">查询</button>
@@ -250,9 +220,9 @@
     						  <td th:if="${orderBean.subscribeStatus.id==8}" th:text="已入住">入住</td>        
     						 
     						  <td>
-		                      <a href="#" class="badge badge-rounded bg-green" data-toggle="modal" data-target="#myModal" th:if="${orderBean.subscribeStatus.id==9}" th:text="办理入住">办理入住</a>
-		                      <a href="#" class="badge badge-rounded bg-green" data-toggle="modal" data-target="#myModal" th:if="${orderBean.subscribeStatus.id==9}" th:text="取消预定">取消预定</a>
-		                       <a href="#" class="badge badge-rounded bg-green" data-toggle="modal" data-target="#myModal" th:if="${orderBean.subscribeStatus.id==8}" th:text="退房" id="returnRoom">退房</a>
+		                      <a th:href="@{/order/people/{name}(name=${orderBean.id})}" class="badge badge-rounded bg-green" ><span th:if="${orderBean.subscribeStatus.id==9}" th:text="办理入住">入住</span></a>
+<!-- 		                      <a href="#" class="badge badge-rounded bg-green" th:if="${orderBean.subscribeStatus.id==9}" th:text="取消预定">预定</a> -->
+		                      <a href="#" class="badge badge-rounded bg-green" th:if="${orderBean.subscribeStatus.id==8}" th:text="退房">退房</a>
 		                      </td>
 
 		                    </tr>

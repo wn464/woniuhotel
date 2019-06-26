@@ -150,4 +150,17 @@ public class RoomHandler {
 		PageBean bean=service.selectroombytypeantime(type, inTime, outTime, page, size);	
 		return bean;
 	}
+	
+	/**
+	 * 根据房间id查询房间详细信息
+	 * @param rid房间id
+	 * @return
+	 */
+	@GetMapping(value="/rooms/{rid}")
+	public String selectroombyid1(@PathVariable("rid")Integer rid,ModelMap map) {
+      RoomBean bean = service.selectroombyid(rid);
+      System.out.println(bean);
+      map.put("roomBean", bean);
+      return "admin/subscribe.html";
+	}
 }
