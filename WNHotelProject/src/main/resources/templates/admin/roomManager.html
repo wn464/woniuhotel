@@ -169,10 +169,10 @@
                       <h3 class="h4">筛选房间</h3>
                     </div>
                     <div class="card-body">
-                      <form class="form-inline">
+                      <div class="form-inline">
     <div class="form-group">
                           <label for="inlineFormInputGroup" class="sr-only">房间类型</label>
-                          <select id="inlineFormInputGroup" placeholder="房间类" class="mr-3 form-control">
+                          <select id="in" class="mr-3 form-control">
                               <option>
                                   经济双人间
                               </option>
@@ -180,16 +180,16 @@
                         </div>
                         <div class="form-group">
                           <label for="inlineFormInput" class="sr-only">入住时间</label>
-                          <input id="inlineFormInput" type="date" placeholder="入住时间" class="mr-3 form-control">
+                          <input id="Input" type="date" placeholder="入住时间" class="mr-3 form-control">
                         </div>
                         <div class="form-group">
                           <label for="inlineFormInputGroup" class="sr-only">退房时间</label>
-                          <input id="inlineFormInputGroup" type="date" placeholder="退房时间" class="mr-3 form-control">
+                          <input id="Group" type="date" placeholder="退房时间" class="mr-3 form-control">
                         </div>
                         <div class="form-group">
-                          <button type="submit" class="btn btn-primary">查询</button>
+                          <button  class="btn btn-primary" onclick="cx(1)">查询</button>
                         </div>
-                      </form>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -309,6 +309,40 @@
     <!-- Main File-->
     <script src="/admin/js/front.js"></script>
     <script>
+    function cx(page){
+    	var type=parseInt($("#in").val());
+    	var intime=$("#Input").val();
+    	var outtime=$("#Group").val();
+    	var now=getNowFormatDate();
+    	$.ajax({
+    		url:"/aftertime/"+type+"/"+(intime+"")+"/"+(outtime+"")+"/"+parseInt(page)+"/4",
+    		type:"get",
+    		async:true,
+    		success:function(mesgs){
+    			console.info(mesgs)
+    			ne(mesgs.list);
+    			$("#xyy").removeAttr("onclick");
+    		}
+    	})
+    }
+    function getNowFormatDate() {
+        var date = new Date();
+        var seperator1 = "-";
+        var year = date.getFullYear();
+        var month = date.getMonth() + 1;
+        var strDate = date.getDate();
+        if (month >= 1 && month <= 9) {
+            month = "0" + month;
+        }
+        if (strDate >= 0 && strDate <= 9) {
+            strDate = "0" + strDate;
+        }
+        var currentdate = year + seperator1 + month + seperator1 + strDate;
+        return currentdate;
+    }
+    
+    
+    
     function typebegin(){
     	$.ajax({
     		url:"/aftertypeall",
@@ -319,7 +353,7 @@
     			for(var i=0;i<meg.length;i++){
     				cou+=" <option value="+meg[i].id+">"+meg[i].name+"</option>"
     			}
-    			$("#inlineFormInputGroup").html(cou)
+    			$("#in").html(cou)
     		}
     	})
     }
@@ -336,20 +370,7 @@
         		async:true,
         		type:"get",
         		success:function(mess){
-        			console.info(mess)
-        			var count="";
-        			for(var i=0;i<mess.list.length;i++){
-        				count+=" <tr>" ;
-                        count+=" <td>"+mess.list[i].name+"</td>";
-                        count+=" <td>"+mess.list[i].type.name+"</td>";
-                         count+="<td>￥"+mess.list[i].price+"</td>";
-                         count+="<td>待入住</td>";
-                         count+="<td><a href=''#' class='badge badge-rounded bg-green' data-toggle='modal' data-target='#myModal'>入住</a>";
-                         count+="<a href='#' class='badge badge-rounded bg-green'>打扫</a>";
-                        count+=" <a href='#' class='badge badge-rounded bg-green'>报修</a></td>";
- 					 count+="</tr>";
-        			}
-        			$("#house").html(count);
+        			ne(mess.list)
         			$("#page").html(mess.page);
         	    	$("#totalpage").html(mess.totalpage);
         		}
@@ -367,25 +388,30 @@
         		async:true,
         		type:"get",
         		success:function(messg){
-        			console.info(messg)
-        			var count="";
-        			for(var i=0;i<messg.list.length;i++){
-        				count+=" <tr>" ;
-                        count+=" <td>"+messg.list[i].name+"</td>";
-                        count+=" <td>"+messg.list[i].type.name+"</td>";
-                         count+="<td>￥"+messg.list[i].price+"</td>";
-                         count+="<td>待入住</td>";
-                         count+="<td><a href=''#' class='badge badge-rounded bg-green' data-toggle='modal' data-target='#myModal'>入住</a>";
-                         count+="<a href='#' class='badge badge-rounded bg-green'>打扫</a>";
-                        count+=" <a href='#' class='badge badge-rounded bg-green'>报修</a></td>";
- 					 count+="</tr>";
-        			}
-        			$("#house").html(count);
+        			ne(messg.list)
         			$("#page").html(messg.page);
         	    	$("#totalpage").html(messg.totalpage);
         		}
     		})
     	}
+    }
+    
+    
+    
+    function ne(mess){
+    	var count="";
+		for(var i=0;i<mess.length;i++){
+			count+=" <tr>" ;
+            count+=" <td>"+mess[i].name+"</td>";
+            count+=" <td>"+mess[i].type.name+"</td>";
+             count+="<td>￥"+mess[i].price+"</td>";
+             count+="<td>待入住</td>";
+             count+="<td><a href=''#' class='badge badge-rounded bg-green' data-toggle='modal' data-target='#myModal'>入住</a>";
+             count+="<a href='#' class='badge badge-rounded bg-green'>打扫</a>";
+            count+=" <a href='#' class='badge badge-rounded bg-green'>报修</a></td>";
+			 count+="</tr>";
+		}
+		$("#house").html(count);
     }
     
     </script>
