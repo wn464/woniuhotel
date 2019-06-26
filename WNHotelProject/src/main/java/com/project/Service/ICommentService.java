@@ -13,5 +13,7 @@ public interface ICommentService {
 	public PageBean selectComment(int page,int size);
 	//查询所有评论
 	public List<CommentBean> selectAllComment();
+	//后台查看所有人评论
+	public List<CommentBean> selectMoreComment();
 
 }
