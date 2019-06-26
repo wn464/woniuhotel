@@ -36,11 +36,11 @@ public class MemberServiceImpl implements IMemberService {
 	 * 修改密码
 	 */
 	@Override
-	public int updatePassword(String password,String repassword,int id) {
+	public int updatePassword(String repassword,int id) {
 		// TODO Auto-generated method stub
 		
 		
-		return 0;
+		return dao.updatePassword(repassword, id);
 	}
 
 	/*
@@ -70,6 +70,15 @@ public class MemberServiceImpl implements IMemberService {
 	public MemberBean selectByUsername(String userName) {
 		// TODO Auto-generated method stub
 		return dao.selectByUsername(userName);
+	}
+	
+	/*
+	 * 通过手机号查询
+	 */
+	@Override
+	public MemberBean selectByPhoneNumber(String phoneNumber) {
+		// TODO Auto-generated method stub
+		return dao.selectByPhoneNumber(phoneNumber);
 	}
 
 }
