@@ -112,7 +112,7 @@
           <!-- Page Header-->
           <header class="page-header">
             <div class="container-fluid">
-              <h2 class="no-margin-bottom">主页</h2>
+              <h2 class="no-margin-bottom">删除订单</h2>
             </div>
           </header>
           <!-- Dashboard Counts Section-->
@@ -170,22 +170,17 @@
                       <h3 class="h4">筛选要删除的订单</h3>
                     </div>
                     <div class="card-body">
-                      <form class="form-horizontal" action="/order/attr" method="get">
+                     <form class="form-horizontal">
    					   <div class="form-group row">
                           <label for="inlineFormInputGroup" class="col-sm-3 form-control-label">姓名</label>
                           <input id="inlineFormInputGroup" placeholder="姓名" class="col-sm-9" type="text" name = "people">
                         </div>
-                        
-                        <div class="form-group row">
-                          <label for="inlineFormInputGroup" class="col-sm-3 form-control-label">电话号码</label>
-                          <input id="inlineFormInputGroup" placeholder="电话号码" class="col-sm-9" type="text" name ="phoneNumber">
-                        </div>
                         <div class="form-group row">
                           <label for="inlineFormInputGroup" class="col-sm-3 form-control-label">入住时间</label>
-                          <input id="inlineFormInputGroup" placeholder="入住时间" class="col-sm-9" type="date" style="border: 0.5px solid #a9a9a9;color:#a9a9a9 " name="inTime">
+                          <input id="inlineFormInputGroup" placeholder="入住时间" class="col-sm-9" type="date" style="border: 0.5px solid #a9a9a9;color:#757575 " name="inTime">
                         </div>
                         <div class="form-group">
-                          <button type="submit" class="btn btn-primary">查询</button>
+                          <button type="button" class="btn btn-primary" onclick="check()"">查询</button>
                         </div>
                       </form>
                     </div>
@@ -290,5 +285,9 @@
     <script src="vendor/jquery-validation/jquery.validate.min.js"></script>
     <!-- Main File-->
     <script src="js/front.js"></script>
-  
+  	<script type="text/javascript">
+		function check() {
+		}
+  	
+  	</script>
 </body></html>
