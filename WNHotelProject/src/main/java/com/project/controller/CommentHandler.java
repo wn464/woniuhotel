@@ -47,6 +47,7 @@ public class CommentHandler {
 		// 获取到tomcat的物理路径 将虚拟路径转化为物理路径
 		ServletContext context = req.getServletContext();
 		String path = context.getRealPath("/upload");
+		System.out.println(path);
 		File file = new File(path);
 		if (!file.exists()) {
 			file.mkdirs();
@@ -84,6 +85,7 @@ public class CommentHandler {
 	@ResponseBody
 	public List<CommentBean> selectAll() {
 		List<CommentBean> list = service.selectAllComment();
+		System.out.println(list);
 		return list;
 	}
 
