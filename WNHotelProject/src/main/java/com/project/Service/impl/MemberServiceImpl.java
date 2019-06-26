@@ -39,7 +39,6 @@ public class MemberServiceImpl implements IMemberService {
 	public int updatePassword(String repassword,int id) {
 		// TODO Auto-generated method stub
 		
-		
 		return dao.updatePassword(repassword, id);
 	}
 
