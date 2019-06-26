@@ -99,10 +99,10 @@
           <ul class="list-unstyled">
                     <li><a href="/admin/index.html"> <i class="icon-home"></i>旅客入住</a></li>
                     <li><a href="/admin/tables.html"> <i class="icon-grid"></i>房间管理</a></li>
-                    <li><a href="/charts.html"> <i class="fa fa-bar-chart"></i>订单查询</a></li>
-                    <li><a href="/forms.html"> <i class="icon-padnote"></i>旅客结账</a></li>
+                    <li><a href="/admin/charts.html"> <i class="fa fa-bar-chart"></i>订单查询</a></li>
+                    <li><a href="/admin/forms.html"> <i class="icon-padnote"></i>旅客结账</a></li>
                     
-                    <li><a href="/login.html"> <i class="icon-interface-windows"></i>注销</a></li>
+                    <li><a href="/admin/login.html"> <i class="icon-interface-windows"></i>注销</a></li>
           </ul><span class="heading">管理员</span>
           <ul class="list-unstyled">
             <li> <a href="#"> <i class="icon-flask"></i>订单修改</a></li>
@@ -152,7 +152,7 @@
                   <div class="item d-flex align-items-center">
                     <div class="icon bg-green"><i class="icon-bill"></i></div>
                     <div class="title">
-                      <a href="/findOrder.html"><span>订单<br>查询</span></a>
+                      <a href="/admin/findOrder.html"><span>订单<br>查询</span></a>
                     </div>
                     
                   </div>
@@ -162,7 +162,7 @@
                   <div class="item d-flex align-items-center">
                     <div class="icon bg-orange"><i class="icon-check"></i></div>
                     <div class="title">
-                      <a href="/findOrder.html"><span>旅客<br>结账</span></a>
+                      <a href="/admin/findOrder.html"><span>旅客<br>结账</span></a>
                       
                     </div>
                     
@@ -250,9 +250,9 @@
     						  <td th:if="${orderBean.subscribeStatus.id==8}" th:text="已入住">入住</td>        
     						 
     						  <td>
-		                      <a href="#" class="badge badge-rounded bg-green" data-toggle="modal" data-target="#myModal" th:if="${orderBean.subscribeStatus.id==9}" th:text="办理入住">办理入住</a>
-		                      <a href="#" class="badge badge-rounded bg-green" data-toggle="modal" data-target="#myModal" th:if="${orderBean.subscribeStatus.id==9}" th:text="取消预定">取消预定</a>
-		                       <a href="#" class="badge badge-rounded bg-green" data-toggle="modal" data-target="#myModal" th:if="${orderBean.subscribeStatus.id==8}" th:text="退房" id="returnRoom">退房</a>
+		                      <a th:href="@{/order/people/{name}(name=${orderBean.id})}" class="badge badge-rounded bg-green" ><span th:if="${orderBean.subscribeStatus.id==9}" th:text="办理入住">入住</span></a>
+<!-- 		                      <a href="#" class="badge badge-rounded bg-green" th:if="${orderBean.subscribeStatus.id==9}" th:text="取消预定">预定</a> -->
+		                      <a href="#" class="badge badge-rounded bg-green" th:if="${orderBean.subscribeStatus.id==8}" th:text="退房" id="returnRoom">退房</a>
 		                      </td>
 
 		                    </tr>

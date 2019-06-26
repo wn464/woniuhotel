@@ -150,16 +150,16 @@
 				<ul class="booking-container">
 					<li>
 						<label>入住时间：</label>
-						<input type="date" class="input-times"/>
+						<input id="in" type="date" class="input-times"/>
 					</li>
 					<li>
 						<label>离店时间： </label>
-						<input type="date" class="input-times"/>
+						<input id="out" type="date" class="input-times"/>
 					</li>
 					<li>
 						<div class="select-wrap">
 							<label class="select-wrap-label">房间类型</label>
-							<select name="rn" class="booking-select">
+							<select id="type" name="rn" class="booking-select">
 								<option value="1">高级大床房</option>
 								<option value="2">豪华双床房</option>
 								<option value="3">家庭亲子房</option>
@@ -170,7 +170,7 @@
 						</div>
 					</li>
 					<li>
-						<a href="find.html" class="searchBtn" style="margin-left: 714px;">查询</a>
+						<button type="button"  class="searchBtn" style="margin-left: 714px;" onclick="put()">查询</button>		
 					</li>
 				</ul>
 			</div>
@@ -210,9 +210,26 @@
 		</div>
 	</footer>
 	
+
+	 <script>
+ 		window.onload = function () { 
+  			document.getElementById("password1").onchange = validatePassword;  
+ 			document.getElementById("password2").onchange = validatePassword; 
+ 		} 
+ 		function validatePassword() { 
+ 			var pass2 = document.getElementById("password2").value; 
+ 			var pass1 = document.getElementById("password1").value; 
+ 			if (pass1 != pass2) 
+ 				document.getElementById("password2").setCustomValidity("Passwords Don't Match"); 
+ 			else 
+ 				document.getElementById("password2").setCustomValidity(''); 
+ 		} 
+   	</script>    
+
 	 <script type="text/javascript" src="js/move-top.js"></script>
 	<script type="text/javascript" src="js/easing.js"></script>
 	<script type="text/javascript" src="js/bootstrap.js"></script>
+>>>>>>> branch 'master' of https://github.com/wn464/woniuhotel.git
  
 	<script>
 	$("#myorder").click(function(){
@@ -323,6 +340,18 @@
 		    }
 		}
 		mp.addOverlay(canvasLayer);
+// 		*********************************************传值**********************
+      function put(){
+    	  var inTime=$("#in").val();
+          var outTime=$("#out").val();
+          var tid=$("#type option:selected").val();
+          var page=1;
+          var size=2;
+//           url ="findaa.html?tid="+tid+"&inTime="+inTime+"&outTime="+outTime;
+//           window.location.href = "/time?tid="+tid+"&inTime="+inTime+"&outTime="+outTime+"&page="+page+"&size="+size;
+             window.location.href = "/time/"+tid+"/"+inTime+"/"+outTime+"/"+page+"/"+size;
+}
+     
 </script>
 </body>
 </html>

@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<title> ! !  Comment</title>	<!--用户登录后，点击酒店评价所跳转的页面，该页面显示酒店所有的订单-->
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta charset="utf-8">
+	<meta name="keywords" content="" />
+	<link href="/css/bootstrap.css" rel='stylesheet' type='text/css' />
+	<link href="/css/style.css" rel='stylesheet' type='text/css' />
+	<link rel="stylesheet" type="text/css" href="/css/order.css"/>
+	<link rel="stylesheet" href="/css/bootstrap.css" />
+</head>
+<style>
+	#all{
+		/*border: 1px solid black;*/
+		float: left;
+		 margin-left: 50px;
+		 
+	}
+	#left{
+		background-color: white;
+		width: 360px;
+		height: 300px;
+        float: left;
+        margin-top: 50px;
+        margin-left:150px;
+        border:1px solid #cceff5;background:#fafcfd
+	}
+	#right{
+		background-color: white;
+		width: 800px;
+		height: 150px;
+		margin-left: 50px;
+		float: left;
+		margin-top: 50px;
+		border:1px solid #cceff5;background:#fafcfd
+	}
+	.img{
+		width: 100px;
+		height: 148px;
+		float: left;
+		}
+	.message{
+			margin-left: 20px;
+			float: left;
+		}
+	.din{
+		margin-top: 40px;
+		margin-left: 350px;
+		float: left;
+	}
+    #big{
+    	width: 800px;
+    }
+    .page{
+    	margin-left: 50px;
+    }
+	.page div{
+		float: left;
+		margin-left: 50px;
+		margin-top: 30px;
+	}
+</style>
+<body>
+	<div class="top-bar_sub_w3ls_agileits">
+		
+	</div>
+	<a href="/index.html"><h2 style="float: right; margin: 60px 130px 0 0 ; color: gray;">主页</h2></a>
+	<div class="floy">
+		<h3></h3>
+	</div>
+	<!--显示评价内容的区域-->
+		<div id="left" >
+			<div class="search-box"> 
+							<form class="base-booking-form searchRoomForm" action="/bookingEngine/76875B08416942C6A601CBA585ED43AC/zh_CN/embedRoom/queryRoom">
+								<div class="form-group row check-in">
+									<div class="col-sm-6">
+										<label  class="col-sm-12 col-form-label text-center" style="margin-top: 30px;">入住时间</label>
+										<div class="col-sm-12">
+                                            
+											<!--<div class="weekS calendar-text">周一</div>-->
+                                            
+											<input id="zhu" style="margin-top: 20px;" type="date" >
+
+										</div>
+										
+											<!--<p class="weekS">周一</p>-->
+										
+									</div>
+									<div class="col-sm-6">
+										<label class="col-sm-12 col-form-label text-center" style="margin-top: 30px;">离店时间</label>
+										<div class="col-sm-12 endDate">
+                                            
+											<!--<div class="weekE calendar-text">周二</div>-->
+                                            
+											<input id="zou" style="margin-top: 20px;" type="date" >
+
+										</div>
+										
+											<!--<p class="weekE">周二</p>-->
+										
+									</div>
+								</div>
+								
+								<div>
+									<span style="margin-left: 50px;font-weight: 900;">成人/每间</span>
+									<select style="margin-top: 20px;width: 140px;height:27px;margin-left: 90px;">
+										<option selected="selected" value="1">1</option>
+										<option value="2">2</option>
+										<option value="3">3</option>
+										<option value="4">4</option>
+									</select>
+								</div>
+
+
+								<!--<div class="form-group  row">
+									<div id="le">
+									<label style="margin-top: 20px;"class="col-sm-5 col-form-label">成人/每间</label>
+									</div>
+									<div class="col-sm-7" id="ri">
+										<select style="margin-top: 20px;width: 140px;" id="adults" name="al" class="form-control border-noimport">
+											<option selected="selected" value="1">1</option>
+											<option  value="2">2</option>
+											<option   value="3">3</option>
+											<option  value="4">4</option>
+										</select>
+										<div class="form-control-feedback"></div>
+									</div>
+									
+								</div>-->
+
+								<div style="margin-top: 40px;" class="form-group row">
+									<div class="col-sm-12 text-center">
+										<button  class="btn btn-primary" id="searchRoomBtn" type="button" style="width: 200px;" onclick="sou()">搜索</button>
+									</div>
+								</div>
+								<input type="hidden" name="token" value=""/>
+								<input type="hidden" name="search" value="1"/>
+							</form>
+						</div>
+		</div>
+		<div id="big" style="float: left;">
+		<div id="all" class="hotel-box clearfix">
+			<div id="right" th:each="room: ${room.list}">
+				<div class="img">
+					<img style="width:100px;height:148px " th:src="${room.img}"/>
+				</div>
+				<div class="message">
+					<div class="info-box">
+					
+							<div class="hotel-main">
+<!-- 								 <h3 th:text="${room.type.message}">高级标准间</h3> -->
+
+								<div class="detail-info">
+									<p class="hotel-area" th:text="${room.area}">28m²</p>
+									<span class="hotel-number">最大入住<em>2</em>人</span>
+									
+										<p class="hotel-des">单人床 宽90-130厘米</p>
+									
+									<!--<a onclick="showRoomDetail('RT05','高级标准间')" class="more" style="cursor:pointer">预订</a>-->
+								</div>
+                                  <h3 th:text="${room.price}">房间单价：500￥</h3>
+                                
+								<!--<div class="fold-box" onClick="changeRoomRateShowStatus(this)" style="display:flex;align-items:Center;height:56px;right:0px;top:0px;width:26px">
+									<span class="icon-up" ></span>
+								</div>-->
+								
+                                
+							</div>
+						</div>
+				</div>
+				<div class="din">
+					<input onclick="window.location.href('order.html')" type="button" style="width: 100px;" value="预订" class="btn btn-primary"/>
+				</div>
+			
+		    </div>
+		</div>
+
+	<div class="page" style="float: left;">
+			<div class="page-item first" >首页</div>
+			<div class="page-item prev" >上一页</div>
+			<div class="page-item">1/3</div>
+			<div class="page-item next" >下一页</div>
+			<div class="page-item last" >末页</div>
+	</div>
+	</div>
+	<script type="text/javascript" src="/js/jquery-2.2.3.min.js"></script>
+	<script type="text/javascript" src="/js/bootstrap.js"></script>
+<!-- 	<script> -->
+<!-- 	(function ($) { -->
+<!-- 		  $.getUrlParam = function (name) { -->
+<!-- 		   var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)"); -->
+<!-- 		   var r = window.location.search.substr(1).match(reg); -->
+<!-- 		   if (r != null) return unescape(r[2]); return null; -->
+<!-- 		  } -->
+<!-- 		 })(jQuery); -->
+<!-- 	</script> -->
+	<!--/***********方法**************/-->
+	<script th:inline="javascript"> 
+	var tid = [[${tid}]];	
+	var inTime = [[${inTime}]];
+	var outTime = [[${outTime}]];
+	var page=[[${page}]];
+	var size=[[${size}]];
+// 	find(tid,inTime,outTime,page,size); 
+	</script>
+	<script>
+	function find(tid,inTime,outTime,page,size){		
+		 $.ajax({
+	   		  url:"/timea/"+tid+"/"+inTime+"/"+outTime+"/"+page+"/"+size,
+	   		  type:"get",
+	   		  async:true,
+// 	   		  data:"tid="+tid+"&inTime="+inTime+"&outTime="+outTime+"&page="+page+"&size="+size,
+	   		  success:function(mes){
+	   			  console.info(mes);
+	   			  var stu ="";
+	   			  for(var i=0;i<mes.list.length;i++){
+	   				        stu+="<div id='right'>";
+	   				 		stu+="<div class='img'>";
+					        stu+="<img src='/images/"+mes.list[i].img+"' />";
+				            stu+="</div>";
+				            stu+="<div class='message'>";
+				            stu+="<div class='info-box'>";
+				            stu+="<div class='hotel-main'>"	;						
+				            stu+="<div class='detail-info'>";
+				            stu+="<span class='hotel-area'><em>"+mes.list[i].area+"</em></span>";
+				            stu+="<span class='hotel-number'>最大入住<em>2</em>人</span>";									
+				            stu+="<p class='hotel-des'>单人床 宽90-130厘米</p>";																		
+				            stu+="</div>";
+				            stu+="<h3>房间单价："+mes.list[i].price+"</h3>";                                								
+				            stu+="</div>";
+				            stu+="</div>";
+				            stu+="</div>";
+				            stu+="<div class='din'>";
+				            stu+="<input type='button' style='width: 100px;' value='预订' class='btn btn-primary'/>";
+				            stu+="</div>";
+				            stu+="</div>";
+	   				  }
+  			  $("#all").html(stu);
+	   			//设置页码
+	    			var str="";
+	    			str+="<div class='page-item first btn btn-info' onclick='firstpage()' >首页</div>"+
+	    			"<div class='page-item prev btn btn-info' onclick ='shangpage("+mes.page+")' >上一页</div>"+
+	    			"<div class='page-item show btn btn-info'>"+mes.page+"/"+mes.totalPage+"</div>"+
+	    			"<div class='page-item next btn btn-info' onclick = 'nextpage("+mes.page+","+mes.totalPage+")' >下一页</div>"+
+	    			"<div class='page-item last btn btn-info' onclick = 'lastpage("+mes.totalPage+")' >末页</div>"
+	    			$(".page").html(str);
+	   			  }
+	   		  })				
+	}
+ 	find(tid,inTime,outTime,1,2);
+    function firstpage(){			
+    	find(tid,inTime,outTime,1,2);			
+     }
+    function shangpage(page){
+	if(page-1<=0){
+		alert("这已是首页")
+	}else{
+		find(tid,inTime,outTime,page-1,2)
+	  }
+    }
+    function nextpage(page,totalPage){
+	//alert("进来")
+	//alert(page)
+	if(page+1>totalPage){
+		alert("这已是尾页")
+		page = totalPage;
+		
+	}else{
+		//alert("下一页")
+		find(tid,inTime,outTime,page+1,2)
+		
+	   }
+     }
+     function lastpage(page){			
+    	 find(tid,inTime,outTime,page,2)
+     }
+     //搜索框查询
+     function sou(){
+    	 var inTime=$("#zhu").val();
+    	 var outTime=$("#zou").val();
+    	 if(outTime<inTime){
+    		 alert("离店时间不能小于住店时间")
+    	 }else{
+    		 find(tid,inTime,outTime,1,2);
+    	 }
+    	 
+     }
+	</script>    	
+</body>
+</html>
