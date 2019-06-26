@@ -15,6 +15,7 @@ import org.springframework.validation.FieldError;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -136,6 +137,40 @@ public class MemberHandler {
 	public MemberBean selectAll(String phoneNumber) {
 		MemberBean bean = service.selectByPhoneNumber(phoneNumber);
 		return bean;
+		
+	}
+	/*
+	 * 查看个人信息
+	 */
+	@GetMapping("/user/selectById")
+	@ResponseBody
+	public MemberBean selectById() {
+		Subject subject = SecurityUtils.getSubject();
+		int id = (int) subject.getSession().getAttribute("id");//获取当前登录的id
+		MemberBean bean = service.selectById(id);
+		return bean;
+		
+	}
+	
+	/*
+	 * 修改密码
+	 */
+	@PutMapping("/user/update")
+	@ResponseBody
+	public String updataPassword(String password,String repassword) {
+		Subject subject = SecurityUtils.getSubject();
+		String userName =  (String) subject.getSession().getAttribute("userName");	//获取当前登录的用户名
+		
+		//将输入的原密码加密
+		Object obj = new SimpleHash("MD5",password,userName,1024);
+		
+		MemberBean member = service.selectByUsername(userName);
+		
+		if(member.getPassword().equals(obj.toString())) {
+			service.updatePassword(repassword, member.getId());		//如果旧密码匹配 执行修改密码sql
+			return "1";					//1是修改成功
+		}
+		return "2";						//2是修改失败
 		
 	}
 }
