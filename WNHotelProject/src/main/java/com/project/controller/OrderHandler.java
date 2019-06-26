@@ -112,12 +112,12 @@ public class OrderHandler {
 	/*
 	 * 通过时间段查询订单
 	 */
-	@GetMapping("/time/{subscribeStatus}/{startTime}/{endTime}/{page}/{size}")
-	@ResponseBody
-	public PageBean selectOrderByTime(@PathVariable("subscribeStatus")int subscribeStatus,@PathVariable("startTime")String startTime, @PathVariable("endTime")String endTime,@PathVariable("page")int page,@PathVariable("size")int size){
+	@GetMapping("/time")
+	public String selectOrderByTime(int subscribeStatus,String startTime,String endTime,ModelMap map){
+		PageBean pageBean = orderService.selectOrderByTime(subscribeStatus,startTime, endTime, 1, 4);
+		map.put("bean", pageBean);
 		
-		PageBean pageBean = orderService.selectOrderByTime(subscribeStatus,startTime, endTime, page, size);
-		return pageBean;
+		return "admin/orderSet.html";
 	}
 	/*
 	 * 通过订单id查询订单(统计价格)
