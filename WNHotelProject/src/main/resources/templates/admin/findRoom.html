@@ -271,6 +271,10 @@
 	  var intime=$("#Input").val();
 	  var outtime=$("#Group").val();
 	  var now=getNowFormatDate();
+	  if(intime==""||outtime==""){
+		  $("#xs").html("请选择时间")
+		  return;
+	  }
 	  if(intime<now){
 		 $("#xs").html("请认真选ok?,入住时间不能小于当前时间") 
 	  }else{
