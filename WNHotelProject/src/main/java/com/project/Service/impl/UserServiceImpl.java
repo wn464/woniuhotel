@@ -1,5 +1,7 @@
 package com.project.Service.impl;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -56,6 +58,16 @@ public class UserServiceImpl implements IUserService {
 	public int updateRole(UserBean user) {
 		// TODO Auto-generated method stub
 		return dao.updateRole(user);
+	}
+
+	
+	/*
+	 * 查询所有 操作员
+	 */
+	@Override
+	public List<UserBean> selectAll() {
+		// TODO Auto-generated method stub
+		return dao.selectAll();
 	}
 
 }

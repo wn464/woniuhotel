@@ -6,6 +6,6 @@ import com.project.bean.RoleBean;
 
 public interface IRoleDao {
 	
-	@Select("select * from role where id=#{id}")
+	
 	public RoleBean findRoleById(int id);
 }
