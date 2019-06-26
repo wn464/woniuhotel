@@ -45,7 +45,7 @@
             <div class="navbar-holder d-flex align-items-center justify-content-between">
               <!-- Navbar Header-->
               <div class="navbar-header">
-                <!-- Navbar Brand --><a href="index.html" class="navbar-brand d-none d-sm-inline-block">
+                <!-- Navbar Brand --><a href="/admin/index.html" class="navbar-brand d-none d-sm-inline-block">
                   <div class="brand-text d-none d-lg-inline-block"><span>酒店管理  </span><strong>后台系统</strong></div>
                   <div class="brand-text d-none d-sm-inline-block d-lg-none"><strong>BD</strong></div></a>
                 <!-- Toggle Button--><a id="toggle-btn" href="#" class="menu-btn active"><span></span><span></span><span></span></a>
@@ -180,20 +180,12 @@
                             </tr>
                           </thead>
                           <tbody id="house">
-                            <tr th:each="RoomBean: ${page.list}">
-                              <td th:text="${RoomBean.name}">3-103</td>
-                              <td th:text="${RoomBean.type.name}">经济双人间</td>
-                              <td th:text="${RoomBean.price}">￥200</td>
-                              <td>待入住</td>
-                              <td>
-   					 		<a href="#" class="badge badge-rounded bg-green">入住</a>
-                     		 </td>
-                     	 </tr>
+                            
                          </tbody>
                         </table>
-                         <button class="btn btn-primary" onclick="syy()" id="syy">上一页</button>
-                        <span>当前<span th:text="${page.page}" id="page"> </span>页/总共<span th:text="${page.totalPage}" id="totalpage"></span> 页</span>
-                        <button class="btn btn-primary"  onclick="xxy()" id="xyy">下一页</button>
+                         <button class="btn btn-primary"  id="syy">上一页</button>
+                        <span>当前<span  id="page"> </span>页/总共<span  id="totalpage"></span> 页</span>
+                        <button class="btn btn-primary"   id="xyy">下一页</button>
                       </div>
                     </div>
                   </div>
@@ -282,8 +274,8 @@
 	  if(intime<now){
 		 $("#xs").html("请认真选ok?,入住时间不能小于当前时间") 
 	  }else{
-		  if(intime>=outtime){
-			  $("#xs").html("让你tmd认真选,入住时间必须小于退房前时间。。。。") 
+		  if(intime>outtime){
+			  $("#xs").html("让你tmd认真选,入住时间要小于退房前时间。。。。") 
 		  }else{
 			  $.ajax({
 				  url:"/aftertypestatus/"+type+"/"+page+"/4",
@@ -293,9 +285,7 @@
 					  console.info(messg)
 					  ne(messg.list);
 					  $("#page").html(messg.page);
-		  	    	$("#totalpage").html(messg.totalPage);
-		  	    	$("#syy").removeAttr("onclick");
-		  	    	$("#xyy").removeAttr("onclick");
+		  	    	$("#totalpage").html(messg.totalPage);		  	    
 		  	    	$("#syy").click(function(){
 		  	    		if(messg.page==1){
 		  	    			return;
@@ -354,42 +344,8 @@
   }
   typebegin();
  
-  function syy(){
-  	var page=$("#page").html();
-  	var totalpage=$("#totalpage").html();
-  	if(page==1){
-  	return ;
-  	}else{
-  		$.ajax({
-  			url:"/afterstatustwo/"+(page-1)+"/4",
-      		async:true,
-      		type:"get",
-      		success:function(mess){
-      			ne(mess.list)
-      			$("#page").html(mess.page);
-      	    	$("#totalpage").html(mess.totalpage);
-      		}
-  		})
-  	}
-  }
-  function xxy(){
-  	var page=parseInt($("#page").html());
-  	var totalpage=$("#totalpage").html();
-  	if(page==totalpage){
-  	return ;
-  	}else{
-  		$.ajax({
-  			url:"/afterstatustwo/"+(page+1)+"/4",
-      		async:true,
-      		type:"get",
-      		success:function(messg){
-      			ne(messg.list)
-      			$("#page").html(messg.page);
-      	    	$("#totalpage").html(messg.totalpage);
-      		}
-  		})
-  	}
-  }
+
+
   function ne(mess){
   	var count="";
 		for(var i=0;i<mess.length;i++){
@@ -399,10 +355,15 @@
            count+="<td>￥"+mess[i].price+"</td>";
            count+="<td>待入住</td>";
            count+="<td>";
-          count+=" <a href='#' class='badge badge-rounded bg-green'>入住</a></td>";
+          count+="<button class='badge badge-rounded bg-green' onclick='rz("+mess[i].id+")'>入住</button></td>";
 			 count+="</tr>";
 		}
 		$("#house").html(count);
+  }
+  function rz(rid){
+	  var intime=$("#Input").val();
+	  var outtime=$("#Group").val();
+	  window.location.href="/rooms/"+rid+"/"+intime+"/"+outtime+"";
   }
   $("#Input").focus(function(){
   	$("#xs").html("");
