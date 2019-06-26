@@ -122,7 +122,7 @@
     <div class="container-fluid">
               <div class="row">
                 <div class="col-lg-6">
-                  <div class="card">
+                  <div class="card" style="height: 230px;">
                     
                     <div class="card-header d-flex align-items-center">
                       <h3 class="h4">房间信息</h3>
@@ -132,18 +132,18 @@
                         <table class="table">
                           <thead>
                             <tr>
-                              <th>房间号</th>
-                              <th>入住时间</th>
-                              <th>退房时间</th>
-                              <th>价格</th>
+                              <th >房间号</th>
+                              <th >入住时间</th>
+                              <th >退房时间</th>
+                              <th >价格</th>
                             </tr>
                           </thead>
                           <tbody>
                             <tr>
-                              <th scope="row">3-103</th>
-                              <td>2019-06-01</td>
-                              <td>2019-06-02</td>
-                              <td>￥300</td>
+                              <th scope="row" th:text="${roomBean.name}">3-103</th>
+                              <td th:text="${inTime}">2019-06-02</td>
+                              <td th:text="${outTime}">￥300</td>
+                               <td th:text="${roomBean.price}">￥300</td>
                             </tr>
                             
                             
@@ -157,35 +157,63 @@
                 
                 
     <div class="col-lg-6">
-                  <div class="card">
-                    
+                  <div class="card" style="height: 230px;">
                     <div class="card-header d-flex align-items-center">
-                      <h3 class="h4">预约信息</h3>
+                      <h3 class="h4">会员查询</h3>
+                    </div>
+                    <div class="card-body">
+                      <form class="form-horizontal">
+                        <div class="form-group row">
+                          <label class="col-sm-3 form-control-label">手机号</label>
+                          <div class="col-sm-9">
+                            <input id="phoneNumber" type="text" placeholder="手机号" class="form-control form-control-success" >
+                          </div>
+                        </div>
+                        <div class="form-group row">
+                          <label class="col-sm-3 form-control-label">会员信息</label>
+                          <div class="col-sm-9">
+                           	<span id="memberInfo"></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                           	<span id="disctInfo"></span>
+                           	<input type="hidden" id="mid" value="">
+                          </div>
+                        </div>
+                        <div class="col-sm-9 offset-sm-3">
+                             <input type="button" value="查询" class="btn btn-primary" style="margin-left: 240px;" onclick="findMember()">
+                          </div>
+                        <div class="form-group row">       
+                         
+                        </div>
+                      </form>
+                    </div>
+                  </div>
+                </div>
+        	<div class="card" style="width: 700px;margin-left: 210px;">
+                    <div class="card-header d-flex align-items-center">
+                      <h3 class="h4">订房信息</h3>
                     </div>
                     <div class="card-body">
                       <form class="form-horizontal">
                         <div class="form-group row">
                           <label class="col-sm-3 form-control-label">姓名</label>
                           <div class="col-sm-9">
-                            <input id="inputHorizontalSuccess" type="text" placeholder="姓名" class="form-control form-control-success">
+                            <input id="uName" type="text" placeholder="姓名" class="form-control form-control-success">
                           </div>
                         </div>
                         <div class="form-group row">
                           <label class="col-sm-3 form-control-label">电话号码</label>
                           <div class="col-sm-9">
-                            <input id="inputHorizontalWarning" type="text" placeholder="电话号码" class="form-control form-control-warning">
+                            <input id="pNumber" type="text" placeholder="电话号码" class="form-control form-control-warning">
                           </div>
                         </div>
                         <div class="form-group row">       
                           <div class="col-sm-9 offset-sm-3">
-                            <input type="submit" value="预约" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
-                            <input type="submit" value="入住" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+                            <input type="button" value="预约" class="btn btn-primary" onclick="getOrder()">
+                            <input type="button" value="入住" class="btn btn-primary">
                           </div>
                         </div>
                       </form>
                     </div>
                   </div>
-                </div>
               </div>
             </div>
           </section>
@@ -257,5 +285,58 @@
     <script src="/admin/vendor/jquery-validation/jquery.validate.min.js"></script>
     <!-- Main File-->
     <script src="/admin/js/front.js"></script>
-  
+  	<script type="text/javascript" th:inline="javascript">
+  		function findMember() {
+			var phoneNumber = $("#phoneNumber").val()
+			$.ajax({
+					url:"/member/PhoneNumber",
+					type:"get",
+					data:"phoneNumber="+phoneNumber,
+					success:function(mes){
+					console.info(mes)
+					var str = mes.vipBean.name;
+					$("#memberInfo").html(str)
+					var s ="可享折扣："+ mes.vipBean.discount;
+					$("#disctInfo").html(s)
+					var s1 = mes.id
+					$("#mid").val(s1)
+					
+						}
+					})
+		}
+  	 function getOrder() {
+  		var people = $("#uName").val()
+  		var phoneNumber = $("#pNumber").val()
+  		var rid = /*[[${roomBean.id}]]*/;
+  		var inTime = /*[[${inTime}]]*/;
+  		var outTime = /*[[${outTime}]]*/;
+  		var mid = $("#mid").val()
+  		if (mid=="") {
+  			$.ajax({
+  				url:"/order/after",
+  				type:"post",
+  				data:"lives[0].roomid="+rid+"&lives[0].people="+people+"&lives[0].inTime="+inTime+
+  				"&lives[0].outTime="+outTime+"&lives[0].phoneNumber="+phoneNumber+
+  				"&status.id=5&delState=10",
+  				success:function(mes){
+  					console.info(mes)
+  					}
+  				})
+		}else {
+			$.ajax({
+				url:"/order/after",
+				type:"post",
+				data:"lives[0].roomid="+rid+"&lives[0].people="+people+"&lives[0].inTime="+inTime+
+				"&lives[0].outTime="+outTime+"&lives[0].phoneNumber="+phoneNumber+"&member.id="+mid+
+				"&status.id=5&delState=10",
+				success:function(mes){
+					console.info(mes)
+					}
+				})
+		}
+  		
+	}
+  	
+  	
+  	</script>
 </body></html>
