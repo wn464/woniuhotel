@@ -22,6 +22,7 @@ import com.project.Service.IOrderService;
 import com.project.Service.IVipService;
 import com.project.Service.impl.VipServiceImpl;
 import com.project.bean.LiveBean;
+import com.project.bean.MarkBean;
 import com.project.bean.MemberBean;
 import com.project.bean.OrderBean;
 import com.project.bean.PageBean;
@@ -43,7 +44,7 @@ public class OrderHandler {
 	private IVipService vipService;
 	@Autowired
 	private IDiscountService discountService;
-	private OrderUtil orderutil = new OrderUtil(vipService, discountService);
+	
 	
 	/*
 	 * 前台预定同时生成订单（线上散客、会员下单）
@@ -174,6 +175,13 @@ public class OrderHandler {
 	 */
 	@GetMapping("/people/{oid}")
 	public String selectById(@PathVariable("oid")int oid,ModelMap map){
+		//修改预定状态
+		OrderBean orderBean2 = new OrderBean();
+		orderBean2.setId(oid);
+		MarkBean subscribeStatus = new MarkBean();
+		subscribeStatus.setId(8);
+		orderBean2.setSubscribeStatus(subscribeStatus);
+		orderService.updateOrderAttr(orderBean2);
 		OrderBean orderBean = orderService.selectOrderById(oid);
 		map.put("orderBean", orderBean);
 		return "admin/people.html";
@@ -196,8 +204,9 @@ public class OrderHandler {
 	/*
 	 * 通过订单id查询订单(统计价格)
 	 */
-	@GetMapping("/after/{oid}")
-	public String pay(@PathVariable("oid")int oid,ModelMap map) throws Exception{
+	@GetMapping("/after/{oid}/{flag}")
+	public String pay(@PathVariable("oid")int oid,@PathVariable("flag") int flag,ModelMap map) throws Exception{
+		OrderUtil orderutil = new OrderUtil(vipService, discountService);
 		System.out.println(oid);
 		OrderBean orderBean = orderService.selectOrderById(oid);
 		List<LiveBean> list = orderBean.getLives();
@@ -229,25 +238,66 @@ public class OrderHandler {
 			orderService.updateOrderAttr(orderBean2);
 		}
 		
-		//会员
+		//会员下单
 		if (orderBean.getMember()!=null) {
 			MemberBean memberBean = orderBean.getMember();
 			VipBean vipBean = memberBean.getVipBean();
 			double price = orderutil.getUnderLineMoney(orderBean.getPrice(), vipBean.getId());
-			
-			System.out.println("--------"+price);
 			orderBean.setPrice(price);
 			map.put("orderBean", orderBean);
-			return "/admin/count1.html";
+			if (price>=2000) {
+				map.put("dt", 1);
+			}else {
+				map.put("dt", 2);
+			}
+			//设置订单预定状态
+			if (flag==1) {
+				OrderBean orderBean2 = new OrderBean();
+				MarkBean suBean = new MarkBean();
+				suBean.setId(9);
+				orderBean2.setSubscribeStatus(suBean);
+				orderBean2.setId(orderBean.getId());
+				orderService.updateOrderAttr(orderBean2);
+			}else {
+				OrderBean orderBean2 = new OrderBean();
+				MarkBean suBean = new MarkBean();
+				suBean.setId(8);
+				orderBean2.setSubscribeStatus(suBean);
+				orderBean2.setId(orderBean.getId());
+				orderService.updateOrderAttr(orderBean2);
+			}
+			System.out.println("______________________"+orderService.selectOrderById(orderBean.getId()));
+			return "admin/count1.html";
 		}
-		//散客
+		//非会员下单
 		else {
 			double price = orderutil.getUnderLineMoney(orderBean.getPrice(), 0);
-			System.out.println("--------"+price);
 			orderBean.setPrice(price);
 			map.put("orderBean", orderBean);
-			return "/admin/count1.html";
-		
+			System.out.println(orderBean);
+			if (price>=2000) {
+				map.put("dt", 1);
+			}else {
+				map.put("dt", 2);
+			}
+			//设置订单预定状态
+			if (flag==1) {
+				OrderBean orderBean2 = new OrderBean();
+				MarkBean suBean = new MarkBean();
+				suBean.setId(9);
+				orderBean2.setSubscribeStatus(suBean);
+				orderBean2.setId(orderBean.getId());
+				orderService.updateOrderAttr(orderBean2);
+			}else {
+				OrderBean orderBean2 = new OrderBean();
+				MarkBean suBean = new MarkBean();
+				suBean.setId(8);
+				orderBean2.setSubscribeStatus(suBean);
+				orderBean2.setId(orderBean.getId());
+				orderService.updateOrderAttr(orderBean2);
+			}
+			System.out.println("______________________"+orderService.selectOrderById(orderBean.getId()));
+			return "admin/count1.html";
 		}
 		
 

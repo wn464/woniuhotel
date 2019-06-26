@@ -133,19 +133,19 @@
                         <table class="table">
                           <thead>
                             <tr>
+                              <th>房间类型</th>
                               <th>房间号</th>
                               <th>入住时间</th>
                               <th>退房时间</th>
-                              <th>预定用户</th>
                               <th>价格</th>
                             </tr>
                           </thead>
                           <tbody>
                             <tr>
-                              <th scope="row" th:text="${orderBean.lives[0].room.name}">3-103</th>
+                              <td scope="row" th:text="${orderBean.lives[0].room.type.name}">3-103</td>
+                              <td scope="row" th:text="${orderBean.lives[0].room.name}">3-103</td>
                               <td  th:text="${orderBean.lives[0].inTime}">2019-06-01</td>
                               <td  th:text="${orderBean.lives[0].outTime}">2019-06-02</td>
-                               <td  th:text="${orderBean.lives[0].people}">2019-06-02</td>
                               <td  th:text="${orderBean.price}">￥300</td>
                             </tr>
                           </tbody>

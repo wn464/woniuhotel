@@ -135,7 +135,7 @@
                               <th >房间号</th>
                               <th >入住时间</th>
                               <th >退房时间</th>
-                              <th >价格</th>
+                              <th >单价</th>
                             </tr>
                           </thead>
                           <tbody>
@@ -208,7 +208,7 @@
                         <div class="form-group row">       
                           <div class="col-sm-9 offset-sm-3">
                             <input type="button" value="预约" class="btn btn-primary" onclick="getOrder()">
-                            <input type="button" value="入住" class="btn btn-primary">
+                            <input type="button" value="入住" class="btn btn-primary" onclick="getOrder1()">
                           </div>
                         </div>
                       </form>
@@ -304,6 +304,7 @@
 						}
 					})
 		}
+//   	预约
   	 function getOrder() {
   		var people = $("#uName").val()
   		var phoneNumber = $("#pNumber").val()
@@ -319,8 +320,7 @@
   				"&lives[0].outTime="+outTime+"&lives[0].phoneNumber="+phoneNumber+
   				"&status.id=5&delState=10",
   				success:function(mes){
-  					alert(mes)
-  					window.location.href="/order/after/"+mes
+  					window.location.href="/order/after/"+mes+"/1"
   					}
   				})
 		}else {
@@ -331,9 +331,40 @@
 				"&lives[0].outTime="+outTime+"&lives[0].phoneNumber="+phoneNumber+"&member.id="+mid+
 				"&status.id=5&delState=10",
 				success:function(mes){
-					alert(mes)
-					alert(1)
-					window.location.href="/order/after/"+mes
+					window.location.href="/order/after/"+mes+"/1"
+					}
+				})
+		}
+  		
+	}
+// 	立即入住
+function getOrder1() {
+  		var people = $("#uName").val()
+  		var phoneNumber = $("#pNumber").val()
+  		var rid = /*[[${roomBean.id}]]*/;
+  		var inTime = /*[[${inTime}]]*/;
+  		var outTime = /*[[${outTime}]]*/;
+  		var mid = $("#mid").val()
+  		if (mid=="") {
+  			$.ajax({
+  				url:"/order/after",
+  				type:"post",
+  				data:"lives[0].roomid="+rid+"&lives[0].people="+people+"&lives[0].inTime="+inTime+
+  				"&lives[0].outTime="+outTime+"&lives[0].phoneNumber="+phoneNumber+
+  				"&status.id=5&delState=10",
+  				success:function(mes){
+  					window.location.href="/order/after/"+mes+"/2"
+  					}
+  				})
+		}else {
+			$.ajax({
+				url:"/order/after",
+				type:"post",
+				data:"lives[0].roomid="+rid+"&lives[0].people="+people+"&lives[0].inTime="+inTime+
+				"&lives[0].outTime="+outTime+"&lives[0].phoneNumber="+phoneNumber+"&member.id="+mid+
+				"&status.id=5&delState=10",
+				success:function(mes){
+					window.location.href="/order/after/"+mes+"/2"
 					}
 				})
 		}
