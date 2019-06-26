@@ -46,21 +46,23 @@ public class OrderHandler {
 		Subject subject = SecurityUtils.getSubject();
 	    Session session = subject.getSession(false);
 //	    session.setAttribute("id", 7);//测试使用
+	    System.out.println("-----"+session);
 	    String id = null;
-	    if (session!=null) {
-	    	int mid = (int) session.getAttribute("id");
+    	if (session.getAttribute("id")!=null) {
+    		int mid = (int) session.getAttribute("id");
 	        MemberBean memberBean = new MemberBean();
 	        memberBean.setId(mid);
 	        orderBean.setMember(memberBean);
 			OrderBean orderBean2 = orderService.getOrder(orderBean);
 			int oid = orderBean2.getId();
 			id = String.valueOf(oid);
-		}else {
+		}
+		else {
 			OrderBean orderBean2 = orderService.getOrder(orderBean);
 			int oid = orderBean2.getId();
 			id = String.valueOf(oid);
 		}
-        
+
 		return id;
 	}
 

@@ -68,6 +68,7 @@ public class RoomHandler {
 		
 		int dl=0;
 		if(scb.getSession(false)!=null) {
+			System.out.println("------==========");
 			if(scb.getSession(false).getAttribute("id")!=null) {
 				dl=1;
 			}
@@ -151,7 +152,7 @@ public class RoomHandler {
 	}
 	
 	/**
-	 * 根据房间id查询房间详细信息
+	 * 点击入住跳转预约界面
 	 * @param rid房间id
 	 * @return
 	 */
