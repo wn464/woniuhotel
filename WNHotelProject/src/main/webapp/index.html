@@ -349,9 +349,16 @@
           var size=2;
 //           url ="findaa.html?tid="+tid+"&inTime="+inTime+"&outTime="+outTime;
 //           window.location.href = "/time?tid="+tid+"&inTime="+inTime+"&outTime="+outTime+"&page="+page+"&size="+size;
-             window.location.href = "/time/"+tid+"/"+inTime+"/"+outTime+"/"+page+"/"+size;
-}
-     
+             if(inTime==""||outTime==""){             	
+            	 alert("输入时间不能为空，请重新输入");
+             }else{
+            	 if(inTime<outTime){
+             	 window.location.href = "/time/"+tid+"/"+inTime+"/"+outTime+"/"+page+"/"+size;
+               }else{
+              	alert("入住时间大于离店时间，请重新输入");
+               }
+           }                        
+}     
 </script>
 </body>
 </html>
