@@ -55,8 +55,8 @@ public class OrderCountTest {
 //		}
 		try {
 			//System.out.println(orderutil.getOnLineMoney(5000, 1));
-			//System.out.println(orderutil.getUnderLineMoney(5000, 1));
-			System.out.println(orderutil.getUnderLineMoney(5000));
+			System.out.println(orderutil.getUnderLineMoney(5000, 1));
+			//System.out.println(orderutil.getUnderLineMoney(5000));
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

@@ -43,6 +43,8 @@ public class DiscountCount {
 		return price;
 	}
 	protected List<DiscountBean> selectDiscounts(double price,int vipId){
+		System.out.println(price);
+		System.out.println(vipId);
 		List<DiscountBean> list = discountService.selectDiscountByVipIdAndPrice(vipId, price);
 		return list;
 	}

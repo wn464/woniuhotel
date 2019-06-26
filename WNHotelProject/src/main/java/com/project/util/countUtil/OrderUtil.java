@@ -98,7 +98,7 @@ public class OrderUtil extends OrderCount{
 		return price1;
 	}
 	public double getOnLineMoney(double price,int vipId) throws Exception {
-		double price1 = getUnderLineMoney(price, vipId);
+		double price1 = getUnderLineMoney(price, vipId); 
 		discountService.selectDiscountById(1).getNumber2();
 		price1 = switchCount(price1, discountService.selectDiscountById(1));
 		return price1;
