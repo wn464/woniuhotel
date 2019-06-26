@@ -43,4 +43,11 @@ public class CommentServiceImpl implements ICommentService{
 		return list;
 	}
 
+	@Override
+	public List<CommentBean> selectMoreComment() {
+		List<CommentBean> list = dao.selectAllComment();
+		return list;
+	}
+	
+
 }
