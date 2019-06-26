@@ -1,5 +1,7 @@
 package com.project.Service;
 
+import java.util.List;
+
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
@@ -27,4 +29,7 @@ public interface IUserService {
 	
 	//修改操作员权限
 	public int updateRole(UserBean user);
+	
+	//查询所有操作员
+	public List<UserBean> selectAll();
 }

@@ -23,6 +23,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.project.Service.IUserService;
 import com.project.bean.MemberBean;
 import com.project.bean.UserBean;
+import com.project.shiro.LoginToken;
+import com.project.shiro.LoginType;
 
 @Controller
 public class UserHandler {
@@ -35,8 +37,8 @@ public class UserHandler {
 	 * 登录
 	 */
 	@PostMapping("/user/login")
+	@ResponseBody
 	public String login(ModelMap map, @Validated UserBean user,BindingResult result) {
-		System.out.println(user);
 		if(result.hasErrors()) {
 			System.out.println("----------出现错误----------");
 			List<FieldError> fieldErrors = result.getFieldErrors();
@@ -46,9 +48,9 @@ public class UserHandler {
 			return "1";
 		}else {
 			Subject subject = SecurityUtils.getSubject();
-		
+			System.out.println(user);
 			if(!subject.isAuthenticated()) {
-				UsernamePasswordToken token = new UsernamePasswordToken(user.getUsername(),user.getPassword());
+				UsernamePasswordToken token = new LoginToken(user.getUsername(),user.getPassword(),LoginType.admin.toString());
 			
 				try {
 					subject.login(token);
@@ -69,54 +71,66 @@ public class UserHandler {
 			
 			
 		}
-		return null;
+		return "2";
 	}
 	
 			
 			/*
-			 * 注册
+			 * 添加操作员
 			 */
 			@PostMapping("/user/reg")
+			@ResponseBody
 			public String reg(ModelMap map,@Validated UserBean user,BindingResult result) {
+				System.out.println(user);
 				if(result.hasErrors()) {
 					System.out.println("----------出现错误----------");
 					List<FieldError> list =result.getFieldErrors();
 					for (FieldError error : list) {
 						System.out.println(error.getDefaultMessage());
 					}
-					return "redirect:/reg.html";
+					return "1";
 				}else {
 					//判断是否存在这个用户 
 					UserBean bean = service.selectByUserName(user.getUsername());
 					if(bean==null) {
-						
-						
-						Object obj = new SimpleHash("MD5",bean.getPassword(),bean.getUsername(),1024);		//盐值
+
+						Object obj = new SimpleHash("MD5",user.getPassword(),user.getUsername(),1024);		//盐值
 						
 						UserBean user1 = new UserBean();												//创建member对象 然后封装
-						user1.setUsername(bean.getUsername());
+						user1.setUsername(user.getUsername());
 						user1.setPassword(obj.toString());
+						user1.setRole(user.getRole());
 						int reg = service.reg(user1);
-						
-						
-						return "redirect:/admin/login.html"; // 注册成功  跳转注册成功页面
+			
+						return "2"; // 注册成功  跳转注册成功页面
 					}else {
-						return "redirect:/reg.html";
+						return "1";
 					}
 					
 				}		
 				
 			}
+			
 			//验证用户名是否存在
 			@GetMapping("/user/yz")
 			@ResponseBody
-			public String selectUserName(String userName) {
-				UserBean user= service.selectByUserName(userName);
+			public String selectUserName(String username) {
+				UserBean user= service.selectByUserName(username);
 				if(user!=null) {
 					return "1";
 				}
 				return "2";
 			}
 			
-
+			/*
+			 * 查看所有操作员
+			 */
+			@GetMapping("/user/selectAll")
+			@ResponseBody
+			public List<UserBean> selectAll(){
+				List<UserBean> selectAll = service.selectAll();
+				System.out.println(selectAll);
+				return selectAll;
+				
+			}
 }

@@ -29,4 +29,8 @@
 		<result property="money" column="money"/>
 		<association property="vipBean" javaType="VipBean" select="com.project.dao.IVipDao.selectVipById" column="vip"/>
 	</resultMap>
+	
+	<select  id="selectByPhoneNumber" resultMap="map1"> 
+		select * from member where phoneNumber=#{phoneNumber}
+	</select>
 </mapper> 

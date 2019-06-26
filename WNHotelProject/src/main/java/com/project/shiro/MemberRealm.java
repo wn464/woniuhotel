@@ -34,7 +34,6 @@ public class MemberRealm extends AuthorizingRealm{
 		
 		
 		String userName = token.getPrincipal().toString();
-		System.out.println(userName);
 		MemberBean bean = service.selectByUsername(userName);
 		SimpleAuthenticationInfo info =null;
 		if(bean!=null) {

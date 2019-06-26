@@ -50,11 +50,11 @@
                 <div class="content">
                   
                     <div class="form-group">
-                      <input id="login-username" type="text" name="username" required="" data-msg="输入登录名" class="input-material">
+                      <input id="username" type="text" name="username" required="" data-msg="输入登录名" class="input-material">
                       <label for="login-username" class="label-material">登录名</label>
                     </div>
                     <div class="form-group">
-                      <input id="login-password" type="password" name="password" required="" data-msg="输入密码" class="input-material">
+                      <input id="password" type="password" name="password" required="" data-msg="输入密码" class="input-material">
                       <label for="login-password" class="label-material">密码</label>
                     </div>
                     <button class="btn btn-primary" id="btn">登录</button>
@@ -92,6 +92,7 @@
     			type:"post",
     			dataType:"json",
     			success:function(mes){
+    				
     				if(mes==2){
     					location.href="/admin/index.html"
     				}else{
