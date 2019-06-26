@@ -82,6 +82,7 @@ function set(id){
 }
 window.onload=function(){
 	jump();
+	findPage();
 }
 function before(){
 	if(page==1){
