@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html><head>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Bootstrap Material Admin </title>
@@ -7,19 +8,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="robots" content="all,follow">
     <!-- Bootstrap CSS-->
-    <link rel="stylesheet" href="vendor/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/admin/vendor/bootstrap/css/bootstrap.min.css">
     <!-- Font Awesome CSS-->
-    <link rel="stylesheet" href="vendor/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/admin/vendor/font-awesome/css/font-awesome.min.css">
     <!-- Fontastic Custom icon font-->
-    <link rel="stylesheet" href="css/fontastic.css">
+    <link rel="stylesheet" href="/admin/css/fontastic.css">
     <!-- Google fonts - Poppins -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,700">
     <!-- theme stylesheet-->
-    <link rel="stylesheet" href="css/style.default.css" id="theme-stylesheet"><link id="new-stylesheet" rel="stylesheet"><link id="new-stylesheet" rel="stylesheet"><link id="new-stylesheet" rel="stylesheet"><link id="new-stylesheet" rel="stylesheet"><link id="new-stylesheet" rel="stylesheet"><link id="new-stylesheet" rel="stylesheet"><link id="new-stylesheet" rel="stylesheet"><link id="new-stylesheet" rel="stylesheet">
+    <link rel="stylesheet" href="/admin/css/style.default.css" id="theme-stylesheet"><link id="new-stylesheet" rel="stylesheet"><link id="new-stylesheet" rel="stylesheet"><link id="new-stylesheet" rel="stylesheet"><link id="new-stylesheet" rel="stylesheet"><link id="new-stylesheet" rel="stylesheet"><link id="new-stylesheet" rel="stylesheet"><link id="new-stylesheet" rel="stylesheet"><link id="new-stylesheet" rel="stylesheet">
     <!-- Custom stylesheet - for your changes-->
-    <link rel="stylesheet" href="css/custom.css">
+    <link rel="stylesheet" href="/admin/css/custom.css">
     <!-- Favicon-->
-    <link rel="shortcut icon" href="img/favicon.ico">
+    <link rel="shortcut icon" href="/admin/img/favicon.ico">
     <!-- Tweaks for older IEs--><!--[if lt IE 9]>
         <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
         <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script><![endif]-->
@@ -44,7 +45,7 @@
             <div class="navbar-holder d-flex align-items-center justify-content-between">
               <!-- Navbar Header-->
               <div class="navbar-header">
-                <!-- Navbar Brand --><a href="index.html" class="navbar-brand d-none d-sm-inline-block">
+                <!-- Navbar Brand --><a href="admin/index.html" class="navbar-brand d-none d-sm-inline-block">
                   <div class="brand-text d-none d-lg-inline-block"><span>酒店管理  </span><strong>后台系统</strong></div>
                   <div class="brand-text d-none d-sm-inline-block d-lg-none"><strong>BD</strong></div></a>
                 <!-- Toggle Button--><a id="toggle-btn" href="#" class="menu-btn active"><span></span><span></span><span></span></a>
@@ -186,27 +187,20 @@
                           <thead>
                             <tr>
                               
-                              <th>订单号</th>
-    
-                              
-    
+                              <th>姓名</th>
                               <th>评论</th>
-    						  <th>操作</th>
+<!--     						  <th>操作</th> -->
   
                             </tr>
                           </thead>
                           <tbody>
-                            <tr>
-                              
-                              <td>xxxxxxx</td>
-                              <td>啊啊啊啊啊啊啊啊啊擦啊啊啊啊啊啊啊啊擦啊啊啊啊啊啊啊啊啊啊啊啊擦啊啊啊啊啊啊啊啊擦啊啊啊啊啊啊啊啊啊啊啊啊擦啊啊啊啊啊啊啊啊擦啊啊啊</td>
-                              
-                            
-        <td>
-    <a href="#" class="badge badge-rounded bg-green" data-toggle="modal" data-target="#myModal">查看用户信息</a>
-                      </td></tr>
-                            
-                            
+                            <tr th:each="comment: ${list}">                             
+                              <td th:text="${comment.name}">xxxxxxx</td>
+                              <td th:text="${comment.message}">啊啊啊</td>               
+<!--                       <td> -->
+<!--     <a href="#" class="badge badge-rounded bg-green" data-toggle="modal" data-target="#myModal">查看用户信息</a> -->
+<!--                       </td> -->
+                      </tr>  
                           </tbody>
                         </table>
                       </div>
@@ -279,12 +273,12 @@
                         </div>
                       </div>
     <!-- JavaScript files-->
-    <script src="vendor/jquery/jquery.min.js"></script>
-    <script src="vendor/popper.js/umd/popper.min.js"> </script>
-    <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
-    <script src="vendor/jquery.cookie/jquery.cookie.js"> </script>
-    <script src="vendor/jquery-validation/jquery.validate.min.js"></script>
+    <script src="/admin/vendor/jquery/jquery.min.js"></script>
+    <script src="/admin/vendor/popper.js/umd/popper.min.js"> </script>
+    <script src="/admin/vendor/bootstrap/js/bootstrap.min.js"></script>
+    <script src="/admin/vendor/jquery.cookie/jquery.cookie.js"> </script>
+    <script src="/admin/vendor/jquery-validation/jquery.validate.min.js"></script>
     <!-- Main File-->
-    <script src="js/front.js"></script>
+    <script src="/admin/js/front.js"></script>
   
 </body></html>
