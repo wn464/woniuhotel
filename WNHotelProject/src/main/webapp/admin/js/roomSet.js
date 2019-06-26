@@ -44,15 +44,38 @@ function jump(){
 				"</td><td>"+"<a herf='javascript:set("+list[i].id+")' class='badge badge-rounded bg-green'>修改</a><a herf='javascript:del("+list[i].id+")' class='badge badge-rounded bg-green'>删除</a></td></tr>";
 			}
 			findTableTbody.html(str);
-			
+			setpage();
 		}
 	})
 }
 function setpage(){
+	$("#page").html(page);
+	$("#totalPage").html(totalPage);
+	$("#totalNumber").html(totalNumber);
 	
 }
 function del(id){
-	
+	console.info("删除编号为："+id+"的优惠");
+	if(confirm("确定删除？")){
+		$.ajax({
+			url:"/admin/vip",
+			async: false,
+			data:"id="+id,
+			type:"delete",
+			error:function(){
+				alert("删除失败");
+			},
+			success:function(mes){
+				if(mes==1){
+					alert("删除成功");
+					getVipAll();
+				}else{ 
+					alert("删除失败");
+				}
+				
+			}
+		})
+	}
 }
 function set(id){
 	
