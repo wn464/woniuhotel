@@ -118,7 +118,7 @@ public class MemberHandler {
 		return null;
 	}
 	
-	//跳转动态页面
+	//跳转页面
 	@GetMapping("/member/jump")
 	@ResponseBody
 	public MemberBean jump() {
@@ -126,9 +126,16 @@ public class MemberHandler {
 		Session session = subject.getSession();
 		String userName = (String) session.getAttribute("userName");
 		MemberBean bean = service.selectByUsername(userName);
-		
 		return bean;
 	}
 	
-	
+	/*
+	 * 通过手机号查询所有会员信息
+	 */
+	@GetMapping("/member/selectByPhoneNumber")
+	public MemberBean selectAll(String phoneNumber) {
+		MemberBean bean = service.selectByPhoneNumber(phoneNumber);
+		return bean;
+		
+	}
 }
