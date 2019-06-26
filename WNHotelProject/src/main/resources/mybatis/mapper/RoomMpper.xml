@@ -3,6 +3,10 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   <mapper namespace="com.project.dao.IRoomDao">
+  <!--查询所有房间  -->
+	<select id="selectroomall" resultMap="rtmap">
+	select *from room  limit #{page},#{size}
+	</select>
   <!--通过房间类型，查询此类型下某一状态的房间  -->
   <select id="selectroombytypeandstatus" resultMap="rtsmap"> 
   select *from room where type=#{type.id} and status=#{status.id} limit #{page},#{size}

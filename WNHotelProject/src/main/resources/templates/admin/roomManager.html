@@ -178,18 +178,12 @@
                               </option>
         </select>
                         </div>
-                        <div class="form-group">
-                          <label for="inlineFormInput" class="sr-only">入住时间</label>
-                          <input id="Input" type="date" placeholder="入住时间" class="mr-3 form-control">
-                        </div>
-                        <div class="form-group">
-                          <label for="inlineFormInputGroup" class="sr-only">退房时间</label>
-                          <input id="Group" type="date" placeholder="退房时间" class="mr-3 form-control">
-                        </div>
+                       
                         <div class="form-group">
                           <button  class="btn btn-primary" onclick="cx(1)">查询</button>
                         </div>
                       </div>
+                    
                     </div>
                   </div>
                 </div>
@@ -202,7 +196,7 @@
                     </div>
                     <div class="card-body">
                       <div class="table-responsive">                       
-                        <table class="table table-striped table-hover" th:fragment="table_refresh">
+                        <table class="table table-striped table-hover">
                           <thead>
                             <tr>
                               
@@ -215,14 +209,15 @@
                             </tr>
                           </thead>       
                           <tbody id="house">
-                           <tr  th:each="RoomBean: ${page.list}" th:fragment="table_refresh"> 
+                           <tr  th:each="RoomBean: ${page.list}"> 
                             <td th:text="${RoomBean.name}">3-103</td>
                             <td th:text="${RoomBean.type.name}">经济双人间</td>
                             <td th:text="${RoomBean.price}">￥200</td>
-                            <td>待入住</td>
-                            <td><a href="#" class="badge badge-rounded bg-green" data-toggle="modal" data-target="#myModal">入住</a>
-                            <a href="#" class="badge badge-rounded bg-green">打扫</a>
-                            <a href="#" class="badge badge-rounded bg-green">报修</a></td>
+                            <td th:text="${RoomBean.status.name}">待入住</td>
+                            <td>
+	                            <a href="#" class="badge badge-rounded bg-green">打扫</a>
+	                            <a href="#" class="badge badge-rounded bg-green">报修</a>
+                            </td>
     					 </tr>
                       </tbody>
                         </table>
@@ -309,37 +304,37 @@
     <!-- Main File-->
     <script src="/admin/js/front.js"></script>
     <script>
-    function cx(page){
-    	var type=parseInt($("#in").val());
-    	var intime=$("#Input").val();
-    	var outtime=$("#Group").val();
-    	var now=getNowFormatDate();
-    	$.ajax({
-    		url:"/aftertime/"+type+"/"+(intime+"")+"/"+(outtime+"")+"/"+parseInt(page)+"/4",
-    		type:"get",
-    		async:true,
-    		success:function(mesgs){
-    			console.info(mesgs)
-    			ne(mesgs.list);
-    			$("#xyy").removeAttr("onclick");
-    		}
-    	})
-    }
-    function getNowFormatDate() {
-        var date = new Date();
-        var seperator1 = "-";
-        var year = date.getFullYear();
-        var month = date.getMonth() + 1;
-        var strDate = date.getDate();
-        if (month >= 1 && month <= 9) {
-            month = "0" + month;
-        }
-        if (strDate >= 0 && strDate <= 9) {
-            strDate = "0" + strDate;
-        }
-        var currentdate = year + seperator1 + month + seperator1 + strDate;
-        return currentdate;
-    }
+  function cx(page){
+	  var type=$("#in").val();
+	  $.ajax({
+		  url:"/afterroom/type/"+type+"/"+page+"/4",
+		  type:"get",
+		  async:true,
+		  success:function(messg){
+			  ne(messg.list);
+			  $("#page").html(messg.page);
+  	    	$("#totalpage").html(messg.totalPage);
+  	    	$("#syy").removeAttr("onclick");
+  	    	$("#xyy").removeAttr("onclick");
+  	    	$("#syy").click(function(){
+  	    		if(messg.page==1){
+  	    			return;
+  	    		}else{
+  	    			cx(messg.page-1)
+  	    		}
+  	    	})
+  	    	$("#xyy").click(function(){
+  	    		if(messg.page==messg.totalPage){
+  	    			return;
+  	    		}else{
+  	    			cx(parseInt(messg.page+1));
+  	    		}
+  	    	})
+		  }
+	  })
+  }
+
+   
     
     
     
@@ -366,7 +361,7 @@
     	return ;
     	}else{
     		$.ajax({
-    			url:"/afterstatustwo/"+(page-1)+"/4",
+    			url:"/afterroomalltwo/"+(page-1)+"/4",
         		async:true,
         		type:"get",
         		success:function(mess){
@@ -384,7 +379,7 @@
     	return ;
     	}else{
     		$.ajax({
-    			url:"/afterstatustwo/"+(page+1)+"/4",
+    			url:"/afterroomalltwo/"+(page+1)+"/4",
         		async:true,
         		type:"get",
         		success:function(messg){
@@ -405,15 +400,20 @@
             count+=" <td>"+mess[i].name+"</td>";
             count+=" <td>"+mess[i].type.name+"</td>";
              count+="<td>￥"+mess[i].price+"</td>";
-             count+="<td>待入住</td>";
-             count+="<td><a href=''#' class='badge badge-rounded bg-green' data-toggle='modal' data-target='#myModal'>入住</a>";
+             count+="<td>"+mess[i].status.name+"</td>";
+             count+="<td>"
              count+="<a href='#' class='badge badge-rounded bg-green'>打扫</a>";
             count+=" <a href='#' class='badge badge-rounded bg-green'>报修</a></td>";
 			 count+="</tr>";
 		}
 		$("#house").html(count);
     }
-    
+    $("#Input").focus(function(){
+    	$("#xs").html("");
+    });
+    $("#Group").focus(function(){
+    	$("#xs").html("");
+    });
     </script>
   
 </body></html>

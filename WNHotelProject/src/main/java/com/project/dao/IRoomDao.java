@@ -16,6 +16,8 @@ import com.project.bean.TypeBean;
  *
  */
 public interface IRoomDao {
+	@Select("select count(*) from room")
+	public int selectroomallnumber() ;
 	/**
 	 * 查询某一类型下，某一状态 的所有房间
 	 * @param type
@@ -79,4 +81,11 @@ public interface IRoomDao {
   * @return
   */
  public List<RoomBean> selectroombytypeandstatus(@Param("type")TypeBean type,@Param("status")MarkBean status,@Param("page")int page,@Param("size")int size);
+ /***
+  * 查询所有房间
+  * @param page
+  * @param size
+  * @return
+  */
+ public List<RoomBean> selectroomall(@Param("page")int page,@Param("size")int size);
 }
