@@ -175,6 +175,7 @@ public class RoomHandler {
 	@PutMapping(value="/updateroom")
 	@ResponseBody
 	public boolean updateroom(RoomBean room) {
+		System.out.println(room);
 		boolean boo=service.updateroom(room);
 		return boo;
 	}

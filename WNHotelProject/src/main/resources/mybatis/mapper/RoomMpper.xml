@@ -8,22 +8,22 @@
   update room
   <set>
   <if test="room.name!=null">
-  name=#{room.name}
+  name=#{room.name},
   </if>
   <if test="room.type!=null">
-  type=#{room.type.id}
+  type=#{room.type.id},
   </if>
   <if test="room.img!=null">
-  img=#{room.img}
+  img=#{room.img},
   </if>
   <if test="room.price!=0.0">
-  price=#{room.price}
+  price=#{room.price},
   </if>
   <if test="room.phone!=null">
-  phone=#{room.phone}
+  phone=#{room.phone},
   </if>
   <if test="room.location!=null">
-  location=#{room.location}
+  location=#{room.location},
   </if>
   <if test="room.message!=null">
   message=#{room.message}

@@ -34,6 +34,17 @@ public class roomcontroller {
       return "order.html";
 	}
 	/**
+	 * 根据房间id查询房间详细信息
+	 * @param rid房间id
+	 * @return
+	 */
+	@GetMapping(value="/admin/room/{rid}")
+	@ResponseBody
+	public RoomBean selectroom(@PathVariable("rid")Integer rid,ModelMap map) {
+      RoomBean bean = service.selectroombyid(rid);
+      return bean;
+	}
+	/**
 	 * 查询某一类型下所有房间
 	 * @param tid房间类型id
 	 * @param page当前页数
