@@ -15,7 +15,7 @@
     <!-- Google fonts - Poppins -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,700">
     <!-- theme stylesheet-->
-    <link rel="stylesheet" href="css/style.default.css" id="theme-stylesheet"><link id="new-stylesheet" rel="stylesheet"><link id="new-stylesheet" rel="stylesheet"><link id="new-stylesheet" rel="stylesheet"><link id="new-stylesheet" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.default.css" id="theme-stylesheet"><link id="new-stylesheet" rel="stylesheet"><link id="new-stylesheet" rel="stylesheet"><link id="new-stylesheet" rel="stylesheet"><link id="new-stylesheet" rel="stylesheet"><link id="new-stylesheet" rel="stylesheet"><link id="new-stylesheet" rel="stylesheet"><link id="new-stylesheet" rel="stylesheet"><link id="new-stylesheet" rel="stylesheet">
     <!-- Custom stylesheet - for your changes-->
     <link rel="stylesheet" href="css/custom.css">
     <!-- Favicon-->
@@ -28,7 +28,7 @@
 @-webkit-keyframes chartjs-render-animation{from{opacity:0.99}to{opacity:1}}@keyframes chartjs-render-animation{from{opacity:0.99}to{opacity:1}}.chartjs-render-monitor{-webkit-animation:chartjs-render-animation 0.001s;animation:chartjs-render-animation 0.001s;}</style><style type="text/css">/* Chart.js */
 @-webkit-keyframes chartjs-render-animation{from{opacity:0.99}to{opacity:1}}@keyframes chartjs-render-animation{from{opacity:0.99}to{opacity:1}}.chartjs-render-monitor{-webkit-animation:chartjs-render-animation 0.001s;animation:chartjs-render-animation 0.001s;}</style><style type="text/css">/* Chart.js */
 @-webkit-keyframes chartjs-render-animation{from{opacity:0.99}to{opacity:1}}@keyframes chartjs-render-animation{from{opacity:0.99}to{opacity:1}}.chartjs-render-monitor{-webkit-animation:chartjs-render-animation 0.001s;animation:chartjs-render-animation 0.001s;}</style></head>
-  <body>
+  <body class="" style="">
     <div class="page">
       <!-- Main Navbar-->
       <header class="header">
@@ -54,8 +54,7 @@
                 
                 
                 <!-- Notifications-->
-                <li class="nav-item dropdown" > 
-                <a id="notifications" rel="nofollow" data-target="#" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link"><i class="fa fa-bell-o"></i><span class="badge bg-red badge-corner">12</span></a>
+                <li class="nav-item dropdown"> <a id="notifications" rel="nofollow" data-target="#" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link"><i class="fa fa-bell-o"></i><span class="badge bg-red badge-corner">12</span></a>
                   <ul aria-labelledby="notifications" class="dropdown-menu">
                     <li><a rel="nofollow" href="#" class="dropdown-item"> 
                         <div class="notification">
@@ -93,68 +92,128 @@
       </header>
       <div class="page-content d-flex align-items-stretch"> 
         <!-- Side Navbar -->
-        <nav class="side-navbar" >
-         
+        <nav class="side-navbar">
+          
+          
+          <!-- Sidebar Navidation Menus--><span class="heading"></span>
+          <ul class="list-unstyled">
+                 
         </nav>
-        <div class="content-inner" style="padding-bottom: 76px;">
+        <div class="content-inner" style="padding-bottom: 59.0476px;">
           <!-- Page Header-->
           <header class="page-header">
             <div class="container-fluid">
-              <h2 class="no-margin-bottom">主页</h2>
+              <h2 class="no-margin-bottom">添加房间</h2>
             </div>
           </header>
           <!-- Dashboard Counts Section-->
           <section class="dashboard-counts no-padding-bottom">
             <div class="container-fluid">
-              <div class="row bg-white has-shadow">
-                    <div class="icon bg-violet"><i class="icon-user"></i></div>
-								<h2 style="line-height: 45px; color: gray;"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;欢 迎 登 录 后 台 管 理 系 统</h2>	
-              </div>
-            </div>
-          </section>
-          <!-- Dashboard Header Section    -->
-          <section class="dashboard-header">
-            <div class="container-fluid">
-              <div class="row">
-                <!-- Statistics -->
-                <div class="statistics col-lg-12 col-12">
-									
-                  <div class="statistic d-flex align-items-center bg-white has-shadow">
-										
-                    <div class="icon bg-red"><i class="fa fa-tasks"></i></div>
-                    <div class="text">
-											<a href="/comment">
-												<strong>234</strong><br><small>新的评论和反馈</small>
-											</a>
-											
-											
-											</div>
+              <div class="row bg-white has-shadow" style="padding-left: 180px">
+               
+                  <!-- Item -->
+                <div class="col-xl-3 col-sm-6" >
+                  <div class="item d-flex align-items-center">
+                    <div class="icon bg-green"><i class="icon-bill"></i></div>
+                    <div class="title">
+                      <a href="/afterroomall/1/4"><span>查询<br>房间</span></a>
+                    </div>
+                    
                   </div>
-                  <div class="statistic d-flex align-items-center bg-white has-shadow">
-                    <div class="icon bg-green"><i class="fa fa-calendar-o"></i></div>
-                    <div class="text">
-											<a href="appointment.html">
-												<strong>152</strong><br><small>新的预约</small>
-											</a>
-											
-											
-											</div>
-                  </div>
-                 
                 </div>
-                <!-- Line Chart            -->
                 
+                <!-- Item -->
+               
+                <div class="col-xl-3 col-sm-6" style="margin: 0 100px;" >
+                  <div class="item d-flex align-items-center">
+                    <div class="icon bg-red"><i class="icon-padnote"></i></div>
+                    <div class="title">
+				<a  href="/admin/updateroom.html"><span>修改<br>房间</span></a>
+                    </div>
+                  </div>
+                </div>
                 
+                <!-- Item -->
+                <div class="col-xl-3 col-sm-6">
+                  <div class="item d-flex align-items-center">
+                    <div class="icon bg-orange"><i class="icon-check"></i></div>
+                    <div class="title">
+                      <a href="/admin/roomSet.html"><span>添加<br>房间</span></a>
+                      
+                      
+                    </div>
+                    
+                  </div>
+                </div>
               </div>
             </div>
+    <div class="container-fluid">
+              <div class="col-lg-12">                           
+                  <div class="card">
+                    
+                    <div class="card-header d-flex align-items-center">
+                      <h3 class="h4">修改房间</h3>
+                    </div>
+                    <div class="card-body">
+   					 <p>房间名称：601</p>
+                      <form class="form-horizontal">
+			    <div class="form-group row">
+                     <label for="inlineFormInputGroup" class="col-sm-3 form-control-label">房间名称</label>
+                     <input id="inlineFormInputGroup" placeholder="房间名称" class="col-sm-9" type="text">
+			     </div>
+			    <div class="form-group row">
+                     <label for="inlineFormInputGroup" class="col-sm-3 form-control-label">房间类型</label>
+                        <select id="inlineFormInputGroup" placeholder="房间类型" class="col-sm-9">
+                                <option>高级大床房</option>
+						        <option>豪华双床房</option>
+						        <option>家庭亲子房</option>
+				        </select>
+        		</div>
+
+                        
+                        
+				<div class="form-group row">
+                          <label for="inlineFormInputGroup" class="col-sm-3 form-control-label">房间图片</label>
+                          <input id="inlineFormInputGroup" placeholder="房间图片" class="col-sm-9" type="file">
+                        </div>
+			<div class="form-group row">
+                          <label for="inlineFormInputGroup" class="col-sm-3 form-control-label">电话号码</label>
+                          <input id="inlineFormInputGroup" placeholder="电话号码" class="col-sm-9" type="text">
+                        </div><div class="form-group row">
+                          <label for="inlineFormInputGroup" class="col-sm-3 form-control-label">地址</label>
+                          <input id="inlineFormInputGroup" placeholder="地址" class="col-sm-9" type="text">
+                        </div>
+<div class="form-group row">
+                          <label for="inlineFormInputGroup" class="col-sm-3 form-control-label">说明</label>
+                          <input id="inlineFormInputGroup" placeholder="说明" class="col-sm-9" type="text">
+                        </div>
+<div class="form-group row">
+                          <label for="inlineFormInputGroup" class="col-sm-3 form-control-label">面积</label>
+                          <input id="inlineFormInputGroup" placeholder="面积" class="col-sm-9" type="text">
+                        </div><div class="form-group row">
+                          <label for="inlineFormInputGroup" class="col-sm-3 form-control-label">价格</label>
+                          <input id="inlineFormInputGroup" placeholder="价格" class="col-sm-9" type="text">
+                        </div>
+                        <div class="form-group">
+                          <button type="submit" class="btn btn-primary">修改</button>
+                        </div>
+                      </form>
+                    </div>
+                  </div>
+                </div>
+                </div>
+            </div>
           </section>
-          <!-- Projects Section-->
+
           
-          <!-- Client Section-->
           
-          <!-- Feeds Section-->
           
-          <!-- Updates Section                                                -->
+          
+          
+          
+          
+          
+          
           <section class="updates no-padding-top">
             <div class="container-fluid">
               <div class="row">
@@ -174,6 +233,7 @@
                 <div class="col-sm-6">
                   <p>Your company © 2017-2019</p>
                 </div>
+                
               </div>
             </div>
           </footer>
@@ -187,11 +247,7 @@
     <script src="vendor/jquery.cookie/jquery.cookie.js"> </script>
     <script src="vendor/jquery-validation/jquery.validate.min.js"></script>
     <!-- Main File-->
+     <script src="/admin/js/head.js"></script>
     <script src="js/front.js"></script>
-   <script src="js/head.js"></script>
- <!--  <script src="js/head.js"></script> -->
-  <script src="js/webSocket.js"></script>
- 
-
-
+  
 </body></html>

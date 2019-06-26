@@ -70,4 +70,16 @@ public PageBean selectroombytypeantime(TypeBean type,String inTime,String outTim
  * @return
  */
 public PageBean selectroomall(int page,int size);
+/**
+ * 修改房间信息
+ * @param room
+ * @return
+ */
+public boolean updateroom(RoomBean room);
+/**
+ * 添加房间
+ * @param room
+ * @return
+ */
+public boolean insertroom(RoomBean room);
 }

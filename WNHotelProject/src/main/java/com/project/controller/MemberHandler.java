@@ -133,9 +133,12 @@ public class MemberHandler {
 	/*
 	 * 通过手机号查询所有会员信息
 	 */
-	@GetMapping("/member/selectByPhoneNumber")
+	@GetMapping("/member/PhoneNumber")
+	@ResponseBody
 	public MemberBean selectAll(String phoneNumber) {
+		System.out.println(phoneNumber);
 		MemberBean bean = service.selectByPhoneNumber(phoneNumber);
+		System.out.println("===="+bean);
 		return bean;
 		
 	}

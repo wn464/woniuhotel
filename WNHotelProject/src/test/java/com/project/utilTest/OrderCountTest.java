@@ -5,6 +5,7 @@ import java.util.List;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
@@ -20,7 +21,7 @@ import com.project.demo.WnHotelProjectApplication;
 import com.project.util.countUtil.OrderUtil;
 
 @RunWith(SpringRunner.class)
-@SpringBootTest(classes = WnHotelProjectApplication.class)
+@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT,classes = WnHotelProjectApplication.class)
 public class OrderCountTest {
 
 	@Autowired
@@ -54,9 +55,9 @@ public class OrderCountTest {
 //			e.printStackTrace();
 //		}
 		try {
-			//System.out.println(orderutil.getOnLineMoney(5000, 1));
-			//System.out.println(orderutil.getUnderLineMoney(5000, 1));
-			System.out.println(orderutil.getUnderLineMoney(5000));
+			System.out.println(orderutil.getOnLineMoney(200, 1));
+			System.out.println(orderutil.getUnderLineMoney(200, 1));
+			//System.out.println(orderutil.getUnderLineMoney(5000));
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

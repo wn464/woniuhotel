@@ -5,6 +5,7 @@ package com.project.controller;
 import java.util.List;
 
 import org.apache.catalina.security.SecurityUtil;
+import org.apache.ibatis.annotations.Update;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.subject.Subject;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,6 +20,8 @@ import org.springframework.ui.ModelMap;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import com.project.Service.IRoomService;
@@ -68,6 +71,7 @@ public class RoomHandler {
 		
 		int dl=0;
 		if(scb.getSession(false)!=null) {
+			System.out.println("------==========");
 			if(scb.getSession(false).getAttribute("id")!=null) {
 				dl=1;
 			}
@@ -151,15 +155,38 @@ public class RoomHandler {
 	}
 	
 	/**
-	 * 根据房间id查询房间详细信息
+	 * 点击入住跳转预约界面
 	 * @param rid房间id
 	 * @return
 	 */
-	@GetMapping(value="/rooms/{rid}")
-	public String selectroombyid1(@PathVariable("rid")Integer rid,ModelMap map) {
+	@GetMapping(value="/rooms/{rid}/{inTime}/{outTime}")
+	public String selectroombyid1(@PathVariable("rid")Integer rid,@PathVariable("inTime")String inTime,@PathVariable("outTime")String outTime,ModelMap map) {
       RoomBean bean = service.selectroombyid(rid);
-      System.out.println(bean);
       map.put("roomBean", bean);
+      map.put("inTime",inTime);
+      map.put("outTime", outTime);
       return "admin/subscribe.html";
+	}
+	/**
+	 * 修改房间信息
+	 * @param room
+	 * @return
+	 */
+	@PutMapping(value="/updateroom")
+	@ResponseBody
+	public boolean updateroom(RoomBean room) {
+		boolean boo=service.updateroom(room);
+		return boo;
+	}
+	/***
+	 * 添加房间
+	 * @param room
+	 * @return
+	 */
+	@PostMapping(value="/insertroom")
+	@ResponseBody
+	public boolean insertroom(RoomBean room) {
+		boolean boo=service.insertroom(room);
+		return boo;
 	}
 }

@@ -2,6 +2,7 @@ package com.project.dao;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
@@ -88,4 +89,19 @@ public interface IRoomDao {
   * @return
   */
  public List<RoomBean> selectroomall(@Param("page")int page,@Param("size")int size);
+ 
+ /**
+  * 修改房间信息
+  * @param room
+  * @return
+  */
+ public int updateroom(@Param("room")RoomBean room);
+ /**
+  * 添加房间
+  * @param roo
+  * @return
+  */
+ @Insert("insert into room (name,type,img,status,phone,location,message,price,area)"
+ 		+ "values(#{room.name},#{room.type.id},#{room.img},3,#{room.phone},#{room.location},#{room.message},#{room.price},#{room.area})")
+ public int insertroom(@Param("room")RoomBean roo);
 }

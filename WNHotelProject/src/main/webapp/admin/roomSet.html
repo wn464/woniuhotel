@@ -123,12 +123,11 @@
             <div class="container-fluid">
               <div class="row bg-white has-shadow">
                 <!-- Item -->
-                <div class="col-xl-3 col-sm-6">
+                <div class="col-xl-4 col-sm-6">
                   <div class="item d-flex align-items-center">
                     <div class="icon bg-violet"><i class="icon-user"></i></div>
-                    <div class="title"><a  href="findRoom.html">
-												<span>旅客<br>入住</span>
-											</a>
+                    <div class="title">
+                    <a  href="javascript:addPage()"><span>房间<br>添加</span></a>
 											
                       
                     </div>
@@ -136,94 +135,87 @@
                   </div>
                 </div>
                 <!-- Item -->
-                <div class="col-xl-3 col-sm-6" >
+                <div class="col-xl-4 col-sm-6" >
                   <div class="item d-flex align-items-center">
                     <div class="icon bg-red"><i class="icon-padnote"></i></div>
                     <div class="title">
-											<a  href="roomManager.html"><span>房间<br>管理</span></a>
+											<a  href="javascript:findPage()"><span>房间<br>查询</span></a>
 											
                       
                     </div>
                     
                   </div>
                 </div>
+                
                 <!-- Item -->
-                <div class="col-xl-3 col-sm-6">
-                  <div class="item d-flex align-items-center">
-                    <div class="icon bg-green"><i class="icon-bill"></i></div>
-                    <div class="title">
-                      <a href="findOrder.html"><span>订单<br>查询</span></a>
-                    </div>
-                    
-                  </div>
-                </div>
-                <!-- Item -->
-                <div class="col-xl-3 col-sm-6">
+                <div class="col-xl-4 col-sm-6">
                   <div class="item d-flex align-items-center">
                     <div class="icon bg-orange"><i class="icon-check"></i></div>
                     <div class="title">
-                      <a href="findOrder.html"><span>旅客<br>结账</span></a>
+                      <a href="javascript:setPage()"><span>房间<br>修改</span></a>
                       
                     </div>
                     
                   </div>
                 </div>
+              
               </div>
             </div>
     <div class="container-fluid">
               <div class="row">
                 
-                <div class="col-lg-12">                           
+                <div class="col-lg-12" id="insert">                           
                   <div class="card">
                     
                     <div class="card-header d-flex align-items-center">
                       <h3 class="h4">添加房间</h3>
                     </div>
                     <div class="card-body">
-                      <form class="form-horizontal">
+                      <form class="form-horizontal" id="insertForm">
     <div class="form-group row">
                           <label for="inlineFormInputGroup" class="col-sm-3 form-control-label">房间名称</label>
-                          <input id="inlineFormInputGroup" placeholder="房间名称" class="col-sm-9" type="text">
+                          <input id="inlineFormInputGroup" placeholder="房间名称" class="col-sm-9" type="text" name="name" >
                         </div>
     <div class="form-group row">
-                          <label for="inlineFormInputGroup" class="col-sm-3 form-control-label">房间类型</label>
+                          <label for="insertType" class="col-sm-3 form-control-label">房间类型</label>
                          
-                        <select id="inlineFormInputGroup" placeholder="房间类型" class="col-sm-9">
-                              <option>高级大床房</option>
-        <option>豪华双床房</option><option>家庭亲子房</option></select></div>
+	<select placeholder="房间类型" class="col-sm-9" id="insertType" name="type.id">
+	</select>
+</div>
 
                         
                         
 <div class="form-group row">
-                          <label for="inlineFormInputGroup" class="col-sm-3 form-control-label">房间图片</label>
-                          <input id="inlineFormInputGroup" placeholder="房间图片" class="col-sm-9" type="file">
+                          <label for="insertimg" class="col-sm-3 form-control-label">房间图片</label>
+                          <label class="col-sm-4 form-control-label" id="insertimgname"></label>
+                          <input id="insertimg" placeholder="房间图片" class="col-sm-4" type="file" onchange="upinsertimg()">
                         </div>
 <div class="form-group row">
                           <label for="inlineFormInputGroup" class="col-sm-3 form-control-label">电话号码</label>
-                          <input id="inlineFormInputGroup" placeholder="电话号码" class="col-sm-9" type="text">
+                          <input id="inlineFormInputGroup" placeholder="电话号码" class="col-sm-9" type="text" name="phone">
                         </div><div class="form-group row">
                           <label for="inlineFormInputGroup" class="col-sm-3 form-control-label">地址</label>
-                          <input id="inlineFormInputGroup" placeholder="地址" class="col-sm-9" type="text">
+                          <input id="inlineFormInputGroup" placeholder="地址" class="col-sm-9" type="text" name="location">
                         </div>
 <div class="form-group row">
                           <label for="inlineFormInputGroup" class="col-sm-3 form-control-label">说明</label>
-                          <input id="inlineFormInputGroup" placeholder="说明" class="col-sm-9" type="text">
+                          <input id="inlineFormInputGroup" placeholder="说明" class="col-sm-9" type="text" name="message">
                         </div>
 <div class="form-group row">
                           <label for="inlineFormInputGroup" class="col-sm-3 form-control-label">面积</label>
-                          <input id="inlineFormInputGroup" placeholder="面积" class="col-sm-9" type="text">
+                          <input id="inlineFormInputGroup" placeholder="面积" class="col-sm-9" type="text" name="area">
                         </div><div class="form-group row">
                           <label for="inlineFormInputGroup" class="col-sm-3 form-control-label">价格</label>
-                          <input id="inlineFormInputGroup" placeholder="价格" class="col-sm-9" type="text">
+                          <input id="inlineFormInputGroup" placeholder="价格" class="col-sm-9" type="text" name="price">
                         </div>
                         <div class="form-group">
-                          <button type="submit" class="btn btn-primary">添加</button>
+                          <button type="button" class="btn btn-primary" onclick="insert()">添加</button>
                         </div>
                       </form>
                     </div>
                   </div>
                 </div>
-                <div class="col-lg-12">
+                <div class="col-lg-12" id="find">
                   <div class="card">
                     
                     <div class="card-header d-flex align-items-center">
@@ -247,7 +239,7 @@
   
                             </tr>
                           </thead>
-                          <tbody>
+                          <tbody id="findTableTbody">
                             <tr>
                               
                               <td>1</td>
@@ -263,57 +255,66 @@
                             
                           </tbody>
                         </table>
+                        <ul class="pagination">
+						    <li class="page-link" onclick="before()">Previous</li>
+						    <li class="page-link" id="page"></li>
+						    <li class="page-link">/</li>
+						    <li class="page-link" id="totalPage"></li>
+						    <li class="page-link" onclick="after()">Next</li>
+						    <li>一共<span id="totalNumber"></span>个结果</li>
+						  </ul>
+						  
                       </div>
                     </div>
                   </div>
                 </div>
                 
-              <div class="col-lg-12">                           
+              <div class="col-lg-12" id="set">                           
                   <div class="card">
                     
                     <div class="card-header d-flex align-items-center">
                       <h3 class="h4">修改房间</h3>
                     </div>
                     <div class="card-body">
-    <p>房间名称：601</p>
-                      <form class="form-horizontal">
+    <p>房间名称：<span id="showSetName"></span></p>
+                      <form class="form-horizontal" id="updataFrom">
     <div class="form-group row">
-                          <label for="inlineFormInputGroup" class="col-sm-3 form-control-label">房间名称</label>
-                          <input id="inlineFormInputGroup" placeholder="房间名称" class="col-sm-9" type="text">
+                          <label for="setname" class="col-sm-3 form-control-label">房间名称</label>
+                          <input id="setname" placeholder="房间名称" class="col-sm-9" type="text">
                         </div>
     <div class="form-group row">
-                          <label for="inlineFormInputGroup" class="col-sm-3 form-control-label">房间类型</label>
+                          <label for="setType" class="col-sm-3 form-control-label">房间类型</label>
                          
-                        <select id="inlineFormInputGroup" placeholder="房间类型" class="col-sm-9">
-                              <option>高级大床房</option>
-        <option>豪华双床房</option><option>家庭亲子房</option></select></div>
+                        <select id="setType" placeholder="房间类型" class="col-sm-9">
+                             </select></div>
 
                         
                         
 <div class="form-group row">
-                          <label for="inlineFormInputGroup" class="col-sm-3 form-control-label">房间图片</label>
-                          <input id="inlineFormInputGroup" placeholder="房间图片" class="col-sm-9" type="file">
+                          <label for="setimg" class="col-sm-3 form-control-label">房间图片</label>
+                          <label class="col-sm-4 form-control-label" id="setimgname"></label>
+                          <input id="setimg" placeholder="房间图片" class="col-sm-4" type="file">
                         </div>
 <div class="form-group row">
-                          <label for="inlineFormInputGroup" class="col-sm-3 form-control-label">电话号码</label>
-                          <input id="inlineFormInputGroup" placeholder="电话号码" class="col-sm-9" type="text">
+                          <label for="setphone" class="col-sm-3 form-control-label">电话号码</label>
+                          <input id="setphone" placeholder="电话号码" class="col-sm-9" type="text" name="phone">
                         </div><div class="form-group row">
-                          <label for="inlineFormInputGroup" class="col-sm-3 form-control-label">地址</label>
-                          <input id="inlineFormInputGroup" placeholder="地址" class="col-sm-9" type="text">
+                          <label for="setlocation" class="col-sm-3 form-control-label">地址</label>
+                          <input id="setlocation" placeholder="地址" class="col-sm-9" type="text" name="location">
                         </div>
 <div class="form-group row">
-                          <label for="inlineFormInputGroup" class="col-sm-3 form-control-label">说明</label>
-                          <input id="inlineFormInputGroup" placeholder="说明" class="col-sm-9" type="text">
+                          <label for="setmessage" class="col-sm-3 form-control-label">说明</label>
+                          <input id="setmessage" placeholder="说明" class="col-sm-9" type="text" name="message">
                         </div>
 <div class="form-group row">
-                          <label for="inlineFormInputGroup" class="col-sm-3 form-control-label">面积</label>
-                          <input id="inlineFormInputGroup" placeholder="面积" class="col-sm-9" type="text">
+                          <label for="setarea" class="col-sm-3 form-control-label">面积</label>
+                          <input id="setarea" placeholder="面积" class="col-sm-9" type="text" name="area">
                         </div><div class="form-group row">
-                          <label for="inlineFormInputGroup" class="col-sm-3 form-control-label">价格</label>
-                          <input id="inlineFormInputGroup" placeholder="价格" class="col-sm-9" type="text">
+                          <label for="setprice" class="col-sm-3 form-control-label">价格</label>
+                          <input id="setprice" placeholder="价格" class="col-sm-9" type="text" name="price">
                         </div>
                         <div class="form-group">
-                          <button type="submit" class="btn btn-primary">修改</button>
+                          <button type="button" class="btn btn-primary" onclick="updata()">修改</button>
                         </div>
                       </form>
                     </div>
@@ -365,5 +366,5 @@
     <script src="vendor/jquery-validation/jquery.validate.min.js"></script>
     <!-- Main File-->
     <script src="js/front.js"></script>
-  
+  <script src="js/roomSet.js"></script>
 </body></html>
