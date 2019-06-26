@@ -126,9 +126,8 @@
                 <div class="col-xl-3 col-sm-6">
                   <div class="item d-flex align-items-center">
                     <div class="icon bg-violet"><i class="icon-user"></i></div>
-                    <div class="title"><a  href="findRoom.html">
-												<span>旅客<br>入住</span>
-											</a>
+                    <div class="title">
+                    <a  href="#"><span>房间<br>添加</span></a>
 											
                       
                     </div>
@@ -140,29 +139,20 @@
                   <div class="item d-flex align-items-center">
                     <div class="icon bg-red"><i class="icon-padnote"></i></div>
                     <div class="title">
-											<a  href="roomManager.html"><span>房间<br>管理</span></a>
+											<a  href="#"><span>房间<br>查询</span></a>
 											
                       
                     </div>
                     
                   </div>
                 </div>
-                <!-- Item -->
-                <div class="col-xl-3 col-sm-6">
-                  <div class="item d-flex align-items-center">
-                    <div class="icon bg-green"><i class="icon-bill"></i></div>
-                    <div class="title">
-                      <a href="findOrder.html"><span>订单<br>查询</span></a>
-                    </div>
-                    
-                  </div>
-                </div>
+                
                 <!-- Item -->
                 <div class="col-xl-3 col-sm-6">
                   <div class="item d-flex align-items-center">
                     <div class="icon bg-orange"><i class="icon-check"></i></div>
                     <div class="title">
-                      <a href="findOrder.html"><span>旅客<br>结账</span></a>
+                      <a href="#"><span>房间<br>修改</span></a>
                       
                     </div>
                     
@@ -173,7 +163,7 @@
     <div class="container-fluid">
               <div class="row">
                 
-                <div class="col-lg-12">                           
+                <div class="col-lg-12" id="insert">                           
                   <div class="card">
                     
                     <div class="card-header d-flex align-items-center">
@@ -183,12 +173,12 @@
                       <form class="form-horizontal">
     <div class="form-group row">
                           <label for="inlineFormInputGroup" class="col-sm-3 form-control-label">房间名称</label>
-                          <input id="inlineFormInputGroup" placeholder="房间名称" class="col-sm-9" type="text">
+                          <input id="inlineFormInputGroup" placeholder="房间名称" class="col-sm-9" type="text" name="name">
                         </div>
     <div class="form-group row">
-                          <label for="inlineFormInputGroup" class="col-sm-3 form-control-label">房间类型</label>
+                          <label for="insertType" class="col-sm-3 form-control-label">房间类型</label>
                          
-                        <select id="inlineFormInputGroup" placeholder="房间类型" class="col-sm-9">
+                        <select placeholder="房间类型" class="col-sm-9" id="insertType" name="type.id">
                               <option>高级大床房</option>
         <option>豪华双床房</option><option>家庭亲子房</option></select></div>
 
@@ -223,7 +213,7 @@
                     </div>
                   </div>
                 </div>
-                <div class="col-lg-12">
+                <div class="col-lg-12" id="find">
                   <div class="card">
                     
                     <div class="card-header d-flex align-items-center">
@@ -247,7 +237,7 @@
   
                             </tr>
                           </thead>
-                          <tbody>
+                          <tbody id="findTableTbody">
                             <tr>
                               
                               <td>1</td>
@@ -263,12 +253,28 @@
                             
                           </tbody>
                         </table>
+                        <ul class="pager">
+						    <li class="">
+						      <a href="#" aria-label="Previous">
+						        <span aria-hidden="true">&laquo;</span>
+						      </a>
+						    </li>
+						    <li><a href="#">1</a></li>
+						    <li><a href="#">3</a></li>
+						    <li><a href="#">4</a></li>
+						    <li><a href="#">5</a></li>
+						    <li>
+						      <a href="#" aria-label="Next">
+						        <span aria-hidden="true">&raquo;</span>
+						      </a>
+						    </li>
+						  </ul>
                       </div>
                     </div>
                   </div>
                 </div>
                 
-              <div class="col-lg-12">                           
+              <div class="col-lg-12" id="set">                           
                   <div class="card">
                     
                     <div class="card-header d-flex align-items-center">
@@ -365,5 +371,5 @@
     <script src="vendor/jquery-validation/jquery.validate.min.js"></script>
     <!-- Main File-->
     <script src="js/front.js"></script>
-  
+  <script src="js/roomSet.js"></script>
 </body></html>
