@@ -345,11 +345,13 @@ ul.dropdown-menu li a {
 
 .search {
 	float: right;
-	width: 12%;
+	width: 15%;
+
 }
 
 .search h5 {
-	margin-top: 11px;
+	
+	
 }
 
 a.sign {
