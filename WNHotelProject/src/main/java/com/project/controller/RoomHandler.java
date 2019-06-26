@@ -156,11 +156,12 @@ public class RoomHandler {
 	 * @param rid房间id
 	 * @return
 	 */
-	@GetMapping(value="/rooms/{rid}")
-	public String selectroombyid1(@PathVariable("rid")Integer rid,ModelMap map) {
+	@GetMapping(value="/rooms/{rid}/{inTime}/{outTime}")
+	public String selectroombyid1(@PathVariable("rid")Integer rid,@PathVariable("inTime")String inTime,@PathVariable("outTime")String outTime,ModelMap map) {
       RoomBean bean = service.selectroombyid(rid);
-      System.out.println(bean);
       map.put("roomBean", bean);
+      map.put("inTime",inTime);
+      map.put("outTime", outTime);
       return "admin/subscribe.html";
 	}
 }
