@@ -98,8 +98,8 @@
           
           <!-- Sidebar Navidation Menus--><span class="heading"></span>
           <ul class="list-unstyled">
-                    <li><a href="index.html"> <i class="icon-home"></i>旅客入住</a></li>
-                    <li><a href="tables.html"> <i class="icon-grid"></i>房间管理</a></li>
+                    <li><a href="/afterstatus/1/4"> <i class="icon-home"></i>旅客入住</a></li>
+                    <li><a href="/afterroomall/1/4"> <i class="icon-grid"></i>房间管理</a></li>
                     <li><a href="charts.html"> <i class="fa fa-bar-chart"></i>订单查询</a></li>
                     <li><a href="forms.html"> <i class="icon-padnote"></i>旅客结账</a></li>
                     
@@ -127,7 +127,7 @@
                 <div class="col-xl-3 col-sm-6">
                   <div class="item d-flex align-items-center">
                     <div class="icon bg-violet"><i class="icon-user"></i></div>
-                    <div class="title"><a  href="findRoom.html">
+                    <div class="title"><a  href="/afterstatus/1/4">
 												<span>旅客<br>入住</span>
 											</a>
 											
@@ -432,6 +432,7 @@
   	}
   }
   function ne(mess){
+	  
   	var count="";
 		for(var i=0;i<mess.length;i++){
 			count+=" <tr>" ;
@@ -440,7 +441,7 @@
            count+="<td>￥"+mess[i].price+"</td>";
            count+="<td>待入住</td>";
            count+="<td>";
-          count+=" <a href='#' class='badge badge-rounded bg-green'>入住</a></td>";
+          count+=" <button class='badge badge-rounded bg-green' onclick='rz()'>入住</button></td>";
 			 count+="</tr>";
 		}
 		$("#house").html(count);
@@ -452,6 +453,9 @@
   	$("#xs").html("");
   });
   
+  function rz(){
+	  
+  }
   </script>
 </body>
 </html>
