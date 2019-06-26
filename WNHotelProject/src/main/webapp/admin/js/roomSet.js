@@ -42,7 +42,7 @@ function jump(){
 				"</td><td>"+list[i].message+
 				"</td><td>"+list[i].area+
 				"</td><td>"+list[i].price+
-				"</td><td>"+"<a herf='javascript:set("+list[i].id+")' class='badge badge-rounded bg-green'>修改</a><a herf='javascript:del("+list[i].id+")' class='badge badge-rounded bg-green'>删除</a></td></tr>";
+				"</td><td>"+"<a href='javascript:set("+list[i].id+")' class='badge badge-rounded bg-green'>修改</a><a href='javascript:del("+list[i].id+")' class='badge badge-rounded bg-green'>删除</a></td></tr>";
 			}
 			findTableTbody.html(str);
 			setpage();
@@ -61,7 +61,7 @@ function del(id){
 	console.info("删除编号为："+id+"的优惠");
 	if(confirm("确定删除？")){
 		$.ajax({
-			url:"/admin/vip",
+			url:"admin/room/id",
 			async: false,
 			data:"id="+id,
 			type:"delete",
@@ -85,16 +85,27 @@ function set(id){
 	setId=id;
 	console.info("房间编号为："+id+"的房间");
 	$.ajax({
-		url:"/admin/vip/"+id,
+		url:"/admin/room/"+id,
 		async: false,
 		type:"get",
+		error:function(){
+			alert("该房间不存在！！！")
+		},
 		success:function(mes){
+			console.info(mes);		
 			$("#showSetName").html(mes.name);
-			$("#setName").val(mes.name);
-			$("#setMaxMoney").val(mes.maxMoney);
-			$("#setDiscount").val(mes.discount);
+			$("#setname").val(mes.name);
+			$("#setType").val(mes.type.id);
+			$("#setimgname").html("<img width='100%' src='/images/"+mes.img+"'>");
+			setimg=mes.img;
+			$("#setphone").val(mes.phone);
+			$("#setlocation").val(mes.location);
+			$("#setmessage").val(mes.message);
+			$("#setarea").val(mes.area);
+			$("#setprice").val(mes.price);
 		}
 	})
+	setPage();
 }
 var setId;
 var insertimg;
@@ -108,16 +119,17 @@ function updata(){
 		return;
 	}
 	$.ajax({
-		url:"/admin/vip",
+		url:"/updateroom",
 		async:true,
 		type:"put",
-		data:update+"&id="+setId+"&img="+setimg,
+		data:str+"&id="+setId+"&img="+setimg,
 		error:function(){
 			alert("修改失败，请检查是否正确和完整");
 		},
 		success:function(mes){
 			alert("修改成功");
 			jump()
+			findPage()
 		}
 	})
 }
@@ -151,6 +163,21 @@ function insert(){
 	if(str==null){
 		return;
 	}
+	$.ajax({
+		url:"/insertroom",
+		async:true,
+		type:"post",
+		data:str+"&img="+insertimg,
+		error:function(){
+			alert("添加失败，请检查是否正确和完整");
+		},
+		success:function(mes){
+			alert("添加成功");
+			jump()
+			findPage()
+		}
+	})
+	
 }
 //加载完毕执行
 window.onload=function(){
