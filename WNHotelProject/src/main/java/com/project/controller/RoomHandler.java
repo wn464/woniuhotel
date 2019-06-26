@@ -178,6 +178,11 @@ public class RoomHandler {
 		boolean boo=service.updateroom(room);
 		return boo;
 	}
+	/***
+	 * 添加房间
+	 * @param room
+	 * @return
+	 */
 	@PostMapping(value="/insertroom")
 	@ResponseBody
 	public boolean insertroom(RoomBean room) {
