@@ -63,4 +63,11 @@ public PageBean selectroombytypeandstatus(TypeBean type,MarkBean status,int page
  */
 
 public PageBean selectroombytypeantime(TypeBean type,String inTime,String outTime,int page,int size);
+/**
+ * 查询所有房间
+ * @param page
+ * @param size
+ * @return
+ */
+public PageBean selectroomall(int page,int size);
 }
