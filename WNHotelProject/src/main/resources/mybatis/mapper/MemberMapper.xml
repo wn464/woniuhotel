@@ -14,6 +14,7 @@
 		<id property="id" column="id"/>
 		<result property="userName" column="username"/>
 		<result property="phoneNumber" column="phoneNumber"/>
+		<result property="password" column="password"/>
 	</resultMap>
 	
 	
@@ -25,8 +26,13 @@
 	<resultMap type="MemberBean" id="map1">
 		<id property="id" column="id"/>
 		<result property="userName" column="userName"/>
+		<result property="password" column="password"/>
 		<result property="phoneNumber" column="phoneNumber"/>
 		<result property="money" column="money"/>
 		<association property="vipBean" javaType="VipBean" select="com.project.dao.IVipDao.selectVipById" column="vip"/>
 	</resultMap>
+	
+	<select  id="selectByPhoneNumber" resultMap="map1"> 
+		select * from member where phoneNumber=#{phoneNumber}
+	</select>
 </mapper> 

@@ -1,5 +1,7 @@
 package com.project.dao;
 
+import java.util.List;
+
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
@@ -31,7 +33,8 @@ public interface IUserDao {
 		@Update("update user set role = #{role.id} where id = #{id}")
 		public int updateRole(UserBean user);
 		
+		//查询所有操作员
 		
-	
+		public List<UserBean> selectAll();
 	
 }

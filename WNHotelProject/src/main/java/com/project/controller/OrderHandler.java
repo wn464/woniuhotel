@@ -112,12 +112,12 @@ public class OrderHandler {
 	/*
 	 * 通过时间段查询订单
 	 */
-	@GetMapping("/time/{subscribeStatus}/{startTime}/{endTime}/{page}/{size}")
-	@ResponseBody
-	public PageBean selectOrderByTime(@PathVariable("subscribeStatus")int subscribeStatus,@PathVariable("startTime")String startTime, @PathVariable("endTime")String endTime,@PathVariable("page")int page,@PathVariable("size")int size){
+	@GetMapping("/time")
+	public String selectOrderByTime(int subscribeStatus,String startTime,String endTime,ModelMap map){
+		PageBean pageBean = orderService.selectOrderByTime(subscribeStatus,startTime, endTime, 1, 4);
+		map.put("bean", pageBean);
 		
-		PageBean pageBean = orderService.selectOrderByTime(subscribeStatus,startTime, endTime, page, size);
-		return pageBean;
+		return "admin/orderSet.html";
 	}
 	/*
 	 * 通过订单id查询订单(统计价格)
@@ -156,16 +156,45 @@ public class OrderHandler {
 		map.put("orderBean", orderBean);
 		return "pay.html";
 	}
-	
+
+//--------------------------------后台操作-------------------------------------------------
 	
 	/*
-	 * 通过订单id查询订单(后台统计人员)
+	 * 通过订单id查询订单(后台添加人员)
 	 */
 	@GetMapping("/people/{oid}")
 	public String selectById(@PathVariable("oid")int oid,ModelMap map){
 		OrderBean orderBean = orderService.selectOrderById(oid);
 		map.put("orderBean", orderBean);
 		return "admin/people.html";
+	}
+	
+	
+	/*
+	 * 后台线下开单
+	 */
+	@PostMapping("/after")
+	@ResponseBody
+	public String getOrder1(OrderBean orderBean) {
+		Subject subject = SecurityUtils.getSubject();
+	    Session session = subject.getSession(false);
+//	    session.setAttribute("id", 7);//测试使用
+	    String id = null;
+	    if (session!=null) {
+	    	int mid = (int) session.getAttribute("id");
+	        MemberBean memberBean = new MemberBean();
+	        memberBean.setId(mid);
+	        orderBean.setMember(memberBean);
+			OrderBean orderBean2 = orderService.getOrder(orderBean);
+			int oid = orderBean2.getId();
+			id = String.valueOf(oid);
+		}else {
+			OrderBean orderBean2 = orderService.getOrder(orderBean);
+			int oid = orderBean2.getId();
+			id = String.valueOf(oid);
+		}
+        
+		return id;
 	}
 	
 }

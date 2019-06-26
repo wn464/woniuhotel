@@ -20,8 +20,8 @@ public interface IMemberDao {
 	public MemberBean selectById(int id);
 	
 	//修改密码
-	@Update("update member set password = #{password} where id = #{id}")
-	public int updatePassword(MemberBean member);
+	@Update("update member set password = #{repassword} where id = #{id}")
+	public int updatePassword(String repassword,int id);
 	
 	//修改消费金额
 	@Update("update member set money = #{money} where id = #{id}")
@@ -33,5 +33,8 @@ public interface IMemberDao {
 	
 	//通过用户名查找	
 	public MemberBean selectByUsername(String userName);
+	
+	//通过手机号查询
+	public MemberBean selectByPhoneNumber(String phoneNumber);
 	
 }

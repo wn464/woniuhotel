@@ -20,7 +20,7 @@ public interface IMemberService {
 		public MemberBean selectById(int id);
 		
 		//修改密码
-		public int updatePassword(String password,String repassword,int id);
+		public int updatePassword(String repassword,int id);
 		
 		//修改消费金额
 		public int updateMoney(double money,int id);
@@ -30,6 +30,9 @@ public interface IMemberService {
 		
 		//通过用户名查找
 		public MemberBean selectByUsername(String userName);
+		
+		//通过手机号查询
+		public MemberBean selectByPhoneNumber(String phoneNumber);
 		
 		
 }

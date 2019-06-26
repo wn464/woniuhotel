@@ -21,6 +21,7 @@ import com.project.bean.PageBean;
 import com.project.dao.ILiveDao;
 import com.project.dao.IOrderDao;
 import com.project.util.CreateOrderInfo;
+import com.project.util.WebSocketUtil;
 import com.project.util.timingutil.ordertiming;
 /**
  * 订单业务
@@ -55,6 +56,7 @@ public class OrderServiceImp implements IOrderService{
 		OrderBean orderBean3 = orderDao.selectOrderByOrderNumber(orderNumber);
 		//开启定时器
 		ordertiming.ds(orderBean3.getId(),this);
+		WebSocketUtil.sendMessageAll("有新订单了");
 		return orderBean3;
 	}
 
