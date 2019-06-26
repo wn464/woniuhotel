@@ -2,6 +2,8 @@ package com.project.controller;
 
 
 
+import java.util.List;
+
 import org.apache.catalina.security.SecurityUtil;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.subject.Subject;
@@ -115,13 +117,50 @@ public class RoomHandler {
 	 * @param size
 	 * @return
 	 */
-	@GetMapping(value="/time")
-	@ResponseBody
-	public PageBean selectroombytypeantime(int tid, String inTime, String outTime, int page, int size) {
+	@GetMapping(value="/time/{tid}/{inTime}/{outTime}/{page}/{size}")
+	public String selectroombytypeantime(@PathVariable("tid")int tid, @PathVariable("inTime")String inTime, @PathVariable("outTime")String outTime, @PathVariable("page")int page, @PathVariable("size")int size,ModelMap map) {
+		System.out.println("类型"+tid);
+		System.out.println("入住时间"+inTime);
+		System.out.println(("离店时间"+outTime));
 		TypeBean type=new TypeBean();
 		type.setId(tid);
 		PageBean bean=service.selectroombytypeantime(type, inTime, outTime, page, size);
-		
+		System.out.println("分页："+bean);
+		List<RoomBean> list = (List<RoomBean>) bean.getList();
+		for (RoomBean roombean : list) {
+			String img =roombean.getImg();
+			roombean.setImg("/images/"+img);
+		}
+		map.put("room",bean);
+		map.put("tid",tid);
+		map.put("inTime",inTime);
+		map.put("outTime",outTime);
+		map.put("page",page);
+		map.put("size",size);
+		return "findaa.html";
+	}
+	@GetMapping(value="/timea/{tid}/{inTime}/{outTime}/{page}/{size}")
+	@ResponseBody
+	public PageBean selectroombytypeantime2(@PathVariable("tid")int tid, @PathVariable("inTime")String inTime, @PathVariable("outTime")String outTime, @PathVariable("page")int page, @PathVariable("size")int size,ModelMap map) {
+//		System.out.println(tid);
+//		System.out.println(inTime);
+//		System.out.println((outTime));
+		TypeBean type=new TypeBean();
+		type.setId(tid);
+		PageBean bean=service.selectroombytypeantime(type, inTime, outTime, page, size);	
 		return bean;
+	}
+	
+	/**
+	 * 根据房间id查询房间详细信息
+	 * @param rid房间id
+	 * @return
+	 */
+	@GetMapping(value="/rooms/{rid}")
+	public String selectroombyid1(@PathVariable("rid")Integer rid,ModelMap map) {
+      RoomBean bean = service.selectroombyid(rid);
+      System.out.println(bean);
+      map.put("roomBean", bean);
+      return "admin/subscribe.html";
 	}
 }
