@@ -41,9 +41,9 @@ public class UserRealm extends AuthorizingRealm{
 		UserBean user = service.selectByUserName((String)username);
 		RoleBean bean = service1.findRoleById(user.getId());
 		
-		if ("superAdmin".equals(bean.getRole())) {
+		if ("superAdmin".equals(bean.getName())) {
 			set.add("superAdmin");
-		}else if ("admin".equals(bean.getRole())) {
+		}else if ("admin".equals(bean.getName())) {
 			set.add("admin");
 		}
 		info.addRoles(set);

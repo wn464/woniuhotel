@@ -71,5 +71,14 @@ public class MemberServiceImpl implements IMemberService {
 		// TODO Auto-generated method stub
 		return dao.selectByUsername(userName);
 	}
+	
+	/*
+	 * 通过手机号查询
+	 */
+	@Override
+	public MemberBean selectByPhoneNumber(String phoneNumber) {
+		// TODO Auto-generated method stub
+		return dao.selectByPhoneNumber(phoneNumber);
+	}
 
 }

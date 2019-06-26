@@ -31,5 +31,8 @@ public interface IMemberService {
 		//通过用户名查找
 		public MemberBean selectByUsername(String userName);
 		
+		//通过手机号查询
+		public MemberBean selectByPhoneNumber(String phoneNumber);
+		
 		
 }

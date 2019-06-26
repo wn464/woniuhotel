@@ -105,9 +105,9 @@ public class roomcontroller {
 	 * @param size
 	 * @return
 	 */
-	@GetMapping(value="/aftertime")
+	@GetMapping(value="/aftertime/{tid}/{intime}/{outtime}/{page}/{size}")
 	@ResponseBody
-	public PageBean selectroombytypeantime(int tid, String inTime, String outTime, int page, int size) {
+	public PageBean selectroombytypeantime(@PathVariable("tid")int tid,@PathVariable("intime") String inTime,@PathVariable("outtime") String outTime,@PathVariable("page") int page,@PathVariable("size") int size) {
 		TypeBean type=new TypeBean();
 		type.setId(tid);
 		PageBean bean=service.selectroombytypeantime(type, inTime, outTime, page, size);
