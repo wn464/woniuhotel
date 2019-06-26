@@ -41,21 +41,12 @@ public class roomcontroller {
 	 * @return
 	 */
 	@GetMapping(value="/afterroom/type/{tid}/{page}/{size}")
-	public String selectroombytype(@PathVariable("tid")int tid,@PathVariable("page") int page,@PathVariable("size") int size,ModelMap map) {
+	@ResponseBody
+	public PageBean selectroombytype(@PathVariable("tid")int tid,@PathVariable("page") int page,@PathVariable("size") int size,ModelMap map) {
 		TypeBean type=new TypeBean();
 		type.setId(tid);
 		PageBean bean = service.selectroombytype(type, page, size);
-		Subject scb=SecurityUtils.getSubject();
-		
-		int dl=0;
-		if(scb.getSession(false)!=null) {
-			if(scb.getSession(false).getAttribute("id")!=null) {
-				dl=1;
-			}
-		};
-		map.addAttribute("dl",dl);
-		map.addAttribute("page", bean);
-		return "room.html";
+		return bean;
 	}
 	/**
 	 * 查询所有可住房间
@@ -69,7 +60,7 @@ public class roomcontroller {
 		status.setId(3);
 		PageBean bean = service.selectroombystatus(status, page, size);
 		map.addAttribute("page", bean);
-		return "/admin/roomManager.html";
+		return "/admin/findRoom.html";
 	}
 	@GetMapping(value="/afterstatustwo/{page}/{size}")
 	@ResponseBody
@@ -112,6 +103,24 @@ public class roomcontroller {
 		type.setId(tid);
 		PageBean bean=service.selectroombytypeantime(type, inTime, outTime, page, size);
 		
+		return bean;
+	}
+	/**
+	 * 查询所有房间
+	 * @param page
+	 * @param size
+	 * @return
+	 */
+	@GetMapping(value="/afterroomall/{page}/{size}")
+	public String selectroomall(@PathVariable("page")int page,@PathVariable("size")int size,ModelMap map) {
+		PageBean bean=service.selectroomall(page, size);
+		map.addAttribute("page", bean);
+		return "/admin/roomManager.html";
+	}
+	@GetMapping(value="/afterroomalltwo/{page}/{size}")
+	@ResponseBody
+	public PageBean selectroomalltwo(@PathVariable("page")int page,@PathVariable("size")int size) {
+		PageBean bean=service.selectroomall(page, size);
 		return bean;
 	}
 }

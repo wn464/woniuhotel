@@ -24,16 +24,16 @@
         float: left;
         margin-top: 50px;
         margin-left:150px;
-        border:1px solid #cceff5;background:#fafcfd
+        box-shadow: 1px 1px 8px rgba(0,0,0,0.5);
 	}
 	#right{
 		background-color: white;
 		width: 800px;
-		height: 150px;
+		height: 180px;
 		margin-left: 50px;
 		float: left;
 		margin-top: 50px;
-		border:1px solid #cceff5;background:#fafcfd
+		box-shadow: 1px 1px 8px rgba(0,0,0,0.5);
 	}
 	.img{
 		width: 100px;
@@ -205,6 +205,7 @@
 // 	find(tid,inTime,outTime,page,size); 
 	</script>
 	<script>
+	var md=0;
 	function find(tid,inTime,outTime,page,size){		
 		 $.ajax({
 	   		  url:"/timea/"+tid+"/"+inTime+"/"+outTime+"/"+page+"/"+size,
@@ -232,11 +233,17 @@
 				            stu+="</div>";
 				            stu+="</div>";
 				            stu+="<div class='din'>";
-				            stu+="<input type='button' style='width: 100px;' value='预订' class='btn btn-primary'/>";
+				            stu+="<button id='din' style='width: 100px;' value='"+mes.list[i].id+"' class='btn btn-primary' onclick='yu("+mes.list[i].id+")'>预定</button>"
+// 				            stu+="<input type='button' style='width: 100px;' value='"+mes.list[i].id+"' class='btn btn-primary'>预定</input>";
 				            stu+="</div>";
 				            stu+="</div>";
 	   				  }
   			  $("#all").html(stu);
+//   			  $("#din").click(function(){
+// 				md= $("#din").val();
+// 				console.info(md);
+// 				 window.location.href="/room/"+md;;
+// 			  })
 	   			//设置页码
 	    			var str="";
 	    			str+="<div class='page-item first btn btn-info' onclick='firstpage()' >首页</div>"+
@@ -285,6 +292,13 @@
     		 find(tid,inTime,outTime,1,2);
     	 }
     	 
+     }
+     //预定
+     function yu(xd){
+    	
+		 console.info(xd);
+		 alert(xd);
+	     window.location.href="/room/"+xd;
      }
 	</script>    	
 </body>
