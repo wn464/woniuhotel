@@ -227,8 +227,9 @@
                               <td th:text="${RoomBean.price}">￥200</td>
                               <td>待入住</td>
                               <td>
-   					 		<a href="#" class="badge badge-rounded bg-green">入住</a>
+   					 		<button  class="badge badge-rounded bg-green" onclick="rz()">入住</button>
                      		 </td>
+                     		 <td hidden th:text="${RoomBean.id}" id="rid">121</td>
                      	 </tr>
                          </tbody>
                         </table>
@@ -442,6 +443,7 @@
            count+="<td>待入住</td>";
            count+="<td>";
           count+=" <button class='badge badge-rounded bg-green' onclick='rz()'>入住</button></td>";
+          count+="<td hidden th:text="${RoomBean.id}" id="rid">121</td>"
 			 count+="</tr>";
 		}
 		$("#house").html(count);
@@ -453,7 +455,7 @@
   	$("#xs").html("");
   });
   
-  function rz(){
+  function rz(rid){
 	  
   }
   </script>
