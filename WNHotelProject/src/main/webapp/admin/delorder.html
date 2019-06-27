@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html><head>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Bootstrap Material Admin </title>
@@ -158,17 +159,17 @@
                       <h3 class="h4">筛选要删除的订单</h3>
                     </div>
                     <div class="card-body">
-                     <form class="form-horizontal">
+                     <form class="form-horizontal" action="/horder/attr1" method="get">
    					   <div class="form-group row">
                           <label for="inlineFormInputGroup" class="col-sm-3 form-control-label">姓名</label>
-                          <input id="inlineFormInputGroup" placeholder="姓名" class="col-sm-9" type="text" name = "people">
+                          <input id="inlineFormInputGroup1" placeholder="姓名" class="col-sm-9" type="text" name = "people">
                         </div>
                         <div class="form-group row">
                           <label for="inlineFormInputGroup" class="col-sm-3 form-control-label">入住时间</label>
-                          <input id="inlineFormInputGroup" placeholder="入住时间" class="col-sm-9" type="date" style="border: 0.5px solid #a9a9a9;color:#757575 " name="inTime">
+                          <input id="inlineFormInputGroup2" placeholder="入住时间" class="col-sm-9" type="date" style="border: 0.5px solid #a9a9a9;color:#757575 " name="inTime">
                         </div>
                         <div class="form-group">
-                          <button type="button" class="btn btn-primary" onclick="check()"">查询</button>
+                          <button type="submit" class="btn btn-primary" >查询</button>
                         </div>
                       </form>
                     </div>
@@ -196,10 +197,16 @@
   
                             </tr>
                           </thead>
-                          <tbody>
-                           
+<!--                           <tbody th:each="order,iterStat : ${list}"> -->
+<!--                            <th th:text="${order.orderNumber}">订单号</th> -->
+<!--     <th th:text="${order.lives[0].room.namee">房间号</th> -->
+<!--                               <th th:text="${order.lives[0].room.type}">房间类型</th> -->
+<!--     <th th:text="${order.lives[0].people}">开房人</th> -->
+<!--                               <th th:text="${order.lives[0].room.price}">费用</th> -->
+<!--     <th th:text="${order.lives[0].room.status.message}">状态</th> -->
+<!--     						  <th >删除</th> -->
                               
-                           </tbody>
+<!--                            </tbody> -->
                         </table>
                       </div>
                     </div>
@@ -275,8 +282,20 @@
      <script src="/admin/js/head.js"></script>
     <script src="js/front.js"></script>
   	<script type="text/javascript">
-		function check() {
-		}
-  	
+//   	function check(){
+//   		var people =$("#inlineFormInputGroup1").val();
+//   	  	var inTime =$("#inlineFormInputGroup2").val();
+//   	  	console.info(people);
+//   	  	check1(people,inTime);
+//   	}
+  
+// 		function check1(people,inTime) {
+// // 			 $.ajax({
+// // 		   		  url:"/horder/attr1",
+// // 		   		  type:"get",
+// // 		   		  async:true,
+// // 		   		  dataType:"json",
+// 		   		  window.location.href="/horder/attr1?people="+people+"&inTime="+inTime;
+// 		} 	
   	</script>
 </body></html>
