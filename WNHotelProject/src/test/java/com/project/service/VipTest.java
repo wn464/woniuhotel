@@ -8,17 +8,21 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import com.project.Service.IMemberService;
 import com.project.Service.IVipService;
 import com.project.bean.VipBean;
 import com.project.demo.WnHotelProjectApplication;
 
 
 @RunWith(SpringRunner.class)
-@SpringBootTest(classes = WnHotelProjectApplication.class)
+@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT,classes = WnHotelProjectApplication.class)
 public class VipTest {
 
 	@Autowired
 	private IVipService vipService;
+	@Autowired
+	private IMemberService service;
+	
 	@Test
 	public void test1() {
 		List<VipBean> list = vipService.selectVipAll();
@@ -43,7 +47,14 @@ public class VipTest {
 	}
 	@Test
 	public void test3() {
-		VipBean vip = vipService.selectVipByMoney(15000);
+		VipBean vip = vipService.selectVipByMoney(10000);
 		System.out.println(vip);
+	}
+	
+	
+	@Test
+	public void test4() {
+		int updateMoney = service.updateMoney(4000, 13);
+		
 	}
 }

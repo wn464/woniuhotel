@@ -159,16 +159,16 @@
 					dataType:"json",
 					success:function(mes){
 
-						if(mes.vipBean!=null){
+						if(mes.vipBean==null){
+							$("#message").hide();
+						}else{
 							str="";
 							str+="<h4>"+mes.userName+"</h4>"
 							str+="<span><i><img src='/admin/img/vip1.png'/></i><p>VIP"+mes.vipBean.id+"</p><h5>会员等级</h5></span>"
 							str+="<span> <i><img src='/admin/img/vip2.png'/></i><p> "+mes.money+"</p><h5>消费金额</h5></span>"	
 							str+="<span><i><img src='/admin/img/vip3.png'/></i><p> "+mes.money+"</p> <h5>&nbsp; 经验值</h5></span>"	
 							$("#message").html(str);
-						}else{
-						
-							$("#message").hide();
+							
 						}	
 					}
 				})
