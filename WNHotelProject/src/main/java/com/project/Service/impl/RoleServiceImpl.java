@@ -13,7 +13,7 @@ public class RoleServiceImpl implements IRoleService {
 	
 	@Override
 	public RoleBean findRoleById(int id) {
-		RoleBean bean = dao.findRoleById(id);
+		RoleBean bean = dao.selectById(id);
 		return bean;
 	}
 
