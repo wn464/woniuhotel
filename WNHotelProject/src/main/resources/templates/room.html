@@ -407,7 +407,39 @@
 		
 		
 	</div>
-
+		<div>
+		<form action="#" method="get" name="queryPriceForm">
+			<div class="booking-wrapper" >
+				<ul class="booking-container">
+					<li>
+						<label>入住时间：</label>
+						<input id="in" type="date" class="input-times"/>
+					</li>
+					<li>
+						<label>离店时间： </label>
+						<input id="out" type="date" class="input-times"/>
+					</li>
+					<li>
+						<div class="select-wrap">
+							<label class="select-wrap-label">房间类型</label>
+							<select id="type" name="rn" class="booking-select">
+								<option value="1">高级大床房</option>
+								<option value="2">豪华双床房</option>
+								<option value="3">家庭亲子房</option>
+								<option value="4">商务套房</option>
+								<option value="5">复式公寓房</option>
+							</select>
+							<span class="selecticon"></span>
+						</div>
+					</li>
+					<li>
+						<button type="button"  class="searchBtn" style="margin-left: 714px;" onclick="put()">查询</button>		
+					</li>
+				</ul>
+			</div>
+		</form>
+	</div>
+		
 	
 <!--底部-->
 	<footer class="contact-footer">

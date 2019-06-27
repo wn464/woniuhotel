@@ -240,8 +240,10 @@ public class RoomHandler {
 	}
 	@GetMapping(value="/rooompeopleall")
 	@ResponseBody
-	public List<PeopleBean> selectpeopelall(String name){
+	public String selectpeopelall(String name,ModelMap map){
 		List<PeopleBean> peos=service.selectpeopleall(name);
-		return peos;
+		map.addAttribute("bean", peos);
+		System.out.println(peos);
+		return "addpeople.html";
 	}
 }
