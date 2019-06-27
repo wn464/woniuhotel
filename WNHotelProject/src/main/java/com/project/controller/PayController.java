@@ -1,5 +1,7 @@
 package com.project.controller;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 
@@ -13,8 +15,10 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.alipay.api.AlipayApiException;
 import com.project.Service.IOrderService;
 import com.project.Service.IRoomService;
+import com.project.bean.LiveBean;
 import com.project.bean.MarkBean;
 import com.project.bean.OrderBean;
+import com.project.bean.RoomBean;
 import com.project.util.AlipayUtil;
 
 @Controller
@@ -31,13 +35,6 @@ public class PayController {
 		String string = null;
 		try {
 			string = AlipayUtil.pay(orderBean.getOrderNumber(), orderBean.getPrice(), "支付");
-			//修改支付状态
-			OrderBean orderBean2 = new OrderBean();
-			orderBean2.setId(oid);
-			MarkBean statusBean = new MarkBean();
-			statusBean.setId(6);
-			orderBean2.setStatus(statusBean);
-			orderService.updateOrderAttr(orderBean2);
 		} catch (AlipayApiException e) {
 			e.printStackTrace();
 		}
@@ -77,6 +74,16 @@ public class PayController {
 			statusBean.setId(6);
 			orderBean3.setStatus(statusBean);
 			orderService.updateOrderAttr(orderBean3);
+			//修改房间状态（不可住）
+			RoomBean room = new RoomBean();
+			List<LiveBean> list = orderBean.getLives();
+			for (LiveBean liveBean : list) {
+				room.setId(liveBean.getRoom().getId());
+			}
+			MarkBean statusBean2 = new MarkBean();
+			statusBean2.setId(4);
+			room.setStatus(statusBean2);
+			roomService.updateroomstatusin(room);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

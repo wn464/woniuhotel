@@ -79,7 +79,7 @@
 		<association property="member" javaType="MemberBean" select="com.project.dao.IMemberDao.selectById" column="memberId"/>
 		<association property="status" javaType="MarkBean" select="com.project.dao.IMarkDao.selectmarkbyid" column="status"/>
 	    <association property="subscribeStatus" javaType="MarkBean" select="com.project.dao.IMarkDao.selectmarkbyid" column="subscribeStatus"/> 
-		<collection property="dislist" ofType="DiscountBean" select="com.project.dao.IDiscountDao.selectDiscountById" column="did"/> 
+<!-- 		<collection property="dislist" ofType="DiscountBean" select="com.project.dao.IDiscountDao.selectDiscountById" column="did"/>  -->
 		<collection  property="lives" ofType="LiveBean" select="com.project.dao.ILiveDao.findByorderid" column="id"/>
 	</resultMap>
 

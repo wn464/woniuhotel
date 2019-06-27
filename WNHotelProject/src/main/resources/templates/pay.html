@@ -83,14 +83,13 @@
 							<ul id="ul2">
 								<li>手机号码：<span th:text="${orderBean.lives[0].phoneNumber}">15377865432</span></li>
 								
-								<li>会员优惠：
+								<li >会员优惠：
 								<span th:if="${orderBean.member!=null&&orderBean.member.vipBean!=null}" th:text="${orderBean.member.vipBean.discount}+'   （会员可以享受多重折扣）'" style="color: red;font-size: 13px;"></span>
 								<span th:if="${orderBean.member==null||orderBean.member.vipBean==null}" th:text="非会员" ></span>
 								</li>
 								
-								<li>额外优惠：
-								<span th:if="${dt==1}" th:text="满2000，再打9折（全场九折促销）" style="color: red;font-size: 13px;">2019-02-03</span>
-								<span th:if="${dt==2}" th:text="全场九折促销" style="color: red;font-size: 13px;">2019-02-03</span>
+								<li >额外优惠：
+								<span th:each="discount,iterStat:${list}" th:text="' ( '+${discount.name}+' )&nbsp&nbsp&nbsp&nbsp&nbsp'" style="color: red;font-size: 13px;">2019-02-03</span>
 								</li>
 								
 								

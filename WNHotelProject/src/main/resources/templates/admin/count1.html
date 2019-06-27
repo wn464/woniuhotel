@@ -176,13 +176,10 @@
                               <td th:if="${orderBean.subscribeStatus.id==8}" th:text="立即入住"></td>
                             </tr>
                             
-                            <tr>
-                              <th scope="row"  >额外优惠</th>
-                              <td th:if="${dt==1}" th:text="满2000，打9折（会员可享受双重折扣）" style="color: red;"></td>
-                               <td th:if="${dt==2}" th:text="暂无优惠" style="color: red;"></td>
-                              
-                              
-                            </tr>
+<!--                             <tr th:each="discount,iterStat:${list}"> -->
+<!--                               <th scope="row">额外优惠</th> -->
+<!--                               <td th:text="' ( '+${discount.name}+' )&nbsp&nbsp&nbsp&nbsp&nbsp'"  style="color: red;font-size: 15px;"></td> -->
+<!--                             </tr> -->
                             <tr>
                               <th scope="row">应付金额</th>
                               <td th:text="'￥'+${orderBean.price}" style="color: red;">￥300</td>

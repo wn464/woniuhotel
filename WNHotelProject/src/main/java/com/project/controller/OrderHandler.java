@@ -21,6 +21,7 @@ import com.project.Service.IDiscountService;
 import com.project.Service.IOrderService;
 import com.project.Service.IVipService;
 import com.project.Service.impl.VipServiceImpl;
+import com.project.bean.DiscountBean;
 import com.project.bean.LiveBean;
 import com.project.bean.MarkBean;
 import com.project.bean.MemberBean;
@@ -130,7 +131,7 @@ public class OrderHandler {
 		return "admin/orderSet.html";
 	}
 	/*
-	 * 通过订单id查询订单(统计价格)
+	 * 前台通过订单id查询订单(统计价格)
 	 */
 	@GetMapping("/{oid}")
 	public String selectOrderById(@PathVariable("oid")int oid,ModelMap map) throws Exception{
@@ -163,7 +164,7 @@ public class OrderHandler {
 			orderBean2.setPrice(price);
 			orderService.updateOrderAttr(orderBean2);
 		}
-		//会员下单---------
+//前台会员下单---------
 		if (orderBean.getMember()!=null) {
 			//有账号且会员
 			System.out.println("//会员下单");
@@ -177,15 +178,12 @@ public class OrderHandler {
 				order1.setId(oid);
 				order1.setPrice(price);
 				orderService.updateOrderAttr(order1);
-				//设置优惠标志
-				if (price>=2000) {
-					map.put("dt", 1);
-				}else {
-					map.put("dt", 2);
-				}
+				//查询优惠信息
+				List<DiscountBean> dislist = orderutil.getOnLineDiscount(orderBean.getPrice(), vipBean.getId());
+				System.out.println("--------"+dislist);
+				map.put("list", dislist);
 				//查询修改后的订单
 				OrderBean order = orderService.selectOrderById(oid);
-				System.out.println("-=-=-="+order);
 				map.put("orderBean", order);
 				System.out.println("-=-=-=-----------------------------"+order);
 				return "pay.html";
@@ -200,12 +198,11 @@ public class OrderHandler {
 				order1.setId(oid);
 				order1.setPrice(price);
 				orderService.updateOrderAttr(order1);
-				//设置优惠标志
-				if (price>=2000) {
-					map.put("dt", 1);
-				}else {
-					map.put("dt", 2);
-				}
+				//查询优惠信息
+				List<DiscountBean> dislist = orderutil.getOnLineDiscount(orderBean.getPrice(),0);
+				System.out.println("--------"+dislist);
+				map.put("list", dislist);
+				
 				//查询修改后的订单
 				OrderBean order = orderService.selectOrderById(oid);
 				map.put("orderBean", order);
@@ -223,12 +220,11 @@ public class OrderHandler {
 			order1.setId(oid);
 			order1.setPrice(price);
 			orderService.updateOrderAttr(order1);
-			//设置优惠标志
-			if (price>=2000) {
-				map.put("dt", 1);
-			}else {
-				map.put("dt", 2);
-			}
+			//查询优惠信息
+			List<DiscountBean> dislist = orderutil.getOnLineDiscount(orderBean.getPrice(),0);
+			System.out.println("--------"+dislist);
+			map.put("list", dislist);
+			
 			//查询修改后的订单
 			OrderBean order = orderService.selectOrderById(oid);
 			map.put("orderBean", order);
@@ -310,7 +306,6 @@ public class OrderHandler {
 			}
 			double price = liveBean.getRoom().getPrice()*day;
 			orderBean.setPrice(price);
-			
 			OrderBean orderBean2 = new OrderBean();
 			orderBean2.setId(orderBean.getId());
 			orderBean2.setPrice(price);
@@ -329,12 +324,10 @@ public class OrderHandler {
 				order1.setId(oid);
 				order1.setPrice(price);
 				orderService.updateOrderAttr(order1);
-				//设置优惠标志
-				if (price>=2000) {
-					map.put("dt", 1);
-				}else {
-					map.put("dt", 2);
-				}
+				//查询优惠信息
+				List<DiscountBean> dislist = orderutil.getOnLineDiscount(orderBean.getPrice(),0);
+				System.out.println("--------"+dislist);
+				map.put("list", dislist);
 				//设置订单预定状态
 				if (flag==1) {
 					OrderBean orderBean2 = new OrderBean();
@@ -365,12 +358,10 @@ public class OrderHandler {
 				order1.setId(oid);
 				order1.setPrice(price);
 				orderService.updateOrderAttr(order1);
-				//设置优惠标志
-				if (price>=2000) {
-					map.put("dt", 1);
-				}else {
-					map.put("dt", 2);
-				}
+				//查询优惠信息
+				List<DiscountBean> dislist = orderutil.getOnLineDiscount(orderBean.getPrice(),0);
+				System.out.println("--------"+dislist);
+				map.put("list", dislist);
 				//设置订单预定状态
 				if (flag==1) {
 					OrderBean orderBean2 = new OrderBean();
@@ -402,12 +393,10 @@ public class OrderHandler {
 			order1.setId(oid);
 			order1.setPrice(price);
 			orderService.updateOrderAttr(order1);
-			//设置优惠标志
-			if (price>=2000) {
-				map.put("dt", 1);
-			}else {
-				map.put("dt", 2);
-			}
+			//查询优惠信息
+			List<DiscountBean> dislist = orderutil.getOnLineDiscount(orderBean.getPrice(),0);
+			System.out.println("--------"+dislist);
+			map.put("list", dislist);
 			//设置订单预定状态
 			if (flag==1) {
 				OrderBean orderBean2 = new OrderBean();
