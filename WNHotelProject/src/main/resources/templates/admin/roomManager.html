@@ -220,6 +220,8 @@
                             <td>
 	                            <a href="#" class="badge badge-rounded bg-green">打扫</a>
 	                            <a href="#" class="badge badge-rounded bg-green">报修</a>
+	             
+	                            <button onclick="tf(this)"   th:if="${RoomBean.status.id}==4" th:value="${RoomBean.id}"  class="badge badge-rounded bg-green">退房</button>
                             </td>
     					 </tr>
                       </tbody>
@@ -407,7 +409,12 @@
              count+="<td>"+mess[i].status.name+"</td>";
              count+="<td>"
              count+="<a href='#' class='badge badge-rounded bg-green'>打扫</a>";
-            count+=" <a href='#' class='badge badge-rounded bg-green'>报修</a></td>";
+            count+=" <a href='#' class='badge badge-rounded bg-green'>报修</a>";
+            	 if(mess[i].status.id==4){
+               	  count+=" <button value="+mess[i].id+" class='badge badge-rounded bg-green' onclick='tf(this)' >退房</button>";
+               }
+            count+="</td>";
+           
 			 count+="</tr>";
 		}
 		$("#house").html(count);
@@ -418,6 +425,18 @@
     $("#Group").focus(function(){
     	$("#xs").html("");
     });
+    
+    function tf(obj){
+    	var rid=parseInt($(obj).val());
+    	$.ajax({
+    		url:"/updatestatus/"+rid+"",
+    		type:"put",
+    		async:true,
+    		success:function(mes){
+    			alert(mes)
+    		}
+    	})
+    }
     </script>
   
 </body></html>

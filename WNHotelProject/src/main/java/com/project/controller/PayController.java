@@ -33,6 +33,20 @@ public class PayController {
 		}
 		return string;
 	}
+	//退款
+	@GetMapping("/refund/{oid}")
+	@ResponseBody
+	public boolean refund(@PathVariable("oid")int oid) {
+		OrderBean orderBean = orderService.selectOrderById(oid);
+		boolean boo = false;
+		try {
+			boo =AlipayUtil.refund(orderBean.getOrderNumber(), orderBean.getPrice());
+		} catch (AlipayApiException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return boo;
+	}
 	//响应回调
 	@RequestMapping("/ret")
 	public  String ret(HttpServletRequest request) {
