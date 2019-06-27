@@ -33,10 +33,8 @@ public class ShiroConfig {
 		ShiroFilterFactoryBean shiroFilter = new ShiroFilterFactoryBean();
 		//注入安全管理器
 		shiroFilter.setSecurityManager(securityManager);
-
 		//认证失败跳转地址
 		shiroFilter.setLoginUrl("/login");
-
 		//认证失败跳转
 		shiroFilter.setUnauthorizedUrl("/failed.html");
 		Map<String,String> fmap = new LinkedHashMap<String,String>();

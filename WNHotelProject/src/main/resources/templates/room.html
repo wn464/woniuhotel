@@ -404,20 +404,22 @@
 		
 		
 		
-		
+					
 		
 	</div>
 		<div>
-		<form action="#" method="get" name="queryPriceForm">
+		<div  name="queryPriceForm">
 			<div class="booking-wrapper" >
 				<ul class="booking-container">
 					<li>
 						<label>入住时间：</label>
-						<input id="in" type="date" class="input-times"/>
+						<input id="in" type="date" class="input-times"/><br>
+							<span style="color:red" id="cwxs"></span>
 					</li>
 					<li>
 						<label>离店时间： </label>
 						<input id="out" type="date" class="input-times"/>
+					
 					</li>
 					<li>
 						<div class="select-wrap">
@@ -434,12 +436,17 @@
 					</li>
 					<li>
 						<button type="button"  class="searchBtn" style="margin-left: 714px;" onclick="put()">查询</button>		
-					</li>
+					
+					</li>	
+					
 				</ul>
 			</div>
-		</form>
+		
+		</div>
+		
 	</div>
 		
+							
 	
 <!--底部-->
 	<footer class="contact-footer">
@@ -526,6 +533,63 @@
 	</a>
 	<script type="text/javascript" src="/js/bootstrap.js"></script>
 	<script>
+	 $("#in").focus(function(){
+		  	$("#cwxs").html("");
+		  });
+		  $("#out").focus(function(){
+		  	$("#cwxs").html("");
+		  });
+	
+	function put(){
+		
+		 var inTime=$("#in").val();
+         var outTime=$("#out").val();
+         var tid=$("#type").val();
+         var page=1;
+         var size=50;
+        var now =getNowFormatDate();
+        if(inTime==""||outTime==""){
+        	$("#cwxs").html("请选择入住时间和退房时间")
+        	return ;
+        }
+        if(inTime<now){
+        	$("#cwxs").html("入住时间不能小于当前时间")
+        }else{
+        	if(inTime>outTime){
+        		$("#cwxs").html("入住时间不能大于退房时间")
+        	}else{
+        		window.location.href = "/time/"+tid+"/"+inTime+"/"+outTime+"/"+page+"/"+size;
+        	}
+        }
+            	/*  window.location.href = "/time/"+tid+"/"+inTime+"/"+outTime+"/"+page+"/"+size; */
+                    
+		
+	}
+	
+	
+	
+	
+	
+	
+	function getNowFormatDate() {
+	      var date = new Date();
+	      var seperator1 = "-";
+	      var year = date.getFullYear();
+	      var month = date.getMonth() + 1;
+	      var strDate = date.getDate();
+	      if (month >= 1 && month <= 9) {
+	          month = "0" + month;
+	      }
+	      if (strDate >= 0 && strDate <= 9) {
+	          strDate = "0" + strDate;
+	      }
+	      var currentdate = year + seperator1 + month + seperator1 + strDate;
+	      return currentdate;
+	  }
+	
+	
+	
+	
 			
 			$(function(){
 				

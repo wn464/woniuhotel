@@ -8,19 +8,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="robots" content="all,follow">
     <!-- Bootstrap CSS-->
-    <link rel="stylesheet" href="vendor/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/admin/vendor/bootstrap/css/bootstrap.min.css">
     <!-- Font Awesome CSS-->
-    <link rel="stylesheet" href="vendor/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/admin/vendor/font-awesome/css/font-awesome.min.css">
     <!-- Fontastic Custom icon font-->
-    <link rel="stylesheet" href="css/fontastic.css">
+    <link rel="stylesheet" href="/admin/css/fontastic.css">
     <!-- Google fonts - Poppins -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,700">
     <!-- theme stylesheet-->
-    <link rel="stylesheet" href="css/style.default.css" id="theme-stylesheet"><link id="new-stylesheet" rel="stylesheet"><link id="new-stylesheet" rel="stylesheet"><link id="new-stylesheet" rel="stylesheet"><link id="new-stylesheet" rel="stylesheet"><link id="new-stylesheet" rel="stylesheet"><link id="new-stylesheet" rel="stylesheet"><link id="new-stylesheet" rel="stylesheet"><link id="new-stylesheet" rel="stylesheet">
+    <link rel="stylesheet" href="/admin/css/style.default.css" id="theme-stylesheet"><link id="new-stylesheet" rel="stylesheet"><link id="new-stylesheet" rel="stylesheet"><link id="new-stylesheet" rel="stylesheet"><link id="new-stylesheet" rel="stylesheet"><link id="new-stylesheet" rel="stylesheet"><link id="new-stylesheet" rel="stylesheet"><link id="new-stylesheet" rel="stylesheet"><link id="new-stylesheet" rel="stylesheet">
     <!-- Custom stylesheet - for your changes-->
-    <link rel="stylesheet" href="css/custom.css">
+    <link rel="stylesheet" href="/admin/css/custom.css">
     <!-- Favicon-->
-    <link rel="shortcut icon" href="img/favicon.ico">
+    <link rel="shortcut icon" href="/admin/img/favicon.ico">
     <!-- Tweaks for older IEs--><!--[if lt IE 9]>
         <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
         <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script><![endif]-->
@@ -93,9 +93,21 @@
       </header>
       <div class="page-content d-flex align-items-stretch"> 
         <!-- Side Navbar -->
-        <nav class="side-navbar">
+       <nav class="side-navbar">
           
-         
+          
+          <!-- Sidebar Navidation Menus--><span class="heading"></span>
+          <ul class="list-unstyled">
+                   <li><a href="/admin/findRoom.html"> <i class="icon-home"></i>顾客管理</a></li>
+                    <li><a href="/admin/findOrder.html"> <i class="fa fa-bar-chart"></i>订单操作</a></li>
+                    <li><a href="/admin/roomManager.html"> <i class="icon-grid"></i>房间管理</a></li>
+                   	<li><a href="/admin/login.html"> <i class="icon-interface-windows"></i>注销</a></li>
+          </ul><span class="heading">管理员</span>
+          <ul class="list-unstyled">
+            
+            <li> <a href="#"> <i class="icon-mail"></i>优惠管理</a></li>
+            <li> <a href="#"> <i class="icon-picture"></i>vip管理</a></li>
+          <li> <a href="#"> <i class="icon-interface-windows"></i>权限管理</a></li></ul>
         </nav>
         <div class="content-inner" style="padding-bottom: 59.0476px;">
           <!-- Page Header-->
@@ -159,7 +171,7 @@
                       <h3 class="h4">筛选要删除的订单</h3>
                     </div>
                     <div class="card-body">
-                     <form class="form-horizontal" action="/horder/attr1" method="get">
+                     <form class="form-horizontal">
    					   <div class="form-group row">
                           <label for="inlineFormInputGroup" class="col-sm-3 form-control-label">姓名</label>
                           <input id="inlineFormInputGroup1" placeholder="姓名" class="col-sm-9" type="text" name = "people">
@@ -169,7 +181,7 @@
                           <input id="inlineFormInputGroup2" placeholder="入住时间" class="col-sm-9" type="date" style="border: 0.5px solid #a9a9a9;color:#757575 " name="inTime">
                         </div>
                         <div class="form-group">
-                          <button type="submit" class="btn btn-primary" >查询</button>
+                          <button type="button" class="btn btn-primary" >查询</button>
                         </div>
                       </form>
                     </div>
@@ -197,16 +209,21 @@
   
                             </tr>
                           </thead>
-<!--                           <tbody th:each="order,iterStat : ${list}"> -->
-<!--                            <th th:text="${order.orderNumber}">订单号</th> -->
-<!--     <th th:text="${order.lives[0].room.namee">房间号</th> -->
-<!--                               <th th:text="${order.lives[0].room.type}">房间类型</th> -->
-<!--     <th th:text="${order.lives[0].people}">开房人</th> -->
-<!--                               <th th:text="${order.lives[0].room.price}">费用</th> -->
-<!--     <th th:text="${order.lives[0].room.status.message}">状态</th> -->
-<!--     						  <th >删除</th> -->
+                          <tr th:each="order,iterStat : ${list}">
+                              <td  th:text="${order.orderNumber}"></td>
+                              <td  th:text="${order.lives[0].room.name}"></td>
+                              <td  th:text="${order.lives[0].room.type.name}"></td>
+                              <td  th:text="${order.lives[0].people}"></td>
+                              <td  th:text="${order.price}"></td>
+                              <td  th:if="${order.status.id==5}" th:text="未支付"></td>
+                              <td  th:if="${order.status.id==6}" th:text="已支付"></td>
+                              <td  th:if="${order.status.id==7}" th:text="已超时"></td>
+                              <td  >
+                              <input id="shan" onclick="shan(this)" type="button" value="删除"></input>
+                              <input id="chu" style="display:none" th:value="${order.id}"/> 
                               
-<!--                            </tbody> -->
+                              </td>
+                           </tr>
                         </table>
                       </div>
                     </div>
@@ -273,29 +290,30 @@
                         </div>
                       </div>
     <!-- JavaScript files-->
-    <script src="vendor/jquery/jquery.min.js"></script>
-    <script src="vendor/popper.js/umd/popper.min.js"> </script>
-    <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
-    <script src="vendor/jquery.cookie/jquery.cookie.js"> </script>
-    <script src="vendor/jquery-validation/jquery.validate.min.js"></script>
+    <script src="/admin/vendor/jquery/jquery.min.js"></script>
+    <script src="/admin/vendor/popper.js/umd/popper.min.js"> </script>
+    <script src="/admin/vendor/bootstrap/js/bootstrap.min.js"></script>
+    <script src="/admin/vendor/jquery.cookie/jquery.cookie.js"> </script>
+    <script src="/admin/vendor/jquery-validation/jquery.validate.min.js"></script>
     <!-- Main File-->
      <script src="/admin/js/head.js"></script>
-    <script src="js/front.js"></script>
+    <script src="/admin/js/front.js"></script>
   	<script type="text/javascript">
-//   	function check(){
-//   		var people =$("#inlineFormInputGroup1").val();
-//   	  	var inTime =$("#inlineFormInputGroup2").val();
-//   	  	console.info(people);
-//   	  	check1(people,inTime);
-//   	}
-  
-// 		function check1(people,inTime) {
-// // 			 $.ajax({
-// // 		   		  url:"/horder/attr1",
-// // 		   		  type:"get",
-// // 		   		  async:true,
-// // 		   		  dataType:"json",
-// 		   		  window.location.href="/horder/attr1?people="+people+"&inTime="+inTime;
-// 		} 	
+  	function shan(obj){
+  		var id= $(obj).next().val();
+//   		alert(id);
+  		var delState= 11;
+//   		alert(delState);
+  		 $.ajax({
+  	   		  url:"/horder/state",
+  	   		  type:"put",
+  	   		  async:true,
+  	   		  dataType:"json",
+  	   		  data:"id="+id+"&delState="+delState,
+  	   		  success:function(mes){
+  	   			  window.location.reload();
+  	   		  }
+  		 })
+  	}
   	</script>
 </body></html>
