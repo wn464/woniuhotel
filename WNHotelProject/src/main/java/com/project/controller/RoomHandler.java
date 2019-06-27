@@ -239,11 +239,10 @@ public class RoomHandler {
 		return "ok";
 	}
 	@GetMapping(value="/rooompeopleall")
-	@ResponseBody
 	public String selectpeopelall(String name,ModelMap map){
 		List<PeopleBean> peos=service.selectpeopleall(name);
-		map.addAttribute("bean", peos);
+		map.addAttribute("bb", peos);
 		System.out.println(peos);
-		return "addpeople.html";
+		return "/admin/addpeople.html";
 	}
 }
