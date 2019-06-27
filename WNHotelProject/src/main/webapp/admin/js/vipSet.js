@@ -1,3 +1,18 @@
+function addPage(){
+	$("#insert").show();
+	$("#set").hide();
+	$("#find").hide();
+}
+function findPage(){
+	$("#insert").hide();
+	$("#set").hide();
+	$("#find").show();
+}
+function setPage(){
+	$("#insert").hide();
+	$("#set").show();
+	$("#find").hide();
+}
 function insert(){
 	var insert = $("#insertFrom").serializeArray();
 	console.info(insert);
@@ -12,11 +27,12 @@ function insert(){
 		success:function(mes){
 			alert("添加成功");
 			getVipAll();
+			findPage();
 		}
 	})
 }
 window.onload=function(){
-	
+	findPage()
 	getVipAll()
 }
 
@@ -44,6 +60,7 @@ var vipId;
 function set(id){
 	vipId = id;
 	console.info("vip编号为："+id+"的订单");
+	
 	$.ajax({
 		url:"/admin/vip/"+id,
 		async: false,
@@ -55,6 +72,7 @@ function set(id){
 			$("#setDiscount").val(mes.discount);
 		}
 	})
+	setPage();
 	
 }
 function del(id){
@@ -79,6 +97,7 @@ function del(id){
 			}
 		})
 	}
+	findPage();
 }
 function update(){
 	var update = $("#setFrom").serialize()+"&id="+vipId;
@@ -96,4 +115,5 @@ function update(){
 			getVipAll();
 		}
 	})
+	findPage();
 }

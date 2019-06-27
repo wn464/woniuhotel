@@ -4,33 +4,23 @@ package com.project.controller;
 
 import java.util.List;
 
-import org.apache.catalina.security.SecurityUtil;
-import org.apache.ibatis.annotations.Update;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.subject.Subject;
 import org.springframework.beans.factory.annotation.Autowired;
-
-
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
-
-
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.ModelMap;
-
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
 
 import com.project.Service.IOrderService;
 import com.project.Service.IRoomService;
-import com.project.Service.impl.RoomServiceImpl;
 import com.project.bean.MarkBean;
 import com.project.bean.OrderBean;
 import com.project.bean.PageBean;
+import com.project.bean.PeopleBean;
 import com.project.bean.RoomBean;
 import com.project.bean.TypeBean;
 
@@ -45,10 +35,20 @@ import com.project.bean.TypeBean;
 @Controller
 public class RoomHandler {
 
-	@Autowired
+	
+@Autowired
 	private IRoomService service;
 	@Autowired
 	private IOrderService orderService;
+	@PutMapping("/updatestatus/{rid}")
+	@ResponseBody
+	public String updatestatus(@PathVariable("rid")int rid) {
+		RoomBean room=new RoomBean();
+		room.setId(rid);
+		System.out.println(rid);
+		service.updateroomstatus(room);
+		return "已退房";
+	}
 
 	/**
 	 * 根据房间id查询房间详细信息
@@ -228,5 +228,11 @@ public class RoomHandler {
 		orderBean.setSubscribeStatus(subBean);
 		orderService.updateOrderAttr(orderBean);
 		return "ok";
+	}
+	@GetMapping(value="/rooompeopleall")
+	@ResponseBody
+	public List<PeopleBean> selectpeopelall(String name){
+		List<PeopleBean> peos=service.selectpeopleall(name);
+		return peos;
 	}
 }

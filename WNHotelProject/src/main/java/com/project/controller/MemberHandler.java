@@ -149,14 +149,14 @@ public class MemberHandler {
 	@ResponseBody
 	public MemberBean selectById() {
 		Subject subject = SecurityUtils.getSubject();
-		if(subject.getSession().getAttribute("id")!=null) {
-			int id = (int) subject.getSession().getAttribute("id");//获取当前登录的id
-			MemberBean bean = service.selectById(id);
-			System.out.println(bean);
-			return bean;
-		}else {
-			return null;
-		}
+		MemberBean bean =null;
+		int id = (int) subject.getSession().getAttribute("id");//获取当前登录的id
+		System.out.println("======="+id);
+		bean = service.selectById(id);
+		System.out.println(bean);
+		subject.getSession().setAttribute("bean", bean);
+		return bean;
+		
 		
 	}
 	
@@ -182,8 +182,7 @@ public class MemberHandler {
 				//将输入的新密码加密
 				Object obj1 = new SimpleHash("MD5",repassword,userName,1024);
 				int num = service.updatePassword(obj1.toString(), member.getId());		//如果旧密码匹配 执行修改密码sql
-				System.out.println("用户的id是："+member.getId());
-				System.out.println("返回值是："+num);
+				
 				return "1";					//1是修改成功
 			}
 			return "2";						//2是修改失败	

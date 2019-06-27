@@ -8,6 +8,7 @@
 		<link href="/admin/css/stylealert.css" rel="stylesheet" />
    		<script src="/admin/js/ui.js"></script>
 		<script type="text/javascript" src="/js/jquery-2.2.3.min.js"></script>
+		<script type="text/javascript" src="/js/layer/layer.js"></script>
 		<title></title>
 	</head>
 	<style type="text/css">
@@ -205,16 +206,17 @@
 				type:"get",
 				dataType:"json",
 				success:function(mes){
-		
-					if(mes.vipBean!=null){
+					console.info(mes);
+					if(mes==null||mes.vipBean==null){
+						$("#message").hide();
+					}else{
+						
 						str="";
 						str+="<h4>"+mes.userName+"</h4>"
 						str+="<span><i><img src='/admin/img/vip1.png'/></i><p>VIP"+mes.vipBean.id+"</p><h5>会员等级</h5></span>"
 						str+="<span> <i><img src='/admin/img/vip2.png'/></i><p> "+mes.money+"</p><h5>消费金额</h5></span>"	
 						str+="<span><i><img src='/admin/img/vip3.png'/></i><p> "+mes.money+"</p> <h5>&nbsp; 经验值</h5></span>"	
 						$("#message").html(str);
-					}else{
-						$("#message").hide();
 					}
 				}
 					
@@ -244,19 +246,43 @@
 								mizhu.alert('','修改成功请重新登陆 1秒钟后将自动退出');
 								setTimeout(dd,1500)
 								
+							
+								
 							}else if(mes==2){
-								mizhu.alert('','修改失败 旧密码不正确');
+								layer.msg('修改失败 旧密码不正确', {
+									  icon: 1,
+									  time: 1000 //2秒关闭（如果不配置，默认是3秒）
+									}, function(){
+									  location.reload();
+									}); 
 							}else{
-								mizhu.alert('','修改失败 新密码格式不正确');
+								layer.msg('修改失败 新密码格式不正确', {
+									  icon: 1,
+									  time: 1000 //2秒关闭（如果不配置，默认是3秒）
+									}, function(){
+									  location.reload();
+									}); 
+								
 							}
 						}
 					})
 				}else{
-					mizhu.alert('','新旧密码不能相同');
+					
+					layer.msg('新旧密码不能相同', {
+						  icon: 1,
+						  time: 1000 //2秒关闭（如果不配置，默认是3秒）
+						}, function(){
+						  location.reload();
+						}); 
 				}
 						
 			}else{
-				mizhu.alert('','请填写完整信息');
+				layer.msg('请填写完整信息', {
+					  icon: 1,
+					  time: 1000 //2秒关闭（如果不配置，默认是3秒）
+					}, function(){
+					  location.reload();
+					});
 			}
 				
 			

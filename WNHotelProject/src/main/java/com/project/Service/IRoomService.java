@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.project.bean.MarkBean;
 import com.project.bean.PageBean;
+import com.project.bean.PeopleBean;
 import com.project.bean.RoomBean;
 import com.project.bean.TypeBean;
 
@@ -82,4 +83,10 @@ public boolean updateroom(RoomBean room);
  * @return
  */
 public boolean insertroom(RoomBean room);
+/**
+ * 查询房间人数详情
+ * @param name
+ * @return
+ */
+public List<PeopleBean> selectpeopleall(String name);
 }
