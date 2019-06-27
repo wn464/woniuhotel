@@ -11,6 +11,7 @@ import com.project.dao.IVipDao;
 @Service
 public class VipServiceImpl implements IVipService {
 
+	
 	@Autowired
 	private IVipDao vipDao;
 	@Override
