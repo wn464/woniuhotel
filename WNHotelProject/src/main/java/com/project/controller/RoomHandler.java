@@ -240,9 +240,11 @@ public class RoomHandler {
 	}
 	@GetMapping(value="/rooompeopleall")
 	public String selectpeopelall(String name,ModelMap map){
+		System.out.println(name);
 		List<PeopleBean> peos=service.selectpeopleall(name);
 		map.addAttribute("bb", peos);
 		System.out.println(peos);
+		map.put("romid", name);
 		return "/admin/addpeople.html";
 	}
 }
