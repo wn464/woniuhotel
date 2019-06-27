@@ -188,10 +188,10 @@
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                         
                         <div class="form-group">
-                          退房查询:<input type="text" placeholder="请输入房间号" />
+                          退房查询:<input type="text" placeholder="请输入房间号" id="fjh" />
                         </div>
                         <div class="form-group">
-                          <button  class="btn btn-primary" onclick="cx(1)">查询</button>
+                          <button  class="btn btn-primary" onclick="xcfj()">查询</button>
                         </div>
                         
                         
@@ -445,6 +445,42 @@
     			alert(mes)
     		}
     	})
+    }
+    
+    function xcfj(){
+    	var name=$("#fjh").val();
+    	if(name==""){
+    		
+    	}else{
+    		$.ajax({
+    			url:"/selectroombyname",
+    			type:"post",
+    			data:"name="+name+"",
+    			async:true,
+    			success:function(mse){
+    				var count="";
+    				
+    					count+=" <tr>" ;
+    		            count+=" <td>"+mse.name+"</td>";
+    		            count+=" <td>"+mse.type.name+"</td>";
+    		             count+="<td>￥"+mse.price+"</td>";
+    		             count+="<td>"+mse.status.name+"</td>";
+    		             count+="<td>"
+    		             count+="<a href='#' class='badge badge-rounded bg-green'>打扫</a>";
+    		            count+=" <a href='#' class='badge badge-rounded bg-green'>报修</a>";
+    		            	 if(mse.status.id==4){
+    		               	  count+=" <button value="+mse.id+" class='badge badge-rounded bg-green' onclick='tf(this)' >退房</button>";
+    		            	 }
+    		            count+="</td>";
+    					 count+="</tr>";
+    				$("#house").html(count);
+    				$("#page").html(1);
+        	    	$("#totalpage").html(1);
+        	    	$("#syy").removeAttr("onclick");
+          	    	$("#xyy").removeAttr("onclick");
+    			}
+    		})
+    	}
     }
     </script>
   

@@ -151,8 +151,8 @@ public List<PeopleBean> selectpeopleall(String name) {
 
 @Override
 public RoomBean selectroombyname(String name) {
-	// TODO Auto-generated method stub
-	return null;
+	RoomBean room=dao.selectroombyname(name);
+	return room;
 }
 
 }

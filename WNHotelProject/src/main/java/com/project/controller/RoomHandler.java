@@ -40,6 +40,15 @@ public class RoomHandler {
 	private IRoomService service;
 	@Autowired
 	private IOrderService orderService;
+	@PostMapping(value="/selectroombyname")
+	@ResponseBody
+	public RoomBean selectroombyNmae(String name) {
+	RoomBean room=service.selectroombyname(name);
+	return room;
+	};
+	
+	
+	
 	@PutMapping("/updatestatus/{rid}")
 	@ResponseBody
 	public String updatestatus(@PathVariable("rid")int rid) {
