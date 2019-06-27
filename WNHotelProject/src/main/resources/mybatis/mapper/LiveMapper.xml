@@ -3,7 +3,7 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.project.dao.ILiveDao">
-	<!-- 通过时间段来查询这个时间段已经被预定过了的房间 -->
+	<!-- 通过时间段来查询这个时间段已经被预定过了的房间 between-->
 	<select id="selectTime" resultType="Integer">
 		select roomid from live where #{inTime}  between intime and outtime and #{outTime} between intime and outtime; 	
 	</select>
