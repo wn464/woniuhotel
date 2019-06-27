@@ -92,10 +92,9 @@ public class OrderHandler {
 	public String selectOrderByState(@PathVariable("status")int status,ModelMap map) {
 		Subject subject = SecurityUtils.getSubject();
 	    Session session = subject.getSession();
-	    session.setAttribute("id", 1);//测试使用
         int mid = (int) session.getAttribute("id");
 		PageBean bean = orderService.selectOrderByState(mid, status, 1, 50);
-		System.out.println(bean);
+		
 		map.put("bean",bean);
 		
 		return "myorder.html";
@@ -211,11 +210,13 @@ public class OrderHandler {
 	/*
 	 * 通过订单id查询订单(统计价格)
 	 */
+	
 	@GetMapping("/after/{oid}/{flag}")
 	public String pay(@PathVariable("oid")int oid,@PathVariable("flag") int flag,ModelMap map) throws Exception{
 		OrderUtil orderutil = new OrderUtil(vipService, discountService);
-		System.out.println(oid);
+		//查询订单
 		OrderBean orderBean = orderService.selectOrderById(oid);
+		//计算日期
 		List<LiveBean> list = orderBean.getLives();
 		for (LiveBean liveBean : list) {
 			String outTimeString = liveBean.getOutTime();
@@ -244,14 +245,12 @@ public class OrderHandler {
 			orderBean2.setPrice(price);
 			orderService.updateOrderAttr(orderBean2);
 		}
-		
 		//会员下单
 		if (orderBean.getMember()!=null) {
 			MemberBean memberBean = orderBean.getMember();
 			VipBean vipBean = memberBean.getVipBean();
 			double price = orderutil.getUnderLineMoney(orderBean.getPrice(), vipBean.getId());
 			orderBean.setPrice(price);
-			map.put("orderBean", orderBean);
 			if (price>=2000) {
 				map.put("dt", 1);
 			}else {
@@ -273,14 +272,15 @@ public class OrderHandler {
 				orderBean2.setId(orderBean.getId());
 				orderService.updateOrderAttr(orderBean2);
 			}
+			//查询修改后的订单
+			OrderBean order = orderService.selectOrderById(oid);
+			map.put("orderBean", order);
 			return "admin/count1.html";
 		}
 		//非会员下单
 		else {
 			double price = orderutil.getUnderLineMoney(orderBean.getPrice(), 0);
 			orderBean.setPrice(price);
-			map.put("orderBean", orderBean);
-			System.out.println(orderBean);
 			if (price>=2000) {
 				map.put("dt", 1);
 			}else {
@@ -302,6 +302,9 @@ public class OrderHandler {
 				orderBean2.setId(orderBean.getId());
 				orderService.updateOrderAttr(orderBean2);
 			}
+			//查询修改后的订单
+			OrderBean order = orderService.selectOrderById(oid);
+			map.put("orderBean", order);
 			return "admin/count1.html";
 		}
 		

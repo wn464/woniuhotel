@@ -12,6 +12,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.project.Service.IRoomService;
 import com.project.bean.MarkBean;
 import com.project.bean.PageBean;
+import com.project.bean.PeopleBean;
 import com.project.bean.RoomBean;
 import com.project.bean.TypeBean;
 import com.project.dao.ILiveDao;
@@ -140,6 +141,18 @@ public boolean insertroom(RoomBean room) {
 	 return true;
  }
 	return false;
+}
+
+@Override
+public List<PeopleBean> selectpeopleall(String name) {
+	List<PeopleBean> peos=dao.selectpeopleall(name);
+	return peos;
+}
+
+@Override
+public RoomBean selectroombyname(String name) {
+	RoomBean room=dao.selectroombyname(name);
+	return room;
 }
 
 }

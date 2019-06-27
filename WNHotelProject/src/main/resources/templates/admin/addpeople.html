@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html><head>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Bootstrap Material Admin </title>
@@ -15,7 +16,7 @@
     <!-- Google fonts - Poppins -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,700">
     <!-- theme stylesheet-->
-    <link rel="stylesheet" href="/admin/css/style.default.css" id="theme-stylesheet"><link id="new-stylesheet" rel="stylesheet"><link id="new-stylesheet" rel="stylesheet"><link id="new-stylesheet" rel="stylesheet"><link id="new-stylesheet" rel="stylesheet"><link id="new-stylesheet" rel="stylesheet"><link id="new-stylesheet" rel="stylesheet"><link id="new-stylesheet" rel="stylesheet"><link id="new-stylesheet" rel="stylesheet">
+    <link rel="stylesheet" href="/admin/css/style.default.css" id="theme-stylesheet"><link id="new-stylesheet" rel="stylesheet"><link id="new-stylesheet" rel="stylesheet"><link id="new-stylesheet" rel="stylesheet"><link id="new-stylesheet" rel="stylesheet"><link id="new-stylesheet" rel="stylesheet"><link id="new-stylesheet" rel="stylesheet"><link id="new-stylesheet" rel="stylesheet">
     <!-- Custom stylesheet - for your changes-->
     <link rel="stylesheet" href="/admin/css/custom.css">
     <!-- Favicon-->
@@ -28,7 +29,7 @@
 @-webkit-keyframes chartjs-render-animation{from{opacity:0.99}to{opacity:1}}@keyframes chartjs-render-animation{from{opacity:0.99}to{opacity:1}}.chartjs-render-monitor{-webkit-animation:chartjs-render-animation 0.001s;animation:chartjs-render-animation 0.001s;}</style><style type="text/css">/* Chart.js */
 @-webkit-keyframes chartjs-render-animation{from{opacity:0.99}to{opacity:1}}@keyframes chartjs-render-animation{from{opacity:0.99}to{opacity:1}}.chartjs-render-monitor{-webkit-animation:chartjs-render-animation 0.001s;animation:chartjs-render-animation 0.001s;}</style><style type="text/css">/* Chart.js */
 @-webkit-keyframes chartjs-render-animation{from{opacity:0.99}to{opacity:1}}@keyframes chartjs-render-animation{from{opacity:0.99}to{opacity:1}}.chartjs-render-monitor{-webkit-animation:chartjs-render-animation 0.001s;animation:chartjs-render-animation 0.001s;}</style></head>
-  <body class="" style="" onload="window.scrollTo(0,document.body.scrollHeight); " >
+  <body class="" style="">
     <div class="page">
       <!-- Main Navbar-->
       <header class="header">
@@ -79,12 +80,8 @@
                     <li><a rel="nofollow" href="#" class="dropdown-item all-notifications text-center"> <strong>view all notifications                                            </strong></a></li>
                   </ul>
                 </li>
-                <!-- Messages                        -->
-                
-                <!-- Languages dropdown    -->
-                
-                <!-- Logout    -->
-                <li class="nav-item"><a href="/admin/login.html" class="nav-link logout"> <span class="d-none d-sm-inline">注销</span><i class="fa fa-sign-out"></i></a></li>
+               
+                <li class="nav-item"><a href="login.html" class="nav-link logout"> <span class="d-none d-sm-inline">注销</span><i class="fa fa-sign-out"></i></a></li>
               </ul>
             </div>
           </div>
@@ -92,173 +89,118 @@
       </header>
       <div class="page-content d-flex align-items-stretch"> 
         <!-- Side Navbar -->
-         <!-- Side Navbar -->
         <nav class="side-navbar">
-          
-          
           <!-- Sidebar Navidation Menus--><span class="heading"></span>
           <ul class="list-unstyled">
-                   <li><a href="/admin/findRoom.html"> <i class="icon-home"></i>顾客管理</a></li>
-                    <li><a href="/admin/findOrder.html"> <i class="fa fa-bar-chart"></i>订单操作</a></li>
-                    <li><a href="/admin/roomManager.html"> <i class="icon-grid"></i>房间管理</a></li>
-                   	<li><a href="/admin/login.html"> <i class="icon-interface-windows"></i>注销</a></li>
-                   	
+                   <li><a href="/afterstatus/1/4"> <i class="icon-home"></i>顾客管理</a></li>
+               <li><a href="/admin/findOrder.html"> <i class="fa fa-bar-chart"></i>订单操作</a></li>
+           		<li><a href="/afterroomall/1/4"> <i class="icon-grid"></i>房间管理</a></li>
+              	<li><a href="login.html"> <i class="icon-interface-windows"></i>注销</a></li>
           </ul><span class="heading">管理员</span>
           <ul class="list-unstyled">
-            
-            <li> <a href="#"> <i class="icon-mail"></i>优惠管理</a></li>
-            <li> <a href="#"> <i class="icon-picture"></i>vip管理</a></li>
-          <li> <a href="#"> <i class="icon-interface-windows"></i>权限管理</a></li></ul>
+          
+          <li> <a href="/admin/discountSet.html"> <i class="icon-mail"></i>优惠管理</a></li>
+       <li> <a href="/admin/vipSet.html"> <i class="icon-picture"></i>vip管理</a></li>
+     <li> <a href="/admin/roleSet.html"> <i class="icon-interface-windows"></i>权限管理</a></li></ul>
         </nav>
         <div class="content-inner" style="padding-bottom: 59.0476px;">
           <!-- Page Header-->
           <header class="page-header">
             <div class="container-fluid">
-              <h2 class="no-margin-bottom">查询预定</h2>
+              <h2 class="no-margin-bottom">查看信息</h2>
             </div>
           </header>
           <!-- Dashboard Counts Section-->
           <section class="dashboard-counts no-padding-bottom">
-            <div class="container-fluid">
-              <div class="row bg-white has-shadow" style="padding-left: 180px">
-                  <!-- Item -->
+           <div class="container-fluid">
+              <div class="row bg-white has-shadow"  style="padding-left: 180px">
                 <div class="col-xl-3 col-sm-6" >
                   <div class="item d-flex align-items-center">
                     <div class="icon bg-green"><i class="icon-bill"></i></div>
                     <div class="title">
-                      <a href="/admin/findOrder.html"><span>查询<br>预定</span></a>
+                      <a href="/afterstatus/1/4"><span>添加<br>入住</span></a>
                     </div>
-                    
                   </div>
                 </div>
-                
                 <!-- Item -->
-                
                 <div class="col-xl-3 col-sm-6" style="margin: 0 100px;">
                   <div class="item d-flex align-items-center">
                     <div class="icon bg-red"><i class="icon-padnote"></i></div>
                     <div class="title">
-					<a  href="/admin/orderSet.html"><span>查询<br>订单</span></a>
+					<a  href="/admin/addpeople.html"><span>查看<br>信息</span></a>
                     </div>
                   </div>
                 </div>
-                
-                
                 <!-- Item -->
                 <div class="col-xl-3 col-sm-6">
                   <div class="item d-flex align-items-center">
                     <div class="icon bg-orange"><i class="icon-check"></i></div>
                     <div class="title">
-                      <a href="/admin/delorder.html"><span>删除<br>订单</span></a>
+                      <a href="/admin/updatepeople.html"><span>修改<br>信息</span></a>
                     </div>
                   </div>
                 </div>
-
               </div>
             </div>
     <div class="container-fluid">
               <div class="row">
-                
                 <div class="col-lg-12">                           
                   <div class="card">
                     <div class="card-close">
                       <div class="dropdown">
-                        <button type="button" id="closeCard3" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="dropdown-toggle"><i class="fa fa-ellipsis-v"></i></button>
-                        <div aria-labelledby="closeCard3" class="dropdown-menu dropdown-menu-right has-shadow"><a href="#" class="dropdown-item remove"> <i class="fa fa-times"></i>Close</a><a href="#" class="dropdown-item edit"> <i class="fa fa-gear"></i>Edit</a></div>
-                      </div>
+                       </div>
                     </div>
                     <div class="card-header d-flex align-items-center">
-                      <h3 class="h4">筛选订单</h3>
+                      <h3 class="h5">查看房间的顾客入住信息</h3>
                     </div>
                     <div class="card-body">
-                      <form class="form-horizontal" action="/order/attr" method="get">
-   					   <div class="form-group row">
-                          <label for="inlineFormInputGroup" class="col-sm-3 form-control-label">姓名</label>
-                          <input id="inlineFormInputGroup" placeholder="姓名" class="col-sm-9" type="text" name = "people">
-                        </div>
-                        <div class="form-group row">
-                          <label for="inlineFormInputGroup" class="col-sm-3 form-control-label">入住时间</label>
-                          <input id="inlineFormInputGroup" placeholder="入住时间" class="col-sm-9" type="date" style="border: 0.5px solid #a9a9a9;color:#757575 " name="inTime">
+                      <div class="form-inline">
+                        <div class="form-group">
+                          <label style="margin-left: 90px;">输入要查看的房间号 ：&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                          <input  type="text" class="mr-3 form-control" id="romid">
                         </div>
                         <div class="form-group">
-                          <button type="submit" class="btn btn-primary">查询</button>
+                          <button  class="btn btn-primary" style="margin-left: 50px;" id="find">查询</button>
                         </div>
-                      </form>
+                      </div>
                     </div>
                   </div>
                 </div>
                 <div class="col-lg-12">
                   <div class="card">
-                    
                     <div class="card-header d-flex align-items-center">
-                      <h3 class="h4">房间信息</h3>
+                      <h3 class="h5">顾客信息</h3>
                     </div>
                     <div class="card-body">
                       <div class="table-responsive">                       
                         <table class="table table-striped table-hover">
-                          <thead>
-                            <tr>
-                              
-                              <th>订单号</th>
-    						  <th>房间号</th>
-                              <th>房间类型</th>
-    						  <th>开房人</th>
-                              <th>费用</th>
-    						  <th>状态</th>
-    						  <th>操作</th>
-  
-                            </tr>
-                          </thead>
-                          <tbody>
-                            <tr th:each="orderBean,iterStat : ${list}">
-                              
-                              <td th:text="${orderBean.orderNumber}"> </td>
-                              <td th:text="${orderBean.lives[0].room.name}">3-103</td>
-                              <td th:text="${orderBean.lives[0].room.type.name}">经济双人间</td>
-                              <td th:text="${orderBean.lives[0].people}">666</td>
-    						  <td th:text="${orderBean.price}">￥200</td>
-    						  <td th:if="${orderBean.subscribeStatus.id==9}" th:text="已预约">预约</td>
-    						  <td th:if="${orderBean.subscribeStatus.id==8}" th:text="已入住">入住</td>   
-    						  <td th:if="${orderBean.subscribeStatus.id==12}" th:text="已退房">入住</td>       
-    						 
-    						  <td>
-		                      <a th:href="@{/order/people/{name}(name=${orderBean.id})}" class="badge badge-rounded bg-green" ><span th:if="${orderBean.subscribeStatus.id==9}" th:text="办理入住">入住</span></a>
-<!-- 		                      <a href="#" class="badge badge-rounded bg-green" th:if="${orderBean.subscribeStatus.id==9}" th:text="取消预定">预定</a> -->
-		                      <a href="#" class="badge badge-rounded bg-green" th:if="${orderBean.subscribeStatus.id==8}" th:text="退房"  th:onclick="'javascript:ret('+${orderBean.lives[0].room.id}+','+${orderBean.id}+')'">退房</a>
-		                      </td>
-
-		                    </tr>
-                            
-                            
-                          </tbody>
+                         	<thead>
+                            	<tr>
+	                              	<th>入住人姓名</th>
+	    							<th>入住人身份证号</th>
+	                              	<th>性别</th>
+    						 		<th>操作</th>
+                            	</tr>
+                          	</thead>
+                          	<tbody th:each="bean: ${bb}">
+                            	<tr>
+	                              	<th id="nun" th:text="${bean.name}"></th>
+	    							<th th:text="${bean.idCard}"></th>
+	                              	<th th:text="${bean.gender.name}"></th>
+    						 		<th onclick="change(this)"><button class="btn-warning" >修改</button></th>
+                            	</tr>
+                         	</tbody>
                         </table>
                       </div>
                     </div>
                   </div>
                 </div>
-                
               </div>
             </div>
           </section>
-
-          
-          
-          
-          
-          
-          
-          
-          
-          
           <section class="updates no-padding-top">
             <div class="container-fluid">
               <div class="row">
-                <!-- Recent Updates-->
-                
-                <!-- Daily Feeds -->
-                
-                <!-- Recent Activities -->
-                
               </div>
             </div>
           </section>
@@ -269,63 +211,35 @@
                 <div class="col-sm-6">
                   <p>Your company © 2017-2019</p>
                 </div>
-                
               </div>
             </div>
           </footer>
         </div>
       </div>
     </div>
-<div id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" class="modal fade text-left" style="display: none;" aria-hidden="true">
-                        <div role="document" class="modal-dialog">
-                          <div class="modal-content">
-                            <div class="modal-header">
-                              <h4 id="exampleModalLabel" class="modal-title">入住</h4>
-                              <button type="button" data-dismiss="modal" aria-label="Close" class="close"><span aria-hidden="true">×</span></button>
-                            </div>
-                            <div class="modal-body">
-                              <p>输入开房信息，非会员直接提交，会员请输入手机号</p>
-                              <form>
-                                <div class="form-group">
-                                  <label>姓名</label>
-                                  <input type="text" placeholder="姓名" class="form-control">
-                                </div>
-                                <div class="form-group">       
-                                  <label>电话号码</label>
-                                  <input type="text" placeholder="电话号码" class="form-control">
-                                </div>
-                                <div class="form-group">       
-                                  <input type="submit" value="提交入住" class="btn btn-primary">
-                                </div>
-                              </form>
-                            </div>
-                            
-                          </div>
-                        </div>
-                      </div>
-    <!-- JavaScript files-->
     <script src="/admin/vendor/jquery/jquery.min.js"></script>
     <script src="/admin/vendor/popper.js/umd/popper.min.js"> </script>
     <script src="/admin/vendor/bootstrap/js/bootstrap.min.js"></script>
     <script src="/admin/vendor/jquery.cookie/jquery.cookie.js"> </script>
     <script src="/admin/vendor/jquery-validation/jquery.validate.min.js"></script>
     <!-- Main File-->
-    <script src="/admin/js/front.js"></script>
-    <script type="text/javascript">
-    	function ret(rid,oid) {
-    		if (confirm("确认退房")==true) {
-    			//修改房间状态为不可住
-          		$.ajax({
-        				url:"/roomState",
-        				type:"put",
-        				data:"rid="+rid+"&oid="+oid,
-        				success:function(mes){
-        					window.location.reload();
-        				}
-        			})
-			}
-		}
-    </script>
      
-
-</body></html>
+    <script src="/admin/js/front.js"></script>
+  <script>
+  $("#find").click(function(){
+		var name = $("#romid").val()
+		if(name==""){
+			alert("请填写要搜索的房间号")
+		}else{
+  			location.href = "/rooompeopleall/?name="+name
+		}
+	}) 
+  
+  		function change(obj){
+  			var name = $(obj).parent("tr").children("#nun").text();
+  			alert(name)
+  		}
+  
+  </script>
+</body>
+</html>

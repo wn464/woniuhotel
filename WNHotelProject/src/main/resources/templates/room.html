@@ -160,8 +160,286 @@
 			</div>
 			<div class="clearfix"> </div>
 		</div>
+		
+		
+		
+		
+		
+			<div class="inner_sec_w3_agileinfo">
+			<div class="col-md-4 grid_info_main" data-aos="zoom-in">
+			 	<div class="grid_info"> 
+					<div class="icon_info">
+						<div class="imgagess">
+					 <img src="/images/60fd8c59bffb880984b759cc3c8450fb.jpg" th:src="@{'/images/'+${page.list[0].img}}"/>   
+						</div>
+						<p th:text="'房间号：'+(${page.list[0].name})">房间号：201</p>
+					 <p th:text="'房间位置：'+(${page.list[0].area})">房间位置： 酒店六楼</p>
+						<p th:text="${page.list[0].message}">房间详细信息描述</p>
+						<button type="button" class="btn btn-info" th:text="${dl}==0?'标准价：￥'+(${page.list[0].price}):'会员价：￥'+(${page.list[0].price}-50)">会员价：￥269</button>
+			<!--如果当日的房间状态为已入住，则显示为今日已满   a链接也改为不可点击状态-->
+			<!--如果当日的房间状态为已入住，则显示为今日已满   a链接也改为不可点击状态-->
+			<!--如果当日的房间状态为已入住，则显示为今日已满   a链接也改为不可点击状态-->
+		
+						<a href="##" th:if="${page.list[0].status.id}==4" th:href="@{#}">
+							<button type="button" class="btn btn-warning" th:text="${page.list[0].status.id}==3?立即预定:今日已满" style="background-color:gray">立即预定</button>
+						</a>
+						<a href="##" th:if="${page.list[0].status.id}==3" th:href="@{'/room/'+${page.list[0].id}}">
+							<button type="button" class="btn btn-warning" th:text="${page.list[0].status.id}==3?立即预定:今日已满">立即预定</button>
+						</a>
+					</div>
+				</div>
+				 <div class="grid_info second"> 
+					<div class="icon_info">
+						<div class="imgagess">
+							<img  src="#" th:src="@{'/images/'+${page.list[1].img}}"/>
+						</div>
+						<p th:text="'房间号：'+(${page.list[1].name})">房间号：201</p>
+						<p  th:text="'房间位置：'+(${page.list[1].area})">房间位置：酒店六楼</p>
+						<p th:text="${page.list[1].message}">房间详细信息描述</p>
+						<button type="button" class="btn btn-info" th:text="${dl}==0?'标准价：￥'+(${page.list[1].price}):'会员价：￥'+(${page.list[1].price}-50)">会员价：￥269</button>
+						<a href="##" th:if="${page.list[1].status.id}==4" th:href="@{#}">
+							<button type="button" class="btn btn-warning" th:text="${page.list[1].status.id}==3?立即预定:今日已满" style="background-color:gray">立即预定</button>
+						</a>
+						<a href="##" th:if="${page.list[1].status.id}==3" th:href="@{'/room/'+${page.list[1].id}}">
+							<button type="button" class="btn btn-warning" th:text="${page.list[1].status.id}==3?立即预定:今日已满">立即预定</button>
+						</a>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-4 grid_info_main" data-aos="zoom-in">
+				 <div class="grid_info"> 
+					<div class="icon_info">
+						<div class="imgagess">
+							<img src="/images/60fd8c59bffb880984b759cc3c8450fb.jpg" th:src="@{'/images/'+${page.list[2].img}}"/>
+						</div>
+						<p th:text="'房间号：'+(${page.list[2].name})">房间号：201</p>
+					
+						<p th:text="'房间位置：'+(${page.list[2].area})">房间位置：酒店六楼</p>
+						<p th:text="${page.list[2].message}">房间详细信息描述</p>
+						<button type="button" class="btn btn-info" th:text="${dl}==0?'标准价：￥'+(${page.list[2].price}):'会员价：￥'+(${page.list[2].price}-50)">会员价：￥269</button>
+					<a href="##" th:if="${page.list[2].status.id}==4" th:href="@{#}">
+							<button type="button" class="btn btn-warning" th:text="${page.list[2].status.id}==3?立即预定:今日已满" style="background-color:gray">立即预定</button>
+						</a>
+						<a href="##" th:if="${page.list[2].status.id}==3" th:href="@{'/room/'+${page.list[2].id}}">
+							<button type="button" class="btn btn-warning" th:text="${page.list[2].status.id}==3?立即预定:今日已满">立即预定</button>
+						</a>
+					</div>
+				</div>
+			 	<div class="grid_info second"> 
+					<div class="icon_info">
+						<div class="imgagess">
+							<img src="/images/60fd8c59bffb880984b759cc3c8450fb.jpg" th:src="@{'/images/'+${page.list[3].img}}"/>
+						</div>
+						<p th:text="'房间号：'+(${page.list[3].name})">房间号：201</p>
+						<p th:text="'房间位置：'+(${page.list[3].area})">房间位置：酒店六楼</p>
+						<p th:text="${page.list[3].message}">房间详细信息描述</p>
+				<button type="button" class="btn btn-info" th:text="${dl}==0?'标准价：￥'+(${page.list[3].price}):'会员价：￥'+(${page.list[3].price}-50)">会员价：￥269</button>
+						<a href="##" th:if="${page.list[3].status.id}==4" th:href="@{#}">
+							<button type="button" class="btn btn-warning" th:text="${page.list[3].status.id}==3?立即预定:今日已满" style="background-color:gray">立即预定</button>
+						</a>
+						<a href="##" th:if="${page.list[3].status.id}==3" th:href="@{'/room/'+${page.list[3].id}}">
+							<button type="button" class="btn btn-warning" th:text="${page.list[3].status.id}==3?立即预定:今日已满">立即预定</button>
+						</a>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-4 grid_info_main" data-aos="zoom-in">
+				 <div class="grid_info"> 
+					<div class="icon_info">
+						<div class="imgagess">
+							<img src="/images/60fd8c59bffb880984b759cc3c8450fb.jpg"  th:src="@{'/images/'+${page.list[4].img}}"/>
+						</div>
+						<p th:text="'房间号：'+(${page.list[4].name})">房间号：201</p>
+						<p th:text="'房间位置：'+(${page.list[4].area})">房间位置：酒店六楼</p>
+						<p th:text="${page.list[4].message}">房间详细信息描述</p>
+					<button type="button" class="btn btn-info" th:text="${dl}==0?'标准价：￥'+(${page.list[4].price}):'会员价：￥'+(${page.list[4].price}-50)">会员价：￥269</button>
+						<a href="##" th:if="${page.list[4].status.id}==4" th:href="@{#}">
+							<button type="button" class="btn btn-warning" th:text="${page.list[4].status.id}==3?立即预定:今日已满" style="background-color:gray">立即预定</button>
+						</a>
+						<a href="##" th:if="${page.list[4].status.id}==3" th:href="@{'/room/'+${page.list[4].id}}">
+							<button type="button" class="btn btn-warning" th:text="${page.list[4].status.id}==3?立即预定:今日已满">立即预定</button>
+						</a>
+					</div>
+				</div>
+				 <div class="grid_info second"> 
+					<div class="icon_info">
+						<div class="imgagess">
+							<img src="/images/60fd8c59bffb880984b759cc3c8450fb.jpg"  th:src="@{'/images/'+${page.list[5].img}}"/>
+						</div>
+						<p th:text="'房间号：'+(${page.list[5].name})">房间号：201</p>
+					
+						<p th:text="'房间位置：'+(${page.list[5].area})">房间位置：酒店六楼</p>
+						<p th:text="${page.list[5].message}">房间详细信息描述</p>
+						<button type="button" class="btn btn-info" th:text="${dl}==0?'标准价：￥'+(${page.list[5].price}):'会员价：￥'+(${page.list[5].price}-50)">会员价：￥269</button>
+						<a href="##" th:if="${page.list[5].status.id}==4" th:href="@{#}">
+							<button type="button" class="btn btn-warning" th:text="${page.list[5].status.id}==3?立即预定:今日已满" style="background-color:gray">立即预定</button>
+						</a>
+						<a href="##" th:if="${page.list[5].status.id}==3" th:href="@{'/room/'+${page.list[5].id}}">
+							<button type="button" class="btn btn-warning" th:text="${page.list[5].status.id}==3?立即预定:今日已满">立即预定</button>
+						</a>
+					</div>
+				</div> 
+			</div>
+			<div class="clearfix"> </div>
+		</div>
+		
+		
+			<div class="inner_sec_w3_agileinfo">
+			<div class="col-md-4 grid_info_main" data-aos="zoom-in">
+			 	<div class="grid_info"> 
+					<div class="icon_info">
+						<div class="imgagess">
+					 <img src="/images/60fd8c59bffb880984b759cc3c8450fb.jpg" th:src="@{'/images/'+${page.list[0].img}}"/>   
+						</div>
+						<p th:text="'房间号：'+(${page.list[0].name})">房间号：201</p>
+					 <p th:text="'房间位置：'+(${page.list[0].area})">房间位置： 酒店六楼</p>
+						<p th:text="${page.list[0].message}">房间详细信息描述</p>
+						<button type="button" class="btn btn-info" th:text="${dl}==0?'标准价：￥'+(${page.list[0].price}):'会员价：￥'+(${page.list[0].price}-50)">会员价：￥269</button>
+			<!--如果当日的房间状态为已入住，则显示为今日已满   a链接也改为不可点击状态-->
+			<!--如果当日的房间状态为已入住，则显示为今日已满   a链接也改为不可点击状态-->
+			<!--如果当日的房间状态为已入住，则显示为今日已满   a链接也改为不可点击状态-->
+		
+						<a href="##" th:if="${page.list[0].status.id}==4" th:href="@{#}">
+							<button type="button" class="btn btn-warning" th:text="${page.list[0].status.id}==3?立即预定:今日已满" style="background-color:gray">立即预定</button>
+						</a>
+						<a href="##" th:if="${page.list[0].status.id}==3" th:href="@{'/room/'+${page.list[0].id}}">
+							<button type="button" class="btn btn-warning" th:text="${page.list[0].status.id}==3?立即预定:今日已满">立即预定</button>
+						</a>
+					</div>
+				</div>
+				 <div class="grid_info second"> 
+					<div class="icon_info">
+						<div class="imgagess">
+							<img  src="#" th:src="@{'/images/'+${page.list[1].img}}"/>
+						</div>
+						<p th:text="'房间号：'+(${page.list[1].name})">房间号：201</p>
+						<p  th:text="'房间位置：'+(${page.list[1].area})">房间位置：酒店六楼</p>
+						<p th:text="${page.list[1].message}">房间详细信息描述</p>
+						<button type="button" class="btn btn-info" th:text="${dl}==0?'标准价：￥'+(${page.list[1].price}):'会员价：￥'+(${page.list[1].price}-50)">会员价：￥269</button>
+						<a href="##" th:if="${page.list[1].status.id}==4" th:href="@{#}">
+							<button type="button" class="btn btn-warning" th:text="${page.list[1].status.id}==3?立即预定:今日已满" style="background-color:gray">立即预定</button>
+						</a>
+						<a href="##" th:if="${page.list[1].status.id}==3" th:href="@{'/room/'+${page.list[1].id}}">
+							<button type="button" class="btn btn-warning" th:text="${page.list[1].status.id}==3?立即预定:今日已满">立即预定</button>
+						</a>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-4 grid_info_main" data-aos="zoom-in">
+				 <div class="grid_info"> 
+					<div class="icon_info">
+						<div class="imgagess">
+							<img src="/images/60fd8c59bffb880984b759cc3c8450fb.jpg" th:src="@{'/images/'+${page.list[2].img}}"/>
+						</div>
+						<p th:text="'房间号：'+(${page.list[2].name})">房间号：201</p>
+					
+						<p th:text="'房间位置：'+(${page.list[2].area})">房间位置：酒店六楼</p>
+						<p th:text="${page.list[2].message}">房间详细信息描述</p>
+						<button type="button" class="btn btn-info" th:text="${dl}==0?'标准价：￥'+(${page.list[2].price}):'会员价：￥'+(${page.list[2].price}-50)">会员价：￥269</button>
+					<a href="##" th:if="${page.list[2].status.id}==4" th:href="@{#}">
+							<button type="button" class="btn btn-warning" th:text="${page.list[2].status.id}==3?立即预定:今日已满" style="background-color:gray">立即预定</button>
+						</a>
+						<a href="##" th:if="${page.list[2].status.id}==3" th:href="@{'/room/'+${page.list[2].id}}">
+							<button type="button" class="btn btn-warning" th:text="${page.list[2].status.id}==3?立即预定:今日已满">立即预定</button>
+						</a>
+					</div>
+				</div>
+			 	<div class="grid_info second"> 
+					<div class="icon_info">
+						<div class="imgagess">
+							<img src="/images/60fd8c59bffb880984b759cc3c8450fb.jpg" th:src="@{'/images/'+${page.list[3].img}}"/>
+						</div>
+						<p th:text="'房间号：'+(${page.list[3].name})">房间号：201</p>
+						<p th:text="'房间位置：'+(${page.list[3].area})">房间位置：酒店六楼</p>
+						<p th:text="${page.list[3].message}">房间详细信息描述</p>
+				<button type="button" class="btn btn-info" th:text="${dl}==0?'标准价：￥'+(${page.list[3].price}):'会员价：￥'+(${page.list[3].price}-50)">会员价：￥269</button>
+						<a href="##" th:if="${page.list[3].status.id}==4" th:href="@{#}">
+							<button type="button" class="btn btn-warning" th:text="${page.list[3].status.id}==3?立即预定:今日已满" style="background-color:gray">立即预定</button>
+						</a>
+						<a href="##" th:if="${page.list[3].status.id}==3" th:href="@{'/room/'+${page.list[3].id}}">
+							<button type="button" class="btn btn-warning" th:text="${page.list[3].status.id}==3?立即预定:今日已满">立即预定</button>
+						</a>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-4 grid_info_main" data-aos="zoom-in">
+				 <div class="grid_info"> 
+					<div class="icon_info">
+						<div class="imgagess">
+							<img src="/images/60fd8c59bffb880984b759cc3c8450fb.jpg"  th:src="@{'/images/'+${page.list[4].img}}"/>
+						</div>
+						<p th:text="'房间号：'+(${page.list[4].name})">房间号：201</p>
+						<p th:text="'房间位置：'+(${page.list[4].area})">房间位置：酒店六楼</p>
+						<p th:text="${page.list[4].message}">房间详细信息描述</p>
+					<button type="button" class="btn btn-info" th:text="${dl}==0?'标准价：￥'+(${page.list[4].price}):'会员价：￥'+(${page.list[4].price}-50)">会员价：￥269</button>
+						<a href="##" th:if="${page.list[4].status.id}==4" th:href="@{#}">
+							<button type="button" class="btn btn-warning" th:text="${page.list[4].status.id}==3?立即预定:今日已满" style="background-color:gray">立即预定</button>
+						</a>
+						<a href="##" th:if="${page.list[4].status.id}==3" th:href="@{'/room/'+${page.list[4].id}}">
+							<button type="button" class="btn btn-warning" th:text="${page.list[4].status.id}==3?立即预定:今日已满">立即预定</button>
+						</a>
+					</div>
+				</div>
+				 <div class="grid_info second"> 
+					<div class="icon_info">
+						<div class="imgagess">
+							<img src="/images/60fd8c59bffb880984b759cc3c8450fb.jpg"  th:src="@{'/images/'+${page.list[5].img}}"/>
+						</div>
+						<p th:text="'房间号：'+(${page.list[5].name})">房间号：201</p>
+					
+						<p th:text="'房间位置：'+(${page.list[5].area})">房间位置：酒店六楼</p>
+						<p th:text="${page.list[5].message}">房间详细信息描述</p>
+						<button type="button" class="btn btn-info" th:text="${dl}==0?'标准价：￥'+(${page.list[5].price}):'会员价：￥'+(${page.list[5].price}-50)">会员价：￥269</button>
+						<a href="##" th:if="${page.list[5].status.id}==4" th:href="@{#}">
+							<button type="button" class="btn btn-warning" th:text="${page.list[5].status.id}==3?立即预定:今日已满" style="background-color:gray">立即预定</button>
+						</a>
+						<a href="##" th:if="${page.list[5].status.id}==3" th:href="@{'/room/'+${page.list[5].id}}">
+							<button type="button" class="btn btn-warning" th:text="${page.list[5].status.id}==3?立即预定:今日已满">立即预定</button>
+						</a>
+					</div>
+				</div> 
+			</div>
+			<div class="clearfix"> </div>
+		</div>
+		
+		
+		
+		
+		
 	</div>
-
+		<div>
+		<form action="#" method="get" name="queryPriceForm">
+			<div class="booking-wrapper" >
+				<ul class="booking-container">
+					<li>
+						<label>入住时间：</label>
+						<input id="in" type="date" class="input-times"/>
+					</li>
+					<li>
+						<label>离店时间： </label>
+						<input id="out" type="date" class="input-times"/>
+					</li>
+					<li>
+						<div class="select-wrap">
+							<label class="select-wrap-label">房间类型</label>
+							<select id="type" name="rn" class="booking-select">
+								<option value="1">高级大床房</option>
+								<option value="2">豪华双床房</option>
+								<option value="3">家庭亲子房</option>
+								<option value="4">商务套房</option>
+								<option value="5">复式公寓房</option>
+							</select>
+							<span class="selecticon"></span>
+						</div>
+					</li>
+					<li>
+						<button type="button"  class="searchBtn" style="margin-left: 714px;" onclick="put()">查询</button>		
+					</li>
+				</ul>
+			</div>
+		</form>
+	</div>
+		
 	
 <!--底部-->
 	<footer class="contact-footer">
