@@ -174,7 +174,7 @@
                       <form class="form-horizontal" id="insertForm">
     <div class="form-group row">
                           <label for="inlineFormInputGroup" class="col-sm-3 form-control-label">房间名称</label>
-                          <input id="inlineFormInputGroup" placeholder="房间名称" class="col-sm-9" type="text" name="name" >
+                          <input id="inlineFormInputGroup" placeholder="房间名称" class="col-sm-9" type="text" name="name" onchange="namecheck(this)">
                         </div>
     <div class="form-group row">
                           <label for="insertType" class="col-sm-3 form-control-label">房间类型</label>
@@ -192,7 +192,7 @@
                         </div>
 <div class="form-group row">
                           <label for="inlineFormInputGroup" class="col-sm-3 form-control-label">电话号码</label>
-                          <input id="inlineFormInputGroup" placeholder="电话号码" class="col-sm-9" type="text" name="phone">
+                          <input id="inlineFormInputGroup" placeholder="电话号码" class="col-sm-9" type="text" name="phone" onchange="phoneCheck(this)">
                         </div><div class="form-group row">
                           <label for="inlineFormInputGroup" class="col-sm-3 form-control-label">地址</label>
                           <input id="inlineFormInputGroup" placeholder="地址" class="col-sm-9" type="text" name="location">
@@ -205,8 +205,8 @@
                           <label for="inlineFormInputGroup" class="col-sm-3 form-control-label">面积</label>
                           <input id="inlineFormInputGroup" placeholder="面积" class="col-sm-9" type="text" name="area">
                         </div><div class="form-group row">
-                          <label for="inlineFormInputGroup" class="col-sm-3 form-control-label">价格</label>
-                          <input id="inlineFormInputGroup" placeholder="价格" class="col-sm-9" type="text" name="price">
+                          <label for="inlineFormInputGroup" class="col-sm-3 form-control-label "">价格</label>
+                          <input id="inlineFormInputGroup" placeholder="价格" class="col-sm-9 form-control"" type="text" name="price" onchange="moneyCheck(this)">
                         </div>
                         <div class="form-group">
                           <button type="button" class="btn btn-primary" onclick="insert()">添加</button>
@@ -240,19 +240,7 @@
                             </tr>
                           </thead>
                           <tbody id="findTableTbody">
-                            <tr>
-                              
-                              <td>1</td>
-                              <td>601</td>
-                              <td>高级大床房</td>
-<td>601.jpg</td>
-<td>可住</td>
-                            <td>null</td>
-<td>null</td>
-        <td>环境优雅，支持点餐服务</td>
-<td>酒店六楼</td><td>299</td><td><a class="badge badge-rounded bg-green">修改</a><a class="badge badge-rounded bg-green">删除</a></td></tr>
-                            
-                            
+                           
                           </tbody>
                         </table>
                         <ul class="pagination">
@@ -280,7 +268,7 @@
                       <form class="form-horizontal" id="updataForm">
     <div class="form-group row">
                           <label for="setname" class="col-sm-3 form-control-label">房间名称</label>
-                          <input id="setname" placeholder="房间名称" class="col-sm-9" type="text" name="name">
+                          <input id="setname" placeholder="房间名称" class="col-sm-9" type="text" name="name" onchange="namecheck(this)">
                         </div>
     <div class="form-group row">
                           <label for="setType" class="col-sm-3 form-control-label">房间类型</label>
@@ -297,7 +285,7 @@
                         </div>
 <div class="form-group row">
                           <label for="setphone" class="col-sm-3 form-control-label">电话号码</label>
-                          <input id="setphone" placeholder="电话号码" class="col-sm-9" type="text" name="phone">
+                          <input id="setphone" placeholder="电话号码" class="col-sm-9" type="text" name="phone" onchange="phoneCheck(this)">
                         </div><div class="form-group row">
                           <label for="setlocation" class="col-sm-3 form-control-label">地址</label>
                           <input id="setlocation" placeholder="地址" class="col-sm-9" type="text" name="location">
@@ -311,7 +299,7 @@
                           <input id="setarea" placeholder="面积" class="col-sm-9" type="text" name="area">
                         </div><div class="form-group row">
                           <label for="setprice" class="col-sm-3 form-control-label">价格</label>
-                          <input id="setprice" placeholder="价格" class="col-sm-9" type="text" name="price">
+                          <input id="setprice" placeholder="价格" class="col-sm-9" type="text" name="price" onchange="moneyCheck(this)">
                         </div>
                         <div class="form-group">
                           <button type="button" class="btn btn-primary" onclick="updata()">修改</button>
@@ -367,4 +355,5 @@
     <!-- Main File-->
     <script src="js/front.js"></script>
   <script src="js/roomSet.js"></script>
+  <script src="js/dataCheck.js"></script>
 </body></html>
