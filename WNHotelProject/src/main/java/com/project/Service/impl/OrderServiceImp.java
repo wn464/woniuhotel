@@ -141,6 +141,12 @@ public class OrderServiceImp implements IOrderService{
 		return pageBean;
 	}
 
+	@Override
+	public int deleteById(int id) {
+		int i =orderDao.deleteById(id);
+		return i;
+	}
+
 	
 
 
