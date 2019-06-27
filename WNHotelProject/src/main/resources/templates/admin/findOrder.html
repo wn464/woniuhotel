@@ -98,10 +98,11 @@
           
           <!-- Sidebar Navidation Menus--><span class="heading"></span>
           <ul class="list-unstyled">
-                   <li><a href="findRoom.html"> <i class="icon-home"></i>顾客管理</a></li>
-                    <li><a href="findOrder.html"> <i class="fa fa-bar-chart"></i>订单操作</a></li>
-                    <li><a href="roomManager.html"> <i class="icon-grid"></i>房间管理</a></li>
-                   	<li><a href="login.html"> <i class="icon-interface-windows"></i>注销</a></li>
+                   <li><a href="/admin/findRoom.html"> <i class="icon-home"></i>顾客管理</a></li>
+                    <li><a href="/admin/findOrder.html"> <i class="fa fa-bar-chart"></i>订单操作</a></li>
+                    <li><a href="/admin/roomManager.html"> <i class="icon-grid"></i>房间管理</a></li>
+                   	<li><a href="/admin/login.html"> <i class="icon-interface-windows"></i>注销</a></li>
+                   	
           </ul><span class="heading">管理员</span>
           <ul class="list-unstyled">
             
@@ -125,7 +126,7 @@
                   <div class="item d-flex align-items-center">
                     <div class="icon bg-green"><i class="icon-bill"></i></div>
                     <div class="title">
-                      <a href="findOrder.html"><span>查询<br>预定</span></a>
+                      <a href="/admin/findOrder.html"><span>查询<br>预定</span></a>
                     </div>
                     
                   </div>
@@ -137,7 +138,7 @@
                   <div class="item d-flex align-items-center">
                     <div class="icon bg-red"><i class="icon-padnote"></i></div>
                     <div class="title">
-					<a  href="orderSet.html"><span>查询<br>订单</span></a>
+					<a  href="/admin/orderSet.html"><span>查询<br>订单</span></a>
                     </div>
                   </div>
                 </div>
@@ -217,12 +218,13 @@
                               <td th:text="${orderBean.lives[0].people}">666</td>
     						  <td th:text="${orderBean.price}">￥200</td>
     						  <td th:if="${orderBean.subscribeStatus.id==9}" th:text="已预约">预约</td>
-    						  <td th:if="${orderBean.subscribeStatus.id==8}" th:text="已入住">入住</td>        
+    						  <td th:if="${orderBean.subscribeStatus.id==8}" th:text="已入住">入住</td>   
+    						  <td th:if="${orderBean.subscribeStatus.id==12}" th:text="已退房">入住</td>       
     						 
     						  <td>
 		                      <a th:href="@{/order/people/{name}(name=${orderBean.id})}" class="badge badge-rounded bg-green" ><span th:if="${orderBean.subscribeStatus.id==9}" th:text="办理入住">入住</span></a>
 <!-- 		                      <a href="#" class="badge badge-rounded bg-green" th:if="${orderBean.subscribeStatus.id==9}" th:text="取消预定">预定</a> -->
-		                      <a href="#" class="badge badge-rounded bg-green" th:if="${orderBean.subscribeStatus.id==8}" th:text="退房">退房</a>
+		                      <a href="#" class="badge badge-rounded bg-green" th:if="${orderBean.subscribeStatus.id==8}" th:text="退房"  th:onclick="'javascript:ret('+${orderBean.lives[0].room.id}+','+${orderBean.id}+')'">退房</a>
 		                      </td>
 
 		                    </tr>
@@ -309,7 +311,21 @@
     <script src="/admin/vendor/jquery-validation/jquery.validate.min.js"></script>
     <!-- Main File-->
     <script src="/admin/js/front.js"></script>
-    
+    <script type="text/javascript">
+    	function ret(rid,oid) {
+    		if (confirm("确认退房")==true) {
+    			//修改房间状态为不可住
+          		$.ajax({
+        				url:"/roomState",
+        				type:"put",
+        				data:"rid="+rid+"&oid="+oid,
+        				success:function(mes){
+        					window.location.reload();
+        				}
+        			})
+			}
+		}
+    </script>
      
 
 </body></html>
