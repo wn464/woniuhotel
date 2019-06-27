@@ -45,19 +45,20 @@ import com.project.bean.TypeBean;
 @Controller
 public class RoomHandler {
 
+	
+@Autowired
+	private IRoomService service;
+	@Autowired
+	private IOrderService orderService;
 	@PutMapping("/updatestatus/{rid}")
 	@ResponseBody
 	public String updatestatus(@PathVariable("rid")int rid) {
 		RoomBean room=new RoomBean();
 		room.setId(rid);
+		System.out.println(rid);
 		service.updateroomstatus(room);
 		return "已退房";
 	}
-
-	private IRoomService service;
-	@Autowired
-	private IOrderService orderService;
-
 
 	/**
 	 * 根据房间id查询房间详细信息
