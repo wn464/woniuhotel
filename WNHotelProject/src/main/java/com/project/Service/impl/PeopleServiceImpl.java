@@ -48,9 +48,11 @@ public class PeopleServiceImpl implements IPeopleService{
 	}
 
 	@Override
-	public int upstatePeopleBean(int pid) {
+	public int update(PeopleBean people) {
 		// TODO Auto-generated method stub
-		return 0;
+		return dao.update(people);
 	}
+
+	
 
 }

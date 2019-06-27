@@ -27,6 +27,8 @@ import com.project.shiro.LoginAuthenticator;
 import com.project.shiro.MemberRealm;
 import com.project.shiro.UserRealm;
 
+
+
 //添加配置注解
 @Configuration
 public class ShiroConfig {
@@ -65,6 +67,7 @@ public class ShiroConfig {
 		return shiroFilter;
 		
 	}
+	
 	//生成安全管理器,注入realm
 	@Bean(name="securityManager")
 	public DefaultWebSecurityManager getDefaultSecurityManager(@Qualifier("myReaml") Realm realm,@Qualifier("myReam2") Realm realm2 ) {
