@@ -22,6 +22,12 @@ import com.project.bean.TypeBean;
  */
 public interface IRoomDao {
 	/**
+	 * g根据房间号查询房间
+	 * @param name
+	 * @return
+	 */
+	public RoomBean selectroombyname(@Param("name")String name);
+	/**
 	 * 查询房间人数
 	 * @param nmae
 	 * @return

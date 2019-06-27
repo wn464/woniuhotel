@@ -149,4 +149,10 @@ public List<PeopleBean> selectpeopleall(String name) {
 	return peos;
 }
 
+@Override
+public RoomBean selectroombyname(String name) {
+	// TODO Auto-generated method stub
+	return null;
+}
+
 }

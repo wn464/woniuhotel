@@ -15,6 +15,12 @@ import com.project.bean.TypeBean;
  */
 public interface IRoomService {
 	/**
+	 * 通过房间号查询房间
+	 * @param name
+	 * @return
+	 */
+	public RoomBean selectroombyname(String name);
+	/**
 	 * 通过房间id查询房间详情
 	 * @param rid房间id
 	 * @return
