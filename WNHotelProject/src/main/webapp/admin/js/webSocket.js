@@ -25,9 +25,18 @@ function play1(mes){
     audio.appendChild(source); 
     audio.play();
 }
-window.onload=function(){
-	$("#notifications").parent().html(str1);
-}
+
+var str1 =
+	"<a id='notifications' rel='nofollow' data-target='#' href='#' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false' class='nav-link'>"+
+	"<i class='fa fa-bell-o'></i>"+
+//	<span class='badge bg-red badge-corner'>12</span>
+	"</a>"+
+	"<ul aria-labelledby='notifications' class='dropdown-menu'>"+
+	"<li>"+
+	"<a rel='nofollow' href='appointment.html' class='dropdown-item all-notifications text-center'> "+
+	"<strong>view all notifications</strong></a></li></ul>";
+$("#notifications").parent().html(str1);
+
 var num=0
 function neworder(){
 	num++;
@@ -44,12 +53,4 @@ function neworder(){
 		"<a rel='nofollow' href='appointment.html' class='dropdown-item all-notifications text-center'> "+
 		"<strong>view all notifications</strong></a></li></ul>";
 }
-var str1 =
-	"<a id='notifications' rel='nofollow' data-target='#' href='#' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false' class='nav-link'>"+
-	"<i class='fa fa-bell-o'></i>"+
-//	<span class='badge bg-red badge-corner'>12</span>
-	"</a>"+
-	"<ul aria-labelledby='notifications' class='dropdown-menu'>"+
-	"<li>"+
-	"<a rel='nofollow' href='appointment.html' class='dropdown-item all-notifications text-center'> "+
-	"<strong>view all notifications</strong></a></li></ul>";
+

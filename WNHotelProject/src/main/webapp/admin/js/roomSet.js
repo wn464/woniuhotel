@@ -186,7 +186,7 @@ window.onload=function(){
 	//跳转查询
 	findPage();
 	//获得房间类型
-	getTypes()
+	getTypes();
 }
 //上一页
 function before(){

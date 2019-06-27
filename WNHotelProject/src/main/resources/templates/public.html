@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8"><!--头部公共页面-->
+		<title></title>
+		<script src="js/jquery-2.2.3.min.js"></script>
+	</head>
+	<body>
+		<h6>
+			<i class="fa fa-phone" aria-hidden="true"></i> 订房热线 : 00950804988436
+		</h6>
+		<div class="search">
+			<h5 id="header">
+				<a class="sign" href="/login.html" > 登 录 </a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<a class="sign" href="/reg.html" > 注 册 </a>
+			</h5>
+		</div>
+		<div class="clearfix"> </div>
+		
+	
+	<script type="text/javascript">
+		function jump(){
+			$.ajax({
+				url:"/member/jump",
+				type:"get",
+				dataType:"json",
+				success:function(mes){
+					 console.info(mes)
+					if(mes!=null){
+						str="";
+						str+="<a href='#' class='sign'>"+mes.userName+"</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"
+						str+="<a href='/logout'  class='sign'> 注销 </a>"
+						$("#header").html(str);
+					} 
+				}
+			})
+			
+		}
+		jump();
+	</script>
+	
+	</body>
+</html>

@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.alipay.api.AlipayApiException;
 import com.project.Service.IOrderService;
+import com.project.Service.IRoomService;
 import com.project.bean.MarkBean;
 import com.project.bean.OrderBean;
 import com.project.util.AlipayUtil;
@@ -20,6 +21,8 @@ import com.project.util.AlipayUtil;
 public class PayController {
 	@Autowired
 	private IOrderService orderService;
+	@Autowired
+	private IRoomService roomService;
 	//调用支付宝接口
 	@GetMapping("/pay/{oid}")
 	@ResponseBody
@@ -28,6 +31,13 @@ public class PayController {
 		String string = null;
 		try {
 			string = AlipayUtil.pay(orderBean.getOrderNumber(), orderBean.getPrice(), "支付");
+			//修改支付状态
+			OrderBean orderBean2 = new OrderBean();
+			orderBean2.setId(oid);
+			MarkBean statusBean = new MarkBean();
+			statusBean.setId(6);
+			orderBean2.setStatus(statusBean);
+			orderService.updateOrderAttr(orderBean2);
 		} catch (AlipayApiException e) {
 			e.printStackTrace();
 		}

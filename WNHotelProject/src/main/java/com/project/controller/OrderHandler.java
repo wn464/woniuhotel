@@ -92,10 +92,9 @@ public class OrderHandler {
 	public String selectOrderByState(@PathVariable("status")int status,ModelMap map) {
 		Subject subject = SecurityUtils.getSubject();
 	    Session session = subject.getSession();
-	    session.setAttribute("id", 1);//测试使用
         int mid = (int) session.getAttribute("id");
 		PageBean bean = orderService.selectOrderByState(mid, status, 1, 50);
-		System.out.println(bean);
+		
 		map.put("bean",bean);
 		
 		return "myorder.html";
@@ -188,6 +187,7 @@ public class OrderHandler {
 				OrderBean order = orderService.selectOrderById(oid);
 				System.out.println("-=-=-="+order);
 				map.put("orderBean", order);
+				System.out.println("-=-=-=-----------------------------"+order);
 				return "pay.html";
 			}
 			//有账号非会员
@@ -209,6 +209,7 @@ public class OrderHandler {
 				//查询修改后的订单
 				OrderBean order = orderService.selectOrderById(oid);
 				map.put("orderBean", order);
+				System.out.println("-=-=-=-----------------------------"+order);
 				return "pay.html";
 			}
 		}
@@ -231,7 +232,7 @@ public class OrderHandler {
 			//查询修改后的订单
 			OrderBean order = orderService.selectOrderById(oid);
 			map.put("orderBean", order);
-			System.out.println("-=-=-="+order);
+			System.out.println("-=-=-=-----------------------------"+order);
 			return "pay.html";
 		}
 		
