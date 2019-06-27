@@ -5,17 +5,12 @@
 <mapper namespace="com.project.dao.IMemberDao">
 
 	<!-- 通过用户名查找 -->
-	<select id="selectByUsername" resultMap="map">
+	<select id="selectByUsername" resultMap="map1">
 	
 		select * from member where username = #{userName}
 	</select>
 
-	<resultMap type="MemberBean" id="map">
-		<id property="id" column="id"/>
-		<result property="userName" column="username"/>
-		<result property="phoneNumber" column="phoneNumber"/>
-		<result property="password" column="password"/>
-	</resultMap>
+	
 	
 	
 	<!-- 查找个人信息 -->

@@ -124,4 +124,22 @@ public PageBean selectroomall(int page, int size) {
 	return bean;
 }
 
+@Override
+public boolean updateroom(RoomBean room) {
+	int i=dao.updateroom(room);
+	if(i>0) {
+		return true;
+	}
+	return false;
+}
+
+@Override
+public boolean insertroom(RoomBean room) {
+ int i=dao.insertroom(room);
+ if(i>0) {
+	 return true;
+ }
+	return false;
+}
+
 }

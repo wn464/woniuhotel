@@ -43,7 +43,7 @@
 								</li>
 								<li>
 									<a href="#" >客房介绍</a>
-									<ul class="secondary-nav">
+									<ul class="secondary-nav" id="fjxq">
 										<li>
 											<a href="message.html">高级大床房</a>
 										</li>
@@ -118,7 +118,7 @@
 				<div class="col-md-4 about-gd" data-aos="fade-left">
 					<div class="about-sub-gd">
 						<h4 th:text="${type.name}">豪华大床房</h4>
-						 <p>面积：<span th:text="${type.area}" >28平方米</span></p>
+						 <p><span th:text="${type.area}" >28平方米</span></p>
 						<p>容纳人数：<span th:text="${type.people}">2</span>人</p>
 					</div>
 					<div class="about-sub-gd">
@@ -282,6 +282,26 @@
 				
 				$(".top-bar_sub_w3ls_agileits").load("/public.html");
 			})
+			
+			
+			function begin(){
+		$.ajax({
+			url:"/typeall",
+			async:true,
+			type:"get",
+			success:function(message){
+				console.info(message)
+				var count="";
+				for(var i=0;i<message.length;i++){
+					count+="<li>";
+					count+="<a href='/type/"+message[i].id+"'>"+message[i].name+"</a>";
+				count+="</li>";
+				}
+				$("#fjxq").html(count);
+			}
+		})
+	};
+	begin();
 	</script>
 </body>
 </html>
