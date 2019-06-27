@@ -32,17 +32,17 @@ public interface IRoomDao {
 	 * @param nmae
 	 * @return
 	 */
-	@Select("select  p.gender,p.id,p.idCard,p.name  from room r \r\n" + 
-			"join live l \r\n" + 
+	@Select("select  p.gender,p.id,p.idCard,p.name,l.intime,l.outtime  from room r \r\n" + 
+			"join live l  \r\n" + 
 			"on r.id=l.roomid \r\n" + 
 			"join people p\r\n" + 
 			"on l.peopleid=p.liveid\r\n" + 
-			"where r.name=#{name}")
+			"where r.name='1803' and  l.intime<#{time} and l.outtime>#{time}")
 	@Results({
 			@Result(property="gender", column="gender",one=@One(select=
 					  "com.project.dao.IMarkDao.selectmarkbyid"))
 	})
-	public List<PeopleBean> selectpeopleall(@Param("name")String nmae);
+	public List<PeopleBean> selectpeopleall(@Param("name")String nmae,String time);
 	/**
 	 * 查询房间人数
 	 * @return

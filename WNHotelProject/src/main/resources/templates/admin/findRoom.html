@@ -320,7 +320,7 @@
 			  $("#xs").html("让你tmd认真选,入住时间要小于退房前时间。。。。") 
 		  }else{
 			  $.ajax({
-				  url:"/aftertypestatus/"+type+"/"+page+"/4",
+				  url:"/aftertime/"+type+"/"+intime+"/"+outtime+"/"+page+"/4",
 				  type:"get",
 				  async:true,
 				  success:function(messg){
