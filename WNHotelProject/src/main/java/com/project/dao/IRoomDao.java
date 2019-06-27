@@ -3,11 +3,15 @@ package com.project.dao;
 import java.util.List;
 
 import org.apache.ibatis.annotations.Insert;
+import org.apache.ibatis.annotations.One;
 import org.apache.ibatis.annotations.Param;
+import org.apache.ibatis.annotations.Result;
+import org.apache.ibatis.annotations.Results;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 
 import com.project.bean.MarkBean;
+import com.project.bean.PeopleBean;
 import com.project.bean.RoomBean;
 import com.project.bean.TypeBean;
 
@@ -17,6 +21,37 @@ import com.project.bean.TypeBean;
  *
  */
 public interface IRoomDao {
+	/**
+	 * 查询房间人数
+	 * @param nmae
+	 * @return
+	 */
+	@Select("select  p.gender,p.id,p.idCard,p.name  from room r \r\n" + 
+			"join live l \r\n" + 
+			"on r.id=l.roomid \r\n" + 
+			"join people p\r\n" + 
+			"on l.peopleid=p.liveid\r\n" + 
+			"where r.name=#{name}")
+	@Results({
+			@Result(property="gender", column="gender",one=@One(select=
+					  "com.project.dao.IMarkDao.selectmarkbyid"))
+	})
+	public List<PeopleBean> selectpeopleall(@Param("name")String nmae);
+	/**
+	 * 查询房间人数
+	 * @return
+	 */
+	@Select("select  count(p.id)  from room r \r\n" + 
+			"join live l \r\n" + 
+			"on r.id=l.roomid \r\n" + 
+			"join people p\r\n" + 
+			"on l.peopleid=p.liveid\r\n" + 
+			"where r.name=#{name}")
+	public int peoplenumber(@Param("name")String name);
+	/***
+	 * 
+	 * @return
+	 */
 	@Select("select count(*) from room")
 	public int selectroomallnumber() ;
 	/**
