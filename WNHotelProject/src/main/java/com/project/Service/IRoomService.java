@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.project.bean.MarkBean;
 import com.project.bean.PageBean;
+import com.project.bean.PeopleBean;
 import com.project.bean.RoomBean;
 import com.project.bean.TypeBean;
 
@@ -13,6 +14,12 @@ import com.project.bean.TypeBean;
  *
  */
 public interface IRoomService {
+	/**
+	 * 通过房间号查询房间
+	 * @param name
+	 * @return
+	 */
+	public RoomBean selectroombyname(String name);
 	/**
 	 * 通过房间id查询房间详情
 	 * @param rid房间id
@@ -82,4 +89,10 @@ public boolean updateroom(RoomBean room);
  * @return
  */
 public boolean insertroom(RoomBean room);
+/**
+ * 查询房间人数详情
+ * @param name
+ * @return
+ */
+public List<PeopleBean> selectpeopleall(String name);
 }

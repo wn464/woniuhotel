@@ -16,7 +16,7 @@
     <!-- Google fonts - Poppins -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,700">
     <!-- theme stylesheet-->
-    <link rel="stylesheet" href="/admin/css/style.default.css" id="theme-stylesheet"><link id="new-stylesheet" rel="stylesheet"><link id="new-stylesheet" rel="stylesheet"><link id="new-stylesheet" rel="stylesheet"><link id="new-stylesheet" rel="stylesheet"><link id="new-stylesheet" rel="stylesheet"><link id="new-stylesheet" rel="stylesheet"><link id="new-stylesheet" rel="stylesheet"><link id="new-stylesheet" rel="stylesheet">
+    <link rel="stylesheet" href="/admin/css/style.default.css" id="theme-stylesheet"><link id="new-stylesheet" rel="stylesheet"><link id="new-stylesheet" rel="stylesheet"><link id="new-stylesheet" rel="stylesheet"><link id="new-stylesheet" rel="stylesheet"><link id="new-stylesheet" rel="stylesheet"><link id="new-stylesheet" rel="stylesheet"><link id="new-stylesheet" rel="stylesheet">
     <!-- Custom stylesheet - for your changes-->
     <link rel="stylesheet" href="/admin/css/custom.css">
     <!-- Favicon-->
@@ -91,74 +91,62 @@
           </div>
         </nav>
       </header>
-       <div class="page-content d-flex align-items-stretch"> 
+      <div class="page-content d-flex align-items-stretch"> 
         <!-- Side Navbar -->
         <nav class="side-navbar">
           
-          
-          <!-- Sidebar Navidation Menus--><span class="heading"></span>
-          <ul class="list-unstyled">
-                   <li><a href="/afterstatus/1/4"> <i class="icon-home"></i>顾客管理</a></li>
-               <li><a href="/admin/findOrder.html"> <i class="fa fa-bar-chart"></i>订单操作</a></li>
-           		<li><a href="/afterroomall/1/4"> <i class="icon-grid"></i>房间管理</a></li>
-              	<li><a href="/admin/login.html"> <i class="icon-interface-windows"></i>注销</a></li>
-          </ul><span class="heading">管理员</span>
-          <ul class="list-unstyled">
-           <li> <a href="/admin/discountSet.html"> <i class="icon-mail"></i>优惠管理</a></li>
-       <li> <a href="/admin/vipSet.html"> <i class="icon-picture"></i>vip管理</a></li>
-     <li> <a href="/admin/roleSet.html"> <i class="icon-interface-windows"></i>权限管理</a></li></ul>
         </nav>
-    
         <div class="content-inner" style="padding-bottom: 59.0476px;">
           <!-- Page Header-->
           <header class="page-header">
             <div class="container-fluid">
-              <h2 class="no-margin-bottom">查询房间</h2>
+              <h2 class="no-margin-bottom">添加入住</h2>
             </div>
           </header>
           <!-- Dashboard Counts Section-->
           <section class="dashboard-counts no-padding-bottom">
-            <div class="container-fluid">
+           <div class="container-fluid">
               <div class="row bg-white has-shadow"  style="padding-left: 180px">
-            
-            	
+              
+              
+              
                   <!-- Item -->
                 <div class="col-xl-3 col-sm-6" >
                   <div class="item d-flex align-items-center">
                     <div class="icon bg-green"><i class="icon-bill"></i></div>
                     <div class="title">
-                      <a href="/afterroomall/1/4"><span>查询<br>房间</span></a>
+                      <a href="/afterstatus/1/4"><span>添加<br>入住</span></a>
                     </div>
-                    
                   </div>
                 </div>
                 
                 <!-- Item -->
-               
-                <div class="col-xl-3 col-sm-6" style="margin: 0 100px;" >
+                
+                <div class="col-xl-3 col-sm-6" style="margin: 0 100px;">
                   <div class="item d-flex align-items-center">
                     <div class="icon bg-red"><i class="icon-padnote"></i></div>
                     <div class="title">
-				<a  href="/admin/updateroom.html"><span>修改<br>房间</span></a>
+					<a  href="/admin/addpeople.html"><span>查看<br>信息</span></a>
                     </div>
                   </div>
                 </div>
+                
                 
                 <!-- Item -->
                 <div class="col-xl-3 col-sm-6">
                   <div class="item d-flex align-items-center">
                     <div class="icon bg-orange"><i class="icon-check"></i></div>
                     <div class="title">
-                      <a href="/admin/roomSet.html"><span>添加<br>房间</span></a>
-                      
+                      <a href="/admin/updatepeople.html"><span>修改<br>信息</span></a>
                     </div>
-                    
                   </div>
                 </div>
               </div>
             </div>
+            
     <div class="container-fluid">
               <div class="row">
+                
                 <div class="col-lg-12">                           
                   <div class="card">
                     <div class="card-close">
@@ -168,38 +156,34 @@
                       </div>
                     </div>
                     <div class="card-header d-flex align-items-center">
-                      <h3 class="h4">筛选房间</h3>
+                      <h3 class="h4">选择时间</h3>
                     </div>
                     <div class="card-body">
                       <div class="form-inline">
     <div class="form-group">
+                          <label for="inlineFormInputGroup" class="sr-only">房间类型</label>
                           <select id="in" class="mr-3 form-control">
                               <option>
                                   经济双人间
                               </option>
         </select>
                         </div>
-                       
+                        <div class="form-group">
+                          <label for="inlineFormInput" class="sr-only">入住时间</label>
+                          <input id="Input" type="date" placeholder="入住时间" class="mr-3 form-control">
+                        </div>
+                        <div class="form-group">
+                          <label for="inlineFormInputGroup" class="sr-only">退房时间</label>
+                          <input id="Group" type="date" placeholder="退房时间" class="mr-3 form-control">
+                        </div>
                         <div class="form-group">
                           <button  class="btn btn-primary" onclick="cx(1)">查询</button>
                         </div>
-                        
-                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                        
-                        <div class="form-group">
-                          退房查询:<input type="text" placeholder="请输入房间号" id="fjh" />
-                        </div>
-                        <div class="form-group">
-                          <button  class="btn btn-primary" onclick="xcfj()">查询</button>
-                        </div>
-                        
-                        
                       </div>
+                         <span id="xs" style="color:red"></span>
                     </div>
                   </div>
                 </div>
-    
                 <div class="col-lg-12">
                   <div class="card">
                     
@@ -219,25 +203,14 @@
     						  <th>操作</th>
   
                             </tr>
-                          </thead>       
+                          </thead>
                           <tbody id="house">
-                           <tr  th:each="RoomBean: ${page.list}"> 
-                            <td th:text="${RoomBean.name}">3-103</td>
-                            <td th:text="${RoomBean.type.name}">经济双人间</td>
-                            <td th:text="${RoomBean.price}">￥200</td>
-                            <td th:text="${RoomBean.status.name}">待入住</td>
-                            <td>
-	                            <a href="#" class="badge badge-rounded bg-green">打扫</a>
-	                            <a href="#" class="badge badge-rounded bg-green">报修</a>
-	             
-	                            <button onclick="tf(this)"   th:if="${RoomBean.status.id}==4" th:value="${RoomBean.id}"  class="badge badge-rounded bg-green">退房</button>
-                            </td>
-    					 </tr>
-                      </tbody>
+                            
+                         </tbody>
                         </table>
-                         <button class="btn btn-primary" onclick="syy()" id="syy">上一页</button>
-                        <span>当前<span th:text="${page.page}" id="page"> </span>页/总共<span th:text="${page.totalPage}" id="totalpage"></span> 页</span>
-                        <button class="btn btn-primary"  onclick="xxy()" id="xyy">下一页</button>
+                         <button class="btn btn-primary"  id="syy">上一页</button>
+                        <span>当前<span  id="page"> </span>页/总共<span  id="totalpage"></span> 页</span>
+                        <button class="btn btn-primary"   id="xyy">下一页</button>
                       </div>
                     </div>
                   </div>
@@ -246,24 +219,10 @@
               </div>
             </div>
           </section>
-
-          
-          
-          
-          
-          
-          
-          
-          
-          
           <section class="updates no-padding-top">
             <div class="container-fluid">
               <div class="row">
-                <!-- Recent Updates-->
-                
-                <!-- Daily Feeds -->
-                
-                <!-- Recent Activities -->
+               
                 
               </div>
             </div>
@@ -316,172 +275,119 @@
     <script src="/admin/vendor/jquery.cookie/jquery.cookie.js"> </script>
     <script src="/admin/vendor/jquery-validation/jquery.validate.min.js"></script>
     <!-- Main File-->
-     <script src="/admin/js/head.js"></script>
+     <script src="js/head.js"></script>
     <script src="/admin/js/front.js"></script>
-    <script>
+  <script>
   function cx(page){
 	  var type=$("#in").val();
-	  $.ajax({
-		  url:"/afterroom/type/"+type+"/"+page+"/4",
-		  type:"get",
-		  async:true,
-		  success:function(messg){
-			  ne(messg.list);
-			  $("#page").html(messg.page);
-  	    	$("#totalpage").html(messg.totalPage);
-  	    	$("#syy").removeAttr("onclick");
-  	    	$("#xyy").removeAttr("onclick");
-  	    	$("#syy").click(function(){
-  	    		if(messg.page==1){
-  	    			return;
-  	    		}else{
-  	    			cx(messg.page-1)
-  	    		}
-  	    	})
-  	    	$("#xyy").click(function(){
-  	    		if(messg.page==messg.totalPage){
-  	    			return;
-  	    		}else{
-  	    			cx(parseInt(messg.page+1));
-  	    		}
-  	    	})
+	  var intime=$("#Input").val();
+	  var outtime=$("#Group").val();
+	  var now=getNowFormatDate();
+	  if(intime==""||outtime==""){
+		  $("#xs").html("请选择时间")
+		  return;
+	  }
+	  if(intime<now){
+		 $("#xs").html("请认真选ok?,入住时间不能小于当前时间") 
+	  }else{
+		  if(intime>outtime){
+			  $("#xs").html("让你tmd认真选,入住时间要小于退房前时间。。。。") 
+		  }else{
+			  $.ajax({
+				  url:"/aftertypestatus/"+type+"/"+page+"/4",
+				  type:"get",
+				  async:true,
+				  success:function(messg){
+					  console.info(messg)
+					  ne(messg.list);
+					  $("#page").html(messg.page);
+		  	    	$("#totalpage").html(messg.totalPage);		  	    
+		  	    	$("#syy").click(function(){
+		  	    		if(messg.page==1){
+		  	    			return;
+		  	    		}else{
+		  	    			cx(messg.page-1)
+		  	    		}
+		  	    	})
+		  	    	$("#xyy").click(function(){
+		  	    		if(messg.page==messg.totalPage){
+		  	    			return;
+		  	    		}else{
+		  	    			cx(parseInt(messg.page+1));
+		  	    		}
+		  	    	})
+				  }
+			  })
 		  }
-	  })
+	  }
+	  
   }
+  
+  
+  
+  function getNowFormatDate() {
+      var date = new Date();
+      var seperator1 = "-";
+      var year = date.getFullYear();
+      var month = date.getMonth() + 1;
+      var strDate = date.getDate();
+      if (month >= 1 && month <= 9) {
+          month = "0" + month;
+      }
+      if (strDate >= 0 && strDate <= 9) {
+          strDate = "0" + strDate;
+      }
+      var currentdate = year + seperator1 + month + seperator1 + strDate;
+      return currentdate;
+  }
+  
+  
+  
+  
+  function typebegin(){
+  	$.ajax({
+  		url:"/aftertypeall",
+  		type:"get",
+  		async:true,
+  		success:function(meg){
+  			var cou="";
+  			for(var i=0;i<meg.length;i++){
+  				cou+=" <option value="+meg[i].id+">"+meg[i].name+"</option>"
+  			}
+  			$("#in").html(cou)
+  		}
+  	})
+  }
+  typebegin();
+ 
 
-   
-    
-    
-    
-    function typebegin(){
-    	$.ajax({
-    		url:"/aftertypeall",
-    		type:"get",
-    		async:true,
-    		success:function(meg){
-    			var cou="";
-    			for(var i=0;i<meg.length;i++){
-    				cou+=" <option value="+meg[i].id+">"+meg[i].name+"</option>"
-    			}
-    			$("#in").html(cou)
-    		}
-    	})
-    }
-    typebegin();
-   
-    function syy(){
-    	var page=$("#page").html();
-    	var totalpage=$("#totalpage").html();
-    	if(page==1){
-    	return ;
-    	}else{
-    		$.ajax({
-    			url:"/afterroomalltwo/"+(page-1)+"/4",
-        		async:true,
-        		type:"get",
-        		success:function(mess){
-        			ne(mess.list)
-        			$("#page").html(mess.page);
-        	    	$("#totalpage").html(mess.totalpage);
-        		}
-    		})
-    	}
-    }
-    function xxy(){
-    	var page=parseInt($("#page").html());
-    	var totalpage=$("#totalpage").html();
-    	if(page==totalpage){
-    	return ;
-    	}else{
-    		$.ajax({
-    			url:"/afterroomalltwo/"+(page+1)+"/4",
-        		async:true,
-        		type:"get",
-        		success:function(messg){
-        			ne(messg.list)
-        			$("#page").html(messg.page);
-        	    	$("#totalpage").html(messg.totalpage);
-        		}
-    		})
-    	}
-    }
-    
-    
-    
-    function ne(mess){
-    	var count="";
+
+  function ne(mess){
+  	var count="";
 		for(var i=0;i<mess.length;i++){
 			count+=" <tr>" ;
-            count+=" <td>"+mess[i].name+"</td>";
-            count+=" <td>"+mess[i].type.name+"</td>";
-             count+="<td>￥"+mess[i].price+"</td>";
-             count+="<td>"+mess[i].status.name+"</td>";
-             count+="<td>"
-             count+="<a href='#' class='badge badge-rounded bg-green'>打扫</a>";
-            count+=" <a href='#' class='badge badge-rounded bg-green'>报修</a>";
-            	 if(mess[i].status.id==4){
-               	  count+=" <button value="+mess[i].id+" class='badge badge-rounded bg-green' onclick='tf(this)' >退房</button>";
-               }
-            count+="</td>";
-           
+          count+=" <td>"+mess[i].name+"</td>";
+          count+=" <td>"+mess[i].type.name+"</td>";
+           count+="<td>￥"+mess[i].price+"</td>";
+           count+="<td>待入住</td>";
+           count+="<td>";
+          count+="<button class='badge badge-rounded bg-green' onclick='rz("+mess[i].id+")'>入住</button></td>";
 			 count+="</tr>";
 		}
 		$("#house").html(count);
-    }
-    $("#Input").focus(function(){
-    	$("#xs").html("");
-    });
-    $("#Group").focus(function(){
-    	$("#xs").html("");
-    });
-    
-    function tf(obj){
-    	var rid=parseInt($(obj).val());
-    	$.ajax({
-    		url:"/updatestatus/"+rid+"",
-    		type:"put",
-    		async:true,
-    		success:function(mes){
-    			alert(mes)
-    		}
-    	})
-    }
-    
-    function xcfj(){
-    	var name=$("#fjh").val();
-    	if(name==""){
-    		
-    	}else{
-    		$.ajax({
-    			url:"/selectroombyname",
-    			type:"post",
-    			data:"name="+name+"",
-    			async:true,
-    			success:function(mse){
-    				var count="";
-    				
-    					count+=" <tr>" ;
-    		            count+=" <td>"+mse.name+"</td>";
-    		            count+=" <td>"+mse.type.name+"</td>";
-    		             count+="<td>￥"+mse.price+"</td>";
-    		             count+="<td>"+mse.status.name+"</td>";
-    		             count+="<td>"
-    		             count+="<a href='#' class='badge badge-rounded bg-green'>打扫</a>";
-    		            count+=" <a href='#' class='badge badge-rounded bg-green'>报修</a>";
-    		            	 if(mse.status.id==4){
-    		               	  count+=" <button value="+mse.id+" class='badge badge-rounded bg-green' onclick='tf(this)' >退房</button>";
-    		            	 }
-    		            count+="</td>";
-    					 count+="</tr>";
-    				$("#house").html(count);
-    				$("#page").html(1);
-        	    	$("#totalpage").html(1);
-        	    	$("#syy").removeAttr("onclick");
-          	    	$("#xyy").removeAttr("onclick");
-    			}
-    		})
-    	}
-    }
-    </script>
+  }
+  function rz(rid){
+	  var intime=$("#Input").val();
+	  var outtime=$("#Group").val();
+	  window.location.href="/rooms/"+rid+"/"+intime+"/"+outtime+"";
+  }
+  $("#Input").focus(function(){
+  	$("#xs").html("");
+  });
+  $("#Group").focus(function(){
+  	$("#xs").html("");
+  });
   
-</body></html>
+  </script>
+</body>
+</html>

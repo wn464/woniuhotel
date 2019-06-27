@@ -158,8 +158,8 @@
 					type:"get",
 					dataType:"json",
 					success:function(mes){
-
-						if(mes.vipBean==null){
+						console.info(mes);
+						if(mes==null||mes.vipBean==null){
 							$("#message").hide();
 						}else{
 							str="";
@@ -168,9 +168,9 @@
 							str+="<span> <i><img src='/admin/img/vip2.png'/></i><p> "+mes.money+"</p><h5>消费金额</h5></span>"	
 							str+="<span><i><img src='/admin/img/vip3.png'/></i><p> "+mes.money+"</p> <h5>&nbsp; 经验值</h5></span>"	
 							$("#message").html(str);
-							
 						}	
-					}
+						
+					} 
 				})
 			}
 			find();
