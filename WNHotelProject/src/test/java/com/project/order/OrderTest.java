@@ -137,6 +137,11 @@ public class OrderTest {
 	    	liveService.updateLiveBean(liveBean);
 	    	
 	    }
+	    @Test
+	    public void deleteById() {
+	    	int i = orderService.deleteById(155);
+	    	System.out.println(i);
+	    }
 	    
 	   
 
