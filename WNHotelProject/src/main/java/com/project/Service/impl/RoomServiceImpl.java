@@ -1,6 +1,6 @@
 package com.project.Service.impl;
 
-import java.util.ArrayList;
+import java.time.LocalDateTime;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -145,7 +145,11 @@ public boolean insertroom(RoomBean room) {
 
 @Override
 public List<PeopleBean> selectpeopleall(String name) {
-	List<PeopleBean> peos=dao.selectpeopleall(name);
+	
+	LocalDateTime dt=LocalDateTime.now();
+	String tiime=dt.toString();
+	String time=tiime.substring(0, 10);
+	List<PeopleBean> peos=dao.selectpeopleall(name,time);
 	return peos;
 }
 
