@@ -104,15 +104,50 @@
           <!-- Dashboard Counts Section-->
           <section class="dashboard-counts no-padding-bottom">
             <div class="container-fluid">
-              <div class="row bg-white has-shadow" id="DashboardCountsSection">
+              <div class="row bg-white has-shadow" >
+                 <!-- Item -->
+                <div class="col-xl-4 col-sm-6">
+                  <div class="item d-flex align-items-center">
+                    <div class="icon bg-violet"><i class="icon-user"></i></div>
+                    <div class="title">
+                    <a  href="javascript:addPage()"><span>会员<br>添加</span></a>
+											
+                      
+                    </div>
+                    
+                  </div>
+                </div>
+                <!-- Item -->
+                <div class="col-xl-4 col-sm-6" >
+                  <div class="item d-flex align-items-center">
+                    <div class="icon bg-red"><i class="icon-padnote"></i></div>
+                    <div class="title">
+											<a  href="javascript:findPage()"><span>会员<br>查询</span></a>
+											
+                      
+                    </div>
+                    
+                  </div>
+                </div>
                 
+                <!-- Item -->
+                <div class="col-xl-4 col-sm-6">
+                  <div class="item d-flex align-items-center">
+                    <div class="icon bg-orange"><i class="icon-check"></i></div>
+                    <div class="title">
+                      <a href="javascript:setPage()"><span>会员<br>修改</span></a>
+                      
+                    </div>
+                    
+                  </div>
+                </div>
                
               </div>
             </div>
     <div class="container-fluid">
               <div class="row">
                 
-                <div class="col-lg-12">                           
+                <div class="col-lg-12" id="insert">                           
                   <div class="card">
                     <div class="card-close">
                       <div class="dropdown">
@@ -144,7 +179,7 @@
                     </div>
                   </div>
                 </div>
-                <div class="col-lg-12">
+                <div class="col-lg-12" id="find">
                   <div class="card">
                     
                     <div class="card-header d-flex align-items-center">
@@ -174,7 +209,7 @@
                   </div>
                 </div>
                 
-              <div class="col-lg-12">                           
+              <div class="col-lg-12" id="set">                           
                   <div class="card">
                     <div class="card-close">
                       <div class="dropdown">

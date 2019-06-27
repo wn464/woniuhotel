@@ -1,6 +1,22 @@
 var discountType1 = $("#discountType1");
 var discountType2 = $("#discountType2");
 var discoountId;
+
+function addPage(){
+	$("#insert").show();
+	$("#set").hide();
+	$("#find").hide();
+}
+function findPage(){
+	$("#insert").hide();
+	$("#set").hide();
+	$("#find").show();
+}
+function setPage(){
+	$("#insert").hide();
+	$("#set").show();
+	$("#find").hide();
+}
 function getdiscounts(){
 	$.ajax({
 		url:"/admin/allDiscount",
@@ -55,6 +71,7 @@ function del(id){
 	}
 }
 function set(id){
+	
 	discoountId = id;
 	console.info("修改编号为："+id+"的订单");
 	$.ajax({
@@ -72,7 +89,7 @@ function set(id){
 			$("#setNumber2").val(mes.number2);
 		}
 	})
-	
+	setPage()
 }
 function sendDateFormat(time){
 	var nTime = new Date(time);
@@ -105,6 +122,7 @@ function dateformat(time){
 }
 var discountType;
 window.onload=function(){
+	findPage();
 	getdiscountType();
 	getdiscounts();
 	
@@ -152,7 +170,7 @@ function update(){
 			getdiscounts();
 		}
 	})
-		
+	findPage();
 }
 function insert(){
 	var insert = $("#insertForm").serializeArray();
@@ -175,7 +193,6 @@ function insert(){
 			alert("添加成功");
 			getdiscounts();
 		}
-		
-	
 	})
+	findPage();
 }
