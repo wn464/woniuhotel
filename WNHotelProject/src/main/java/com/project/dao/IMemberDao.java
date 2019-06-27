@@ -25,11 +25,11 @@ public interface IMemberDao {
 	public int updatePassword(String repassword,int id);
 	
 	//修改消费金额
-	@Update("update member set money = #{money} where id = #{id}")
-	public int updateMoney(double money,int id);
+	@Update("update member set money = #{money1} where id = #{id}")
+	public int updateMoney(double money1,int id);
 	
 	//修改VIP等级
-	@Update("update member set vip=#{vip.id} where id = #{id}")
+	@Update("update member set vip=#{vipBean.id} where id = #{id}")
 	public int updateVip(MemberBean member);
 	
 	//通过用户名查找	
