@@ -149,14 +149,14 @@ public class MemberHandler {
 	@ResponseBody
 	public MemberBean selectById() {
 		Subject subject = SecurityUtils.getSubject();
-		if(subject.getSession().getAttribute("id")!=null) {
-			int id = (int) subject.getSession().getAttribute("id");//获取当前登录的id
-			MemberBean bean = service.selectById(id);
-			System.out.println(bean);
-			return bean;
-		}else {
-			return null;
-		}
+		MemberBean bean =null;
+		int id = (int) subject.getSession().getAttribute("id");//获取当前登录的id
+		System.out.println("======="+id);
+		bean = service.selectById(id);
+		System.out.println(bean);
+		subject.getSession().setAttribute("bean", bean);
+		return bean;
+		
 		
 	}
 	
