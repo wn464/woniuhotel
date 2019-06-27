@@ -31,8 +31,8 @@ public interface IOrderService {
 	public PageBean selectOrderBySubStatus(int subscribeStatus, int page, int size);
 	//通过时间段查询订单
 	public PageBean selectOrderByTime(int subscribeStatus,String startTime, String endTime, int page, int size);
-	
-	
+	//通过订单id删除订单
+	public int deleteById(int id);
 	
 	
 }
