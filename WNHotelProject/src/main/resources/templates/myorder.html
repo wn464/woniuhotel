@@ -115,8 +115,7 @@
 			 <button id="pay"  class="btn btn-danger" th:if="${order.subscribeStatus==null}" th:text="支付" ></button>
 			 <button id="pingjia" data-toggle="modal" data-target="#myModal01" class="btn btn-danger" th:if="${order.subscribeStatus!=null&&order.subscribeStatus.id==8}" th:text="评价" ></button>
 			 <button  class="btn btn-danger" th:if="${order.subscribeStatus!=null&&order.subscribeStatus.id==7}" th:text="超时" ></button>
-			 <button id="goback"  class="btn btn-danger" th:if="${order.subscribeStatus!=null&&order.subscribeStatus.id==9}" th:text="退款" ></button>
-			 
+			 <button id="goback" class="btn btn-danger" th:if="${order.subscribeStatus!=null&&order.subscribeStatus.id==9}" th:text="退款" ></button>
 			 </div>
 			</div>
 		</div>

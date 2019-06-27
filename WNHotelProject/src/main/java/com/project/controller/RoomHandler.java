@@ -43,7 +43,14 @@ public class RoomHandler {
 
 	@Autowired
 	private IRoomService service;
-
+	@PutMapping("/updatestatus/{rid}")
+	@ResponseBody
+	public String updatestatus(@PathVariable("rid")int rid) {
+		RoomBean room=new RoomBean();
+		room.setId(rid);
+		service.updateroomstatus(room);
+		return "已退房";
+	}
 	/**
 	 * 根据房间id查询房间详细信息
 	 * @param rid房间id
