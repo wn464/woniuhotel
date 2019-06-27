@@ -44,7 +44,7 @@
             <div class="navbar-holder d-flex align-items-center justify-content-between">
               <!-- Navbar Header-->
               <div class="navbar-header">
-                <!-- Navbar Brand --><a href="index.html" class="navbar-brand d-none d-sm-inline-block">
+                <!-- Navbar Brand --><a href="/admin/index.html" class="navbar-brand d-none d-sm-inline-block">
                   <div class="brand-text d-none d-lg-inline-block"><span>酒店管理  </span><strong>后台系统</strong></div>
                   <div class="brand-text d-none d-sm-inline-block d-lg-none"><strong>BD</strong></div></a>
                 <!-- Toggle Button--><a id="toggle-btn" href="#" class="menu-btn active"><span></span><span></span><span></span></a>
@@ -84,7 +84,7 @@
                 <!-- Languages dropdown    -->
                 
                 <!-- Logout    -->
-                <li class="nav-item"><a href="login.html" class="nav-link logout"> <span class="d-none d-sm-inline">注销</span><i class="fa fa-sign-out"></i></a></li>
+                <li class="nav-item"><a href="/admin/login.html" class="nav-link logout"> <span class="d-none d-sm-inline">注销</span><i class="fa fa-sign-out"></i></a></li>
               </ul>
             </div>
           </div>
@@ -97,10 +97,10 @@
           
           <!-- Sidebar Navidation Menus--><span class="heading"></span>
           <ul class="list-unstyled">
-                   <li><a href="findRoom.html"> <i class="icon-home"></i>顾客管理</a></li>
-                    <li><a href="findOrder.html"> <i class="fa fa-bar-chart"></i>订单操作</a></li>
-                    <li><a href="roomManager.html"> <i class="icon-grid"></i>房间管理</a></li>
-                   	<li><a href="login.html"> <i class="icon-interface-windows"></i>注销</a></li>
+                   <li><a href="/admin/findRoom.html"> <i class="icon-home"></i>顾客管理</a></li>
+                    <li><a href="/admin/findOrder.html"> <i class="fa fa-bar-chart"></i>订单操作</a></li>
+                    <li><a href="/admin/roomManager.html"> <i class="icon-grid"></i>房间管理</a></li>
+                   	<li><a href="/admin/login.html"> <i class="icon-interface-windows"></i>注销</a></li>
           </ul><span class="heading">管理员</span>
           <ul class="list-unstyled">
             
@@ -172,8 +172,8 @@
                             </tr>
                             <tr>
                               <th scope="row">状态</th>
-<!--                               <td th:if="${orderBean.subscribeStatus.id==9}" th:text="预约"></td> -->
-<!--                               <td th:if="${orderBean.subscribeStatus.id==8}" th:text="立即入住"></td> -->
+                              <td th:if="${orderBean.subscribeStatus.id==9}" th:text="预约"></td>
+                              <td th:if="${orderBean.subscribeStatus.id==8}" th:text="立即入住"></td>
                             </tr>
                             
                             <tr>
@@ -275,7 +275,7 @@
                                   <input type="text" placeholder="支付宝订单号" class="form-control">
                                 </div>
                                 <div class="form-group">       
-                                  <input type="submit" value="完成" class="btn btn-primary">
+                                 <input type="submit" value="完成" class="btn btn-primary">
                                 <input type="submit" value="现金结账" class="btn btn-primary"></div>
                               </form>
                             </div>
@@ -292,17 +292,33 @@
     <script src="/admin/vendor/jquery-validation/jquery.validate.min.js"></script>
     <!-- Main File-->
     <script src="/admin/js/front.js"></script>
-   <script type="text/javascript">
+    <script type="text/javascript" th:inline="javascript">
 		function cashPay(){
 			var sid = /*[[${orderBean.subscribeStatus.id}]]*/;
+			var rid = /*[[${orderBean.lives[0].room.id}]]*/;
+			var oid = /*[[${orderBean.id}]]*/;
 		  	if (sid==9) {
-				alert("预定成功！")
-				window.location.href="/admin/index.htr
+				$.ajax({
+					url:"/roomStatus",
+					type:"put",
+					data:"id="+rid,
+					success:function(mes){
+						alert("预定成功！")
+						window.location.href="/admin/index.html"
+						}
+					})
 			}
 		  	else {
   			if (confirm("完成结账，是否继续添加入住人员")) {
-  				var oid = /*[[${orderBean.id}]]*/;
-  				window.location.href="/order/people/"+oid
+  				$.ajax({
+					url:"/roomStatus",
+					type:"put",
+					data:"id="+rid,
+					success:function(mes){
+						window.location.href="/order/people/"+oid;
+						}
+					})
+  				
 			}
 			}
 		}
