@@ -1,6 +1,7 @@
 package com.project.util.countUtil;
 
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.stereotype.Component;
@@ -81,6 +82,30 @@ public class OrderUtil extends OrderCount{
 			break;
 		}
 		return price;
+	}
+	
+	public List<DiscountBean> getUnderLineDiscount(double price,int vipId) throws Exception {
+		List<DiscountBean> discountList = new ArrayList<DiscountBean>();
+		List<DiscountBean> list = selectDiscounts(price, vipId);
+		DiscountBean discount =null;
+		double price1=price;
+		for (DiscountBean discountBean : list) {
+			double price2 = getUnderLineMoney(price, discountBean.getId(), vipId);
+			if(price1>price2) {
+				price1=price2;
+				discount = discountBean;
+			}
+		}
+		if (list.size()==0) {
+			price1 =getVipDiscountCount(price1, vipId);
+		}
+		discountList.add(discount);
+		return discountList;
+	}
+	public List<DiscountBean> getOnLineDiscount(double price,int vipId) throws Exception {
+		List<DiscountBean> discountList = getUnderLineDiscount(price, vipId);
+		discountList.add(discountService.selectDiscountById(1));
+		return discountList;
 	}
 	public double getUnderLineMoney(double price,int vipId) throws Exception {
 		List<DiscountBean> list = selectDiscounts(price, vipId);
