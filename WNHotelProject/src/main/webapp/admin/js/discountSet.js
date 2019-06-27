@@ -89,7 +89,7 @@ function set(id){
 			$("#setNumber2").val(mes.number2);
 		}
 	})
-	setPage()
+	setPage();
 }
 function sendDateFormat(time){
 	var nTime = new Date(time);
