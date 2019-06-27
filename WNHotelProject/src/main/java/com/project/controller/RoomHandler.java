@@ -24,8 +24,12 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
+
+import com.project.Service.IOrderService;
 import com.project.Service.IRoomService;
+import com.project.Service.impl.RoomServiceImpl;
 import com.project.bean.MarkBean;
+import com.project.bean.OrderBean;
 import com.project.bean.PageBean;
 import com.project.bean.RoomBean;
 import com.project.bean.TypeBean;
@@ -41,8 +45,6 @@ import com.project.bean.TypeBean;
 @Controller
 public class RoomHandler {
 
-	@Autowired
-	private IRoomService service;
 	@PutMapping("/updatestatus/{rid}")
 	@ResponseBody
 	public String updatestatus(@PathVariable("rid")int rid) {
@@ -51,6 +53,12 @@ public class RoomHandler {
 		service.updateroomstatus(room);
 		return "已退房";
 	}
+
+	private IRoomService service;
+	@Autowired
+	private IOrderService orderService;
+
+
 	/**
 	 * 根据房间id查询房间详细信息
 	 * @param rid房间id
@@ -196,5 +204,38 @@ public class RoomHandler {
 	public boolean insertroom(RoomBean room) {
 		boolean boo=service.insertroom(room);
 		return boo;
+	}
+	
+	/**
+	 * 修改房间为不可住状态(入住)
+	 * @param room
+	 * @return
+	 */
+	@PutMapping(value="/roomStatus")
+	@ResponseBody
+	public String updateStatusNo(RoomBean room) {
+		service.updateroomstatusin(room);
+		return "ok";
+	}
+	
+	/**
+	 * 修改房间为可住状态(退房)
+	 * @param room
+	 * @return
+	 */
+	@PutMapping(value="/roomState")
+	@ResponseBody
+	public String updateStatusYes(int rid,int oid) {
+		RoomBean room = new RoomBean();
+		room.setId(rid);
+		service.updateroomstatus(room);
+		//修改人员入住状态
+		OrderBean orderBean = new OrderBean();
+		orderBean.setId(oid);
+		MarkBean subBean = new MarkBean();
+		subBean.setId(12);
+		orderBean.setSubscribeStatus(subBean);
+		orderService.updateOrderAttr(orderBean);
+		return "ok";
 	}
 }
