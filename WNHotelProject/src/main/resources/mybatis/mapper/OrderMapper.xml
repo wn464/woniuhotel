@@ -79,7 +79,6 @@
 		<association property="member" javaType="MemberBean" select="com.project.dao.IMemberDao.selectById" column="memberId"/>
 		<association property="status" javaType="MarkBean" select="com.project.dao.IMarkDao.selectmarkbyid" column="status"/>
 	    <association property="subscribeStatus" javaType="MarkBean" select="com.project.dao.IMarkDao.selectmarkbyid" column="subscribeStatus"/> 
-<!-- 		<association property="comment" javaType="CommentBean" select="com.project.dao.ICommentDao.selectCommentByOid" column="id"/> -->
 		<collection  property="lives" ofType="LiveBean" select="com.project.dao.ILiveDao.findByorderid" column="id"/>
 	</resultMap>
 

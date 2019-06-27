@@ -206,6 +206,7 @@ public class RoomHandler {
 	@ResponseBody
 	public String updateStatusNo(RoomBean room) {
 		service.updateroomstatusin(room);
+		OrderBean orderBean = new OrderBean();
 		return "ok";
 	}
 	
@@ -226,6 +227,25 @@ public class RoomHandler {
 		MarkBean subBean = new MarkBean();
 		subBean.setId(12);
 		orderBean.setSubscribeStatus(subBean);
+		orderService.updateOrderAttr(orderBean);
+		return "ok";
+	}
+	/**
+	 * 修改房间为不可住状态(入住)
+	 * @param room
+	 * @return
+	 */
+	@PutMapping(value="/roomSta")
+	@ResponseBody
+	public String updateStatusNo1(int rid,int oid) {
+		RoomBean room = new RoomBean();
+		room.setId(rid);
+		service.updateroomstatusin(room);
+		OrderBean orderBean = new OrderBean();
+		orderBean.setId(oid);
+		MarkBean sBean = new MarkBean();
+		sBean.setId(6);
+		orderBean.setStatus(sBean);
 		orderService.updateOrderAttr(orderBean);
 		return "ok";
 	}

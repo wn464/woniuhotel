@@ -134,7 +134,8 @@ public class OrderHandler {
 	 * 通过订单id查询订单(统计价格)
 	 */
 	@GetMapping("/{oid}")
-	public String selectOrderById(@PathVariable("oid")int oid,ModelMap map){
+	public String selectOrderById(@PathVariable("oid")int oid,ModelMap map) throws Exception{
+		OrderUtil orderutil = new OrderUtil(vipService, discountService);
 		OrderBean orderBean = orderService.selectOrderById(oid);
 		List<LiveBean> list = orderBean.getLives();
 		for (LiveBean liveBean : list) {
@@ -158,14 +159,82 @@ public class OrderHandler {
 			}
 			double price = liveBean.getRoom().getPrice()*day;
 			orderBean.setPrice(price);
-			
 			OrderBean orderBean2 = new OrderBean();
 			orderBean2.setId(orderBean.getId());
 			orderBean2.setPrice(price);
 			orderService.updateOrderAttr(orderBean2);
 		}
-		map.put("orderBean", orderBean);
-		return "pay.html";
+		//会员下单---------
+		if (orderBean.getMember()!=null) {
+			//有账号且会员
+			System.out.println("//会员下单");
+			if (orderBean.getMember().getVipBean()!=null) {
+				MemberBean memberBean = orderBean.getMember();
+				VipBean vipBean = memberBean.getVipBean();
+				double price = orderutil.getOnLineMoney(orderBean.getPrice(), vipBean.getId());
+				orderBean.setPrice(price);
+				//修改数据库价格
+				OrderBean order1 = new OrderBean();
+				order1.setId(oid);
+				order1.setPrice(price);
+				orderService.updateOrderAttr(order1);
+				//设置优惠标志
+				if (price>=2000) {
+					map.put("dt", 1);
+				}else {
+					map.put("dt", 2);
+				}
+				//查询修改后的订单
+				OrderBean order = orderService.selectOrderById(oid);
+				System.out.println("-=-=-="+order);
+				map.put("orderBean", order);
+				return "pay.html";
+			}
+			//有账号非会员
+			else {
+				System.out.println("//有账号非会员");
+				double price = orderutil.getUnderLineMoney(orderBean.getPrice(), 0);
+				orderBean.setPrice(price);
+				//修改数据库价格
+				OrderBean order1 = new OrderBean();
+				order1.setId(oid);
+				order1.setPrice(price);
+				orderService.updateOrderAttr(order1);
+				//设置优惠标志
+				if (price>=2000) {
+					map.put("dt", 1);
+				}else {
+					map.put("dt", 2);
+				}
+				//查询修改后的订单
+				OrderBean order = orderService.selectOrderById(oid);
+				map.put("orderBean", order);
+				return "pay.html";
+			}
+		}
+//非会员下单---------------------
+		else {
+			System.out.println("//非会员下单");
+			double price = orderutil.getOnLineMoney(orderBean.getPrice(), 0);
+			orderBean.setPrice(price);
+			//修改数据库价格
+			OrderBean order1 = new OrderBean();
+			order1.setId(oid);
+			order1.setPrice(price);
+			orderService.updateOrderAttr(order1);
+			//设置优惠标志
+			if (price>=2000) {
+				map.put("dt", 1);
+			}else {
+				map.put("dt", 2);
+			}
+			//查询修改后的订单
+			OrderBean order = orderService.selectOrderById(oid);
+			map.put("orderBean", order);
+			System.out.println("-=-=-="+order);
+			return "pay.html";
+		}
+		
 	}
 
 //--------------------------------后台操作-------------------------------------------------
@@ -246,42 +315,93 @@ public class OrderHandler {
 			orderBean2.setPrice(price);
 			orderService.updateOrderAttr(orderBean2);
 		}
-		//会员下单
+//会员下单---------
 		if (orderBean.getMember()!=null) {
-			MemberBean memberBean = orderBean.getMember();
-			VipBean vipBean = memberBean.getVipBean();
-			double price = orderutil.getUnderLineMoney(orderBean.getPrice(), vipBean.getId());
-			orderBean.setPrice(price);
-			if (price>=2000) {
-				map.put("dt", 1);
-			}else {
-				map.put("dt", 2);
+			//有账号且会员
+			if (orderBean.getMember().getVipBean()!=null) {
+				MemberBean memberBean = orderBean.getMember();
+				VipBean vipBean = memberBean.getVipBean();
+				double price = orderutil.getUnderLineMoney(orderBean.getPrice(), vipBean.getId());
+				orderBean.setPrice(price);
+				//修改数据库价格
+				OrderBean order1 = new OrderBean();
+				order1.setId(oid);
+				order1.setPrice(price);
+				orderService.updateOrderAttr(order1);
+				//设置优惠标志
+				if (price>=2000) {
+					map.put("dt", 1);
+				}else {
+					map.put("dt", 2);
+				}
+				//设置订单预定状态
+				if (flag==1) {
+					OrderBean orderBean2 = new OrderBean();
+					MarkBean suBean = new MarkBean();
+					suBean.setId(9);
+					orderBean2.setSubscribeStatus(suBean);
+					orderBean2.setId(orderBean.getId());
+					orderService.updateOrderAttr(orderBean2);
+				}else {
+					OrderBean orderBean2 = new OrderBean();
+					MarkBean suBean = new MarkBean();
+					suBean.setId(8);
+					orderBean2.setSubscribeStatus(suBean);
+					orderBean2.setId(orderBean.getId());
+					orderService.updateOrderAttr(orderBean2);
+				}
+				//查询修改后的订单
+				OrderBean order = orderService.selectOrderById(oid);
+				map.put("orderBean", order);
+				return "admin/count1.html";
 			}
-			//设置订单预定状态
-			if (flag==1) {
-				OrderBean orderBean2 = new OrderBean();
-				MarkBean suBean = new MarkBean();
-				suBean.setId(9);
-				orderBean2.setSubscribeStatus(suBean);
-				orderBean2.setId(orderBean.getId());
-				orderService.updateOrderAttr(orderBean2);
-			}else {
-				OrderBean orderBean2 = new OrderBean();
-				MarkBean suBean = new MarkBean();
-				suBean.setId(8);
-				orderBean2.setSubscribeStatus(suBean);
-				orderBean2.setId(orderBean.getId());
-				orderService.updateOrderAttr(orderBean2);
+			//有账号非会员
+			else {
+				double price = orderutil.getUnderLineMoney(orderBean.getPrice(), 0);
+				orderBean.setPrice(price);
+				//修改数据库价格
+				OrderBean order1 = new OrderBean();
+				order1.setId(oid);
+				order1.setPrice(price);
+				orderService.updateOrderAttr(order1);
+				//设置优惠标志
+				if (price>=2000) {
+					map.put("dt", 1);
+				}else {
+					map.put("dt", 2);
+				}
+				//设置订单预定状态
+				if (flag==1) {
+					OrderBean orderBean2 = new OrderBean();
+					MarkBean suBean = new MarkBean();
+					suBean.setId(9);
+					orderBean2.setSubscribeStatus(suBean);
+					orderBean2.setId(orderBean.getId());
+					orderService.updateOrderAttr(orderBean2);
+				}else {
+					OrderBean orderBean2 = new OrderBean();
+					MarkBean suBean = new MarkBean();
+					suBean.setId(8);
+					orderBean2.setSubscribeStatus(suBean);
+					orderBean2.setId(orderBean.getId());
+					orderService.updateOrderAttr(orderBean2);
+				}
+				//查询修改后的订单
+				OrderBean order = orderService.selectOrderById(oid);
+				map.put("orderBean", order);
+				return "admin/count1.html";
 			}
-			//查询修改后的订单
-			OrderBean order = orderService.selectOrderById(oid);
-			map.put("orderBean", order);
-			return "admin/count1.html";
 		}
-		//非会员下单
+//非会员下单---------------------
 		else {
 			double price = orderutil.getUnderLineMoney(orderBean.getPrice(), 0);
 			orderBean.setPrice(price);
+			//修改数据库价格
+			OrderBean order1 = new OrderBean();
+			order1.setId(oid);
+			order1.setPrice(price);
+			orderService.updateOrderAttr(order1);
+			//设置优惠标志
 			if (price>=2000) {
 				map.put("dt", 1);
 			}else {
