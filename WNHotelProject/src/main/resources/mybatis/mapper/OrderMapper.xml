@@ -65,10 +65,14 @@
 	<select id="selectOrderById" parameterType="int" resultMap="map">
 		select * from orders where id = #{oid} 
 	</select>
-<!-- 	通过订单时间查询订单 -->
+<!-- 	通过订单时间查询订单（统计订单） -->
 	<select id="selectOrderByTime" resultMap="map">
-		select * from orders where orderTime  between #{startTime} and #{endTime} and subscribeStatus = #{subscribeStatus} limit #{page},#{size}	
+		select * from orders where orderTime  between #{startTime} and #{endTime} 	
 	</select>
+<!-- 	通过订单时间查询订单 -->
+<!-- 	<select id="selectOrderByMonth" resultMap="map"> -->
+<!-- 		select * from orders where orderTime  between #{startTime} and #{endTime} and subscribeStatus = #{subscribeStatus} limit #{page},#{size}	 -->
+<!-- 	</select> -->
 	<resultMap id="map" type="OrderBean">
 		<id property="id" column="id"></id>
 		<result property="orderTime" column="orderTime"></result>

@@ -40,5 +40,6 @@ public interface IOrderDao {
 	public List<OrderBean> selectOrderByTime(@Param("subscribeStatus")int subscribeStatus,@Param("startTime")String startTime,@Param("endTime")String endTime,@Param("page")int page,@Param("size")int size);
 	//根据时间段查询订单总数量
 	public int selectNumberByTime(@Param("startTime")String startTime,@Param("endTime")String endTime);
-	
+	//统计订单
+	public List<OrderBean> selectOrderByMonth(@Param("startTime")String startTime,@Param("endTime")String endTime);
 }

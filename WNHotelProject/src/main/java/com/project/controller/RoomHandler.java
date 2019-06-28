@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.project.Service.IMemberService;
 import com.project.Service.IOrderService;
 import com.project.Service.IRoomService;
 import com.project.bean.MarkBean;
@@ -36,10 +37,14 @@ import com.project.bean.TypeBean;
 public class RoomHandler {
 
 	
-@Autowired
+	@Autowired
 	private IRoomService service;
 	@Autowired
 	private IOrderService orderService;
+	@Autowired
+	private IMemberService memberService;
+	
+	
 	@PostMapping(value="/selectroombyname")
 	@ResponseBody
 	public RoomBean selectroombyNmae(String name) {
@@ -247,15 +252,26 @@ public class RoomHandler {
 	@PutMapping(value="/roomSta")
 	@ResponseBody
 	public String updateStatusNo1(int rid,int oid) {
+		//修改房间为不可住
 		RoomBean room = new RoomBean();
 		room.setId(rid);
 		service.updateroomstatusin(room);
+		//修改支付状态为已支付
 		OrderBean orderBean = new OrderBean();
 		orderBean.setId(oid);
 		MarkBean sBean = new MarkBean();
 		sBean.setId(6);
 		orderBean.setStatus(sBean);
 		orderService.updateOrderAttr(orderBean);
+		System.out.println("----------------------");
+		OrderBean order = orderService.selectOrderById(oid);
+		System.out.println(order);
+		if (order.getMember()!=null) {
+			System.out.println("denji------------------------------");
+			//修改会员消费金额（提高会员等级）
+			int i = memberService.updateMoney(order.getPrice(), order.getMember().getId());
+		}
+		
 		return "ok";
 	}
 	@GetMapping(value="/rooompeopleall")

@@ -28,9 +28,8 @@ public class PeopleHandler {
 	@RequestMapping("/person")
 	@ResponseBody
 	public String insertPeopleBean(String name,String idCard,int gende,int id) {
-		System.out.println(id);
-		System.out.println(gende);
 		int i = service.insertPeopleBean(name, idCard, gende, id);
+		//修改预定状态为入住
 		OrderBean orderBean = new OrderBean();
 		orderBean.setId(id);
 		MarkBean subsBean = new MarkBean();

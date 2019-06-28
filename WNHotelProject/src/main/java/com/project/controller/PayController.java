@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.alipay.api.AlipayApiException;
+import com.project.Service.IMemberService;
 import com.project.Service.IOrderService;
 import com.project.Service.IRoomService;
 import com.project.bean.LiveBean;
@@ -20,6 +21,7 @@ import com.project.bean.MarkBean;
 import com.project.bean.OrderBean;
 import com.project.bean.RoomBean;
 import com.project.util.AlipayUtil;
+import com.project.util.WebSocketUtil;
 
 @Controller
 public class PayController {
@@ -27,14 +29,21 @@ public class PayController {
 	private IOrderService orderService;
 	@Autowired
 	private IRoomService roomService;
+	@Autowired
+	private IMemberService memberService;
 	//调用支付宝接口
 	@GetMapping("/pay/{oid}")
 	@ResponseBody
 	public String pay(@PathVariable("oid")int oid) {
+		String id = String.valueOf(oid);
+		System.out.println("-------------====="+id);
+		WebSocketUtil.sendMessageAll(id);
+		
 		OrderBean orderBean = orderService.selectOrderById(oid);
 		String string = null;
 		try {
-			string = AlipayUtil.pay(orderBean.getOrderNumber(), orderBean.getPrice(), "支付");
+			int price = (int)Math.floor(orderBean.getPrice());
+			string = AlipayUtil.pay(orderBean.getOrderNumber(),price,"支付");
 		} catch (AlipayApiException e) {
 			e.printStackTrace();
 		}
@@ -74,17 +83,23 @@ public class PayController {
 			statusBean.setId(6);
 			orderBean3.setStatus(statusBean);
 			orderService.updateOrderAttr(orderBean3);
+			//修改预定状态
+			OrderBean orderBean4 = new OrderBean();
+			orderBean4.setId(orderBean.getId());
+			MarkBean subBean = new MarkBean();
+			subBean.setId(9);
+			orderBean4.setSubscribeStatus(subBean);
+			orderService.updateOrderAttr(orderBean4);
 			//修改房间状态（不可住）
 			RoomBean room = new RoomBean();
 			List<LiveBean> list = orderBean.getLives();
 			for (LiveBean liveBean : list) {
 				room.setId(liveBean.getRoom().getId());
 			}
-			MarkBean statusBean2 = new MarkBean();
-			statusBean2.setId(4);
-			room.setStatus(statusBean2);
 			roomService.updateroomstatusin(room);
-		} catch (Exception e) {
+			//修改会员消费金额（提高会员等级）
+			int i = memberService.updateMoney(orderBean.getPrice(), orderBean.getMember().getId());
+		}catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}

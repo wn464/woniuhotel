@@ -137,6 +137,12 @@ public class OrderTest {
 	    	liveService.updateLiveBean(liveBean);
 	    	
 	    }
+	    @Test
+	    public void selectMonth(){
+	    	List<OrderBean> list = orderService.selectOrderByMonth(2019,06,07);
+	    	System.out.println(list);
+	    	
+	    }
 	    
 	   
 

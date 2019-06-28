@@ -172,6 +172,7 @@ public class OrderHandler {
 				MemberBean memberBean = orderBean.getMember();
 				VipBean vipBean = memberBean.getVipBean();
 				double price = orderutil.getOnLineMoney(orderBean.getPrice(), vipBean.getId());
+				price = Math.floor(price);
 				orderBean.setPrice(price);
 				//修改数据库价格
 				OrderBean order1 = new OrderBean();
@@ -192,6 +193,7 @@ public class OrderHandler {
 			else {
 				System.out.println("//有账号非会员");
 				double price = orderutil.getUnderLineMoney(orderBean.getPrice(), 0);
+				price = Math.floor(price);
 				orderBean.setPrice(price);
 				//修改数据库价格
 				OrderBean order1 = new OrderBean();
@@ -214,6 +216,7 @@ public class OrderHandler {
 		else {
 			System.out.println("//非会员下单");
 			double price = orderutil.getOnLineMoney(orderBean.getPrice(), 0);
+			price = Math.floor(price);
 			orderBean.setPrice(price);
 			//修改数据库价格
 			OrderBean order1 = new OrderBean();
@@ -318,6 +321,7 @@ public class OrderHandler {
 				MemberBean memberBean = orderBean.getMember();
 				VipBean vipBean = memberBean.getVipBean();
 				double price = orderutil.getUnderLineMoney(orderBean.getPrice(), vipBean.getId());
+				price = Math.floor(price);
 				orderBean.setPrice(price);
 				//修改数据库价格
 				OrderBean order1 = new OrderBean();
@@ -352,6 +356,7 @@ public class OrderHandler {
 			//有账号非会员
 			else {
 				double price = orderutil.getUnderLineMoney(orderBean.getPrice(), 0);
+				price = Math.floor(price);
 				orderBean.setPrice(price);
 				//修改数据库价格
 				OrderBean order1 = new OrderBean();
@@ -387,6 +392,7 @@ public class OrderHandler {
 //非会员下单---------------------
 		else {
 			double price = orderutil.getUnderLineMoney(orderBean.getPrice(), 0);
+			price = Math.floor(price);
 			orderBean.setPrice(price);
 			//修改数据库价格
 			OrderBean order1 = new OrderBean();
