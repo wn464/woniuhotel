@@ -66,7 +66,10 @@ public class PayController {
 		System.out.println(boo);
 		if(boo) {
 			s="退款成功,款项已发回你支付宝账户！！！！！";
-			
+			MarkBean status=new MarkBean();
+			status.setId(13);
+			orderBean.setStatus(status);
+			orderService.updateOrderAttr(orderBean);
 		}else {
 		s="退款失败，详情请联系卖家！！！！！";
 		}

@@ -165,17 +165,17 @@
 						 	<p>房间号  ：<span th:text="${room.name}"></span></p>
 							<p>房间位置：<span th:text="${room.area}"></span></p>
 							<p>房间<span th:text="${room.type.area}"></span></p>
-							<p class="more"  data-toggle="modal" data-target="#myModal">查看更多详情<p>
+							
+							<p class="more"  data-toggle="modal" data-target="#myModal" th:onclick="'javascript:message(\''+${room.id}+'\')'">查看更多详情<p>
 				<!-- 查看详情的模态框 -->
 								<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 									<div class="modal-dialog">
 										<div class="modal-content">
 									    	<div class="modal-header">
-									        	<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-									        	<h4 class="modal-title" id="myModalLabel">Modal title</h4>
+									        	
 									      	</div>
 									      	<div class="modal-body">
-									        ...
+									      		
 									      	</div>
 									      	<div class="modal-footer">
 									        	<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -217,6 +217,32 @@
     	}             
      })
     	 
+    	 function message(rid){
+			alert(rid)
+			$.ajax({
+				url:"/messs",
+				async:true,
+				type:"get",
+				data:"rid="+rid,
+				success:function(mes){
+					var num ="";
+					num+= "<button type='button' class='close' data-dismiss='modal' aria-hidden='true'>&times;</button>";
+		        	num+= "<h4 class='modal-title' id='myModalLabel'>"+mes.type.name+"</h4>";
+					$(".modal-header").html(num);
+					var str="";
+					str+= "<img src='/images/"+mes.img+"'/></div>";
+					str+= "<h4 style='margin-top:30px;'>房型介绍</h4><hr/><p>"+mes.type.message+"</p>";						 	
+					str+= "<h4 style='margin-top:30px;'>房型设施</h4><hr/><p></p><div>";					
+					str+= "<img src=''></div>";	
+					$(".modal-body").html(str);
+					
+					
+				}                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    
+			})
+		
+	}
+     
+     
 	function btnroom (obj){
     	var rid = $(obj).parent().children("#roomd").text()
     	location.href = "/room/"+rid

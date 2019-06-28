@@ -75,6 +75,14 @@ public class RoomHandler {
       map.put("roomBean", bean);
       return "order.html";
 	}
+	
+	@GetMapping(value="/messs")
+	@ResponseBody
+	public RoomBean selectroomid(Integer rid) {
+      RoomBean bean = service.selectroombyid(rid);
+      System.out.println(bean);
+      return bean;
+	}
 	/**
 	 * 查询某一类型下所有房间
 	 * @param tid房间类型id

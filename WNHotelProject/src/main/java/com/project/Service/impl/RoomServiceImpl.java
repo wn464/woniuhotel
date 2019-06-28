@@ -1,6 +1,7 @@
 package com.project.Service.impl;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -85,22 +86,24 @@ public class RoomServiceImpl implements IRoomService{
 	public PageBean selectroombytypeantime(TypeBean type, String inTime, String outTime, int page, int size) {
 		PageBean bean = new PageBean();
 		List<RoomBean> roomsa=	dao.selectroombytype(type, (page-1)*size, size);
-	List<Integer> ids=dao2.selectTime(inTime, outTime);
-	List<RoomBean> roomsb =null;
-	for (Integer id : ids) {
-		System.out.println(roomsa);
-		for (RoomBean roomBean : roomsa) {
-			if(id!=roomBean.getId()) {
-				roomsb.add(roomBean);
+
+		List<Integer> ids=dao2.selectTime(inTime, outTime);
+		//储存可用房间
+	List<RoomBean> list = new ArrayList<RoomBean>();
+	for (RoomBean roombean : roomsa) {
+		for (Integer id : ids) {
+			if(!id.equals(roombean.getId())) {
+				list.add(roombean);
 			}
 		}
 	}
+	roomsa=list;
 	int totalNumber=dao.selectroomallbytype(type)-(ids.size());
 	bean.setPage(page);
 	bean.setSize(size);
 	bean.setTotalNumber(totalNumber);
 	bean.setTotalPage((totalNumber%size==0)?(totalNumber/size):(totalNumber/size+1));
-	bean.setList(roomsb);
+	bean.setList(roomsa);
 	return bean;
 	}
 
