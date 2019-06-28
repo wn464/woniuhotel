@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.project.Service.IDiscountService;
+import com.project.Service.ILiveService;
 import com.project.Service.IOrderService;
 import com.project.Service.IVipService;
 import com.project.bean.LiveBean;
@@ -34,6 +35,8 @@ public class OrderController {
 		private IVipService vipService;
 		@Autowired
 		private IDiscountService discountService;
+		@Autowired
+		private ILiveService liveService;
 		
 		/*
 		 * 前台预定同时生成订单（线上散客、会员下单）
@@ -71,15 +74,10 @@ public class OrderController {
 		@GetMapping("/attr1")
 		public String selectOrderByAttr(LiveBean liveBean,ModelMap map) {
 			System.out.println("111111"+liveBean);
-			List<OrderBean> list = orderService.selectOrderByAttr(liveBean.getPeople(), liveBean.getInTime());
-			if(list.size()>0) {
+			List<OrderBean> list = orderService.selectOrderByAttr(liveBean.getPeople(), liveBean.getInTime());		
 				map.put("list", list);
 				System.out.println("集合："+list);
-				return "admin/delorder.html";
-			}else {
-				return "admin/delorder.html";
-			}
-			
+				return "admin/delorder.html";		
 		}
 		/*
 		 * 前台通过状态分页查询订单
@@ -303,11 +301,12 @@ public class OrderController {
 			}
 		}
 		//通过订单id删除订单
-		@RequestMapping("/shan")
+		@GetMapping("/shan")
 		@ResponseBody
-		public LiveBean deleteById(int id) {
+		public int deleteById(int id) {
 			int i = orderService.deleteById(id);
+			int j = liveService.deleteLiveBean(id);
 			LiveBean bean = orderService.selectLiveById(id);
-			return bean;
+			return i;
 		}
 }
