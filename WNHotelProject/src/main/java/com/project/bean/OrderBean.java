@@ -17,8 +17,17 @@ public class OrderBean {
 	private CommentBean comment;//订单评论，避免sql死循环，不要直接查询，由comment进行维护
 	private List<LiveBean> lives;//入住信息
 	private int delState;//入住信息
+	private List<DiscountBean> dislist;
 	
 	
+	
+	
+	public List<DiscountBean> getDislist() {
+		return dislist;
+	}
+	public void setDislist(List<DiscountBean> dislist) {
+		this.dislist = dislist;
+	}
 	public int getDelState() {
 		return delState;
 	}
@@ -100,8 +109,11 @@ public class OrderBean {
 		return "OrderBean [id=" + id + ", orderTime=" + orderTime + ", orderNumber=" + orderNumber + ", status="
 				+ status + ", alipayNumber=" + alipayNumber + ", payMoney=" + payMoney + ", price=" + price
 				+ ", member=" + member + ", subscribeStatus=" + subscribeStatus + ", comment=" + comment + ", lives="
-				+ lives + ", delState=" + delState + "]";
+				+ lives + ", delState=" + delState + ", dislist=" + dislist + "]";
 	}
+	
+	
+
 	
 	
 	

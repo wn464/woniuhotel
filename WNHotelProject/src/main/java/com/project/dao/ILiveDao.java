@@ -2,6 +2,7 @@ package com.project.dao;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 
 import com.project.bean.LiveBean;
@@ -27,4 +28,7 @@ public interface ILiveDao {
 	
 	//修改入住信息
 	public int updateLiveBean(LiveBean liveBean);
+	//删除入住信息
+	@Delete("delete from live where orderid=#{id}")
+	public int deleteLiveBean(int id);
 }

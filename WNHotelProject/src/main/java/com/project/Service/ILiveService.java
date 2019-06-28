@@ -12,7 +12,7 @@ public interface ILiveService {
 	//添加入住信息
 	public int insertLiveBean(LiveBean liveBean);
 	//删除入住信息
-	public int deleteLiveBean(int lid);
+	public int deleteLiveBean(int id);
 	//查询入住信息
 	public LiveBean selectLiveBean(LiveBean liveBean);
 	//修改入住信息
