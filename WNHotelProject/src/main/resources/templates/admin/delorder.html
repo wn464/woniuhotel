@@ -209,18 +209,18 @@
   
                             </tr>
                           </thead>
-                          <tr th:each="order,iterStat : ${list}">
-                              <td  th:text="${order.orderNumber}"></td>
-                              <td  th:text="${order.lives[0].room.name}"></td>
-                              <td  th:text="${order.lives[0].room.type.name}"></td>
-                              <td  th:text="${order.lives[0].people}"></td>
-                              <td  th:text="${order.price}"></td>
-                              <td  th:if="${order.status.id==5}" th:text="未支付"></td>
-                              <td  th:if="${order.status.id==6}" th:text="已支付"></td>
-                              <td  th:if="${order.status.id==7}" th:text="已超时"></td>
+                          <tr th:each="order,iterStat : ${list}"> 
+                               <td  th:text="${order.orderNumber}"></td> 
+                               <td  th:text="${order.lives[0].room.name}"></td>
+                               <td  th:text="${order.lives[0].room.type.name}"></td> 
+                               <td  th:text="${order.lives[0].people}"></td> 
+                               <td  th:text="${order.price}"></td> 
+                               <td  th:if="${order.status.id==5}" th:text="未支付"></td> 
+                               <td  th:if="${order.status.id==6}" th:text="已支付"></td> 
+                               <td  th:if="${order.status.id==7}" th:text="已超时"></td> 
                               <td  >
-                              <input id="shan" onclick="shan(this)" type="button" value="删除"></input>
-                              <input id="chu" style="display:none" th:value="${order.id}"/> 
+                               <input id="shan" onclick="shan(this)" type="button" value="删除"></input> 
+                               <input id="chu" style="display:none" th:value="${order.id}"/>  
                               
                               </td>
                            </tr>
@@ -301,17 +301,17 @@
   	<script type="text/javascript">
   	function shan(obj){
   		var id= $(obj).next().val();
-//   		alert(id);
+   		alert(id);
   		var delState= 11;
 //   		alert(delState);
   		 $.ajax({
-  	   		  url:"/horder/state",
+  	   		  url:"/horder/shan",
   	   		  type:"put",
   	   		  async:true,
   	   		  dataType:"json",
-  	   		  data:"id="+id+"&delState="+delState,
+  	   		  data:"id="+id,
   	   		  success:function(mes){
-  	   			  window.location.reload();
+                     window.location.href="/horder/attr1?inTime="+mes.inTime+"&people="+mes.people;
   	   		  }
   		 })
   	}
