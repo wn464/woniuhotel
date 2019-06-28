@@ -56,7 +56,6 @@ public class OrderServiceImp implements IOrderService{
 		OrderBean orderBean3 = orderDao.selectOrderByOrderNumber(orderNumber);
 		//开启定时器
 		ordertiming.ds(orderBean3.getId(),this);
-		WebSocketUtil.sendMessageAll("有新订单了");
 		return orderBean3;
 	}
 
@@ -148,6 +147,22 @@ public class OrderServiceImp implements IOrderService{
 			return list;
 		
 		}
+
+	@Override
+	public int deleteById(int id) {
+		int i =orderDao.deleteById(id);
+		return i;
+	}
+    //通过订单Id查询入住信息
+
+	@Override
+	public LiveBean selectLiveById(int orderid) {
+		LiveBean bean = liveDao.findByorderid(orderid);
+		return bean;
+	}
+	
+
+
 //	统计订单
 	@Override
 	public List<OrderBean> selectOrderByMonth(int year,int startMonth, int endMonth) {
@@ -159,6 +174,7 @@ public class OrderServiceImp implements IOrderService{
 //		}
 		return null;
 	}
+
 
 	
 

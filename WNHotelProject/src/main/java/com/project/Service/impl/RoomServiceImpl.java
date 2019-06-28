@@ -86,11 +86,12 @@ public class RoomServiceImpl implements IRoomService{
 		PageBean bean = new PageBean();
 		List<RoomBean> roomsa=	dao.selectroombytype(type, (page-1)*size, size);
 	List<Integer> ids=dao2.selectTime(inTime, outTime);
+	List<RoomBean> roomsb =null;
 	for (Integer id : ids) {
 		System.out.println(roomsa);
 		for (RoomBean roomBean : roomsa) {
-			if(id==roomBean.getId()) {
-				roomsa.remove(roomBean);
+			if(id!=roomBean.getId()) {
+				roomsb.add(roomBean);
 			}
 		}
 	}
@@ -99,7 +100,7 @@ public class RoomServiceImpl implements IRoomService{
 	bean.setSize(size);
 	bean.setTotalNumber(totalNumber);
 	bean.setTotalPage((totalNumber%size==0)?(totalNumber/size):(totalNumber/size+1));
-	bean.setList(roomsa);
+	bean.setList(roomsb);
 	return bean;
 	}
 

@@ -32,7 +32,7 @@ import com.project.util.WebSocketUtil;
 
 
 @RunWith(SpringRunner.class)
-@SpringBootTest(classes = WnHotelProjectApplication.class)
+@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT,classes = WnHotelProjectApplication.class)
 public class OrderTest {
 	    @Autowired
 	    private IOrderService orderService;
@@ -139,10 +139,16 @@ public class OrderTest {
 	    	
 	    }
 	    @Test
+
+	    public void deleteById() {
+	    	int i = orderService.deleteById(169);
+	    	System.out.println(i);
+	    }
 	    public void selectMonth(){
 	    	List<OrderBean> list = orderService.selectOrderByMonth(2019,06,07);
 	    	System.out.println(list);
 	    	
+
 	    }
 	    @Test
 	   public void name() {

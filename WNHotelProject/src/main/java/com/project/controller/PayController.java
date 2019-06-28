@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -51,17 +52,26 @@ public class PayController {
 	}
 	//退款
 	@GetMapping("/refund/{oid}")
-	@ResponseBody
-	public boolean refund(@PathVariable("oid")int oid) {
+	public String refund(@PathVariable("oid")int oid,ModelMap map) {
 		OrderBean orderBean = orderService.selectOrderById(oid);
-		boolean boo = false;
+		System.out.println(orderBean.getPrice());
+		boolean boo=false;
+		String s="";
 		try {
-			boo =AlipayUtil.refund(orderBean.getOrderNumber(), orderBean.getPrice());
+		 boo=AlipayUtil.refund(orderBean.getOrderNumber(), orderBean.getPrice());
 		} catch (AlipayApiException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return boo;
+		System.out.println(boo);
+		if(boo) {
+			s="退款成功,款项已发回你支付宝账户！！！！！";
+			
+		}else {
+		s="退款失败，详情请联系卖家！！！！！";
+		}
+		map.addAttribute("tk", s);
+		return "tuikuan.html";
 	}
 	//响应回调
 	@RequestMapping("/ret")

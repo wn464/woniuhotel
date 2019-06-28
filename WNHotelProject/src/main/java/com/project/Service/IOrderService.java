@@ -33,6 +33,10 @@ public interface IOrderService {
 	public PageBean selectOrderBySubStatus(int subscribeStatus, int page, int size);
 	//通过时间段查询订单
 	public PageBean selectOrderByTime(int subscribeStatus,String startTime, String endTime, int page, int size);
+	//通过订单id删除订单
+	public int deleteById(int id);
+	//通过订单查询入住信息
+	public LiveBean selectLiveById(int orderid);
 	//统计订单
 	public List<OrderBean> selectOrderByMonth(int year, int startMonth, int endMonth);
 	

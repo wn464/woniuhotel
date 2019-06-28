@@ -17,9 +17,9 @@ public class LiveServiceImp implements ILiveService{
 	}
 
 	@Override
-	public int deleteLiveBean(int lid) {
-		// TODO Auto-generated method stub
-		return 0;
+	public int deleteLiveBean(int id) {
+		int j =liveDao.deleteLiveBean(id);
+		return j;
 	}
 
 	@Override
