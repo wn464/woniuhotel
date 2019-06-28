@@ -13,49 +13,26 @@
 			window.scrollTo(0, 1);
 		}
 	</script>
-	<link href="css/bootstrap.css" rel='stylesheet' type='text/css' />
-	<link href="css/style.css" rel='stylesheet' type='text/css' />
-	<link href="css/font-awesome.css" rel="stylesheet">
-	<link href="http://fonts.googleapis.com/css?family=Merriweather+Sans:300,300i,400,400i,700,700i,800" rel="stylesheet">
-	<link href="http://fonts.googleapis.com/css?family=Mallanna" rel="stylesheet">
+	
 	<script type="text/javascript" src="http://api.map.baidu.com/api?v=3.0&ak=Z7QuDLumjH1HBTPlMeySGbrcpzRRqYkV"></script>
 	<script type="text/javascript" src="js/jquery-2.2.3.min.js"></script>
-	<link href='css/aos.css' rel='stylesheet prefetch' type="text/css" media="all" />
-	<link href='css/aos-animation.css' rel='stylesheet prefetch' type="text/css" media="all" />
-	<script src='js/aos.js'></script>
-	<script src="js/aosindex.js"></script>
-	<script src="js/main.js"></script>
+	
 	<script src="js/responsiveslides.min.js"></script>
 	<style type="text/css">
 		#container {width: 1100px;height: 600px;overflow: hidden;margin:20px auto 0;font-family:"微软雅黑";
 		
 		text-align: center;
 		}
+		body{
+		background: url("/images/gltp.jpg") no-repeat;
+		}
 	</style>
 </head>
 <body>
-
-	
-
-
 	 <div id="container"></div>
-	 
-
-
-
-
- 
-	<script type="text/javascript" src="js/move-top.js"></script>
+	 <script type="text/javascript" src="js/move-top.js"></script>
 	<script type="text/javascript" src="js/easing.js"></script>
-
-	
-	</script>
-	<a href="#home" class="scroll" id="toTop" style="display: block;">
-		<span id="toTopHover" style="opacity: 1;"> </span>
-	</a>
-	<script type="text/javascript" src="js/bootstrap.js"></script>
-
-	
+	<script type="text/javascript" src="js/bootstrap.js"></script>  
 	<script>
 	
 		var mp = new BMap.Map("container");
@@ -116,9 +93,10 @@
 		  message:"亲耐滴，晚上一起吃个饭吧？戳下面的链接看下地址喔~"
 		}
 		var infoWindow = new BMap.InfoWindow("地址：成都市青羊区政府正大门,右转250米，再转左250米即可", opts);  // 创建信息窗口对象 
-		marker.addEventListener("click", function(){ 
-			mp.openInfoWindow(infoWindow,point); //开启信息窗口
-		}); 
+		mp.openInfoWindow(infoWindow,point); //开启信息窗口
+		/* marker.addEventListener("click", function(){ 
+			
+		});  */
 		
 </script>
 </body>
