@@ -4,6 +4,7 @@ import java.util.Locale;
 
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
+import javax.servlet.http.HttpServletRequest;
 
 import org.apache.shiro.session.SessionException;
 import org.apache.shiro.subject.Subject;
@@ -11,9 +12,26 @@ import org.apache.shiro.web.filter.authc.LogoutFilter;
 import org.apache.shiro.web.util.WebUtils;
 
 public class UserLogoutFilter extends LogoutFilter {
-	 
+	private String checkUrl="/admin/";
+	private String logouturl="/admin/login";
 
-    @Override
+    public String getCheckUrl() {
+		return checkUrl;
+	}
+
+	public void setCheckUrl(String checkUrl) {
+		this.checkUrl = checkUrl;
+	}
+
+	public String getLogouturl() {
+		return logouturl;
+	}
+
+	public void setLogouturl(String logouturl) {
+		this.logouturl = logouturl;
+	}
+
+	@Override
     protected boolean preHandle(ServletRequest request, ServletResponse response) throws Exception {
         Subject subject = this.getSubject(request, response);
         if (this.isPostOnlyLogout() && !WebUtils.toHttp(request).getMethod().toUpperCase(Locale.ENGLISH).equals("POST")) {
@@ -24,7 +42,12 @@ public class UserLogoutFilter extends LogoutFilter {
             } catch (SessionException var6) {
             	var6.printStackTrace();
             }
-            String redirectUrl = "/unauth";
+            HttpServletRequest req = (HttpServletRequest) request;
+            String url = req.getRequestURI();
+            String redirectUrl = "/login.html";
+            if (url.contains(checkUrl)) {
+            	redirectUrl = logouturl;
+            }
             this.issueRedirect(request, response, redirectUrl);
             return false;
         }

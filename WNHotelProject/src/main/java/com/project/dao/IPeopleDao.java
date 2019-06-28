@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.Update;
 
 import com.project.bean.OrderBean;
 import com.project.bean.PeopleBean;
@@ -20,7 +21,10 @@ public interface IPeopleDao {
 	public int deletePeopleBean(int pid);
 	//模糊查询入住人员信息
 	public List<PeopleBean> selectPeopleBean(String name);
+	
 	//修改入住人员信息
-	public int upstatePeopleBean(int pid);
+	@Update("update people set name=#{name},idCard=#{idCard} where id =#{id}")
+	public int update(PeopleBean people);
+	
 
 }

@@ -31,7 +31,10 @@ public class UserHandler {
 	
 	@Autowired
 	private IUserService service;
-	
+	@GetMapping("/admin/muen")
+	public String muen() {
+		return "/admin/muen.html";
+	}
 	
 	/*
 	 * 登录

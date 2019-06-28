@@ -19,5 +19,5 @@ public interface IPeopleService {
 	//模糊查询入住人员信息
 	public List<PeopleBean> selectPeopleBean(String name);
 	//修改入住人员信息
-	public int upstatePeopleBean(int pid);
+	public int update(PeopleBean people);
 }

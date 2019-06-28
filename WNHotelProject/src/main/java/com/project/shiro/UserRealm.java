@@ -39,13 +39,12 @@ public class UserRealm extends AuthorizingRealm{
 		
 		//获取数据库中的角色
 		UserBean user = service.selectByUserName((String)username);
-		RoleBean bean = service1.findRoleById(user.getId());
+		System.out.println("user:"+user);
+		RoleBean bean =service1.findRoleById(user.getRole().getId());
 		
-		if ("superAdmin".equals(bean.getName())) {
-			set.add("superAdmin");
-		}else if ("admin".equals(bean.getName())) {
-			set.add("admin");
-		}
+		
+			set.add(bean.getName());
+		
 		info.addRoles(set);
 		return info;
 
