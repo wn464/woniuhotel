@@ -1,2 +1,2 @@
 
-$(".side-navbar").load("muen.html");
+$(".side-navbar").load("/admin/muen.html");
