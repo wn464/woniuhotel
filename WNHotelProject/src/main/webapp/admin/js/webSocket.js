@@ -52,5 +52,6 @@ function neworder(){
 		"</div></a></li><li>"+
 		"<a rel='nofollow' href='appointment.html' class='dropdown-item all-notifications text-center'> "+
 		"<strong>view all notifications</strong></a></li></ul>";
+		$("#notifications").parent().html(str1);
 }
 

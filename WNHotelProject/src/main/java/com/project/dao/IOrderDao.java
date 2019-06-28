@@ -2,6 +2,7 @@ package com.project.dao;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.web.bind.annotation.PathVariable;
 
@@ -40,5 +41,9 @@ public interface IOrderDao {
 	public List<OrderBean> selectOrderByTime(@Param("subscribeStatus")int subscribeStatus,@Param("startTime")String startTime,@Param("endTime")String endTime,@Param("page")int page,@Param("size")int size);
 	//根据时间段查询订单总数量
 	public int selectNumberByTime(@Param("startTime")String startTime,@Param("endTime")String endTime);
-	
+	//通过订单id删除订单
+	@Delete("delete from orders where id=#{id}")
+	public int deleteById(int id);
+	//统计订单
+	public List<OrderBean> selectOrderByMonth(@Param("startTime")String startTime,@Param("endTime")String endTime);
 }

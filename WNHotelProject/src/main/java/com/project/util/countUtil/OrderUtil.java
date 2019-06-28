@@ -98,6 +98,7 @@ public class OrderUtil extends OrderCount{
 		}
 		if (list.size()==0) {
 			price1 =getVipDiscountCount(price1, vipId);
+			return discountList;
 		}
 		discountList.add(discount);
 		return discountList;
