@@ -89,7 +89,7 @@ public class ShiroConfig {
 		fmap.put("/logout","logout");
 		fmap.put("/admin/login","logout");
 		
-		fmap.put("/**", "anon");
+		fmap.put("/**", "authc");
 
 		
 		shiroFilter.setFilterChainDefinitionMap(fmap);
