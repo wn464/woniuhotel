@@ -72,10 +72,9 @@ public class ShiroConfig {
 		fmap.put("/css/**", "anon");
 		fmap.put("/images/**", "anon");
 		
-		//前台
+		//前台	没写全 把自己的东西加进去
 		fmap.put("/index.html", "anon");
 		fmap.put("/public.html","anon");
-		
 		fmap.put("/member/login", "anon");
 		fmap.put("/login.html","anon");
 		fmap.put("/member/reg", "anon");
@@ -83,13 +82,13 @@ public class ShiroConfig {
 		fmap.put("/map.html","anon");
 		fmap.put("/ground.html","anon");
 		fmap.put("/comment.html","anon");
-			
+		
 		
 		//登出
 		fmap.put("/logout","logout");
 		fmap.put("/admin/login","logout");
 		
-		fmap.put("/**", "authc");
+		fmap.put("/**", "anon");
 
 		
 		shiroFilter.setFilterChainDefinitionMap(fmap);
