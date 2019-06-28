@@ -274,9 +274,10 @@
   				})
   			}else{
   				$.ajax({
-  					url:"/typeall",
+  					url:"/people/update",
+  					data:"id="+peopleid+"&people="+people+"&idCard="+idCard,
   					async:true,
-  					type:"get",
+  					type:"put",
   					success:function(message){
   						console.info(message)
   					}                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    
