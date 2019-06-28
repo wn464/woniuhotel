@@ -120,7 +120,8 @@
 			<button  class="btn btn-danger" th:if="${order.subscribeStatus!=null&&order.subscribeStatus.id==13}" th:text="已退款" ></button>
 			 <button id="goback" th:value="${order.id}" onclick="find(this)" class="btn btn-danger" th:if="${order.subscribeStatus!=null&&order.subscribeStatus.id==9}" th:text="退款" ></button>
 <!-- 			  <input id="zh" style="display:none" type="text" name="email" th:value="${order.id}"/> -->
-			 
+			  <!-- <button  class="btn btn-danger" th:if="${order.delStatus!=null&&order.delSstatus.id==10}" th:text="删除" ></button>
+			 -->
 			 </div>
 			</div>
 		</div>
