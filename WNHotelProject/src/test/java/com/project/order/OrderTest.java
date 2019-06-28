@@ -31,7 +31,7 @@ import com.project.util.CreateOrderInfo;
 
 
 @RunWith(SpringRunner.class)
-@SpringBootTest(classes = WnHotelProjectApplication.class)
+@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT,classes = WnHotelProjectApplication.class)
 public class OrderTest {
 	    @Autowired
 	    private IOrderService orderService;
@@ -139,7 +139,7 @@ public class OrderTest {
 	    }
 	    @Test
 	    public void deleteById() {
-	    	int i = orderService.deleteById(155);
+	    	int i = orderService.deleteById(169);
 	    	System.out.println(i);
 	    }
 	    
