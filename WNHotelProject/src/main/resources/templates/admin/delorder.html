@@ -126,7 +126,7 @@
                   <div class="item d-flex align-items-center">
                     <div class="icon bg-green"><i class="icon-bill"></i></div>
                     <div class="title">
-                     <a href="findOrder.html"><span>查看<br>预定</span></a>
+                     <a href="/admin/findOrder.html"><span>查看<br>预定</span></a>
                     </div>
                     
                   </div>
@@ -138,7 +138,7 @@
                   <div class="item d-flex align-items-center">
                     <div class="icon bg-red"><i class="icon-padnote"></i></div>
                     <div class="title">
-					<a  href="orderSet.html"><span>查询<br>订单</span></a>
+					<a  href="/admin/orderSet.html"><span>查询<br>订单</span></a>
                     </div>
                   </div>
                 </div>
@@ -149,7 +149,7 @@
                   <div class="item d-flex align-items-center">
                     <div class="icon bg-orange"><i class="icon-check"></i></div>
                     <div class="title">
-                      <a href="delorder.html"><span>删除<br>订单</span></a>
+                      <a href="/admin/delorder.html"><span>删除<br>订单</span></a>
                     </div>
                   </div>
                 </div>
@@ -219,7 +219,7 @@
                                <td  th:if="${order.status.id==6}" th:text="已支付"></td> 
                                <td  th:if="${order.status.id==7}" th:text="已超时"></td> 
                               <td  >
-                               <input id="shan" onclick="shan(this)" type="button" value="删除"></input> 
+                               <input id="shan" class="btn btn-primary" onclick="shan(this)" type="button" value="删除"></input> 
                                <input id="chu" style="display:none" th:value="${order.id}"/>  
                               
                               </td>
@@ -301,7 +301,7 @@
   	<script type="text/javascript">
   	function shan(obj){
   		var id= $(obj).next().val();
-   		alert(id);
+//    		alert(id);
   		var delState= 11;
 //   		alert(delState);
   		 $.ajax({
