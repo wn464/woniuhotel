@@ -86,6 +86,7 @@ public class RoomServiceImpl implements IRoomService{
 	public PageBean selectroombytypeantime(TypeBean type, String inTime, String outTime, int page, int size) {
 		PageBean bean = new PageBean();
 		List<RoomBean> roomsa=	dao.selectroombytype(type, (page-1)*size, size);
+
 		List<Integer> ids=dao2.selectTime(inTime, outTime);
 		
 	

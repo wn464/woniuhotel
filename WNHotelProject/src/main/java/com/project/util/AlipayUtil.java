@@ -53,18 +53,23 @@ public class AlipayUtil {
 	 * @param total_amount 订单总金额
 	 * @throws AlipayApiException 
 	 */
-	public static boolean refund(String out_trade_no,double total_amount) throws AlipayApiException {
+	public static boolean refund(String out_trade_no,double refund_amount) throws AlipayApiException {
+		System.out.println(out_trade_no);
+		System.out.println(refund_amount);
 		//详细文档：alipay.trade.page.pay
 		AlipayTradeRefundRequest request = new AlipayTradeRefundRequest();
 		request.setBizContent("{" +
+				
 		//订单支付时传入的商户订单号,不能和 trade_no同时为空。
 		"\"out_trade_no\":\""+out_trade_no+"\"," +
 		//支付宝交易号，和商户订单号不能同时为空
 		//"\"trade_no\":\"2014112611001004680073956707\"," +
 		//需要退款的金额，该金额不能大于订单金额,单位为元，支持两位小数
-		"\"total_amount\":"+total_amount+"" +
+		"\"refund_amount\":"+refund_amount+"" +
 		"  }");
 		AlipayTradeRefundResponse response = alipayClient.execute(request);
+		System.out.println("-----"+response.getSubCode());
+		System.out.println(request.getBizContent());
 		if(response.isSuccess()){
 		return true;
 		} else {

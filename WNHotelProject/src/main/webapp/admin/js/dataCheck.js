@@ -35,8 +35,8 @@ function moneyCheck(node){
 function phoneCheck(node){
 	node = $(node);
 	console.info(node)
-	var reg = /^((\d{3,4}-)|\d{3.4}-)?\d{7,8}$/;
-	reg.test(node.val())?success(node):fail(node,"电话号码有误");
+//	var reg = /^((\d{3,4}-)|\d{3.4}-)?\d{7,8}$/;
+//	reg.test(node.val())?success(node):fail(node,"电话号码有误");
 }
 //onchange="namecheck()"
 function namecheck(node){
