@@ -13,7 +13,7 @@ import org.apache.shiro.web.util.WebUtils;
 
 public class UserLogoutFilter extends LogoutFilter {
 	private String checkUrl="/admin/";
-	private String logouturl="/admin/login";
+	private String logouturl="/admin/login.html";
 
     public String getCheckUrl() {
 		return checkUrl;
@@ -44,7 +44,8 @@ public class UserLogoutFilter extends LogoutFilter {
             }
             HttpServletRequest req = (HttpServletRequest) request;
             String url = req.getRequestURI();
-            String redirectUrl = "/login.html";
+            System.out.println("url:"+url);
+            String redirectUrl = "/";
             if (url.contains(checkUrl)) {
             	redirectUrl = logouturl;
             }

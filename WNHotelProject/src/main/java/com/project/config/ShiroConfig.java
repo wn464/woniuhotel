@@ -25,6 +25,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 import com.project.shiro.LoginAuthenticationFilter;
 import com.project.shiro.LoginAuthenticator;
 import com.project.shiro.MemberRealm;
+import com.project.shiro.UserLogoutFilter;
 import com.project.shiro.UserRealm;
 
 import at.pollux.thymeleaf.shiro.dialect.ShiroDialect;
@@ -50,21 +51,45 @@ public class ShiroConfig {
 		 // 将自定义的FormAuthenticationFilter注入shiroFilter中
         filters.put("authc", new LoginAuthenticationFilter());
         // 将自定义的LogoutFilter注入shiroFilter中
-        filters.put("logout", new LogoutFilter());
+        filters.put("logout", new UserLogoutFilter());
 		shiroFilter.setUnauthorizedUrl("/failed.html");
+		
 		Map<String,String> fmap = new LinkedHashMap<String,String>();
-
-		fmap.put("/member/login", "anon");
-		fmap.put("/member/reg", "anon");
-		fmap.put("/user/reg", "anon");
-		fmap.put("/user/login", "anon");
+		
+		//后台登录
+		fmap.put("/admin/login.html","anon");
+		fmap.put("/user/login","anon");
+		
+		//js css img
+		fmap.put("/admin/js/**", "anon");
+		fmap.put("/admin/css/**", "anon");
+		fmap.put("/admin/data/**", "anon");
+		fmap.put("/admin/fonts/**", "anon");
+		fmap.put("/admin/icons-reference/**", "anon");
+		fmap.put("/admin/img/**", "anon");
+		fmap.put("/admin/vendor/**", "anon");
 		fmap.put("/js/**", "anon");
-		fmap.put("/index.html", "anon");
 		fmap.put("/css/**", "anon");
 		fmap.put("/images/**", "anon");
+		
+		//前台
+		fmap.put("/index.html", "anon");
 		fmap.put("/public.html","anon");
+		
+		fmap.put("/member/login", "anon");
+		fmap.put("/login.html","anon");
+		fmap.put("/member/reg", "anon");
+		fmap.put("/reg.html","anon");
+		fmap.put("/map.html","anon");
+		fmap.put("/ground.html","anon");
+		fmap.put("/comment.html","anon");
+			
+		
+		//登出
 		fmap.put("/logout","logout");
-		fmap.put("/**", "anon");
+		fmap.put("/admin/login","logout");
+		
+		fmap.put("/**", "authc");
 
 		
 		shiroFilter.setFilterChainDefinitionMap(fmap);
