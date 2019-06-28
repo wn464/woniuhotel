@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+ <!-- <div th:text="${tk}"></div> -->
+<p><span id="s"></span>秒后跳转到主页</p>
+<script type="text/javascript" src="/js/jquery-2.2.3.min.js"></script>
+<script>
+var sf=10;
+var timeoutId = setInterval(function(){
+	
+	$("#s").html(sf)
+	sf--;
+	if(sf<0){
+	      clearInterval(timeoutId)
+	      window.location.href="http://localhost:8080"
+	}
+}, 1000)
+
+</script>
+</body>
+
+</html>
