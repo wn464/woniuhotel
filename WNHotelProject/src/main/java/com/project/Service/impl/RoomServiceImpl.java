@@ -87,16 +87,17 @@ public class RoomServiceImpl implements IRoomService{
 		PageBean bean = new PageBean();
 		List<RoomBean> roomsa=	dao.selectroombytype(type, (page-1)*size, size);
 		List<Integer> ids=dao2.selectTime(inTime, outTime);
-		//储存可用房间
-	List<RoomBean> list = new ArrayList<RoomBean>();
-	for (RoomBean roombean : roomsa) {
-		for (Integer id : ids) {
-			if(!id.equals(roombean.getId())) {
-				list.add(roombean);
-			}
+		
+	
+	for (int i = 0; i < roomsa.size(); i++) {
+		System.out.println(ids.contains(roomsa.get(i).getId()));
+		if(ids.contains(roomsa.get(i).getId())) {
+			roomsa.remove(i);
+			i--;
 		}
 	}
-	roomsa=list;
+	System.out.println("房间数目："+roomsa.size());
+
 	int totalNumber=dao.selectroomallbytype(type)-(ids.size());
 	bean.setPage(page);
 	bean.setSize(size);
