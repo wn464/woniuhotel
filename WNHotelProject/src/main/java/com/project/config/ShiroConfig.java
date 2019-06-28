@@ -27,12 +27,16 @@ import com.project.shiro.LoginAuthenticator;
 import com.project.shiro.MemberRealm;
 import com.project.shiro.UserRealm;
 
-
+import at.pollux.thymeleaf.shiro.dialect.ShiroDialect;
 
 //添加配置注解
 @Configuration
 public class ShiroConfig {
 
+	@Bean
+    public ShiroDialect shiroDialect() {
+        return new ShiroDialect();
+    }
 	//生成shiro过滤器
 	@Bean(name="shiroFilterFactoryBean")
 	public ShiroFilterFactoryBean getShiroFilterFactoryBean(@Qualifier("securityManager")DefaultWebSecurityManager securityManager) {

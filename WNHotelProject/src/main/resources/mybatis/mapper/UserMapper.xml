@@ -7,11 +7,13 @@
 	<select id="selectAll" resultMap="map">
 		select * from user
 	</select>
-	
+	<select id="selectByUserName" parameterType="string" resultMap="map">
+	select * from user where username=#{name}
+	</select>
 	<resultMap type="UserBean" id="map">
 		<id property="id" column="id"/>
 		<result property="username" column="userName"/>
-		<association property="role" javaType="RoleBean" select="com.project.dao.IRoleDao.selectById" column="role" />
+		<association property="role"  javaType="RoleBean" select="com.project.dao.IRoleDao.selectById" column="role" />
 	</resultMap>
 	
 </mapper>

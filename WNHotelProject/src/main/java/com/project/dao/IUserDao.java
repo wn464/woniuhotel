@@ -18,7 +18,6 @@ public interface IUserDao {
 		public UserBean selectUserById(int id);
 		
 		//登录时 通过用户名查找用户
-		@Select("select * from user where username=#{username}")
 		public UserBean selectByUserName(String username);
 		
 		//添加用户
