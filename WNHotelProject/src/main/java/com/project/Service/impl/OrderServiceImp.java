@@ -146,7 +146,14 @@ public class OrderServiceImp implements IOrderService{
 		int i =orderDao.deleteById(id);
 		return i;
 	}
+    //通过订单Id查询入住信息
 
+	@Override
+	public LiveBean selectLiveById(int orderid) {
+		LiveBean bean = liveDao.findByorderid(orderid);
+		return bean;
+	}
+	
 	
 
 
