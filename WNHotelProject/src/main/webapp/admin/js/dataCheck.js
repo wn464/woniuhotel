@@ -35,7 +35,7 @@ function moneyCheck(node){
 function phoneCheck(node){
 	node = $(node);
 	console.info(node)
-	var reg = / ((\d{11})|^((\d{7,8})|(\d{4}|\d{3})-(\d{7,8})|(\d{4}|\d{3})-(\d{7,8})-(\d{4}|\d{3}|\d{2}|\d)|(\d{7,8})-(\d{4}|\d{3}|\d{2}|\d))$)/;
+	var reg = /((\d{11})|^((\d{7,8})|(\d{4}|\d{3})-(\d{7,8})|(\d{4}|\d{3})-(\d{7,8})-(\d{4}|\d{3}|\d{2}|\d{1})|(\d{7,8})-(\d{4}|\d{3}|\d{2}|\d{1}))$)/;
 	reg.test(node.val())?success(node):fail(node,"支持手机号码，3-4位区号，7-8位直播号码，1－4位分机号");
 }
 //onchange="namecheck()"
