@@ -45,7 +45,7 @@
             <div class="navbar-holder d-flex align-items-center justify-content-between">
               <!-- Navbar Header-->
               <div class="navbar-header">
-                <!-- Navbar Brand --><a href="index.html" class="navbar-brand d-none d-sm-inline-block">
+                <!-- Navbar Brand --><a href="/admin/index.html" class="navbar-brand d-none d-sm-inline-block">
                   <div class="brand-text d-none d-lg-inline-block"><span>酒店管理  </span><strong>后台系统</strong></div>
                   <div class="brand-text d-none d-sm-inline-block d-lg-none"><strong>BD</strong></div></a>
                 <!-- Toggle Button--><a id="toggle-btn" href="#" class="menu-btn active"><span></span><span></span><span></span></a>
@@ -306,12 +306,19 @@
 //   		alert(delState);
   		 $.ajax({
   	   		  url:"/horder/shan",
-  	   		  type:"put",
+  	   		  type:"get",
   	   		  async:true,
   	   		  dataType:"json",
   	   		  data:"id="+id,
-  	   		  success:function(mes){
-                     window.location.href="/horder/attr1?inTime="+mes.inTime+"&people="+mes.people;
+  	   		  success:function(mes){ 	   
+//   	   			  location.reload();
+  	   			  window.location.reload();
+  	   			  
+//   	   			     if(mes!=null){
+  	   			    	 
+//   	   			    window.location.href="/horder/attr1?inTime="+mes.inTime+"&people="+mes.people;
+//   	   			     }
+                    
   	   		  }
   		 })
   	}
