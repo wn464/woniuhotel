@@ -36,10 +36,9 @@ public class PayController {
 	@GetMapping("/pay/{oid}")
 	@ResponseBody
 	public String pay(@PathVariable("oid")int oid) {
+		System.out.println("________推送"+oid);
 		String id = String.valueOf(oid);
-		System.out.println("-------------====="+id);
 		WebSocketUtil.sendMessageAll(id);
-		
 		OrderBean orderBean = orderService.selectOrderById(oid);
 		String string = null;
 		try {
@@ -58,6 +57,7 @@ public class PayController {
 		boolean boo=false;
 		String s="";
 		try {
+			System.out.println("--------------"+orderBean);
 		 boo=AlipayUtil.refund(orderBean.getOrderNumber(), orderBean.getPrice());
 		} catch (AlipayApiException e) {
 			// TODO Auto-generated catch block
@@ -66,7 +66,12 @@ public class PayController {
 		System.out.println(boo);
 		if(boo) {
 			s="退款成功,款项已发回你支付宝账户！！！！！";
-			
+			OrderBean orderBean2 = new OrderBean();
+			orderBean2.setId(oid);
+			MarkBean status=new MarkBean();
+			status.setId(13);
+			orderBean2.setStatus(status);
+			orderService.updateOrderAttr(orderBean2);
 		}else {
 		s="退款失败，详情请联系卖家！！！！！";
 		}
@@ -109,6 +114,11 @@ public class PayController {
 			roomService.updateroomstatusin(room);
 			//修改会员消费金额（提高会员等级）
 			int i = memberService.updateMoney(orderBean.getPrice(), orderBean.getMember().getId());
+			
+//			System.out.println("________推送"+orderBean.getId());
+//			String id = String.valueOf(orderBean.getId());
+//			WebSocketUtil.sendMessageAll(id);
+		
 		}catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

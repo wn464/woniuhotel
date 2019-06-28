@@ -56,7 +56,6 @@ public class OrderServiceImp implements IOrderService{
 		OrderBean orderBean3 = orderDao.selectOrderByOrderNumber(orderNumber);
 		//开启定时器
 		ordertiming.ds(orderBean3.getId(),this);
-		WebSocketUtil.sendMessageAll("有新订单了");
 		return orderBean3;
 	}
 
@@ -141,6 +140,13 @@ public class OrderServiceImp implements IOrderService{
 		return pageBean;
 	}
 
+	//通过预定状态查询订单
+		@Override
+		public List<OrderBean> selectOrderBySub(int subscribeStatus) {
+			List<OrderBean> list = orderDao.selectOrderBySub(subscribeStatus);
+			return list;
+		
+		}
 
 	@Override
 	public int deleteById(int id) {

@@ -46,4 +46,6 @@ public interface IOrderDao {
 	public int deleteById(int id);
 	//统计订单
 	public List<OrderBean> selectOrderByMonth(@Param("startTime")String startTime,@Param("endTime")String endTime);
+	//推送查询
+	public List<OrderBean> selectOrderBySub(int subscribeStatus); 
 }

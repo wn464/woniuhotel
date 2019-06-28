@@ -248,22 +248,22 @@
     <script src="/js/layer/layer.js"></script>
     <script src="/admin/js/front.js"></script>
   <script>
-  $("#find").click(function(){
-		var name = $("#romid").val()
-		if(name==""){
-			layer.msg('请填写要搜索的房间号', function(){
-				  //do something
-				})
-		}else{
-  			location.href = "/rooompeopleall/?name="+name
-		}
-	}) 
+		  $("#find").click(function(){
+				var name = $("#romid").val()
+				if(name==""){
+					layer.msg('请填写要搜索的房间号', function(){
+						  //do something
+						})
+				}else{
+		  			location.href = "/rooompeopleall/?name="+name
+				}
+			}) 
   
-		/* 通过id修改顾客的信息 */
-		var peopleid=0
-  		function change(obj){
-	  		peopleid = $(obj).parent("tr").children("#peoid").text();
-  		}
+			/* 通过id修改顾客的信息 */
+			var peopleid=0
+	  		function change(obj){
+		  		peopleid = $(obj).parent("tr").children("#peoid").text();
+	  		}
   		
   		$("#update").click(function(){
   			var people = $(".people").val()
@@ -274,9 +274,10 @@
   				})
   			}else{
   				$.ajax({
-  					url:"/typeall",
+  					url:"/people/update",
+  					data:"id="+peopleid+"&name="+people+"&idCard="+idcard,
   					async:true,
-  					type:"get",
+  					type:"put",
   					success:function(message){
   						console.info(message)
   					}                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    

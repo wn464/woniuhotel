@@ -37,7 +37,7 @@ public interface IRoomDao {
 			"on r.id=l.roomid \r\n" + 
 			"join people p\r\n" + 
 			"on l.id=p.liveid\r\n" + 
-			"where r.name=#{name} and  l.intime<#{time} and l.outtime>#{time}")
+			"where r.name=#{name} and  l.intime<=#{time} and l.outtime>=#{time}")
 	@Results({
 			@Result(property="gender", column="gender",one=@One(select=
 					  "com.project.dao.IMarkDao.selectmarkbyid"))

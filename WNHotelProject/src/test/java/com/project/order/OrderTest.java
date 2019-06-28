@@ -28,6 +28,7 @@ import com.project.dao.IOrderDao;
 import com.project.dao.IVipDao;
 import com.project.demo.WnHotelProjectApplication;
 import com.project.util.CreateOrderInfo;
+import com.project.util.WebSocketUtil;
 
 
 @RunWith(SpringRunner.class)
@@ -149,8 +150,10 @@ public class OrderTest {
 	    	
 
 	    }
-	    
-	   
+	    @Test
+	   public void name() {
+		   WebSocketUtil.sendMessageAll("200");
+	   }
 
 
 }
