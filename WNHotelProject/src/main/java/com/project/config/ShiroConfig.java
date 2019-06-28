@@ -71,6 +71,7 @@ public class ShiroConfig {
 		return shiroFilter;
 		
 	}
+	
 	//生成安全管理器,注入realm
 	@Bean(name="securityManager")
 	public DefaultWebSecurityManager getDefaultSecurityManager(@Qualifier("myReaml") Realm realm,@Qualifier("myReam2") Realm realm2 ) {

@@ -138,9 +138,16 @@ public class OrderTest {
 	    	
 	    }
 	    @Test
+
 	    public void deleteById() {
 	    	int i = orderService.deleteById(169);
 	    	System.out.println(i);
+	    }
+	    public void selectMonth(){
+	    	List<OrderBean> list = orderService.selectOrderByMonth(2019,06,07);
+	    	System.out.println(list);
+	    	
+
 	    }
 	    
 	   

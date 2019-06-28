@@ -3,6 +3,8 @@ package com.project.Service;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.ibatis.annotations.Param;
+
 import com.project.bean.LiveBean;
 import com.project.bean.OrderBean;
 import com.project.bean.PageBean;
@@ -35,6 +37,7 @@ public interface IOrderService {
 	public int deleteById(int id);
 	//通过订单查询入住信息
 	public LiveBean selectLiveById(int orderid);
-	
+	//统计订单
+	public List<OrderBean> selectOrderByMonth(int year, int startMonth, int endMonth);	
 	
 }

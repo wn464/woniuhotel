@@ -141,6 +141,7 @@ public class OrderServiceImp implements IOrderService{
 		return pageBean;
 	}
 
+
 	@Override
 	public int deleteById(int id) {
 		int i =orderDao.deleteById(id);
@@ -154,6 +155,21 @@ public class OrderServiceImp implements IOrderService{
 		return bean;
 	}
 	
+
+
+//	统计订单
+	@Override
+	public List<OrderBean> selectOrderByMonth(int year,int startMonth, int endMonth) {
+//		List<OrderBean> list = null;
+//		for (int i = startMonth; i <= endMonth; i++) {
+//			String startTime = year+"-"+startMonth+"-01"+" "+"00:00:00";
+//			String endTime = year+"-"+endMonth+"-31"+" "+"00:00:00";
+//			list = orderDao.selectOrderByMonth(startTime, endTime);
+//		}
+		return null;
+	}
+
+
 	
 
 

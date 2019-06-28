@@ -49,7 +49,7 @@
 	li{
 		font-size: 20px;
 		width: 250px;
-		height: 70px;
+		height: 50px;
 		color: #a9a9a9;
 	}
 </style>
@@ -78,15 +78,25 @@
 								<li>房间类型：<span th:text="${orderBean.lives[0].room.type.name}">豪华双人房</span></li>
 								<li>入住时间：<span th:text="${orderBean.lives[0].inTime}">2019-02-02</span></li>
 								<li>退房时间：<span th:text="${orderBean.lives[0].outTime}">2019-02-03</span></li>
-								
+								<li>预定用户：<span th:text="${orderBean.lives[0].people}">小王</span></li>
 							</ul>
 							<ul id="ul2">
-								<li>预定用户：<span th:text="${orderBean.lives[0].people}">小王</span></li>
 								<li>手机号码：<span th:text="${orderBean.lives[0].phoneNumber}">15377865432</span></li>
+								
+								<li >会员优惠：
+								<span th:if="${orderBean.member!=null&&orderBean.member.vipBean!=null}" th:text="${orderBean.member.vipBean.discount}+'   （会员可以享受多重折扣）'" style="color: red;font-size: 13px;"></span>
+								<span th:if="${orderBean.member==null||orderBean.member.vipBean==null}" th:text="非会员" ></span>
+								</li>
+								
+								<li >额外优惠：
+								<span th:each="discount,iterStat:${list}" th:text="' ( '+${discount.name}+' )&nbsp&nbsp&nbsp&nbsp&nbsp'" style="color: red;font-size: 13px;">2019-02-03</span>
+								</li>
+								
+								
 								<li>应付金额：<span style="color: black;font-weight: 600;font-size: 20px;" th:text="${orderBean.price}">1000</span></li>
 							</ul>
 							<ul style="margin-left: 460px;">
-								<li><button type="button" class="btn btn-primary" id="btn1" style="width: 100px;height: 40px;" onclick="pay()">支付</button></li>
+								<li style="display:inline;"><button type="button" class="btn btn-primary" id="btn1" style="width: 100px;height: 40px;" onclick="pay()">支付</button></li>
 							</ul>
 						
 					</div>

@@ -44,4 +44,6 @@ public interface IOrderDao {
 	//通过订单id删除订单
 	@Delete("delete from orders where id=#{id}")
 	public int deleteById(int id);
+	//统计订单
+	public List<OrderBean> selectOrderByMonth(@Param("startTime")String startTime,@Param("endTime")String endTime);
 }

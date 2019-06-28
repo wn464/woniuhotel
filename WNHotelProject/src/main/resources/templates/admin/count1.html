@@ -139,14 +139,14 @@
                           <tbody>
     <tr>
                               <th scope="row">会员等级</th>
-                              <td th:if="${orderBean.member!=null}" th:text="${orderBean.member.vipBean.name}" style="color: red;">超级会员</td>
-                               <td th:if="${orderBean.member==null}" th:text="非会员">非会员</td>
+                              <td th:if="${orderBean.member!=null&&orderBean.member.vipBean!=null}" th:text="${orderBean.member.vipBean.name}" style="color: red;">超级会员</td>
+                              <td th:if="${orderBean.member==null||orderBean.member.vipBean==null}" th:text="非会员">非会员</td>
                               
                             </tr>
 <tr>
                               <th scope="row">会员折扣</th>
-                              <td th:if="${orderBean.member!=null}" th:text="${orderBean.member.vipBean.discount}" style="color: red;">9折</td>
-                              <td th:if="${orderBean.member==null}" th:text="无折扣">无折扣</td>
+                              <td th:if="${orderBean.member!=null&&orderBean.member.vipBean!=null}" th:text="${orderBean.member.vipBean.discount}+'(会员可叠加此优惠)'" style="color: red;">9折</td>
+                              <td th:if="${orderBean.member==null||orderBean.member.vipBean==null}" th:text="无折扣">无折扣</td>
                               
                             </tr>
                             <tr>
@@ -176,17 +176,13 @@
                               <td th:if="${orderBean.subscribeStatus.id==8}" th:text="立即入住"></td>
                             </tr>
                             
-                            <tr>
-                              <th scope="row"  >额外优惠</th>
-                              <td th:if="${dt==1}" th:text="满2000，打9折（会员可享受双重折扣）" style="color: red;"></td>
-                               <td th:if="${dt==2}" th:text="暂无优惠" style="color: red;"></td>
-                              
-                              
+                            <tr th:each="discount,iterStat:${list}">
+                              <th scope="row">其他优惠</th>
+                              <td th:text="' ( '+${discount.name}+' )'"  style="color: red;font-size: 13px;"></td>
                             </tr>
                             <tr>
                               <th scope="row">应付金额</th>
                               <td th:text="'￥'+${orderBean.price}" style="color: red;">￥300</td>
-                              
                               
                             </tr></tbody>
                         </table>
@@ -211,8 +207,7 @@
                         
                         <div class="form-group row">       
                           <div class="col-sm-9 offset-sm-3">
-                            <input type="button" value="现金结账" class="btn btn-primary" onclick="cashPay()">
-                            <input type="button" value="支付宝结账" class="btn btn-primary">
+                            <input type="button" value="完成结账" class="btn btn-primary" onclick="cashPay()">
                           </div>
                         </div>
                       </form>
@@ -297,23 +292,25 @@
 			var sid = /*[[${orderBean.subscribeStatus.id}]]*/;
 			var rid = /*[[${orderBean.lives[0].room.id}]]*/;
 			var oid = /*[[${orderBean.id}]]*/;
+// 			预定结账
 		  	if (sid==9) {
 				$.ajax({
-					url:"/roomStatus",
+					url:"/roomSta",
 					type:"put",
-					data:"id="+rid,
+					data:"rid="+rid+"&oid="+oid,
 					success:function(mes){
 						alert("预定成功！")
 						window.location.href="/admin/index.html"
 						}
 					})
 			}
+// 			入住结账
 		  	else {
   			if (confirm("完成结账，是否继续添加入住人员")) {
   				$.ajax({
-					url:"/roomStatus",
+					url:"/roomSta",
 					type:"put",
-					data:"id="+rid,
+					data:"rid="+rid+"&oid="+oid,
 					success:function(mes){
 						window.location.href="/order/people/"+oid;
 						}

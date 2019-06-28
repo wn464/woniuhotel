@@ -65,10 +65,14 @@
 	<select id="selectOrderById" parameterType="int" resultMap="map">
 		select * from orders where id = #{oid} 
 	</select>
-<!-- 	通过订单时间查询订单 -->
+<!-- 	通过订单时间查询订单（统计订单） -->
 	<select id="selectOrderByTime" resultMap="map">
-		select * from orders where orderTime  between #{startTime} and #{endTime} and subscribeStatus = #{subscribeStatus} limit #{page},#{size}	
+		select * from orders where orderTime  between #{startTime} and #{endTime} 	
 	</select>
+<!-- 	通过订单时间查询订单 -->
+<!-- 	<select id="selectOrderByMonth" resultMap="map"> -->
+<!-- 		select * from orders where orderTime  between #{startTime} and #{endTime} and subscribeStatus = #{subscribeStatus} limit #{page},#{size}	 -->
+<!-- 	</select> -->
 	<resultMap id="map" type="OrderBean">
 		<id property="id" column="id"></id>
 		<result property="orderTime" column="orderTime"></result>
@@ -79,7 +83,7 @@
 		<association property="member" javaType="MemberBean" select="com.project.dao.IMemberDao.selectById" column="memberId"/>
 		<association property="status" javaType="MarkBean" select="com.project.dao.IMarkDao.selectmarkbyid" column="status"/>
 	    <association property="subscribeStatus" javaType="MarkBean" select="com.project.dao.IMarkDao.selectmarkbyid" column="subscribeStatus"/> 
-<!-- 		<association property="comment" javaType="CommentBean" select="com.project.dao.ICommentDao.selectCommentByOid" column="id"/> -->
+<!-- 		<collection property="dislist" ofType="DiscountBean" select="com.project.dao.IDiscountDao.selectDiscountById" column="did"/>  -->
 		<collection  property="lives" ofType="LiveBean" select="com.project.dao.ILiveDao.findByorderid" column="id"/>
 	</resultMap>
 
