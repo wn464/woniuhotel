@@ -36,6 +36,8 @@ public interface IOrderService {
 	//统计订单
 	public List<OrderBean> selectOrderByMonth(int year, int startMonth, int endMonth);
 	
+	public List<OrderBean> selectOrderBySub(int subscribeStatus);
+	
 	
 	
 }

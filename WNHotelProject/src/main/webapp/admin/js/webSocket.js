@@ -5,9 +5,10 @@ var ws = null;
 var url = "ws://"+window.location.hostname+":"+window.location.port+"/websocket";
 //连接websocket
 ws = new WebSocket(url);
+var oid = 0; 
 //接受服务器数据
 ws.onmessage=function(message){
-	
+	oid = message.data
 	//输出数据
 	console.info(message);
 	play1("你有新订单了");
@@ -33,8 +34,8 @@ var str1 =
 	"</a>"+
 	"<ul aria-labelledby='notifications' class='dropdown-menu'>"+
 	"<li>"+
-	"<a rel='nofollow' href='appointment.html' class='dropdown-item all-notifications text-center'> "+
-	"<strong>view all notifications</strong></a></li></ul>";
+	"<a rel='nofollow' href='/order/web/' class='dropdown-item all-notifications text-center'> "+
+	"<strong>查看所有预定订单</strong></a></li></ul>";
 $("#notifications").parent().html(str1);
 
 var num=0
@@ -45,13 +46,13 @@ function neworder(){
 		"<i class='fa fa-bell-o'></i>"+
 		"<span class='badge bg-red badge-corner'>"+num+"</span></a>"+
 		"<ul aria-labelledby='notifications' class='dropdown-menu'>"+
-		"<li><a rel='nofollow' href='appointment.html' class='dropdown-item'> "+
+		"<li><a rel='nofollow' href='/order/web/"+oid+"' class='dropdown-item'> "+
 		"<div class='notification'>"+
-		"<div class='notification-content'><i class='fa fa-twitter bg-blue'></i>你有"+num+"个新订单</div>"+
+		"<div class='notification-content'><i class='fa fa-twitter bg-blue'></i>查看最新订单</div>"+
 		"<div class='notification-time'><small></small></div>"+
 		"</div></a></li><li>"+
-		"<a rel='nofollow' href='appointment.html' class='dropdown-item all-notifications text-center'> "+
-		"<strong>view all notifications</strong></a></li></ul>";
+		"<a rel='nofollow' href='/order/web/' class='dropdown-item all-notifications text-center'> "+
+		"<strong>查看所有预定订单</strong></a></li></ul>";
 		$("#notifications").parent().html(str1);
 }
 

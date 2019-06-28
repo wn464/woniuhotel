@@ -87,6 +87,7 @@ public class RoomServiceImpl implements IRoomService{
 		List<RoomBean> roomsa=	dao.selectroombytype(type, (page-1)*size, size);
 	List<Integer> ids=dao2.selectTime(inTime, outTime);
 	for (Integer id : ids) {
+		System.out.println(roomsa);
 		for (RoomBean roomBean : roomsa) {
 			if(id==roomBean.getId()) {
 				roomsa.remove(roomBean);

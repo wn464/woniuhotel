@@ -141,7 +141,13 @@ public class OrderServiceImp implements IOrderService{
 		return pageBean;
 	}
 
-
+	//通过预定状态查询订单
+		@Override
+		public List<OrderBean> selectOrderBySub(int subscribeStatus) {
+			List<OrderBean> list = orderDao.selectOrderBySub(subscribeStatus);
+			return list;
+		
+		}
 //	统计订单
 	@Override
 	public List<OrderBean> selectOrderByMonth(int year,int startMonth, int endMonth) {

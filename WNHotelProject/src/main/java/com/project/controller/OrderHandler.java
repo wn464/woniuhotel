@@ -30,6 +30,7 @@ import com.project.bean.PageBean;
 import com.project.bean.VipBean;
 import com.project.util.countUtil.OrderUtil;
 //import com.project.util.countUtil.OrderUtil;
+import com.project.util.timingutil.ordertiming;
 
 /**
  * 订单接口
@@ -424,11 +425,23 @@ public class OrderHandler {
 			map.put("orderBean", order);
 			return "admin/count1.html";
 		}
-		
-
-		
 	}
-	
+	//按id查看推送消息
+	@GetMapping("/web/{oid}")
+	public String selcetById(@PathVariable("oid")int oid,ModelMap map) {
+		OrderBean orderBean= orderService.selectOrderById(oid);
+		System.out.println(orderBean);
+		map.put("orderBean", orderBean);
+		return "admin/appointment.html";
+	}
+	//查看所有推送消息
+	@GetMapping("/web")
+	public String selcetById(ModelMap map) {
+		List<OrderBean> list= orderService.selectOrderBySub(9);
+		System.out.println("---------"+list);
+		map.put("list", list);
+		return "admin/appointment2.html";
+	}
 	
 	
 }
