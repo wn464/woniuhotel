@@ -35,7 +35,7 @@ function jump(){
 				str+="<tr><td>"+list[i].id+
 				"</td><td>"+list[i].name+
 				"</td><td>"+list[i].type.name+
-				"</td><td>"+list[i].img+
+				"</td><td><img width='50px' src='/images/"+list[i].img+"'>"+
 				"</td><td>"+list[i].status.name+
 				"</td><td>"+list[i].phone+
 				"</td><td>"+list[i].location+

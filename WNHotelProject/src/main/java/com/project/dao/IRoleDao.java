@@ -7,5 +7,5 @@ import com.project.bean.RoleBean;
 public interface IRoleDao {
 	
 	
-	public RoleBean findRoleById(int id);
+	public RoleBean selectById(int id);
 }
