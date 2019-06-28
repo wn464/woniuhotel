@@ -33,6 +33,8 @@ public interface IOrderService {
 	public PageBean selectOrderByTime(int subscribeStatus,String startTime, String endTime, int page, int size);
 	//通过订单id删除订单
 	public int deleteById(int id);
+	//通过订单查询入住信息
+	public LiveBean selectLiveById(int orderid);
 	
 	
 }
