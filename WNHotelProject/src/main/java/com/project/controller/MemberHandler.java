@@ -31,11 +31,16 @@ public class MemberHandler {
 	private IMemberService service;
 	
 	
+	
+	
+	
+	
 	/*
 	 * 注册
 	 */
 	@PostMapping("/member/reg")
-	public String reg(ModelMap map,@Validated MemberBean member,BindingResult result) {
+	public String reg(ModelMap map,@Validated MemberBean member,String code,BindingResult result) {
+		System.out.println(code);
 		System.out.println(member);
 		if(result.hasErrors()) {
 			System.out.println("----------出现错误----------");

@@ -25,16 +25,19 @@
 					<div class="control-group">
 					    <label class="control-label" for="inputEmail">手机号</label>
 					    <div class="controls">
-					    	<input type="text" id="phone"  name="phoneNumber"  style="width: 130px">
-					    	<span id="sp2"></span>
+					    	<input type="text" id="phone"  name="phoneNumber"  style="width: 110px">
+					    	
 					    </div>
 					</div>
-					<input type="button" value="验证码" style="margin-top: -90px; margin-left: 340px";>
-					<div class="control-group">
+					<input type="button" value="获取验证码" style="margin-top: 30px; margin-left: 320px" onclick="setTime(this)";>
+					
+					<div id="sp2" style="margin-left:180px;"></div>
+					 <div class="control-group">
 					    <label class="control-label" for="inputEmail">验证码</label>
 					    <div class="controls">
 					    	<input type="text" >
 					    </div>
+					    
 					</div>
 					<div class="control-group">
 					    <label class="control-label" for="inputPassword">密&nbsp;&nbsp;&nbsp;&nbsp;码</label>
@@ -54,6 +57,28 @@
 		</div>
 		
 		<script type="text/javascript">	
+		 var countDown=60; 
+		    function setTime(val) { 
+			    if (countDown == 0) { 
+				    val.removeAttribute("disabled");    
+				    val.value="获取验证码"; 
+				    countDown = 60;
+				    return;
+			    } else { 
+				    val.setAttribute("disabled", true); 
+				    val.value="重新发送(" + countDown + ")"; 
+				    countDown--; 
+			    } 
+				    setTimeout(function() { 
+				    setTime(val) 
+				    },1000) 
+		    } 
+		
+		
+		
+		
+		
+		
 			//用户名验证
 			$(function(){
 				$("#userName").blur(function(){
