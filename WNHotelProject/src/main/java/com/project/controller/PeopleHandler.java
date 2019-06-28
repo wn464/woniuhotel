@@ -46,7 +46,7 @@ public class PeopleHandler {
 	@PutMapping("/people/update")
 	@ResponseBody
 	public String update(PeopleBean people) {
-		
+		System.out.println(people);
 		int update = service.update(people);
 		if(update!=0) {
 			return "1";				//1是修改成功
