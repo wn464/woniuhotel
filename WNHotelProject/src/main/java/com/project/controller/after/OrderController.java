@@ -72,9 +72,14 @@ public class OrderController {
 		public String selectOrderByAttr(LiveBean liveBean,ModelMap map) {
 			System.out.println("111111"+liveBean);
 			List<OrderBean> list = orderService.selectOrderByAttr(liveBean.getPeople(), liveBean.getInTime());
-			map.put("list", list);
-			System.out.println("集合："+list);
-			return "admin/delorder.html";
+			if(list.size()>0) {
+				map.put("list", list);
+				System.out.println("集合："+list);
+				return "admin/delorder.html";
+			}else {
+				return "admin/delorder.html";
+			}
+			
 		}
 		/*
 		 * 前台通过状态分页查询订单
@@ -296,8 +301,13 @@ public class OrderController {
 				}
 				return "admin/count1.html";
 			}
-			
-
-			
+		}
+		//通过订单id删除订单
+		@RequestMapping("/shan")
+		@ResponseBody
+		public LiveBean deleteById(int id) {
+			int i = orderService.deleteById(id);
+			LiveBean bean = orderService.selectLiveById(id);
+			return bean;
 		}
 }
