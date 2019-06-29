@@ -99,11 +99,16 @@ public class MemberHandler {
 			return "1";
 		}else {
 			Subject subject = SecurityUtils.getSubject();
+			//subject.logout();
+			
 			if(!subject.isAuthenticated()) {
 				UsernamePasswordToken token = new LoginToken(member.getUserName(),member.getPassword(),LoginType.user.toString());
 
 				try {
+					
 					subject.login(token);
+					
+					
 					System.out.println("认证成功");
 					//把 id 和 用户名存到session  后续用的到
 					MemberBean bean = service.selectByUsername(member.getUserName());
@@ -121,7 +126,7 @@ public class MemberHandler {
 			
 			
 		}
-		return null;
+		return "2";
 	}
 	
 	//跳转页面
