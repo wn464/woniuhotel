@@ -128,7 +128,7 @@
                               <th>订单号</th>
     						  <th>房间号</th>
                               <th>房间类型</th>
-   							  <th>开房人</th>
+   							  <th>下单时间</th>
                               <th>入住时间</th>
                               <th>退房时间</th>
     						  <th>价格</th>
@@ -141,7 +141,7 @@
                               <td th:text="${orderBean.orderNumber}">xxxxxxx</td>
                               <td th:text="${orderBean.lives[0].room.name}">3-103</td>
                               <td th:text="${orderBean.lives[0].room.type.name}">经济双人间</td>
-                              <td th:text="${orderBean.lives[0].people}">666</td>
+                              <td th:text="${orderBean.orderTime}">666</td>
 							  <td th:text="${orderBean.lives[0].inTime}">2019-06-05</td> 
 							  <td th:text="${orderBean.lives[0].outTime}">2019-06-06</td>  
 							  <td th:text="${orderBean.price}">2019-06-06</td>    

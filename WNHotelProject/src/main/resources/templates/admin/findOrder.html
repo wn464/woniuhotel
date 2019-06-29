@@ -205,14 +205,15 @@
                               <td th:text="${orderBean.lives[0].room.type.name}">经济双人间</td>
                               <td th:text="${orderBean.lives[0].people}">666</td>
     						  <td th:text="${orderBean.price}">￥200</td>
-    						  <td th:if="${orderBean.subscribeStatus.id==9}" th:text="已预约">预约</td>
-    						  <td th:if="${orderBean.subscribeStatus.id==8}" th:text="已入住">入住</td>   
-    						  <td th:if="${orderBean.subscribeStatus.id==12}" th:text="已退房">入住</td>       
+    						  <td th:if="${orderBean.subscribeStatus!=null&&orderBean.subscribeStatus.id==9}" th:text="已预约">预约</td>
+    						  <td th:if="${orderBean.subscribeStatus!=null&&orderBean.subscribeStatus.id==8}" th:text="已入住">入住</td>   
+    						  <td th:if="${orderBean.subscribeStatus!=null&&orderBean.subscribeStatus.id==12}" th:text="已退房">入住</td> 
+    						   <td th:if="${orderBean.subscribeStatus==null}" th:text="未支付">入住</td>        
     						 
     						  <td>
-		                      <a th:href="@{/order/people/{name}(name=${orderBean.id})}" class="badge badge-rounded bg-green" ><span th:if="${orderBean.subscribeStatus.id==9}" th:text="办理入住">入住</span></a>
+		                      <a th:href="@{/order/people/{name}(name=${orderBean.id})}" class="badge badge-rounded bg-green" ><span th:if="${orderBean.subscribeStatus!=null&&orderBean.subscribeStatus.id==9}" th:text="办理入住">入住</span></a>
 <!-- 		                      <a href="#" class="badge badge-rounded bg-green" th:if="${orderBean.subscribeStatus.id==9}" th:text="取消预定">预定</a> -->
-		                      <a href="#" class="badge badge-rounded bg-green" th:if="${orderBean.subscribeStatus.id==8}" th:text="退房"  th:onclick="'javascript:ret('+${orderBean.lives[0].room.id}+','+${orderBean.id}+')'">退房</a>
+		                      <a href="#" class="badge badge-rounded bg-green" th:if="${orderBean.subscribeStatus!=null&&orderBean.subscribeStatus.id==8}" th:text="退房"  th:onclick="'javascript:ret('+${orderBean.lives[0].room.id}+','+${orderBean.id}+')'">退房</a>
 		                      </td>
 
 		                    </tr>
@@ -299,21 +300,23 @@
     <script src="/admin/vendor/jquery-validation/jquery.validate.min.js"></script>
     <!-- Main File-->
     <script src="/admin/js/front.js"></script>
-     <script src="js/head.js"></script>
+     <script src="/admin/js/head.js"></script>
     <script type="text/javascript">
-    	function ret(rid,oid) {
-    		if (confirm("确认退房")==true) {
-    			//修改房间状态为不可住
-          		$.ajax({
-        				url:"/roomState",
-        				type:"put",
-        				data:"rid="+rid+"&oid="+oid,
-        				success:function(mes){
-        					window.location.reload();
-        				}
-        			})
-			}
+    function ret(rid,oid) {
+    	if (confirm("确认退房")==true) {
+			//修改房间状态为不可住
+      		$.ajax({
+    				url:"/roomState",
+    				type:"put",
+    				data:"rid="+rid+"&oid="+oid,
+    				success:function(mes){
+    					window.location.reload();
+    				}
+    			})
 		}
+	}
+    		
+		
     </script>
      
 

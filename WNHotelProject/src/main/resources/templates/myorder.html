@@ -78,6 +78,7 @@
 					<span id="span1" th:if="${order.status!=null&&order.status.id==7}" th:text="已超时"></span>
 					<span id="span1" th:if="${order.subscribeStatus!=null&&order.subscribeStatus.id==9}" th:text="已预约"></span>
 					<span id="span1" th:if="${order.subscribeStatus!=null&&order.subscribeStatus.id==13}" th:text="已退款" ></button>
+					
 			
 					<span>订单号：</span>
 					<span th:text="${order.orderNumber}">12385643</span>
