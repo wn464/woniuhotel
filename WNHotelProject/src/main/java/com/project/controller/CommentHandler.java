@@ -68,7 +68,7 @@ public class CommentHandler {
 		Subject subject = SecurityUtils.getSubject();
 	    Session session = subject.getSession(false);
 	    String name = (String) session.getAttribute("userName");
-		bean.setName("name");
+		bean.setName(name);
 		OrderBean order = new OrderBean();
 		order.setId(1);
 		bean.setOrderId(order);
