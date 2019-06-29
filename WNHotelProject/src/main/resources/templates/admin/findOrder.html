@@ -306,9 +306,8 @@
     	if (confirm("确认退房")==true) {
 			//修改房间状态为不可住
       		$.ajax({
-    				url:"/roomState",
-    				type:"put",
-    				data:"rid="+rid+"&oid="+oid,
+    				url:"/order/month/2019/06/09",
+    				type:"get",
     				success:function(mes){
     					window.location.reload();
     				}
