@@ -87,7 +87,7 @@ public class ShiroConfig {
 		fmap.put("/admin/login","logout");
 		fmap.put("/order/state/*", "authc");
 		
-		fmap.put("/admin/**", "authc,roles[admin,superadmin,boss]");
+		fmap.put("/admin/**", "authc");
 		//前台
 		fmap.put("/**", "anon");
 		
