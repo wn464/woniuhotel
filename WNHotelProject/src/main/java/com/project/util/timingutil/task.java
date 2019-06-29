@@ -34,7 +34,10 @@ public class task extends TimerTask {
 			order.setId(orderid);
 			MarkBean status=new MarkBean();
 			status.setId(7);
+			MarkBean sustatus=new MarkBean();
+			sustatus.setId(7);
 			order.setStatus(status);
+			order.setSubscribeStatus(sustatus);
 			service.updateOrderAttr(order);
 		}
 	}
