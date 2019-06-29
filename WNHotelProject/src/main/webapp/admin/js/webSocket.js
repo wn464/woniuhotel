@@ -9,6 +9,7 @@ var oid = 0;
 //接受服务器数据
 ws.onmessage=function(message){
 	oid = message.data
+	alert(oid)
 	//输出数据
 	console.info(message);
 	play1("你有新订单了");
@@ -45,7 +46,7 @@ function neworder(){
 	str1 =
 		"<a id='notifications' rel='nofollow' data-target='#' href='#' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false' class='nav-link'>"+
 		"<i class='fa fa-bell-o'></i>"+
-		"<span class='badge bg-red badge-corner'>"+1+"</span></a>"+
+		"<span class='badge bg-red badge-corner'>"+num+"</span></a>"+
 		"<ul aria-labelledby='notifications' class='dropdown-menu'>"+
 		"<li><a rel='nofollow' href='/order/web/"+oid+"' class='dropdown-item'> "+
 		"<div class='notification'>"+

@@ -144,8 +144,10 @@ public class OrderTest {
 	    	int i = orderService.deleteById(169);
 	    	System.out.println(i);
 	    }
+	    @Test
 	    public void selectMonth(){
-	    	List<OrderBean> list = orderService.selectOrderByMonth(2019,06,07);
+	    	List<Double> list = orderService.selectOrderByMonth(2019,6,9);
+//	    	List<Double> list = orderDao.selectOrderByMonth("2019-06-28 00:00:00" , "2019-06-29 00:00:00");
 	    	System.out.println(list);
 	    	
 

@@ -1,10 +1,12 @@
 package com.project.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.session.Session;
 import org.apache.shiro.subject.Subject;
+import org.aspectj.weaver.ast.Var;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -84,6 +86,7 @@ public class OrderHandler {
 	@GetMapping("/attr")
 	public String selectOrderByAttr(LiveBean liveBean,ModelMap map) {
 		List<OrderBean> list = orderService.selectOrderByAttr(liveBean.getPeople(), liveBean.getInTime());
+		System.out.println("+++++++++++++++++++---__-----"+list);
 		map.put("list", list);
 		return "admin/findOrder.html";
 	}
@@ -441,6 +444,30 @@ public class OrderHandler {
 		System.out.println("---------"+list);
 		map.put("list", list);
 		return "admin/appointment2.html";
+	}
+	//统计订单
+	@GetMapping("/month")
+	@ResponseBody
+	public double[] selcetOrderByMonth(int year,int smonth,int emonth,ModelMap map) {
+		double m[] = new double[12];
+		List<Double> list = new ArrayList<Double>();
+		list = orderService.selectOrderByMonth(year, smonth, emonth);
+//		double price[] = new double[12];
+//		for (int i = 0; i < price.length; i++) {
+//			price[i] = list.get(i);
+//			System.out.println(i);
+//		
+//		}
+//		
+		int a = 0;
+		for (int i = smonth-1; i < emonth; i++) {
+			m[i] = list.get(a);
+			a++;
+			System.out.println("---------"+m[i]);
+		}	
+			
+		
+		return m;
 	}
 	
 	

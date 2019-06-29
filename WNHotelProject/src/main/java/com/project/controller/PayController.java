@@ -36,9 +36,7 @@ public class PayController {
 	@GetMapping("/pay/{oid}")
 	@ResponseBody
 	public String pay(@PathVariable("oid")int oid) {
-		System.out.println("________推送"+oid);
-		String id = String.valueOf(oid);
-		WebSocketUtil.sendMessageAll(id);
+		
 		OrderBean orderBean = orderService.selectOrderById(oid);
 		String string = null;
 		try {
@@ -116,9 +114,9 @@ public class PayController {
 			//修改会员消费金额（提高会员等级）
 			int i = memberService.updateMoney(orderBean.getPrice(), orderBean.getMember().getId());
 			
-//			System.out.println("________推送"+orderBean.getId());
-//			String id = String.valueOf(orderBean.getId());
-//			WebSocketUtil.sendMessageAll(id);
+			//发送推送消息
+			String id = String.valueOf(orderBean.getId());
+			WebSocketUtil.sendMessageAll(id);
 		
 		}catch (Exception e) {
 			// TODO Auto-generated catch block

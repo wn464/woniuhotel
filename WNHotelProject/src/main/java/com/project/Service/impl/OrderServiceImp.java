@@ -165,14 +165,37 @@ public class OrderServiceImp implements IOrderService{
 
 //	统计订单
 	@Override
-	public List<OrderBean> selectOrderByMonth(int year,int startMonth, int endMonth) {
-//		List<OrderBean> list = null;
-//		for (int i = startMonth; i <= endMonth; i++) {
-//			String startTime = year+"-"+startMonth+"-01"+" "+"00:00:00";
-//			String endTime = year+"-"+endMonth+"-31"+" "+"00:00:00";
-//			list = orderDao.selectOrderByMonth(startTime, endTime);
-//		}
-		return null;
+	public List<Double> selectOrderByMonth(int year,int startMonth, int endMonth) {
+		//存放每月总金额
+		List<Double> list = new ArrayList<Double>();
+		for (int i = startMonth; i <= endMonth; i++) {
+			//1-10月
+			if (i<10) {
+				double mprice = 0;
+				String startTime = year+"-"+"0"+i+"-01"+" "+"00:00:00";
+				String endTime = year+"-"+"0"+i+"-31"+" "+"00:00:00";
+				List<Double> list1 = orderDao.selectOrderByMonth(startTime, endTime);
+				for (Double double1 : list1) {
+					mprice+=double1;
+				}
+				list.add(mprice);
+			}
+			//11-12月
+			else {
+				double mprice = 0;
+				String startTime = year+"-"+i+"-01"+" "+"00:00:00";
+				String endTime = year+"-"+i+"-31"+" "+"00:00:00";
+				System.out.println(endTime);
+				List<Double> list2 = orderDao.selectOrderByMonth(startTime, endTime);
+				for (Double double1 : list2) {
+					mprice+=double1;
+				}
+				list.add(mprice);
+			}
+			
+		}
+		System.out.println("-----------"+list);
+		return list;
 	}
 
 

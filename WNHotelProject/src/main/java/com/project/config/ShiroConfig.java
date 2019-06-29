@@ -45,7 +45,7 @@ public class ShiroConfig {
 		//注入安全管理器
 		shiroFilter.setSecurityManager(securityManager);
 		//认证失败跳转地址
-		shiroFilter.setLoginUrl("/login");
+		shiroFilter.setLoginUrl("/login.html");
 		//认证失败跳转
 		Map<String, Filter> filters = shiroFilter.getFilters();
 		 // 将自定义的FormAuthenticationFilter注入shiroFilter中
@@ -71,6 +71,7 @@ public class ShiroConfig {
 		fmap.put("/js/**", "anon");
 		fmap.put("/css/**", "anon");
 		fmap.put("/images/**", "anon");
+		
 		
 		//前台	没写全 把自己的东西加进去
 		fmap.put("/index.html", "anon");

@@ -38,7 +38,7 @@ public interface IOrderService {
 	//通过订单查询入住信息
 	public LiveBean selectLiveById(int orderid);
 	//统计订单
-	public List<OrderBean> selectOrderByMonth(int year, int startMonth, int endMonth);
+	public List<Double> selectOrderByMonth(int year, int startMonth, int endMonth);
 	
 	public List<OrderBean> selectOrderBySub(int subscribeStatus);
 	
