@@ -8,8 +8,8 @@ ws = new WebSocket(url);
 var oid = 0; 
 //接受服务器数据
 ws.onmessage=function(message){
+	alert("你有新订单了")
 	oid = message.data
-	alert(oid)
 	//输出数据
 	console.info(message);
 	play1("你有新订单了");
