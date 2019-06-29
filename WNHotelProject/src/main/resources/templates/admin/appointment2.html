@@ -151,11 +151,11 @@
                           <tbody>
                             <tr th:each="orderBean,iterStat : ${list}">
                               <td th:text="${orderBean.orderNumber}">xxxxxxx</td>
-                              <td th:text="${orderBean.lives[0].room.name}">3-103</td>
-                              <td th:text="${orderBean.lives[0].room.type.name}">经济双人间</td>
+                              <td th:if="${orderBean.lives[0]!=null}" th:text="${orderBean.lives[0].room.name}">3-103</td>
+                              <td th:if="${orderBean.lives[0]!=null}" th:text="${orderBean.lives[0].room.type.name}">经济双人间</td>
                               <td th:text="${orderBean.orderTime}">666</td>
-							  <td th:text="${orderBean.lives[0].inTime}">2019-06-05</td> 
-							  <td th:text="${orderBean.lives[0].outTime}">2019-06-06</td>  
+							  <td th:if="${orderBean.lives[0]!=null}" th:text="${orderBean.lives[0].inTime}">2019-06-05</td> 
+							  <td th:if="${orderBean.lives[0]!=null}" th:text="${orderBean.lives[0].outTime}">2019-06-06</td>  
 							  <td th:text="${orderBean.price}">2019-06-06</td>    
 							</tr>
                             

@@ -10,12 +10,17 @@ import javax.servlet.Filter;
 import org.apache.shiro.authc.Authenticator;
 import org.apache.shiro.authc.credential.HashedCredentialsMatcher;
 import org.apache.shiro.authc.pam.AtLeastOneSuccessfulStrategy;
+import org.apache.shiro.cache.CacheManager;
+import org.apache.shiro.codec.Base64;
 import org.apache.shiro.mgt.DefaultSecurityManager;
 import org.apache.shiro.realm.AuthorizingRealm;
 import org.apache.shiro.realm.Realm;
 import org.apache.shiro.spring.web.ShiroFilterFactoryBean;
 import org.apache.shiro.web.filter.authc.LogoutFilter;
+import org.apache.shiro.web.filter.authc.UserFilter;
+import org.apache.shiro.web.mgt.CookieRememberMeManager;
 import org.apache.shiro.web.mgt.DefaultWebSecurityManager;
+import org.apache.shiro.web.servlet.SimpleCookie;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -56,6 +61,9 @@ public class ShiroConfig {
 		
 		Map<String,String> fmap = new LinkedHashMap<String,String>();
 		
+		//记住我可以访问的页面
+//		 fmap.put("/", "member");
+		
 		//后台登录
 		fmap.put("/admin/login.html","anon");
 		fmap.put("/user/login","anon");
@@ -71,25 +79,17 @@ public class ShiroConfig {
 		fmap.put("/js/**", "anon");
 		fmap.put("/css/**", "anon");
 		fmap.put("/images/**", "anon");
+		fmap.put("/upload/**", "anon");
 		
-		
-		//前台	没写全 把自己的东西加进去
-		fmap.put("/index.html", "anon");
-		fmap.put("/public.html","anon");
-		fmap.put("/member/login", "anon");
-		fmap.put("/login.html","anon");
-		fmap.put("/member/reg", "anon");
-		fmap.put("/reg.html","anon");
-		fmap.put("/map.html","anon");
-		fmap.put("/ground.html","anon");
-		fmap.put("/comment.html","anon");
-		
+
 		
 		//登出
 		fmap.put("/logout","logout");
 		fmap.put("/admin/login","logout");
+		fmap.put("/admin/**", "authc");
+		fmap.put("/order/state/*", "authc");
+		fmap.put("/**", "anon");
 		
-		fmap.put("/**", "authc");
 
 		
 		shiroFilter.setFilterChainDefinitionMap(fmap);
@@ -107,8 +107,36 @@ public class ShiroConfig {
 		realms.add(realm);
 		realms.add(realm2);
 		defaultSecurityManager.setRealms(realms);
+//		defaultSecurityManager.setRememberMeManager(rememberMeManager());
 		return defaultSecurityManager;
 	}
+	
+	
+//	
+//	//设置记住我
+//	@Bean
+//	public SimpleCookie rememberMeCookie() {
+//		
+//		SimpleCookie simpleCookie = new SimpleCookie();
+//		//设置过期时间
+//		simpleCookie.setMaxAge(3000);
+//		simpleCookie.setPath("/");
+//		simpleCookie.setName("rememberMe");
+//		return simpleCookie;
+//		
+//	}
+//	
+//	@Bean  
+//	public CookieRememberMeManager rememberMeManager(){  
+//	      //System.out.println("ShiroConfiguration.rememberMeManager()");  
+//	      CookieRememberMeManager cookieRememberMeManager = new CookieRememberMeManager();  
+//	      cookieRememberMeManager.setCookie(rememberMeCookie());  
+//	      //rememberMe cookie加密的密钥 建议每个项目都不一样 默认AES算法 密钥长度(128 256 512 位)  
+//	      cookieRememberMeManager.setCipherKey(Base64.decode("2AvVhdsgUs0FSA3SDFAdag=="));  
+//	      return cookieRememberMeManager;  
+//	} 
+//	
+//	
 	//生成Realm
 	//可以注入加密
 	@Bean(name = "myReaml")
