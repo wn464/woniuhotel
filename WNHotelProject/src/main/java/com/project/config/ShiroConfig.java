@@ -71,7 +71,7 @@ public class ShiroConfig {
 		fmap.put("/js/**", "anon");
 		fmap.put("/css/**", "anon");
 		fmap.put("/images/**", "anon");
-		
+		fmap.put("/upload/**", "anon");
 		
 		//前台	没写全 把自己的东西加进去
 		fmap.put("/index.html", "anon");
@@ -83,7 +83,7 @@ public class ShiroConfig {
 		fmap.put("/map.html","anon");
 		fmap.put("/ground.html","anon");
 		fmap.put("/comment.html","anon");
-		
+		fmap.put("/findComment", "anon");
 		
 		//登出
 		fmap.put("/logout","logout");
