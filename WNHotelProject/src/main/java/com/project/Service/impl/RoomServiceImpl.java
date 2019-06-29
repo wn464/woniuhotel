@@ -25,13 +25,13 @@ public class RoomServiceImpl implements IRoomService{
 	@Autowired
 	private ILiveDao dao2;
 	@Override
-	public RoomBean selectroombyid(int rid) {
+	public RoomBean selectroombyid(int rid)throws Exception {
 		RoomBean bean = dao.selectroombyid(rid);
 		return bean;
 	}
 
 	@Override
-	public PageBean selectroombytype(TypeBean type, int page, int size) {
+	public PageBean selectroombytype(TypeBean type, int page, int size) throws Exception {
 		PageBean bean = new PageBean();
 		List<RoomBean> list = dao.selectroombytype(type, (page-1)*size, size);
 		int totalNumber = dao.selectroomallbytype(type);
@@ -44,7 +44,7 @@ public class RoomServiceImpl implements IRoomService{
 	}
 
 	@Override
-	public boolean updateroomstatus( RoomBean room) {
+	public boolean updateroomstatus( RoomBean room)throws Exception {
 		int i =dao.updateroomstatus(room);
 		if(i>0) {
 			return true;
@@ -53,7 +53,7 @@ public class RoomServiceImpl implements IRoomService{
 	}
 
 	@Override
-	public PageBean selectroombystatus(MarkBean status, int page, int size) {
+	public PageBean selectroombystatus(MarkBean status, int page, int size)throws Exception {
 		PageBean bean = new PageBean();
 		List<RoomBean> list = dao.selectroombystatus(status, (page-1)*size, size);
 		int totalNumber = dao.selectroomallbystatus(status);
@@ -66,7 +66,7 @@ public class RoomServiceImpl implements IRoomService{
 	}
 
 	@Override
-	public PageBean selectroombytypeandstatus(TypeBean type, MarkBean status, int page, int size) {
+	public PageBean selectroombytypeandstatus(TypeBean type, MarkBean status, int page, int size)throws Exception {
 		PageBean bean = new PageBean();
 		System.out.println(66666);
 		List<RoomBean> list = dao.selectroombytypeandstatus(type, status, (page-1)*size, size);
@@ -83,7 +83,7 @@ public class RoomServiceImpl implements IRoomService{
  */
 	@Override
 	@Transactional(isolation = Isolation.DEFAULT,propagation = Propagation.REQUIRED)
-	public PageBean selectroombytypeantime(TypeBean type, String inTime, String outTime, int page, int size) {
+	public PageBean selectroombytypeantime(TypeBean type, String inTime, String outTime, int page, int size)throws Exception {
 		PageBean bean = new PageBean();
 		List<RoomBean> roomsa=	dao.selectroombytype(type, (page-1)*size, size);
 
@@ -109,7 +109,7 @@ public class RoomServiceImpl implements IRoomService{
 	}
 
 @Override
-public boolean updateroomstatusin(RoomBean room) {
+public boolean updateroomstatusin(RoomBean room) throws Exception{
 	int i=dao.updaterooomstatusin(room);
 	if(i>0) {
 		return true;
@@ -118,7 +118,7 @@ public boolean updateroomstatusin(RoomBean room) {
 }
 
 @Override
-public PageBean selectroomall(int page, int size) {
+public PageBean selectroomall(int page, int size)throws Exception {
 	PageBean bean = new PageBean();
 	
 	List<RoomBean> list = dao.selectroomall( (page-1)*size, size);
@@ -132,7 +132,7 @@ public PageBean selectroomall(int page, int size) {
 }
 
 @Override
-public boolean updateroom(RoomBean room) {
+public boolean updateroom(RoomBean room)throws Exception {
 	int i=dao.updateroom(room);
 	if(i>0) {
 		return true;
@@ -141,7 +141,7 @@ public boolean updateroom(RoomBean room) {
 }
 
 @Override
-public boolean insertroom(RoomBean room) {
+public boolean insertroom(RoomBean room)throws Exception {
  int i=dao.insertroom(room);
  if(i>0) {
 	 return true;
@@ -150,7 +150,7 @@ public boolean insertroom(RoomBean room) {
 }
 
 @Override
-public List<PeopleBean> selectpeopleall(String name) {
+public List<PeopleBean> selectpeopleall(String name) throws Exception{
 	
 	LocalDateTime dt=LocalDateTime.now();
 	String tiime=dt.toString();
@@ -160,7 +160,7 @@ public List<PeopleBean> selectpeopleall(String name) {
 }
 
 @Override
-public RoomBean selectroombyname(String name) {
+public RoomBean selectroombyname(String name)throws Exception {
 	RoomBean room=dao.selectroombyname(name);
 	return room;
 }
