@@ -61,6 +61,12 @@
 						<a href="##" th:if="${page.list[0].status.id}==4" th:href="@{#}">
 							<button type="button" class="btn btn-warning" th:text="${page.list[0].status.id}==3?立即预定:今日已满" style="background-color:gray">立即预定</button>
 						</a>
+							<a href="##" th:if="${page.list[0].status.id}==14" th:href="@{#}">
+							<button type="button" class="btn btn-warning" th:text="${page.list[0].status.id}==14?打扫中:今日已满" style="background-color:gray">立即预定</button>
+						</a>
+						<a href="##" th:if="${page.list[0].status.id}==15" th:href="@{#}">
+							<button type="button" class="btn btn-warning" th:text="${page.list[0].status.id}==15?维修中:今日已满" style="background-color:gray">立即预定</button>
+						</a>
 						<a href="##" th:if="${page.list[0].status.id}==3" th:href="@{'/room/'+${page.list[0].id}}">
 							<button type="button" class="btn btn-warning" th:text="${page.list[0].status.id}==3?立即预定:今日已满">立即预定</button>
 						</a>
@@ -77,6 +83,12 @@
 						<button type="button" class="btn btn-info" th:text="${dl}==0?'标准价：￥'+(${page.list[1].price}):'会员价：￥'+(${page.list[1].price}-50)">会员价：￥269</button>
 						<a href="##" th:if="${page.list[1].status.id}==4" th:href="@{#}">
 							<button type="button" class="btn btn-warning" th:text="${page.list[1].status.id}==3?立即预定:今日已满" style="background-color:gray">立即预定</button>
+						</a>
+							<a href="##" th:if="${page.list[1].status.id}==14" th:href="@{#}">
+							<button type="button" class="btn btn-warning" th:text="${page.list[1].status.id}==14?打扫中:今日已满" style="background-color:gray">立即预定</button>
+						</a>
+						<a href="##" th:if="${page.list[1].status.id}==15" th:href="@{#}">
+							<button type="button" class="btn btn-warning" th:text="${page.list[1].status.id}==15?维修中:今日已满" style="background-color:gray">立即预定</button>
 						</a>
 						<a href="##" th:if="${page.list[1].status.id}==3" th:href="@{'/room/'+${page.list[1].id}}">
 							<button type="button" class="btn btn-warning" th:text="${page.list[1].status.id}==3?立即预定:今日已满">立即预定</button>
@@ -98,6 +110,12 @@
 					<a href="##" th:if="${page.list[2].status.id}==4" th:href="@{#}">
 							<button type="button" class="btn btn-warning" th:text="${page.list[2].status.id}==3?立即预定:今日已满" style="background-color:gray">立即预定</button>
 						</a>
+							<a href="##" th:if="${page.list[2].status.id}==14" th:href="@{#}">
+							<button type="button" class="btn btn-warning" th:text="${page.list[2].status.id}==14?打扫中:今日已满" style="background-color:gray">立即预定</button>
+						</a>
+						<a href="##" th:if="${page.list[2].status.id}==15" th:href="@{#}">
+							<button type="button" class="btn btn-warning" th:text="${page.list[2].status.id}==15?维修中:今日已满" style="background-color:gray">立即预定</button>
+						</a>
 						<a href="##" th:if="${page.list[2].status.id}==3" th:href="@{'/room/'+${page.list[2].id}}">
 							<button type="button" class="btn btn-warning" th:text="${page.list[2].status.id}==3?立即预定:今日已满">立即预定</button>
 						</a>
@@ -114,6 +132,12 @@
 				<button type="button" class="btn btn-info" th:text="${dl}==0?'标准价：￥'+(${page.list[3].price}):'会员价：￥'+(${page.list[3].price}-50)">会员价：￥269</button>
 						<a href="##" th:if="${page.list[3].status.id}==4" th:href="@{#}">
 							<button type="button" class="btn btn-warning" th:text="${page.list[3].status.id}==3?立即预定:今日已满" style="background-color:gray">立即预定</button>
+						</a>
+							<a href="##" th:if="${page.list[3].status.id}==14" th:href="@{#}">
+							<button type="button" class="btn btn-warning" th:text="${page.list[3].status.id}==14?打扫中:今日已满" style="background-color:gray">立即预定</button>
+						</a>
+						<a href="##" th:if="${page.list[3].status.id}==15" th:href="@{#}">
+							<button type="button" class="btn btn-warning" th:text="${page.list[3].status.id}==15?维修中:今日已满" style="background-color:gray">立即预定</button>
 						</a>
 						<a href="##" th:if="${page.list[3].status.id}==3" th:href="@{'/room/'+${page.list[3].id}}">
 							<button type="button" class="btn btn-warning" th:text="${page.list[3].status.id}==3?立即预定:今日已满">立即预定</button>
@@ -134,6 +158,12 @@
 						<a href="##" th:if="${page.list[4].status.id}==4" th:href="@{#}">
 							<button type="button" class="btn btn-warning" th:text="${page.list[4].status.id}==3?立即预定:今日已满" style="background-color:gray">立即预定</button>
 						</a>
+							<a href="##" th:if="${page.list[4].status.id}==14" th:href="@{#}">
+							<button type="button" class="btn btn-warning" th:text="${page.list[4].status.id}==14?打扫中:今日已满" style="background-color:gray">立即预定</button>
+						</a>
+						<a href="##" th:if="${page.list[4].status.id}==15" th:href="@{#}">
+							<button type="button" class="btn btn-warning" th:text="${page.list[4].status.id}==15?维修中:今日已满" style="background-color:gray">立即预定</button>
+						</a>
 						<a href="##" th:if="${page.list[4].status.id}==3" th:href="@{'/room/'+${page.list[4].id}}">
 							<button type="button" class="btn btn-warning" th:text="${page.list[4].status.id}==3?立即预定:今日已满">立即预定</button>
 						</a>
@@ -151,6 +181,12 @@
 						<button type="button" class="btn btn-info" th:text="${dl}==0?'标准价：￥'+(${page.list[5].price}):'会员价：￥'+(${page.list[5].price}-50)">会员价：￥269</button>
 						<a href="##" th:if="${page.list[5].status.id}==4" th:href="@{#}">
 							<button type="button" class="btn btn-warning" th:text="${page.list[5].status.id}==3?立即预定:今日已满" style="background-color:gray">立即预定</button>
+						</a>
+							<a href="##" th:if="${page.list[5].status.id}==14" th:href="@{#}">
+							<button type="button" class="btn btn-warning" th:text="${page.list[5].status.id}==14?打扫中:今日已满" style="background-color:gray">立即预定</button>
+						</a>
+						<a href="##" th:if="${page.list[5].status.id}==15" th:href="@{#}">
+							<button type="button" class="btn btn-warning" th:text="${page.list[5].status.id}==15?维修中:今日已满" style="background-color:gray">立即预定</button>
 						</a>
 						<a href="##" th:if="${page.list[5].status.id}==3" th:href="@{'/room/'+${page.list[5].id}}">
 							<button type="button" class="btn btn-warning" th:text="${page.list[5].status.id}==3?立即预定:今日已满">立即预定</button>
@@ -183,6 +219,12 @@
 						<a href="##" th:if="${page.list[0].status.id}==4" th:href="@{#}">
 							<button type="button" class="btn btn-warning" th:text="${page.list[0].status.id}==3?立即预定:今日已满" style="background-color:gray">立即预定</button>
 						</a>
+							<a href="##" th:if="${page.list[0].status.id}==14" th:href="@{#}">
+							<button type="button" class="btn btn-warning" th:text="${page.list[0].status.id}==14?打扫中:今日已满" style="background-color:gray">立即预定</button>
+						</a>
+						<a href="##" th:if="${page.list[0].status.id}==15" th:href="@{#}">
+							<button type="button" class="btn btn-warning" th:text="${page.list[0].status.id}==15?维修中:今日已满" style="background-color:gray">立即预定</button>
+						</a>
 						<a href="##" th:if="${page.list[0].status.id}==3" th:href="@{'/room/'+${page.list[0].id}}">
 							<button type="button" class="btn btn-warning" th:text="${page.list[0].status.id}==3?立即预定:今日已满">立即预定</button>
 						</a>
@@ -199,6 +241,12 @@
 						<button type="button" class="btn btn-info" th:text="${dl}==0?'标准价：￥'+(${page.list[1].price}):'会员价：￥'+(${page.list[1].price}-50)">会员价：￥269</button>
 						<a href="##" th:if="${page.list[1].status.id}==4" th:href="@{#}">
 							<button type="button" class="btn btn-warning" th:text="${page.list[1].status.id}==3?立即预定:今日已满" style="background-color:gray">立即预定</button>
+						</a>
+							<a href="##" th:if="${page.list[1].status.id}==14" th:href="@{#}">
+							<button type="button" class="btn btn-warning" th:text="${page.list[1].status.id}==14?打扫中:今日已满" style="background-color:gray">立即预定</button>
+						</a>
+						<a href="##" th:if="${page.list[1].status.id}==15" th:href="@{#}">
+							<button type="button" class="btn btn-warning" th:text="${page.list[1].status.id}==15?维修中:今日已满" style="background-color:gray">立即预定</button>
 						</a>
 						<a href="##" th:if="${page.list[1].status.id}==3" th:href="@{'/room/'+${page.list[1].id}}">
 							<button type="button" class="btn btn-warning" th:text="${page.list[1].status.id}==3?立即预定:今日已满">立即预定</button>
@@ -220,6 +268,12 @@
 					<a href="##" th:if="${page.list[2].status.id}==4" th:href="@{#}">
 							<button type="button" class="btn btn-warning" th:text="${page.list[2].status.id}==3?立即预定:今日已满" style="background-color:gray">立即预定</button>
 						</a>
+							<a href="##" th:if="${page.list[2].status.id}==14" th:href="@{#}">
+							<button type="button" class="btn btn-warning" th:text="${page.list[2].status.id}==14?打扫中:今日已满" style="background-color:gray">立即预定</button>
+						</a>
+						<a href="##" th:if="${page.list[2].status.id}==15" th:href="@{#}">
+							<button type="button" class="btn btn-warning" th:text="${page.list[2].status.id}==15?维修中:今日已满" style="background-color:gray">立即预定</button>
+						</a>
 						<a href="##" th:if="${page.list[2].status.id}==3" th:href="@{'/room/'+${page.list[2].id}}">
 							<button type="button" class="btn btn-warning" th:text="${page.list[2].status.id}==3?立即预定:今日已满">立即预定</button>
 						</a>
@@ -236,6 +290,12 @@
 				<button type="button" class="btn btn-info" th:text="${dl}==0?'标准价：￥'+(${page.list[3].price}):'会员价：￥'+(${page.list[3].price}-50)">会员价：￥269</button>
 						<a href="##" th:if="${page.list[3].status.id}==4" th:href="@{#}">
 							<button type="button" class="btn btn-warning" th:text="${page.list[3].status.id}==3?立即预定:今日已满" style="background-color:gray">立即预定</button>
+						</a>
+							<a href="##" th:if="${page.list[3].status.id}==14" th:href="@{#}">
+							<button type="button" class="btn btn-warning" th:text="${page.list[3].status.id}==14?打扫中:今日已满" style="background-color:gray">立即预定</button>
+						</a>
+						<a href="##" th:if="${page.list[3].status.id}==15" th:href="@{#}">
+							<button type="button" class="btn btn-warning" th:text="${page.list[3].status.id}==15?维修中:今日已满" style="background-color:gray">立即预定</button>
 						</a>
 						<a href="##" th:if="${page.list[3].status.id}==3" th:href="@{'/room/'+${page.list[3].id}}">
 							<button type="button" class="btn btn-warning" th:text="${page.list[3].status.id}==3?立即预定:今日已满">立即预定</button>
@@ -256,6 +316,12 @@
 						<a href="##" th:if="${page.list[4].status.id}==4" th:href="@{#}">
 							<button type="button" class="btn btn-warning" th:text="${page.list[4].status.id}==3?立即预定:今日已满" style="background-color:gray">立即预定</button>
 						</a>
+							<a href="##" th:if="${page.list[4].status.id}==14" th:href="@{#}">
+							<button type="button" class="btn btn-warning" th:text="${page.list[4].status.id}==14?打扫中:今日已满" style="background-color:gray">立即预定</button>
+						</a>
+						<a href="##" th:if="${page.list[4].status.id}==15" th:href="@{#}">
+							<button type="button" class="btn btn-warning" th:text="${page.list[4].status.id}==15?维修中:今日已满" style="background-color:gray">立即预定</button>
+						</a>
 						<a href="##" th:if="${page.list[4].status.id}==3" th:href="@{'/room/'+${page.list[4].id}}">
 							<button type="button" class="btn btn-warning" th:text="${page.list[4].status.id}==3?立即预定:今日已满">立即预定</button>
 						</a>
@@ -271,8 +337,14 @@
 						<p th:text="'房间位置：'+(${page.list[5].area})">房间位置：酒店六楼</p>
 						<p th:text="${page.list[5].message}">房间详细信息描述</p>
 						<button type="button" class="btn btn-info" th:text="${dl}==0?'标准价：￥'+(${page.list[5].price}):'会员价：￥'+(${page.list[5].price}-50)">会员价：￥269</button>
-						<a href="##" th:if="${page.list[5].status.id}==4" th:href="@{#}">
+					<a href="##" th:if="${page.list[5].status.id}==4" th:href="@{#}">
 							<button type="button" class="btn btn-warning" th:text="${page.list[5].status.id}==3?立即预定:今日已满" style="background-color:gray">立即预定</button>
+						</a>
+							<a href="##" th:if="${page.list[5].status.id}==14" th:href="@{#}">
+							<button type="button" class="btn btn-warning" th:text="${page.list[5].status.id}==14?打扫中:今日已满" style="background-color:gray">立即预定</button>
+						</a>
+						<a href="##" th:if="${page.list[5].status.id}==15" th:href="@{#}">
+							<button type="button" class="btn btn-warning" th:text="${page.list[5].status.id}==15?维修中:今日已满" style="background-color:gray">立即预定</button>
 						</a>
 						<a href="##" th:if="${page.list[5].status.id}==3" th:href="@{'/room/'+${page.list[5].id}}">
 							<button type="button" class="btn btn-warning" th:text="${page.list[5].status.id}==3?立即预定:今日已满">立即预定</button>
@@ -302,6 +374,12 @@
 						<a href="##" th:if="${page.list[0].status.id}==4" th:href="@{#}">
 							<button type="button" class="btn btn-warning" th:text="${page.list[0].status.id}==3?立即预定:今日已满" style="background-color:gray">立即预定</button>
 						</a>
+							<a href="##" th:if="${page.list[0].status.id}==14" th:href="@{#}">
+							<button type="button" class="btn btn-warning" th:text="${page.list[0].status.id}==14?打扫中:今日已满" style="background-color:gray">立即预定</button>
+						</a>
+						<a href="##" th:if="${page.list[0].status.id}==15" th:href="@{#}">
+							<button type="button" class="btn btn-warning" th:text="${page.list[0].status.id}==15?维修中:今日已满" style="background-color:gray">立即预定</button>
+						</a>
 						<a href="##" th:if="${page.list[0].status.id}==3" th:href="@{'/room/'+${page.list[0].id}}">
 							<button type="button" class="btn btn-warning" th:text="${page.list[0].status.id}==3?立即预定:今日已满">立即预定</button>
 						</a>
@@ -318,6 +396,12 @@
 						<button type="button" class="btn btn-info" th:text="${dl}==0?'标准价：￥'+(${page.list[1].price}):'会员价：￥'+(${page.list[1].price}-50)">会员价：￥269</button>
 						<a href="##" th:if="${page.list[1].status.id}==4" th:href="@{#}">
 							<button type="button" class="btn btn-warning" th:text="${page.list[1].status.id}==3?立即预定:今日已满" style="background-color:gray">立即预定</button>
+						</a>
+							<a href="##" th:if="${page.list[1].status.id}==14" th:href="@{#}">
+							<button type="button" class="btn btn-warning" th:text="${page.list[1].status.id}==14?打扫中:今日已满" style="background-color:gray">立即预定</button>
+						</a>
+						<a href="##" th:if="${page.list[1].status.id}==15" th:href="@{#}">
+							<button type="button" class="btn btn-warning" th:text="${page.list[1].status.id}==15?维修中:今日已满" style="background-color:gray">立即预定</button>
 						</a>
 						<a href="##" th:if="${page.list[1].status.id}==3" th:href="@{'/room/'+${page.list[1].id}}">
 							<button type="button" class="btn btn-warning" th:text="${page.list[1].status.id}==3?立即预定:今日已满">立即预定</button>
@@ -339,6 +423,12 @@
 					<a href="##" th:if="${page.list[2].status.id}==4" th:href="@{#}">
 							<button type="button" class="btn btn-warning" th:text="${page.list[2].status.id}==3?立即预定:今日已满" style="background-color:gray">立即预定</button>
 						</a>
+							<a href="##" th:if="${page.list[2].status.id}==14" th:href="@{#}">
+							<button type="button" class="btn btn-warning" th:text="${page.list[2].status.id}==14?打扫中:今日已满" style="background-color:gray">立即预定</button>
+						</a>
+						<a href="##" th:if="${page.list[2].status.id}==15" th:href="@{#}">
+							<button type="button" class="btn btn-warning" th:text="${page.list[2].status.id}==15?维修中:今日已满" style="background-color:gray">立即预定</button>
+						</a>
 						<a href="##" th:if="${page.list[2].status.id}==3" th:href="@{'/room/'+${page.list[2].id}}">
 							<button type="button" class="btn btn-warning" th:text="${page.list[2].status.id}==3?立即预定:今日已满">立即预定</button>
 						</a>
@@ -355,6 +445,12 @@
 				<button type="button" class="btn btn-info" th:text="${dl}==0?'标准价：￥'+(${page.list[3].price}):'会员价：￥'+(${page.list[3].price}-50)">会员价：￥269</button>
 						<a href="##" th:if="${page.list[3].status.id}==4" th:href="@{#}">
 							<button type="button" class="btn btn-warning" th:text="${page.list[3].status.id}==3?立即预定:今日已满" style="background-color:gray">立即预定</button>
+						</a>
+							<a href="##" th:if="${page.list[3].status.id}==14" th:href="@{#}">
+							<button type="button" class="btn btn-warning" th:text="${page.list[3].status.id}==14?打扫中:今日已满" style="background-color:gray">立即预定</button>
+						</a>
+						<a href="##" th:if="${page.list[3].status.id}==15" th:href="@{#}">
+							<button type="button" class="btn btn-warning" th:text="${page.list[3].status.id}==15?维修中:今日已满" style="background-color:gray">立即预定</button>
 						</a>
 						<a href="##" th:if="${page.list[3].status.id}==3" th:href="@{'/room/'+${page.list[3].id}}">
 							<button type="button" class="btn btn-warning" th:text="${page.list[3].status.id}==3?立即预定:今日已满">立即预定</button>
@@ -375,6 +471,12 @@
 						<a href="##" th:if="${page.list[4].status.id}==4" th:href="@{#}">
 							<button type="button" class="btn btn-warning" th:text="${page.list[4].status.id}==3?立即预定:今日已满" style="background-color:gray">立即预定</button>
 						</a>
+							<a href="##" th:if="${page.list[4].status.id}==14" th:href="@{#}">
+							<button type="button" class="btn btn-warning" th:text="${page.list[4].status.id}==14?打扫中:今日已满" style="background-color:gray">立即预定</button>
+						</a>
+						<a href="##" th:if="${page.list[4].status.id}==15" th:href="@{#}">
+							<button type="button" class="btn btn-warning" th:text="${page.list[4].status.id}==15?维修中:今日已满" style="background-color:gray">立即预定</button>
+						</a>
 						<a href="##" th:if="${page.list[4].status.id}==3" th:href="@{'/room/'+${page.list[4].id}}">
 							<button type="button" class="btn btn-warning" th:text="${page.list[4].status.id}==3?立即预定:今日已满">立即预定</button>
 						</a>
@@ -392,6 +494,12 @@
 						<button type="button" class="btn btn-info" th:text="${dl}==0?'标准价：￥'+(${page.list[5].price}):'会员价：￥'+(${page.list[5].price}-50)">会员价：￥269</button>
 						<a href="##" th:if="${page.list[5].status.id}==4" th:href="@{#}">
 							<button type="button" class="btn btn-warning" th:text="${page.list[5].status.id}==3?立即预定:今日已满" style="background-color:gray">立即预定</button>
+						</a>
+							<a href="##" th:if="${page.list[5].status.id}==14" th:href="@{#}">
+							<button type="button" class="btn btn-warning" th:text="${page.list[5].status.id}==14?打扫中:今日已满" style="background-color:gray">立即预定</button>
+						</a>
+						<a href="##" th:if="${page.list[5].status.id}==15" th:href="@{#}">
+							<button type="button" class="btn btn-warning" th:text="${page.list[5].status.id}==15?维修中:今日已满" style="background-color:gray">立即预定</button>
 						</a>
 						<a href="##" th:if="${page.list[5].status.id}==3" th:href="@{'/room/'+${page.list[5].id}}">
 							<button type="button" class="btn btn-warning" th:text="${page.list[5].status.id}==3?立即预定:今日已满">立即预定</button>

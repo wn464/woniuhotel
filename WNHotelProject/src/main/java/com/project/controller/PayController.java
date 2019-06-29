@@ -69,7 +69,7 @@ public class PayController {
 			orderBean2.setId(oid);
 			MarkBean status=new MarkBean();
 			status.setId(13);
-			orderBean2.setStatus(status);
+			orderBean2.setSubscribeStatus(status);
 			orderService.updateOrderAttr(orderBean2);
 		}else {
 		s="退款失败，详情请联系卖家！！！！！";
