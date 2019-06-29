@@ -303,7 +303,8 @@ public class OrderController {
 		//通过订单id删除订单
 		@GetMapping("/shan")
 		@ResponseBody
-		public int deleteById(int id) {
+		public int deleteById(Integer id) {
+			System.out.println("-----"+id);
 			int i = orderService.deleteById(id);
 			int j = liveService.deleteLiveBean(id);
 			LiveBean bean = orderService.selectLiveById(id);

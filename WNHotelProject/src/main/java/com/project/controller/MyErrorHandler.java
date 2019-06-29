@@ -12,11 +12,11 @@ public class MyErrorHandler implements ErrorController {
 	public String getErrorPath() {
 		// TODO Auto-generated method stub
 		return null;
+		
 	}
 
 	@RequestMapping("/error")
-	@ResponseBody
 	public String requestError() {
-		return "网页丢失请稍后再试";
+		return "redirect:/404.html";
 	}
 }

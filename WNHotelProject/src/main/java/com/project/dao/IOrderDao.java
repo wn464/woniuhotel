@@ -48,4 +48,6 @@ public interface IOrderDao {
 	public List<Double> selectOrderByMonth(@Param("startTime")String startTime,@Param("endTime")String endTime);
 	//推送查询
 	public List<OrderBean> selectOrderBySub(int subscribeStatus); 
+	//统计订单（日期）
+	public List<Double> selcetOrderByDate(@Param("startTime")String startTime,@Param("endTime")String endTime);
 }
