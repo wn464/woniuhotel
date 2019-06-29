@@ -84,6 +84,7 @@ public class OrderHandler {
 	@GetMapping("/attr")
 	public String selectOrderByAttr(LiveBean liveBean,ModelMap map) {
 		List<OrderBean> list = orderService.selectOrderByAttr(liveBean.getPeople(), liveBean.getInTime());
+		System.out.println("+++++++++++++++++++---__-----"+list);
 		map.put("list", list);
 		return "admin/findOrder.html";
 	}
@@ -442,6 +443,12 @@ public class OrderHandler {
 		map.put("list", list);
 		return "admin/appointment2.html";
 	}
-	
+	//统计订单
+	@GetMapping("/month/{year}/{smonth}/{emonth}")
+	@ResponseBody
+	public List<Double> selcetOrderByMonth(@PathVariable("year")int year,@PathVariable("smonth")int smonth,@PathVariable("emonth")int emonth,ModelMap map) {
+		List<Double> list = orderService.selectOrderByMonth(year, smonth, emonth);
+		return list;
+	}
 	
 }
