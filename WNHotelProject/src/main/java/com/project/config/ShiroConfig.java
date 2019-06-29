@@ -52,6 +52,7 @@ public class ShiroConfig {
 		shiroFilter.setSecurityManager(securityManager);
 		//认证失败跳转地址
 		shiroFilter.setLoginUrl("/login.html");
+		
 		//认证失败跳转
 		Map<String, Filter> filters = shiroFilter.getFilters();
 		 // 将自定义的FormAuthenticationFilter注入shiroFilter中
@@ -60,7 +61,7 @@ public class ShiroConfig {
         filters.put("logout", new UserLogoutFilter());
       
         
-        //shiroFilter.setFilters(getcustomRolesAuthorizationFilter());
+        
 //		shiroFilter.setUnauthorizedUrl("/404.html");
 		
 		Map<String,String> fmap = new LinkedHashMap<String,String>();
@@ -84,6 +85,7 @@ public class ShiroConfig {
 		fmap.put("/upload/**", "anon");
 		//登出
 		fmap.put("/logout","logout");
+		
 		fmap.put("/admin/login","logout");
 		fmap.put("/order/state/*", "authc");
 		
