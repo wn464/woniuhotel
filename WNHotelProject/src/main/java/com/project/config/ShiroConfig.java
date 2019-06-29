@@ -27,6 +27,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.scheduling.annotation.EnableAsync;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
+import com.project.filter.CustomRolesAuthorizationFilter;
 import com.project.shiro.LoginAuthenticationFilter;
 import com.project.shiro.LoginAuthenticator;
 import com.project.shiro.MemberRealm;
@@ -57,12 +58,13 @@ public class ShiroConfig {
         filters.put("authc", new LoginAuthenticationFilter());
         // 将自定义的LogoutFilter注入shiroFilter中
         filters.put("logout", new UserLogoutFilter());
-		shiroFilter.setUnauthorizedUrl("/failed.html");
+      
+        
+        //shiroFilter.setFilters(getcustomRolesAuthorizationFilter());
+//		shiroFilter.setUnauthorizedUrl("/404.html");
 		
 		Map<String,String> fmap = new LinkedHashMap<String,String>();
-		
-		//记住我可以访问的页面
-//		 fmap.put("/", "member");
+
 		
 		//后台登录
 		fmap.put("/admin/login.html","anon");
@@ -80,26 +82,26 @@ public class ShiroConfig {
 		fmap.put("/css/**", "anon");
 		fmap.put("/images/**", "anon");
 		fmap.put("/upload/**", "anon");
-		
-
-		
 		//登出
 		fmap.put("/logout","logout");
 		fmap.put("/admin/login","logout");
-		fmap.put("/admin/**", "authc");
 		fmap.put("/order/state/*", "authc");
+		
+		fmap.put("/admin/**", "authc");
+		//前台
 		fmap.put("/**", "anon");
 		
-
 		
 		shiroFilter.setFilterChainDefinitionMap(fmap);
 		return shiroFilter;
 		
 	}
+
+
 	
 	//生成安全管理器,注入realm
 	@Bean(name="securityManager")
-	public DefaultWebSecurityManager getDefaultSecurityManager(@Qualifier("myReaml") Realm realm,@Qualifier("myReam2") Realm realm2 ) {
+	public DefaultWebSecurityManager getDefaultSecurityManager(@Qualifier("myReaml") Realm realm,@Qualifier("myReam2") Realm realm2) {
 		DefaultWebSecurityManager defaultSecurityManager = new DefaultWebSecurityManager();
 		defaultSecurityManager.setAuthenticator(new LoginAuthenticator());
 		List<Realm> realms = new ArrayList<>();
@@ -107,11 +109,18 @@ public class ShiroConfig {
 		realms.add(realm);
 		realms.add(realm2);
 		defaultSecurityManager.setRealms(realms);
+		
 //		defaultSecurityManager.setRememberMeManager(rememberMeManager());
 		return defaultSecurityManager;
 	}
 	
 	
+	public CustomRolesAuthorizationFilter getcustomRolesAuthorizationFilter() {
+		CustomRolesAuthorizationFilter customRolesAuthorizationFilter = new CustomRolesAuthorizationFilter();
+		return customRolesAuthorizationFilter;
+		
+	}
+
 //	
 //	//设置记住我
 //	@Bean
@@ -142,7 +151,9 @@ public class ShiroConfig {
 	@Bean(name = "myReaml")
 	public Realm getRealm(@Qualifier("hashedCredentialsMatcher") HashedCredentialsMatcher hashedCredentialsMatcher) {
 		MemberRealm realm = new MemberRealm();
+		
 		realm.setCredentialsMatcher(hashedCredentialsMatcher);
+		
 		return realm;
 	}
 	@Bean(name = "myReam2")

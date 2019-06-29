@@ -20,6 +20,7 @@ import com.project.Service.IUserService;
 import com.project.bean.MemberBean;
 import com.project.bean.RoleBean;
 import com.project.bean.UserBean;
+import com.project.filter.CustomRolesAuthorizationFilter;
 
 
 public class UserRealm extends AuthorizingRealm{
@@ -32,6 +33,11 @@ public class UserRealm extends AuthorizingRealm{
 	
 	@Override
 	protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principals) {
+		
+		CustomRolesAuthorizationFilter customRolesAuthorizationFilter = new CustomRolesAuthorizationFilter();
+		
+		
+		
 		SimpleAuthorizationInfo info = new SimpleAuthorizationInfo();
 		//获取用户名
 		Object username = principals.getPrimaryPrincipal();
@@ -42,12 +48,17 @@ public class UserRealm extends AuthorizingRealm{
 		System.out.println("user:"+user);
 		RoleBean bean =service1.findRoleById(user.getRole().getId());
 		
-		
-			set.add(bean.getName());
+			
+		set.add(bean.getName());
 		
 		info.addRoles(set);
 		return info;
 
+		
+		
+		
+		
+		
 	}
 
 	@Override
