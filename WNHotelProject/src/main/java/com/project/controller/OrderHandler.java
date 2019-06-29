@@ -442,33 +442,63 @@ public class OrderHandler {
 	public String selcetById(ModelMap map) {
 		List<OrderBean> list= orderService.selectOrderBySub(9);
 		System.out.println("---------"+list);
+		for (OrderBean orderBean : list) {
+			System.out.println("-=--=-=----"+orderBean);
+		}
 		map.put("list", list);
 		return "admin/appointment2.html";
 	}
-	//统计订单
+	//按时间段统计订单
 	@GetMapping("/month")
 	@ResponseBody
 	public double[] selcetOrderByMonth(int year,int smonth,int emonth,ModelMap map) {
 		double m[] = new double[12];
 		List<Double> list = new ArrayList<Double>();
 		list = orderService.selectOrderByMonth(year, smonth, emonth);
-//		double price[] = new double[12];
-//		for (int i = 0; i < price.length; i++) {
-//			price[i] = list.get(i);
-//			System.out.println(i);
-//		
-//		}
-//		
 		int a = 0;
 		for (int i = smonth-1; i < emonth; i++) {
 			m[i] = list.get(a);
 			a++;
 			System.out.println("---------"+m[i]);
 		}	
-			
-		
 		return m;
 	}
+	//按年份查询收入
+	@GetMapping("/year")
+	@ResponseBody
+	public double selcetOrderByYear(int year,ModelMap map) {
+		List<Double> list = orderService.selectOrderByMonth(year, 1, 12);
+		System.out.println(list);
+		double yprice = 0;
+		for (Double double1 : list) {
+			yprice+=double1;
+		}
+		return yprice;
+	}
+	//按月份查询收入
+	@GetMapping("/mth")
+	@ResponseBody
+	public double selcetOrderByDate(Integer year,Integer month,ModelMap map) {
+		List<Double> list = orderService.selectOrderByMonth(year, month, month);
+		double mprice = 0;
+		for (Double double1 : list) {
+			mprice+=double1;
+		}
+		return mprice;
+	}
+	//按日期查询收入
+	@GetMapping("/dates")
+	@ResponseBody
+	public double selcetOrderByDate(String date) {
+		System.out.println(date);
+		List<Double> list = orderService.selcetOrderByDate(date);
+		double dprice = 0;
+		for (Double double1 : list) {
+			dprice+=double1;
+		}
+		return dprice;
+	}
+		
 	
 	
 }

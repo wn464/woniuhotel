@@ -1,14 +1,224 @@
 ﻿<!DOCTYPE html>
-<html style="height: 100%">
-   <head>
-       <meta charset="utf-8">
-   </head>
+<html style="height: 100%"><head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Bootstrap Material Admin </title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="robots" content="all,follow">
+    <!-- Bootstrap CSS-->
+    <link rel="stylesheet" href="/admin/vendor/bootstrap/css/bootstrap.min.css">
+    <!-- Font Awesome CSS-->
+    <link rel="stylesheet" href="/admin/vendor/font-awesome/css/font-awesome.min.css">
+    <!-- Fontastic Custom icon font-->
+    <link rel="stylesheet" href="/admin/css/fontastic.css">
+    <!-- Google fonts - Poppins -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,700">
+    <!-- theme stylesheet-->
+    <link rel="stylesheet" href="/admin/css/style.default.css" id="theme-stylesheet"><link id="new-stylesheet" rel="stylesheet"><link id="new-stylesheet" rel="stylesheet"><link id="new-stylesheet" rel="stylesheet"><link id="new-stylesheet" rel="stylesheet"><link id="new-stylesheet" rel="stylesheet"><link id="new-stylesheet" rel="stylesheet"><link id="new-stylesheet" rel="stylesheet">
+    <!-- Custom stylesheet - for your changes-->
+    <link rel="stylesheet" href="/admin/css/custom.css">
+    <!-- Favicon-->
+    <link rel="shortcut icon" href="/admin/img/favicon.ico">
+    
+  <style type="text/css">/* Chart.js */
+@-webkit-keyframes chartjs-render-animation{from{opacity:0.99}to{opacity:1}}@keyframes chartjs-render-animation{from{opacity:0.99}to{opacity:1}}.chartjs-render-monitor{-webkit-animation:chartjs-render-animation 0.001s;animation:chartjs-render-animation 0.001s;}</style><style type="text/css">/* Chart.js */
+@-webkit-keyframes chartjs-render-animation{from{opacity:0.99}to{opacity:1}}@keyframes chartjs-render-animation{from{opacity:0.99}to{opacity:1}}.chartjs-render-monitor{-webkit-animation:chartjs-render-animation 0.001s;animation:chartjs-render-animation 0.001s;}</style><style type="text/css">/* Chart.js */
+@-webkit-keyframes chartjs-render-animation{from{opacity:0.99}to{opacity:1}}@keyframes chartjs-render-animation{from{opacity:0.99}to{opacity:1}}.chartjs-render-monitor{-webkit-animation:chartjs-render-animation 0.001s;animation:chartjs-render-animation 0.001s;}</style><style type="text/css">/* Chart.js */
+@-webkit-keyframes chartjs-render-animation{from{opacity:0.99}to{opacity:1}}@keyframes chartjs-render-animation{from{opacity:0.99}to{opacity:1}}.chartjs-render-monitor{-webkit-animation:chartjs-render-animation 0.001s;animation:chartjs-render-animation 0.001s;}</style></head>
+
    <body style="height: 100%; margin: 0">
-       <div id="container" style="height: 40%;width: 50%;"></div>
-       <input type="button" value="查询" onclick="change()"/>
-       
-       
-       
+<!--        <div id="container" style="height: 40%;width: 50%;"></div> -->
+<!--        <input type="button" value="查询" onclick="change()"/> -->
+<!--        <input type="button" value="查询年份" onclick="year()"/> -->
+<!--        <input type="button" value="查询月份" onclick="month()"/> -->
+<!--          <input type="button" value="查询日期" onclick="date()"/> -->
+       <div class="page">
+      <!-- Main Navbar-->
+      <header class="header">
+        <nav class="navbar">
+          <!-- Search Box-->
+          <div class="search-box">
+            <button class="dismiss"><i class="icon-close"></i></button>
+            <form id="searchForm" action="#" role="search">
+              <input type="search" placeholder="What are you looking for..." class="form-control">
+            </form>
+          </div>
+          <div class="container-fluid">
+            <div class="navbar-holder d-flex align-items-center justify-content-between">
+              <!-- Navbar Header-->
+              <div class="navbar-header">
+                <!-- Navbar Brand --><a href="/admin/index.html" class="navbar-brand d-none d-sm-inline-block">
+                  <div class="brand-text d-none d-lg-inline-block"><span>酒店管理  </span><strong>后台系统</strong></div>
+                  <div class="brand-text d-none d-sm-inline-block d-lg-none"><strong>BD</strong></div></a>
+                <!-- Toggle Button--><a id="toggle-btn" href="#" class="menu-btn active"><span></span><span></span><span></span></a>
+              </div>
+              <!-- Navbar Menu -->
+              <ul class="nav-menu list-unstyled d-flex flex-md-row align-items-md-center">
+                
+                
+                <!-- Notifications-->
+                <li class="nav-item dropdown"> <a id="notifications" rel="nofollow" data-target="#" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link"><i class="fa fa-bell-o"></i><span class="badge bg-red badge-corner">12</span></a>
+                  <ul aria-labelledby="notifications" class="dropdown-menu">
+                    <li><a rel="nofollow" href="#" class="dropdown-item"> 
+                        <div class="notification">
+                          <div class="notification-content"><i class="fa fa-envelope bg-green"></i>You have 6 new messages </div>
+                          <div class="notification-time"><small>4 minutes ago</small></div>
+                        </div></a></li>
+                    <li><a rel="nofollow" href="#" class="dropdown-item"> 
+                        <div class="notification">
+                          <div class="notification-content"><i class="fa fa-twitter bg-blue"></i>You have 2 followers</div>
+                          <div class="notification-time"><small>4 minutes ago</small></div>
+                        </div></a></li>
+                    <li><a rel="nofollow" href="#" class="dropdown-item"> 
+                        <div class="notification">
+                          <div class="notification-content"><i class="fa fa-upload bg-orange"></i>Server Rebooted</div>
+                          <div class="notification-time"><small>4 minutes ago</small></div>
+                        </div></a></li>
+                    <li><a rel="nofollow" href="#" class="dropdown-item"> 
+                        <div class="notification">
+                          <div class="notification-content"><i class="fa fa-twitter bg-blue"></i>You have 2 followers</div>
+                          <div class="notification-time"><small>10 minutes ago</small></div>
+                        </div></a></li>
+                    <li><a rel="nofollow" href="#" class="dropdown-item all-notifications text-center"> <strong>view all notifications                                            </strong></a></li>
+                  </ul>
+                </li>
+                <li class="nav-item"><a href="/admin/login" class="nav-link logout"> <span class="d-none d-sm-inline">注销</span><i class="fa fa-sign-out"></i></a></li>
+              </ul>
+            </div>
+          </div>
+        </nav>
+      </header>
+      <div class="page-content d-flex align-items-stretch"> 
+        <nav class="side-navbar">
+        </nav>
+        <div class="content-inner" style="padding-bottom: 59px;">
+          <header class="page-header">
+            <div class="container-fluid">
+              <h2 class="no-margin-bottom">营业额查询</h2>
+            </div>
+          </header>
+         	<div style="height: 300px; width: 700px;  margin: 50px 0 10px 130px;">
+         		<form class="form-inline" role="form">
+         <!-- 通过年份查询财务信息 -->
+  					<div class="form-group" style="font-size: 18px;">
+  						<label for="inputEmail3" class="control-label">输 入 要 查 询 的 年 份 ： &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+    					<select class="form-control" style="margin-right: 100px;" id="sel1">
+						  
+						  <option value="2019"> &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;2 0 1 9  年  &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;</option>
+						  <option value="2018"> &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;2 0 1 8  年  &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;</option>
+						  <option value="2017"> &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;2 0 1 7  年  &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;</option>
+						</select>
+    					<input type="button" value="查询" class="btn btn-danger" onclick="year()"/>
+  					</div>
+  			<!-- 显示信息的位置 -->		
+  					<div  class="form-group" style="margin-bottom: 0; font-size: 18px;" id="div1">
+  						<input type="text" class="form-control" id="" style="margin:10px 100px 10px 100px; visibility: hidden">
+  					</div>
+  					
+         <!-- 通过月份查询财务信息 -->
+  					<div class="form-group" style=" font-size: 18px;">
+  						<label for="inputEmail3" class="control-label">输 入 要 查 询 的 月 份 ： &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+    					<input type="month" class="form-control" id="month-inpt" style="margin-right: 100px;" >
+    					<input type="button" value="查询" class="btn btn-danger" onclick="month()"/>
+  					</div>
+  					<!-- 显示信息的位置 -->	
+  					<div  class="form-group" style="margin-bottom: 0; font-size: 18px;" id="div2">
+  						<input type="text" class="form-control" id="" style="margin:10px 100px 10px 100px; visibility: hidden">
+  					</div>
+  					
+  		 <!-- 通过日期查询财务信息 -->
+  					<div class="form-group" style="font-size: 18px;">
+  						<label for="inputEmail3" class="control-label">输 入 要 查 询 的 日  期  ： &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+    					<input type="date" class="form-control" id="date-inpt" style="margin-right: 100px;">
+    					<input type="button" value="查询" class="btn btn-danger" onclick="date()"/>
+  					</div>			
+  					<!-- 显示信息的位置 -->	
+					<div  class="form-group" style="margin-bottom: 0; font-size: 18px;" id="div3">
+  						<input type="text" class="form-control" id="" style="margin:10px 100px 10px 100px; visibility: hidden">
+  					</div>
+				</form>
+         	</div>
+         	
+         <header class="page-header">
+            <div class="container-fluid">
+              <h2 class="no-margin-bottom">年度营业额走势图</h2>
+            </div>
+          </header>
+         	<div style="height: 100px; width: 700px;  margin: 50px 0 0 50px;">
+         		<form class="form-inline" role="form">
+         			<div class="form-group" style="font-size: 18px;">
+  						<label for="inputEmail3" class="control-label">输入年份：&nbsp;&nbsp;&nbsp;&nbsp;</label>
+    					<select class="form-control" style="margin-right: 50px;" id="y-sel">
+						  <option value="2019"> &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;2 0 1 9  年 &nbsp; &nbsp;&nbsp;</option>
+						  <option value="2018"> &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;2 0 1 8  年  &nbsp; &nbsp;&nbsp;</option>
+						  <option value="2017"> &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;2 0 1 7  年 &nbsp; &nbsp;&nbsp;</option>
+						</select>
+						<label for="inputEmail3" class="control-label">起始月份 ： &nbsp;&nbsp;&nbsp;&nbsp;</label>
+    					<select class="form-control" style="margin-right: 50px;" id="m1-sel">
+						  <option value="1"> &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;1月 &nbsp; &nbsp;&nbsp;</option>
+						  <option value="2"> &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;2月 &nbsp; &nbsp;&nbsp;</option>
+						  <option value="3"> &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;3月 &nbsp; &nbsp;&nbsp;</option>
+						  <option value="4"> &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;4月 &nbsp; &nbsp;&nbsp;</option>
+						  <option value="5"> &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;5月 &nbsp; &nbsp;&nbsp;</option>
+						  <option value="6"> &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;6月 &nbsp; &nbsp;&nbsp;</option>
+						  <option value="7"> &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;7月 &nbsp; &nbsp;&nbsp;</option>
+						  <option value="8"> &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;8月 &nbsp; &nbsp;&nbsp;</option>
+						  <option value="9"> &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;9月 &nbsp; &nbsp;&nbsp;</option>
+						  <option value="10"> &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;10月 &nbsp; &nbsp;&nbsp;</option>
+						  <option value="11"> &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;11月 &nbsp; &nbsp;&nbsp;</option>
+						  <option value="12"> &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;12月 &nbsp; &nbsp;&nbsp;</option>
+						</select>
+    					<label for="inputEmail3" class="control-label">截止月份 ： &nbsp;&nbsp;&nbsp;&nbsp;</label>
+    					<select class="form-control" style="margin-right: 50px;" id="m2-sel">
+						  <option value="1"> &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;1月 &nbsp; &nbsp;&nbsp;</option>
+						  <option value="2"> &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;2月 &nbsp; &nbsp;&nbsp;</option>
+						  <option value="3"> &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;3月 &nbsp; &nbsp;&nbsp;</option>
+						  <option value="4"> &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;4月 &nbsp; &nbsp;&nbsp;</option>
+						  <option value="5"> &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;5月 &nbsp; &nbsp;&nbsp;</option>
+						  <option value="6"> &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;6月 &nbsp; &nbsp;&nbsp;</option>
+						  <option value="7"> &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;7月 &nbsp; &nbsp;&nbsp;</option>
+						  <option value="8"> &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;8月 &nbsp; &nbsp;&nbsp;</option>
+						  <option value="9"> &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;9月 &nbsp; &nbsp;&nbsp;</option>
+						  <option value="10"> &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;10月 &nbsp; &nbsp;&nbsp;</option>
+						  <option value="11"> &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;11月 &nbsp; &nbsp;&nbsp;</option>
+						  <option value="12"> &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;12月 &nbsp; &nbsp;&nbsp;</option>
+						</select>
+    					<input type="button" value="查询" class="btn btn-danger" onclick="change()"/>
+  					</div>
+         		</form>
+         	</div>
+         
+         	
+          	<div style="height: 400px; width: 800px;  margin-left: 180px;">
+	          	<div id="container" style="height: 80%;width: 80%;"></div>
+          	</div>
+          	
+          <footer class="main-footer">
+            <div class="container-fluid">
+              <div class="row">
+                <div class="col-sm-6">
+                  <p>Your company © 2017-2019</p>
+                </div>
+              </div>
+            </div>
+          </footer>
+        </div>
+      </div>
+    </div>
+
+    <!-- JavaScript files-->
+    <script src="/admin/vendor/jquery/jquery.min.js"></script>
+    <script src="/admin/vendor/popper.js/umd/popper.min.js"> </script>
+    <script src="/admin/vendor/bootstrap/js/bootstrap.min.js"></script>
+    <script src="/admin/vendor/jquery.cookie/jquery.cookie.js"> </script>
+    <script src="/admin/vendor/jquery-validation/jquery.validate.min.js"></script>
+    <!-- Main File-->
+    <script src="/admin/js/head.js"></script>
+    <script src="/admin/js/front.js"></script>
+  	 
+  	 
+  	 
     <script type="text/javascript" src="js/echarts.min.js"></script>
     <script src="vendor/jquery/jquery.min.js"></script>
     <script type="text/javascript">
@@ -18,18 +228,65 @@
 	option = null;
 	app.title = '坐标轴刻度与标签对齐';
 	var i =20
+	//查询某年的总收入
+	function year() {
+		var year = $("#sel1 option:selected").val();
+		$.ajax({
+			url:"/order/year",
+			type:"get",
+			data:"year="+year,
+			success:function(mes){
+				str = ""
+				str+="<span style='font-size:16px;margin:10px 100px 18px 100px;color:red'>年总营业额："+"￥"+mes+"</span>"
+				$("#div1").html(str)
+			}
+		})
+	}
+	//查询某月的总收入
+	function month() {
+		var str = $("#month-inpt").val()
+		var year = str.substring(0,4)
+		var month = str.substring(6,7)
+		$.ajax({
+			url:"/order/mth",
+			type:"get",
+			data:"year="+year+"&month="+month,
+			success:function(mes){
+				console.info(mes)
+				str = ""
+					str+="<span style='font-size:16px;margin:10px 100px 18px 100px;color:red'>月总营业额："+"￥"+mes+"</span>"
+				$("#div2").html(str)
+			}
+		})
+	}
+	//查询某天的总收入
+	function date() {
+		var date = $("#date-inpt").val()
+		$.ajax({
+			url:"/order/dates",
+			type:"get",
+			data:"date="+date,
+			success:function(mes){
+				console.info(mes)
+				str = ""
+				str+="<span style='font-size:16px;margin:10px 100px 18px 100px;color:red'>日总营业额："+"￥"+mes+"</span>"
+				$("#div3").html(str)
+			}
+		})
+	}
 	
+	change();
+	//根据月份段查询收入
 	function change() {
-	var year = 2019
-	var smonth = 6
-	var emonth = 12
+		var year = $("#y-sel option:selected").val();
+		var smonth = $("#m1-sel option:selected").val();
+		var emonth = $("#m2-sel option:selected").val();
 	$.ajax({
 		url:"/order/month",
 		type:"get",
 		data:"year="+year+"&smonth="+smonth+"&emonth="+emonth,
 		success:function(mes){
 			console.info(mes)
-			
 			var a = mes[0]
 			var	b = mes[1]
 			var	c = mes[2]
@@ -42,7 +299,6 @@
 			var j = mes[9]
 			var k = mes[10]
 			var l = mes[11]
-			
 			option = {
 				    color: ['#3398DB'],
 				    tooltip : {
@@ -69,11 +325,12 @@
 				    yAxis : [
 				        {
 				            type : 'value'
+				            
 				        }
 				    ],
 				    series : [
 				        {
-				            name:'直接访问',
+				            name:'￥',
 				            type:'bar',
 				            barWidth: '60%',
 				            data:[a, b, c, d, e, f,g,h,i,j,k,l]

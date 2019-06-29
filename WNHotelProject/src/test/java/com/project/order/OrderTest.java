@@ -154,7 +154,7 @@ public class OrderTest {
 	    }
 	    @Test
 	   public void name() {
-		   WebSocketUtil.sendMessageAll("200");
+		   orderService.selcetOrderByDate("2019-06-28");
 	   }
 
 
