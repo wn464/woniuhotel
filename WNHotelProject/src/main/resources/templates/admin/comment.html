@@ -124,7 +124,7 @@
                         <table class="table table-striped table-hover">
                           <thead>
                             <tr>
-                              
+                              <th>头像</th>
                               <th>姓名</th>
                               <th>评论</th>
 <!--     						  <th>操作</th> -->
@@ -132,7 +132,8 @@
                             </tr>
                           </thead>
                           <tbody>
-                            <tr th:each="comment: ${list}">                             
+                            <tr th:each="comment: ${list}">
+                              <td ><img style="width:40px;height:40px" src="upload/51e326e3-0728-4ffe-acfa-ef8b18965f94_alert_green.png" th:src="${comment.imgName}" ></td>                             
                               <td th:text="${comment.name}">xxxxxxx</td>
                               <td th:text="${comment.message}">啊啊啊</td>               
 <!--                       <td> -->
