@@ -4,10 +4,30 @@
 		<meta charset="UTF-8">
 		<title></title>
 		<link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css"/>
-		<link rel="stylesheet" type="text/css" href="/css/index.css"/>
 		<script type="text/javascript" src="/js/jquery-2.2.3.min.js" ></script>
-		
-		
+	<style type="text/css">
+		.top2{
+			width: 40%;
+			height: 300px;
+			margin: 0 auto;
+			padding-top: 80px;
+		}
+		.bgc1{
+			margin: 100px auto;
+			width: 900px;
+			height: 800px;
+			background: url(/images/12.jpg) no-repeat;
+		}
+		#btn4{
+			margin: 0 0 0 120px;
+		}
+		.loging1{
+			height: 80px;
+			width: 100%;
+			font-size: 24px;
+			color: lightsteelblue;
+		}
+	</style>
 	</head>
 	<body>
 		<div class="bgc1">
@@ -20,19 +40,17 @@
 					    <label class="control-label" for="inputEmail">用户名</label>
 					    <div class="controls">
 					    	<input type="text" id="userName"  name="userName"  >
-					    	<span id="sp1" ></span>
+					    	<span id="sp1">&nbsp;</span>
 					    </div>
 					</div>
 					<div class="control-group">
 					    <label class="control-label" for="inputEmail">手机号</label>
 					    <div class="controls">
 					    	<input type="text" id="phone"  name="phoneNumber"  style="width: 110px">
-					    	
+					    	<input type="button" value="获取验证码" style="margin-top: -50px; margin-left: 140px" onclick="setTime(this)";>
 					    </div>
 					</div>
-					<input type="button" value="获取验证码" style="margin-top: -100px; margin-left: 320px" onclick="setTime(this)";>
-					
-					<div id="sp2" style="margin-left:180px;"></div>
+						<div id="sp2" style="margin-left:180px; margin-top: -30px">&nbsp;</div>
 					 <div class="control-group">
 					    <label class="control-label" for="inputEmail">验证码</label>
 					    <div class="controls">
@@ -44,7 +62,7 @@
 					    <label class="control-label" for="inputPassword">密&nbsp;&nbsp;&nbsp;&nbsp;码</label>
 					    <div class="controls">
 					    	<input type="password" id="password" name="password" >
-					    	<span id="sp4"></span>
+					    	<span id="sp4">&nbsp;</span>
 					    </div>
 					</div>
 	
@@ -85,7 +103,7 @@
 				$("#userName").blur(function(){
 					var userName = $("#userName").val();
 					if(userName.length<4||userName.length>12){
-						$("#sp1").html("<h5 style='color:red'>用户名长度必须为4-12位<h5>");
+						$("#sp1").html("<span style='color:red'>用户名长度必须为4-12位<span>");
 					}
 					
 					$.ajax({
@@ -96,11 +114,11 @@
 						success:function(mes){
 							if(mes==1){
 								if(userName.length>=4&&userName.length<=12){
-									$("#sp1").html("<h5 style='color:red'>用户名已存在<h5>");
+									$("#sp1").html("<span style='color:red'>用户名已存在<span>");
 								}
 							}else{
 								if(userName.length>=4&&userName.length<=12){
-									$("#sp1").html("<h5 style='color:green'>用户可用<h5>");
+									$("#sp1").html("<span style='color:green'>用户可用<span>");
 								}
 							}
 						}
@@ -116,9 +134,9 @@
 					var myreg = /^(((13[0-9]{1})|(14[0-9]{1})|(17[0]{1})|(15[0-3]{1})|(15[5-9]{1})|(18[0-9]{1}))+\d{8})$/; 
 					
 					if(!myreg.test($("#phone").val())){
-						$("#sp2").html("<h5 style='color:red'>请输入正确的手机号<h5>");
+						$("#sp2").html("<span style='color:red'>请输入正确的手机号</span>");
 					}else{
-						$("#sp2").html("<h5 style='color:green'>手机号正确<h5>");
+						$("#sp2").html("<span style='color:green'>手机号正确</span>");
 					}
 					
 				})
