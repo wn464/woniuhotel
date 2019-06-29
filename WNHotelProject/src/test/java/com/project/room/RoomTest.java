@@ -14,19 +14,6 @@ import com.project.demo.WnHotelProjectApplication;
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = WnHotelProjectApplication.class)
 public class RoomTest {
-	    @Autowired
-	    private IRoomService ro;
-       
-	    @Test
-	    public void insertTest(){
-	    	
-	    	RoomBean page=ro.selectroombyid(1);
-	    	System.out.println(page);
-	    }
-	    @Test
-	    public void test1() {
-	    	
-	    }
 
 
 }

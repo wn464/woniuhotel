@@ -19,7 +19,7 @@ public class task extends TimerTask {
 	}
 	@Override
 	public void run() {
-		
+		System.out.println("15分钟到，修改订单");
 		OrderBean oder=service.selectOrderById(orderid);
 		/**
 		 * 判断订单是否已支付
@@ -34,11 +34,14 @@ public class task extends TimerTask {
 			order.setId(orderid);
 			MarkBean status=new MarkBean();
 			status.setId(7);
-			MarkBean sustatus=new MarkBean();
-			sustatus.setId(7);
 			order.setStatus(status);
-			order.setSubscribeStatus(sustatus);
 			service.updateOrderAttr(order);
+			OrderBean order1=new OrderBean();
+			MarkBean sustatus=new MarkBean();
+			order1.setId(orderid);
+			sustatus.setId(7);
+			order1.setSubscribeStatus(sustatus);
+			service.updateOrderAttr(order1);
 		}
 	}
 

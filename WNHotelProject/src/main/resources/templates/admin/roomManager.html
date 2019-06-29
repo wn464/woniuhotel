@@ -310,6 +310,8 @@
     <!-- Main File-->
    <script src="/admin/js/head.js"></script> 
     <script src="/admin/js/front.js"></script>
+   <!--  /WNHotelProject/src/main/webapp/js/layer/layer.js -->
+    <script src="/js/layer/layer.js"></script>
     <script>
   function cx(page){
 	  var type=$("#in").val();
@@ -441,8 +443,12 @@
     		type:"put",
     		async:true,
     		success:function(mes){
-    			alert(mes)
-    			location.reload() 
+    			layer.msg('已退房', {
+  				  icon: 1,
+  				  time: 3000 //2秒关闭（如果不配置，默认是3秒）
+  				}, function(){
+  					location.reload() 
+  				}); 
     		}
     	})
     }
@@ -453,8 +459,12 @@
     		type:"put",
     		async:true,
     		success:function(mes){
-    			alert(mes)
-    			location.reload() 
+    			layer.msg('已上报', {
+  				  icon: 1,
+  				  time: 3000 //2秒关闭（如果不配置，默认是3秒）
+  				}, function(){
+  					location.reload() 
+  				}); 
     		}
     	})
     }
@@ -465,8 +475,12 @@
     		type:"put",
     		async:true,
     		success:function(mes){
-    			alert(mes)
-    			location.reload() 
+    			layer.msg('已修复', {
+  				  icon: 1,
+  				  time: 3000 //2秒关闭（如果不配置，默认是3秒）
+  				}, function(){
+  					location.reload() 
+  				}); 
     		}
     	})
     }
@@ -477,8 +491,13 @@
     		type:"put",
     		async:true,
     		success:function(mes){
-    			alert(mes)
-    			location.reload() 
+    			layer.msg('打扫中', {
+    				  icon: 1,
+    				  time: 3000 //2秒关闭（如果不配置，默认是3秒）
+    				}, function(){
+    					location.reload() 
+    				}); 
+    			
     		}
     	})
     }
@@ -489,8 +508,12 @@
     		type:"put",
     		async:true,
     		success:function(mes){
-    			alert(mes)
-    			location.reload() 
+    			layer.msg('已完成', {
+  				  icon: 1,
+  				  time: 3000 //2秒关闭（如果不配置，默认是3秒）
+  				}, function(){
+  					location.reload() 
+  				}); 
     		}
     	})
     }

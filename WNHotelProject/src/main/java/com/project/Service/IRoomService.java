@@ -19,37 +19,38 @@ public interface IRoomService {
 	 * @param name
 	 * @return
 	 */
-	public RoomBean selectroombyname(String name);
+	public RoomBean selectroombyname(String name)throws Exception;
 	/**
 	 * 通过房间id查询房间详情
 	 * @param rid房间id
 	 * @return
 	 */
-public RoomBean selectroombyid(int rid);
+public RoomBean selectroombyid(int rid)throws Exception;
 /**
  * 通过房间类型，查询该类型下所有房间
  * @param type房间类型
  * @return
+ * @throws Exception 
  */
-public PageBean selectroombytype(TypeBean type,int page,int size);
+public PageBean selectroombytype(TypeBean type,int page,int size) throws Exception;
 /**
  * 修改房间状态为可住状态
  * @param status
  * @return
  */
-public boolean updateroomstatus(RoomBean room); 
+public boolean updateroomstatus(RoomBean room)throws Exception; 
 /**
  * 修改房间为不可住状态
  * @param room
  * @return
  */
-public boolean updateroomstatusin(RoomBean room);
+public boolean updateroomstatusin(RoomBean room)throws Exception;
 /**
  * 根据房间状态查询该状态下的所有房间
  * @param status
  * @return
  */
-public PageBean selectroombystatus(MarkBean status,int page,int size);
+public PageBean selectroombystatus(MarkBean status,int page,int size)throws Exception;
 /**
  * 根据类型查询给类型下某一状态的房间
  * @param type
@@ -58,7 +59,7 @@ public PageBean selectroombystatus(MarkBean status,int page,int size);
  * @param size
  * @return
  */
-public PageBean selectroombytypeandstatus(TypeBean type,MarkBean status,int page,int size);
+public PageBean selectroombytypeandstatus(TypeBean type,MarkBean status,int page,int size)throws Exception;
 /**
  * 查询某时间段可住房间
  * @param type
@@ -69,30 +70,30 @@ public PageBean selectroombytypeandstatus(TypeBean type,MarkBean status,int page
  * @return
  */
 
-public PageBean selectroombytypeantime(TypeBean type,String inTime,String outTime,int page,int size);
+public PageBean selectroombytypeantime(TypeBean type,String inTime,String outTime,int page,int size)throws Exception;
 /**
  * 查询所有房间
  * @param page
  * @param size
  * @return
  */
-public PageBean selectroomall(int page,int size);
+public PageBean selectroomall(int page,int size)throws Exception;
 /**
  * 修改房间信息
  * @param room
  * @return
  */
-public boolean updateroom(RoomBean room);
+public boolean updateroom(RoomBean room)throws Exception;
 /**
  * 添加房间
  * @param room
  * @return
  */
-public boolean insertroom(RoomBean room);
+public boolean insertroom(RoomBean room)throws Exception;
 /**
  * 查询房间人数详情
  * @param name
  * @return
  */
-public List<PeopleBean> selectpeopleall(String name);
+public List<PeopleBean> selectpeopleall(String name)throws Exception;
 }
