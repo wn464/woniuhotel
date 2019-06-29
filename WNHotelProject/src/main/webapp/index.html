@@ -347,8 +347,8 @@
           var tid=$("#type option:selected").val();
           var page=1;
           var size=50;
-           if(inTime<now){
-        	  $("#cwxs").html("入住时间不能为空");
+           if(inTime<now&&inTime!=""){
+        	  $("#cwxs").html("入住时间不能小于当前时间");
         	  return;
           } 
           if(inTime==""||outTime==""){             	

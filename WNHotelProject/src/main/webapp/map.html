@@ -23,12 +23,14 @@
 		
 		text-align: center;
 		}
-		body{
-		background: url("/images/gltp.jpg") no-repeat;
-		}
+		 body{
+		background:url("/images/gltp.jpg") no-repeat;
+		
+		} 
 	</style>
 </head>
-<body>
+<body style="opacity: 0.9">
+
 	 <div id="container"></div>
 	 <script type="text/javascript" src="js/move-top.js"></script>
 	<script type="text/javascript" src="js/easing.js"></script>
@@ -94,9 +96,9 @@
 		}
 		var infoWindow = new BMap.InfoWindow("地址：成都市青羊区政府正大门,右转250米，再转左250米即可", opts);  // 创建信息窗口对象 
 		mp.openInfoWindow(infoWindow,point); //开启信息窗口
-		/* marker.addEventListener("click", function(){ 
-			
-		});  */
+		 marker.addEventListener("click", function(){ 
+			mp.openInfoWindow(infoWindow,point); //开启信息窗口
+		});  
 		
 </script>
 </body>
