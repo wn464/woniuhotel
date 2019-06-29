@@ -79,6 +79,11 @@
 	<select id="selectOrderBySub" parameterType="int" resultMap="map">
 		select * from orders where  subscribeStatus = #{subscribeStatus} order by id desc
 	</select>
+	<!-- 	通过日期查询订单 -->
+	<select id="selcetOrderByDate" resultType="Double">
+		select price from orders where orderTime  between #{startTime} and #{endTime} 	
+	</select>
+	
 	<resultMap id="map" type="OrderBean">
 		<id property="id" column="id"></id>
 		<result property="orderTime" column="orderTime"></result>

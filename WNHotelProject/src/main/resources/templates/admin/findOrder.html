@@ -212,8 +212,8 @@
     						 
     						  <td>
 		                      <a th:href="@{/order/people/{name}(name=${orderBean.id})}" class="badge badge-rounded bg-green" ><span th:if="${orderBean.subscribeStatus!=null&&orderBean.subscribeStatus.id==9}" th:text="办理入住">入住</span></a>
-<!-- 		                      <a href="#" class="badge badge-rounded bg-green" th:if="${orderBean.subscribeStatus.id==9}" th:text="取消预定">预定</a> -->
-		                      <a href="#" class="badge badge-rounded bg-green" th:if="${orderBean.subscribeStatus!=null&&orderBean.subscribeStatus.id==8}" th:text="退房"  th:onclick="'javascript:ret('+${orderBean.lives[0].room.id}+','+${orderBean.id}+')'">退房</a>
+		                      <a  href="#" class="badge badge-rounded bg-green" ><span th:if="${orderBean.subscribeStatus!=null&&orderBean.subscribeStatus.id==9}" th:text="取消预订" th:onclick="'javascript:concel('+${orderBean.id}+')'">入住</span></a>
+<!-- 		                      <a href="#" class="badge badge-rounded bg-green" th:if="${orderBean.subscribeStatus!=null&&orderBean.subscribeStatus.id==8}" th:text="退房"  th:onclick="'javascript:ret('+${orderBean.lives[0].room.id}+','+${orderBean.id}+')'">退房</a> -->
 		                      </td>
 
 		                    </tr>
@@ -298,23 +298,40 @@
     <script src="/admin/vendor/bootstrap/js/bootstrap.min.js"></script>
     <script src="/admin/vendor/jquery.cookie/jquery.cookie.js"> </script>
     <script src="/admin/vendor/jquery-validation/jquery.validate.min.js"></script>
+    <script src="/js/layer/layer.js"></script>
     <!-- Main File-->
     <script src="/admin/js/front.js"></script>
      <script src="/admin/js/head.js"></script>
     <script type="text/javascript">
-    function ret(rid,oid) {
-    	if (confirm("确认退房")==true) {
-			//修改房间状态为不可住
-      		$.ajax({
-    				url:"/order/month/2019/06/09",
-    				type:"get",
-    				success:function(mes){
-    					window.location.reload();
-    				}
+//     function ret(rid,oid) {
+//     	if (confirm("确认退房")==true) {
+// 			//修改房间状态为不可住
+//       		$.ajax({
+//     				url:"/order/roomState",
+//     				type:"get",
+//     				date:"rid="+rid+"&oid="+oid,
+//     				success:function(mes){
+//     					window.location.reload();
+//     				}
+//     			})
+// 		}
+// 	}
+    function concel(oid) {
+    	layer.confirm('确认取消?', {icon: 3, title:'取消提示'}, function(index){
+    		$.ajax({
+   				url:"/horder/shan",
+   				type:"get",
+   				data:"id="+oid,
+   				success:function(mes){
+   					console.info(mes)
+   					window.location.reload();
+   				}
     			})
-		}
-	}
-    		
+    	  
+    	  layer.close(index);
+    	});
+		
+	}		
 		
     </script>
      

@@ -42,6 +42,8 @@ public interface IOrderService {
 	
 	public List<OrderBean> selectOrderBySub(int subscribeStatus);
 	
+	public List<Double> selcetOrderByDate(String date);
+	
 	
 	
 }

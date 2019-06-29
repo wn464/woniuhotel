@@ -6,6 +6,7 @@ import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
 
+import org.apache.shiro.session.Session;
 import org.apache.shiro.session.SessionException;
 import org.apache.shiro.subject.Subject;
 import org.apache.shiro.web.filter.authc.LogoutFilter;
@@ -34,6 +35,8 @@ public class UserLogoutFilter extends LogoutFilter {
 	@Override
     protected boolean preHandle(ServletRequest request, ServletResponse response) throws Exception {
         Subject subject = this.getSubject(request, response);
+        
+       
         if (this.isPostOnlyLogout() && !WebUtils.toHttp(request).getMethod().toUpperCase(Locale.ENGLISH).equals("POST")) {
             return this.onLogoutRequestNotAPost(request, response);
         } else {
@@ -43,9 +46,10 @@ public class UserLogoutFilter extends LogoutFilter {
             	var6.printStackTrace();
             }
             HttpServletRequest req = (HttpServletRequest) request;
+            
             String url = req.getRequestURI();
             System.out.println("url:"+url);
-            String redirectUrl = "/";
+            String redirectUrl = "/index.html";
             if (url.contains(checkUrl)) {
             	redirectUrl = logouturl;
             }
