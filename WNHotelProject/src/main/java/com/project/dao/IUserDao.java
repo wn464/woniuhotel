@@ -29,7 +29,7 @@ public interface IUserDao {
 		public int updatePassword(UserBean user);
 		
 		//修改操作员权限
-		@Update("update user set role = #{role.id} where id = #{id}")
+		@Update("update user set role = #{role.id} where username = #{username}")
 		public int updateRole(UserBean user);
 		
 		//查询所有操作员

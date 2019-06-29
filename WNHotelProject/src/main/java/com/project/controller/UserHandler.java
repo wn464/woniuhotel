@@ -17,6 +17,7 @@ import org.springframework.validation.FieldError;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -54,7 +55,7 @@ public class UserHandler {
 			System.out.println(user);
 			if(!subject.isAuthenticated()) {
 				UsernamePasswordToken token = new LoginToken(user.getUsername(),user.getPassword(),LoginType.admin.toString());
-			
+				subject.logout();
 				try {
 					subject.login(token);
 					System.out.println("认证成功");
@@ -134,6 +135,19 @@ public class UserHandler {
 				List<UserBean> selectAll = service.selectAll();
 				System.out.println(selectAll);
 				return selectAll;
+			}
+			
+			
+			/*
+			 * 修改管理员
+			 */
+			@RequestMapping("/user/updateRole")
+			@ResponseBody
+			public int updateRole(UserBean user) {
+				System.out.println(user);
+				int updateRole = service.updateRole(user);
+				
+				return updateRole;
 				
 			}
 }
