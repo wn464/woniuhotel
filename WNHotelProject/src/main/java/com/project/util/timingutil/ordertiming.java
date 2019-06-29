@@ -21,7 +21,7 @@ public class ordertiming{
 	
 public static void ds(int number ,IOrderService service){
 	Timer timer=new Timer();
-	timer.schedule(new task(service ,number),1000*30);
+	timer.schedule(new task(service ,number),1000*60*15);
 }
 	 
 }

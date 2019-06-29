@@ -32,7 +32,7 @@ public class WebSocketUtil {
 	 * @param message
 	 */
 	public static void sendMessageAll(String message) {
-		System.out.println("-----------------------------------fasong");
+		System.out.println("-----------------------------------fasong"+message);
 		for (Session session2 : ONLINE_USER_SESSIONS) {
 			sendMessage(session2, message);
 		}

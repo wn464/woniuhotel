@@ -81,6 +81,7 @@ public class PayController {
 	//响应回调
 	@RequestMapping("/ret")
 	public  String ret(HttpServletRequest request) {
+		System.out.println("------响应回调---------------");
 		String[] num = null;
 		try {
 			num = AlipayUtil.returnUrl(request);
@@ -132,7 +133,9 @@ public class PayController {
 	
 	//响应回调1
 	@RequestMapping("/ret1")
-	public  void ret1(HttpServletRequest request) {
+	@ResponseBody
+	public  String ret1(HttpServletRequest request) {
 		System.out.println("------响应回调1---------------");
+		return null;
 	}
 }
