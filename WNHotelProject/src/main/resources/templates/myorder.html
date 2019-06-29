@@ -115,7 +115,7 @@
 					</div>
 				</div>
 			<div id="gopay" >
-			 <button id="pay"  class="btn btn-danger" th:if="${order.subscribeStatus==null}" th:text="支付" ></button>
+			 <button id="pay"  class="btn btn-danger" th:value="${order.id}" onclick="pay(this)" th:if="${order.subscribeStatus==null}" th:text="支付" ></button>
 			 <button id="pingjia" data-toggle="modal" data-target="#myModal01" class="btn btn-danger" th:if="${order.subscribeStatus!=null&&order.subscribeStatus.id==8}" th:text="评价" ></button>
 
 			 <button  class="btn btn-danger" th:if="${order.status!=null&&order.status.id==7}" th:text="超时" ></button>
@@ -185,9 +185,11 @@
 			location.href="/order/state/7"
 		})
 		
-		$("#pay").click(function(){
-			alert("跳转到支付页面 ")
-		})
+		//支付
+         function pay(obj){
+         	var oid = $(obj).val();
+         	 window.location.href="/pay/"+oid; 
+         }
 		
 // 		$("#goback").click(function(){
 // 			window.location.href="/refund/"+oid;

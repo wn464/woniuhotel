@@ -247,6 +247,7 @@
     <script src="/admin/vendor/bootstrap/js/bootstrap.min.js"></script>
     <script src="/admin/vendor/jquery.cookie/jquery.cookie.js"> </script>
     <script src="/admin/vendor/jquery-validation/jquery.validate.min.js"></script>
+        <script src="/js/layer/layer.js"></script>
     <!-- Main File-->
     <script src="/admin/js/front.js"></script>
      <script src="/admin/js/head.js"></script>
@@ -267,11 +268,12 @@
   		    url:"/person",
   		    data:$('#fid').serialize(),
   		    success: function(mes) {
-  		      if(confirm('添加成功，是否继续添加？')==true){
-				window.location.reload();
-				}else {
-					window.location.href="/admin/index.html"
-				}
+  		    	
+  		    	layer.confirm('完成结账，是否继续添加入住人员?', {icon: 3, title:'确认提示'}, function(index){
+  		    	window.location.reload();
+		    	  layer.close(index);
+		    	})
+  		    	
   		    }
   		});
 		

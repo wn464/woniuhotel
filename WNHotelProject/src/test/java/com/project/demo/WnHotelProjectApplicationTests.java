@@ -17,8 +17,8 @@ public class WnHotelProjectApplicationTests {
 	IRoomService roomservcie;
 	@Test
 	public void contextLoads() {
-		RoomBean room = roomservcie.selectroombyid(1);
-		System.out.println(room);
+
+	
 	}
 
 }

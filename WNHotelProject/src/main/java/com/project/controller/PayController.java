@@ -47,6 +47,7 @@ public class PayController {
 		}
 		return string;
 	}
+	
 	//退款
 	@GetMapping("/refund/{oid}")
 	public String refund(@PathVariable("oid")int oid,ModelMap map) {
@@ -80,6 +81,7 @@ public class PayController {
 	//响应回调
 	@RequestMapping("/ret")
 	public  String ret(HttpServletRequest request) {
+		System.out.println("------响应回调---------------");
 		String[] num = null;
 		try {
 			num = AlipayUtil.returnUrl(request);
@@ -112,9 +114,13 @@ public class PayController {
 			}
 			roomService.updateroomstatusin(room);
 			//修改会员消费金额（提高会员等级）
-			int i = memberService.updateMoney(orderBean.getPrice(), orderBean.getMember().getId());
+			if (orderBean.getMember()!=null) {
+				int i = memberService.updateMoney(orderBean.getPrice(), orderBean.getMember().getId());
+			}
+			
 			
 			//发送推送消息
+			System.out.println("推送-------------------"+orderBean.getId());
 			String id = String.valueOf(orderBean.getId());
 			WebSocketUtil.sendMessageAll(id);
 		
@@ -123,5 +129,13 @@ public class PayController {
 			e.printStackTrace();
 		}
 		return "redirect:/index.html";
+	}
+	
+	//响应回调1
+	@RequestMapping("/ret1")
+	@ResponseBody
+	public  String ret1(HttpServletRequest request) {
+		System.out.println("------响应回调1---------------");
+		return null;
 	}
 }
