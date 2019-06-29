@@ -71,6 +71,7 @@ public class ShiroConfig {
 		fmap.put("/js/**", "anon");
 		fmap.put("/css/**", "anon");
 		fmap.put("/images/**", "anon");
+		fmap.put("/typeall", "anon");
 		
 		
 		//前台	没写全 把自己的东西加进去
