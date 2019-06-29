@@ -23,9 +23,23 @@
        <li> <a href="/admin/discountSet.html"> <i class="icon-mail"></i>优惠管理</a></li>
         <li> <a href="roomSet.html"> <i class="icon-screen"></i>房间修改</a></li>
        <li> <a href="/admin/vipSet.html"> <i class="icon-picture"></i>vip管理</a></li>
+       </ul>
+     </shiro:hasRole>
+     <shiro:hasRole name="boss">
+     <span class="heading">管理员</span>
+		<ul class="list-unstyled">
+		<li><a href="/admin/tab.html"> <i class="fa fa-bar-chart"></i>财务查询</a></li>
+       <li> <a href="/admin/discountSet.html"> <i class="icon-mail"></i>优惠管理</a></li>
+        <li> <a href="roomSet.html"> <i class="icon-screen"></i>房间修改</a></li>
+       <li> <a href="/admin/vipSet.html"> <i class="icon-picture"></i>vip管理</a></li>
+       </ul>
+     
+     <span class="heading">超级管理员</span>
+     <ul>
      <li> <a href="/admin/roleSet.html"> <i class="icon-interface-windows"></i>权限管理</a></li></ul>
-
 	</shiro:hasRole>
+	
+	
 <script src="/admin/js/webSocket.js"></script>
 </body>
 </html>

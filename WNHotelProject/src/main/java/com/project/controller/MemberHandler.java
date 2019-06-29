@@ -99,7 +99,7 @@ public class MemberHandler {
 			return "1";
 		}else {
 			Subject subject = SecurityUtils.getSubject();
-			//subject.logout();
+			subject.logout();
 			
 			if(!subject.isAuthenticated()) {
 				UsernamePasswordToken token = new LoginToken(member.getUserName(),member.getPassword(),LoginType.user.toString());
