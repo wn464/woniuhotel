@@ -9,6 +9,7 @@ import org.apache.ibatis.annotations.Result;
 import org.apache.ibatis.annotations.Results;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
+import org.springframework.web.bind.annotation.PostMapping;
 
 import com.project.bean.MarkBean;
 import com.project.bean.PeopleBean;
@@ -37,7 +38,7 @@ public interface IRoomDao {
 			"on r.id=l.roomid \r\n" + 
 			"join people p\r\n" + 
 			"on l.id=p.liveid\r\n" + 
-			"where r.name=#{name} and  l.intime<=#{time} and l.outtime>=#{time}")
+			"where r.name=#{name} and r.status=4 and  l.intime<=#{time} and l.outtime>=#{time}")
 	@Results({
 			@Result(property="gender", column="gender",one=@One(select=
 					  "com.project.dao.IMarkDao.selectmarkbyid"))
@@ -105,7 +106,7 @@ public interface IRoomDao {
   * @param status
   * @return
   */
- @Update("update room set status=3 where id=#{room.id}")
+ @Update("update room set status=#{room.status.id} where id=#{room.id}")
  public int updateroomstatus(@Param("room")RoomBean room);
  /**
   * 将房间更改为不可住状态

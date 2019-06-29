@@ -4,6 +4,7 @@ package com.project.controller;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Param;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.subject.Subject;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -54,14 +55,17 @@ public class RoomHandler {
 	
 	
 	
-	@PutMapping("/updatestatus/{rid}")
+	@PutMapping("/updatestatus/{rid}/{status}")
 	@ResponseBody
-	public String updatestatus(@PathVariable("rid")int rid) {
+	public String updatestatus(@PathVariable("rid")int rid,@PathVariable("status")int status) {
 		RoomBean room=new RoomBean();
 		room.setId(rid);
+		MarkBean statuss=new MarkBean();
+		statuss.setId(status);
+		room.setStatus(statuss);
 		System.out.println(rid);
 		service.updateroomstatus(room);
-		return "已退房";
+		return "已";
 	}
 
 	/**
