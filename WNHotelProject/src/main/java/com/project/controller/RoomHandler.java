@@ -35,7 +35,7 @@ import com.project.bean.TypeBean;
  *
  */
 @Controller
-public class RoomHandler {
+public class RoomHandler extends myexcption {
 
 	
 	@Autowired
@@ -48,7 +48,7 @@ public class RoomHandler {
 	
 	@PostMapping(value="/selectroombyname")
 	@ResponseBody
-	public RoomBean selectroombyNmae(String name) {
+	public RoomBean selectroombyNmae(String name) throws Exception {
 	RoomBean room=service.selectroombyname(name);
 	return room;
 	};
@@ -57,7 +57,7 @@ public class RoomHandler {
 	
 	@PutMapping("/updatestatus/{rid}/{status}")
 	@ResponseBody
-	public String updatestatus(@PathVariable("rid")int rid,@PathVariable("status")int status) {
+	public String updatestatus(@PathVariable("rid")int rid,@PathVariable("status")int status) throws Exception {
 		RoomBean room=new RoomBean();
 		room.setId(rid);
 		MarkBean statuss=new MarkBean();
@@ -72,9 +72,10 @@ public class RoomHandler {
 	 * 根据房间id查询房间详细信息
 	 * @param rid房间id
 	 * @return
+	 * @throws Exception 
 	 */
 	@GetMapping(value="/room/{rid}")
-	public String selectroombyid(@PathVariable("rid")Integer rid,ModelMap map) {
+	public String selectroombyid(@PathVariable("rid")Integer rid,ModelMap map) throws Exception {
       RoomBean bean = service.selectroombyid(rid);
       map.put("roomBean", bean);
       return "order.html";
@@ -82,7 +83,7 @@ public class RoomHandler {
 	
 	@GetMapping(value="/messs")
 	@ResponseBody
-	public RoomBean selectroomid(Integer rid) {
+	public RoomBean selectroomid(Integer rid) throws Exception {
       RoomBean bean = service.selectroombyid(rid);
       System.out.println(bean);
       return bean;
@@ -93,9 +94,10 @@ public class RoomHandler {
 	 * @param page当前页数
 	 * @param size每页显示条数
 	 * @return
+	 * @throws Exception 
 	 */
 	@GetMapping(value="/room/type/{tid}/{page}/{size}")
-	public String selectroombytype(@PathVariable("tid")int tid,@PathVariable("page") int page,@PathVariable("size") int size,ModelMap map) {
+	public String selectroombytype(@PathVariable("tid")int tid,@PathVariable("page") int page,@PathVariable("size") int size,ModelMap map) throws Exception {
 		TypeBean type=new TypeBean();
 		type.setId(tid);
 		PageBean bean = service.selectroombytype(type, page, size);
@@ -117,10 +119,11 @@ public class RoomHandler {
 	 * @param page当前页数
 	 * @param size每页显示条数
 	 * @return
+	 * @throws Exception 
 	 */
 	@GetMapping(value="/status")
 	@ResponseBody
-	public PageBean selectroombystatus(int page, int size) {
+	public PageBean selectroombystatus(int page, int size) throws Exception {
 		MarkBean status=new MarkBean();
 		status.setId(3);
 		PageBean bean = service.selectroombystatus(status, page, size);
@@ -132,10 +135,11 @@ public class RoomHandler {
 	 * @param page当前页数
 	 * @param size每页显示条数
 	 * @return
+	 * @throws Exception 
 	 */
 	@GetMapping(value="/typestatus/{tid}/{page}/{size}")
 	@ResponseBody
-	public PageBean selectroombytypeandstatus(@PathVariable("tid")int tid,@PathVariable("page") int page,@PathVariable("size") int size) {
+	public PageBean selectroombytypeandstatus(@PathVariable("tid")int tid,@PathVariable("page") int page,@PathVariable("size") int size) throws Exception {
 		TypeBean type=new TypeBean();
 		type.setId(tid);
 		MarkBean status=new MarkBean();
@@ -151,9 +155,10 @@ public class RoomHandler {
 	 * @param page
 	 * @param size
 	 * @return
+	 * @throws Exception 
 	 */
 	@GetMapping(value="/time/{tid}/{inTime}/{outTime}/{page}/{size}")
-	public String selectroombytypeantime(@PathVariable("tid")int tid, @PathVariable("inTime")String inTime, @PathVariable("outTime")String outTime, @PathVariable("page")int page, @PathVariable("size")int size,ModelMap map) {
+	public String selectroombytypeantime(@PathVariable("tid")int tid, @PathVariable("inTime")String inTime, @PathVariable("outTime")String outTime, @PathVariable("page")int page, @PathVariable("size")int size,ModelMap map) throws Exception {
 		System.out.println("类型"+tid);
 		System.out.println("入住时间"+inTime);
 		System.out.println(("离店时间"+outTime));
@@ -176,7 +181,7 @@ public class RoomHandler {
 	}
 	@GetMapping(value="/timea/{tid}/{inTime}/{outTime}/{page}/{size}")
 	@ResponseBody
-	public PageBean selectroombytypeantime2(@PathVariable("tid")int tid, @PathVariable("inTime")String inTime, @PathVariable("outTime")String outTime, @PathVariable("page")int page, @PathVariable("size")int size,ModelMap map) {
+	public PageBean selectroombytypeantime2(@PathVariable("tid")int tid, @PathVariable("inTime")String inTime, @PathVariable("outTime")String outTime, @PathVariable("page")int page, @PathVariable("size")int size,ModelMap map) throws Exception {
 //		System.out.println(tid);
 //		System.out.println(inTime);
 //		System.out.println((outTime));
@@ -190,9 +195,10 @@ public class RoomHandler {
 	 * 点击入住跳转预约界面
 	 * @param rid房间id
 	 * @return
+	 * @throws Exception 
 	 */
 	@GetMapping(value="/rooms/{rid}/{inTime}/{outTime}")
-	public String selectroombyid1(@PathVariable("rid")Integer rid,@PathVariable("inTime")String inTime,@PathVariable("outTime")String outTime,ModelMap map) {
+	public String selectroombyid1(@PathVariable("rid")Integer rid,@PathVariable("inTime")String inTime,@PathVariable("outTime")String outTime,ModelMap map) throws Exception {
       RoomBean bean = service.selectroombyid(rid);
       map.put("roomBean", bean);
       map.put("inTime",inTime);
@@ -203,10 +209,11 @@ public class RoomHandler {
 	 * 修改房间信息
 	 * @param room
 	 * @return
+	 * @throws Exception 
 	 */
 	@PutMapping(value="/updateroom")
 	@ResponseBody
-	public boolean updateroom(RoomBean room) {
+	public boolean updateroom(RoomBean room) throws Exception {
 		System.out.println(room);
 		boolean boo=service.updateroom(room);
 		return boo;
@@ -215,10 +222,11 @@ public class RoomHandler {
 	 * 添加房间
 	 * @param room
 	 * @return
+	 * @throws Exception 
 	 */
 	@PostMapping(value="/insertroom")
 	@ResponseBody
-	public boolean insertroom(RoomBean room) {
+	public boolean insertroom(RoomBean room) throws Exception {
 		boolean boo=service.insertroom(room);
 		return boo;
 	}
@@ -227,10 +235,11 @@ public class RoomHandler {
 	 * 修改房间为不可住状态(入住)
 	 * @param room
 	 * @return
+	 * @throws Exception 
 	 */
 	@PutMapping(value="/roomStatus")
 	@ResponseBody
-	public String updateStatusNo(RoomBean room) {
+	public String updateStatusNo(RoomBean room) throws Exception {
 		service.updateroomstatusin(room);
 		OrderBean orderBean = new OrderBean();
 		return "ok";
@@ -240,10 +249,11 @@ public class RoomHandler {
 	 * 修改房间为可住状态(退房)
 	 * @param room
 	 * @return
+	 * @throws Exception 
 	 */
 	@PutMapping(value="/roomState")
 	@ResponseBody
-	public String updateStatusYes(int rid,int oid) {
+	public String updateStatusYes(int rid,int oid) throws Exception {
 		RoomBean room = new RoomBean();
 		room.setId(rid);
 		service.updateroomstatus(room);
@@ -260,10 +270,11 @@ public class RoomHandler {
 	 * 修改房间为不可住状态(入住)
 	 * @param room
 	 * @return
+	 * @throws Exception 
 	 */
 	@PutMapping(value="/roomSta")
 	@ResponseBody
-	public String updateStatusNo1(int rid,int oid) {
+	public String updateStatusNo1(int rid,int oid) throws Exception {
 		//修改房间为不可住
 		RoomBean room = new RoomBean();
 		room.setId(rid);
@@ -287,7 +298,7 @@ public class RoomHandler {
 		return "ok";
 	}
 	@GetMapping(value="/rooompeopleall")
-	public String selectpeopelall(String name,ModelMap map){
+	public String selectpeopelall(String name,ModelMap map) throws Exception{
 		System.out.println(name);
 		List<PeopleBean> peos=service.selectpeopleall(name);
 		map.addAttribute("bb", peos);

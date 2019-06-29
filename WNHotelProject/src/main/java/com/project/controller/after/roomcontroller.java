@@ -14,9 +14,10 @@ import com.project.bean.MarkBean;
 import com.project.bean.PageBean;
 import com.project.bean.RoomBean;
 import com.project.bean.TypeBean;
+import com.project.controller.myexcption;
 
 @Controller
-public class roomcontroller {
+public class roomcontroller extends myexcption {
 
 	@Autowired
 	private IRoomService service;
@@ -25,9 +26,10 @@ public class roomcontroller {
 	 * 根据房间id查询房间详细信息
 	 * @param rid房间id
 	 * @return
+	 * @throws Exception 
 	 */
 	@GetMapping(value="/afterroom/{rid}")
-	public String selectroombyid(@PathVariable("rid")Integer rid,ModelMap map) {
+	public String selectroombyid(@PathVariable("rid")Integer rid,ModelMap map) throws Exception {
       RoomBean bean = service.selectroombyid(rid);
       map.put("roomBean", bean);
       System.out.println(bean);
@@ -37,10 +39,11 @@ public class roomcontroller {
 	 * 根据房间id查询房间详细信息
 	 * @param rid房间id
 	 * @return
+	 * @throws Exception 
 	 */
 	@GetMapping(value="/admin/room/{rid}")
 	@ResponseBody
-	public RoomBean selectroom(@PathVariable("rid")Integer rid,ModelMap map) {
+	public RoomBean selectroom(@PathVariable("rid")Integer rid,ModelMap map) throws Exception {
       RoomBean bean = service.selectroombyid(rid);
       return bean;
 	}
@@ -50,10 +53,11 @@ public class roomcontroller {
 	 * @param page当前页数
 	 * @param size每页显示条数
 	 * @return
+	 * @throws Exception 
 	 */
 	@GetMapping(value="/afterroom/type/{tid}/{page}/{size}")
 	@ResponseBody
-	public PageBean selectroombytype(@PathVariable("tid")int tid,@PathVariable("page") int page,@PathVariable("size") int size,ModelMap map) {
+	public PageBean selectroombytype(@PathVariable("tid")int tid,@PathVariable("page") int page,@PathVariable("size") int size,ModelMap map) throws Exception {
 		TypeBean type=new TypeBean();
 		type.setId(tid);
 		PageBean bean = service.selectroombytype(type, page, size);
@@ -64,9 +68,10 @@ public class roomcontroller {
 	 * @param page当前页数
 	 * @param size每页显示条数
 	 * @return
+	 * @throws Exception 
 	 */
 	@GetMapping(value="/afterstatus/{page}/{size}")
-	public String selectroombystatus(@PathVariable("page")int page,@PathVariable("size") int size,ModelMap map) {
+	public String selectroombystatus(@PathVariable("page")int page,@PathVariable("size") int size,ModelMap map) throws Exception {
 		MarkBean status=new MarkBean();
 		status.setId(3);
 		PageBean bean = service.selectroombystatus(status, page, size);
@@ -75,7 +80,7 @@ public class roomcontroller {
 	}
 	@GetMapping(value="/afterstatustwo/{page}/{size}")
 	@ResponseBody
-	public PageBean selectroombystatustwo(@PathVariable("page")int page,@PathVariable("size") int size) {
+	public PageBean selectroombystatustwo(@PathVariable("page")int page,@PathVariable("size") int size) throws Exception {
 		MarkBean status=new MarkBean();
 		status.setId(3);
 		PageBean bean = service.selectroombystatus(status, page, size);
@@ -87,10 +92,11 @@ public class roomcontroller {
 	 * @param page当前页数
 	 * @param size每页显示条数
 	 * @return
+	 * @throws Exception 
 	 */
 	@GetMapping(value="/aftertypestatus/{tid}/{page}/{size}")
 	@ResponseBody
-	public PageBean selectroombytypeandstatus(@PathVariable("tid")int tid,@PathVariable("page") int page,@PathVariable("size") int size) {
+	public PageBean selectroombytypeandstatus(@PathVariable("tid")int tid,@PathVariable("page") int page,@PathVariable("size") int size) throws Exception {
 		TypeBean type=new TypeBean();
 		type.setId(tid);
 		MarkBean status=new MarkBean();
@@ -106,10 +112,11 @@ public class roomcontroller {
 	 * @param page
 	 * @param size
 	 * @return
+	 * @throws Exception 
 	 */
 	@GetMapping(value="/aftertime/{tid}/{intime}/{outtime}/{page}/{size}")
 	@ResponseBody
-	public PageBean selectroombytypeantime(@PathVariable("tid")int tid,@PathVariable("intime") String inTime,@PathVariable("outtime") String outTime,@PathVariable("page") int page,@PathVariable("size") int size) {
+	public PageBean selectroombytypeantime(@PathVariable("tid")int tid,@PathVariable("intime") String inTime,@PathVariable("outtime") String outTime,@PathVariable("page") int page,@PathVariable("size") int size) throws Exception {
 		TypeBean type=new TypeBean();
 		type.setId(tid);
 		PageBean bean=service.selectroombytypeantime(type, inTime, outTime, page, size);
@@ -121,16 +128,17 @@ public class roomcontroller {
 	 * @param page
 	 * @param size
 	 * @return
+	 * @throws Exception 
 	 */
 	@GetMapping(value="/afterroomall/{page}/{size}")
-	public String selectroomall(@PathVariable("page")int page,@PathVariable("size")int size,ModelMap map) {
+	public String selectroomall(@PathVariable("page")int page,@PathVariable("size")int size,ModelMap map) throws Exception {
 		PageBean bean=service.selectroomall(page, size);
 		map.addAttribute("page", bean);
 		return "/admin/roomManager.html";
 	}
 	@GetMapping(value="/afterroomalltwo/{page}/{size}")
 	@ResponseBody
-	public PageBean selectroomalltwo(@PathVariable("page")int page,@PathVariable("size")int size) {
+	public PageBean selectroomalltwo(@PathVariable("page")int page,@PathVariable("size")int size) throws Exception {
 		PageBean bean=service.selectroomall(page, size);
 		return bean;
 	}
