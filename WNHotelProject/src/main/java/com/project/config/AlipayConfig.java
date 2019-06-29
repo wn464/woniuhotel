@@ -30,7 +30,7 @@ public class AlipayConfig {
 	public static String notify_url = "http://k2481770p3.zicp.vip:53365/ret";
 
 	// 页面跳转同步通知页面路径 需http://格式的完整路径，不能加?id=123这类自定义参数，必须外网可以正常访问
-	public static String return_url = "http://k2481770p3.zicp.vip:53365/ret";
+	public static String return_url = "http://k2481770p3.zicp.vip:53365/ret1";
 	/*
 	 * http://2485201h3o.zicp.vip:59366 http://k2481770p3.zicp.vip:53365
 	 */
