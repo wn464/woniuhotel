@@ -190,7 +190,7 @@ public class OrderHandler {
 				//查询修改后的订单
 				OrderBean order = orderService.selectOrderById(oid);
 				map.put("orderBean", order);
-				System.out.println("-=-=-=-----------------------------"+order);
+				System.out.println("修改价格后-=-=-=-----------------------------"+order);
 				return "pay.html";
 			}
 			//有账号非会员
