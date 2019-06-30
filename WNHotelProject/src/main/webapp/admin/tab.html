@@ -245,34 +245,44 @@
 	//查询某月的总收入
 	function month() {
 		var str = $("#month-inpt").val()
-		var year = str.substring(0,4)
-		var month = str.substring(6,7)
-		$.ajax({
-			url:"/order/mth",
-			type:"get",
-			data:"year="+year+"&month="+month,
-			success:function(mes){
-				console.info(mes)
-				str = ""
-					str+="<span style='font-size:16px;margin:10px 100px 18px 100px;color:red'>月总营业额："+"￥"+mes+"</span>"
-				$("#div2").html(str)
-			}
-		})
+// 		if (str!=null) {
+// 			alert("请选择月份")
+// 		}else {
+			var year = str.substring(0,4)
+			var month = str.substring(6,7)
+			$.ajax({
+				url:"/order/mth",
+				type:"get",
+				data:"year="+year+"&month="+month,
+				success:function(mes){
+					console.info(mes)
+					str = ""
+						str+="<span style='font-size:16px;margin:10px 100px 18px 100px;color:red'>月总营业额："+"￥"+mes+"</span>"
+					$("#div2").html(str)
+				}
+			})
+// 		}
+		
 	}
 	//查询某天的总收入
 	function date() {
-		var date = $("#date-inpt").val()
-		$.ajax({
-			url:"/order/dates",
-			type:"get",
-			data:"date="+date,
-			success:function(mes){
-				console.info(mes)
-				str = ""
-				str+="<span style='font-size:16px;margin:10px 100px 18px 100px;color:red'>日总营业额："+"￥"+mes+"</span>"
-				$("#div3").html(str)
-			}
-		})
+// 		if (str=" ") {
+// 			alert("请选择日期")
+// 		}else {
+			var date = $("#date-inpt").val()
+			$.ajax({
+				url:"/order/dates",
+				type:"get",
+				data:"date="+date,
+				success:function(mes){
+					console.info(mes)
+					str = ""
+					str+="<span style='font-size:16px;margin:10px 100px 18px 100px;color:red'>日总营业额："+"￥"+mes+"</span>"
+					$("#div3").html(str)
+				}
+			})
+// 		}
+		
 	}
 	
 	change();

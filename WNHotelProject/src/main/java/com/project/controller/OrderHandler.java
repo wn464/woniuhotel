@@ -333,7 +333,7 @@ public class OrderHandler {
 				order1.setPrice(price);
 				orderService.updateOrderAttr(order1);
 				//查询优惠信息
-				List<DiscountBean> dislist = orderutil.getOnLineDiscount(orderBean.getPrice(),0);
+				List<DiscountBean> dislist = orderutil.getUnderLineDiscount(orderBean.getPrice(),vipBean.getId());
 				System.out.println("--------"+dislist);
 				map.put("list", dislist);
 				//设置订单预定状态
@@ -368,7 +368,7 @@ public class OrderHandler {
 				order1.setPrice(price);
 				orderService.updateOrderAttr(order1);
 				//查询优惠信息
-				List<DiscountBean> dislist = orderutil.getOnLineDiscount(orderBean.getPrice(),0);
+				List<DiscountBean> dislist = orderutil.getUnderLineDiscount(orderBean.getPrice(),0);
 				System.out.println("--------"+dislist);
 				map.put("list", dislist);
 				//设置订单预定状态
@@ -396,6 +396,7 @@ public class OrderHandler {
 //非会员下单---------------------
 		else {
 			double price = orderutil.getUnderLineMoney(orderBean.getPrice(), 0);
+			System.out.println("________________"+price);
 			price = Math.floor(price);
 			orderBean.setPrice(price);
 			//修改数据库价格
@@ -404,7 +405,7 @@ public class OrderHandler {
 			order1.setPrice(price);
 			orderService.updateOrderAttr(order1);
 			//查询优惠信息
-			List<DiscountBean> dislist = orderutil.getOnLineDiscount(orderBean.getPrice(),0);
+			List<DiscountBean> dislist = orderutil.getUnderLineDiscount(orderBean.getPrice(),0);
 			System.out.println("--------"+dislist);
 			map.put("list", dislist);
 			//设置订单预定状态
@@ -425,6 +426,7 @@ public class OrderHandler {
 			}
 			//查询修改后的订单
 			OrderBean order = orderService.selectOrderById(oid);
+			System.out.println("+++++++"+order);
 			map.put("orderBean", order);
 			return "admin/count1.html";
 		}
