@@ -47,17 +47,20 @@
 					    <label class="control-label" for="inputEmail">手机号</label>
 					    <div class="controls">
 					    	<input type="text" id="phone"  name="phoneNumber"  style="width: 110px">
-					    	<input type="button" value="获取验证码" style="margin-top: -50px; margin-left: 140px" onclick="setTime(this)";>
+					    	<input type="button" value="获取验证码" style="margin-top: -50px; margin-left: 140px" onclick="send()"  onclick="setTime(this)";>
 					    </div>
 					</div>
 						<div id="sp2" style="margin-left:180px; margin-top: -30px">&nbsp;</div>
 					 <div class="control-group">
 					    <label class="control-label" for="inputEmail">验证码</label>
 					    <div class="controls">
-					    	<input type="text" >
+					    	<input type="text" name="code">
 					    </div>
 					    
 					</div>
+					
+					
+					
 					<div class="control-group">
 					    <label class="control-label" for="inputPassword">密&nbsp;&nbsp;&nbsp;&nbsp;码</label>
 					    <div class="controls">
@@ -68,7 +71,7 @@
 	
 					<div class="control-group">
 					    <div class="controls">
-						    <button type='submin' class='btn btn-info' id="btn4"> 注 册 </button>
+						    <button type='submit' class='btn btn-info' id="btn4"> 注 册 </button>
 					    </div>
 					</div>
 				</form>
@@ -76,8 +79,9 @@
 		</div>
 		
 		<script type="text/javascript">	
-		 var countDown=60; 
+			 var countDown=60; 
 		    function setTime(val) { 
+		    	
 			    if (countDown == 0) { 
 				    val.removeAttribute("disabled");    
 				    val.value="获取验证码"; 
@@ -93,7 +97,17 @@
 				    },1000) 
 		    } 
 		
-		
+		function send() {
+			var phone = $("#phone").val();
+	    	$.ajax({
+	    		url:"/member/send",
+	    		data:"phone="+phone,
+	    		dataType:"json",
+	    		success:function(mes){
+	    			alert(mes)
+	    		}
+	    	})
+		}
 		
 		
 		

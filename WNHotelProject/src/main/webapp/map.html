@@ -30,8 +30,17 @@
 	</style>
 </head>
 <body style="opacity: 0.9">
-
-	 <div id="container"></div>
+<div class="top-bar_sub_w3ls_agileits">
+	</div>
+	 <div id="container">
+	 
+	 
+	 
+	 </div>
+	
+	
+	
+	
 	 <script type="text/javascript" src="js/move-top.js"></script>
 	<script type="text/javascript" src="js/easing.js"></script>
 	<script type="text/javascript" src="js/bootstrap.js"></script>  
@@ -90,7 +99,7 @@
 		var opts = {
 		  width : 200,     // 信息窗口宽度
 		  height: 100,     // 信息窗口高度
-		  title : "阿里玖玖超级大酒店" , // 信息窗口标题
+		  title : "京西酒店" , // 信息窗口标题
 		  enableMessage:true,//设置允许信息窗发送短息
 		  message:"亲耐滴，晚上一起吃个饭吧？戳下面的链接看下地址喔~"
 		}
@@ -98,7 +107,13 @@
 		mp.openInfoWindow(infoWindow,point); //开启信息窗口
 		 marker.addEventListener("click", function(){ 
 			mp.openInfoWindow(infoWindow,point); //开启信息窗口
-		});  
+		}); 
+		
+		 $(function(){
+				
+				$(".top-bar_sub_w3ls_agileits").load("public.html");
+			})
+			
 		
 </script>
 </body>

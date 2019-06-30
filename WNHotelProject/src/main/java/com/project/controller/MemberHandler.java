@@ -19,19 +19,33 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.alipay.api.domain.SenderInfoVO;
 import com.project.Service.IMemberService;
 import com.project.bean.MemberBean;
 import com.project.shiro.LoginToken;
 import com.project.shiro.LoginType;
+import com.project.util.CodeUtil;
+import com.project.util.JuHeDemo;
 
 @Controller
 public class MemberHandler {
-	
+	private static StringBuffer  generateCode = null;
 	@Autowired
 	private IMemberService service;
 	
 	
 	
+	/*
+	 * 发送短信
+	 */
+	@GetMapping("/member/send")
+	@ResponseBody
+	public  boolean Send(String phone) {
+		generateCode = CodeUtil.generateCode();
+		System.out.println("--------"+generateCode.toString());
+		boolean mobileQuery = JuHeDemo.mobileQuery(phone, 169209, generateCode);
+		return false;
+	}
 	
 	
 	
@@ -40,6 +54,7 @@ public class MemberHandler {
 	 */
 	@PostMapping("/member/reg")
 	public String reg(ModelMap map,@Validated MemberBean member,String code,BindingResult result) {
+		
 		System.out.println(code);
 		System.out.println(member);
 		if(result.hasErrors()) {
@@ -50,23 +65,32 @@ public class MemberHandler {
 			}
 			return "redirect:/reg.html";
 		}else {
-			//判断是否存在这个用户 
-			MemberBean bean = service.selectByUsername(member.getUserName());
-			if(bean==null) {
-				
-				
-				Object obj = new SimpleHash("MD5",member.getPassword(),member.getUserName(),1024);		//盐值
-				MemberBean memb = new MemberBean();												//创建member对象 然后封装
-				memb.setUserName(member.getUserName());
-				memb.setPassword(obj.toString());
-				memb.setPhoneNumber(member.getPhoneNumber());
-				int reg = service.reg(memb);
-				
-				
-				return "redirect:/login.html"; // 注册成功  跳转注册成功页面
+			
+			if (code.equals(generateCode.toString())) {
+				System.out.println("----------------------"+code);
+				System.out.println(generateCode);
+				//判断是否存在这个用户 
+				MemberBean bean = service.selectByUsername(member.getUserName());
+				if(bean==null) {
+					
+					
+					Object obj = new SimpleHash("MD5",member.getPassword(),member.getUserName(),1024);		//盐值
+					MemberBean memb = new MemberBean();												//创建member对象 然后封装
+					memb.setUserName(member.getUserName());
+					memb.setPassword(obj.toString());
+					memb.setPhoneNumber(member.getPhoneNumber());
+					int reg = service.reg(memb);
+					
+					
+					return "redirect:/login.html"; // 注册成功  跳转注册成功页面
+				}else {
+					return "redirect:/reg.html";
+				}
 			}else {
-				return "redirect:/reg.html";
+				return "redirect:/reg.html"; // 注册成功  跳转注册成功页面
 			}
+			
+			
 			
 		}		
 		
