@@ -46,6 +46,9 @@ public class UserRealm extends AuthorizingRealm{
 		//获取数据库中的角色
 		UserBean user = service.selectByUserName((String)username);
 		System.out.println("user:"+user);
+		if(user==null) {
+			return info;
+		}
 		RoleBean bean =service1.findRoleById(user.getRole().getId());
 		
 			
