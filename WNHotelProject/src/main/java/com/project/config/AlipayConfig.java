@@ -1,4 +1,4 @@
-﻿package com.project.config;
+package com.project.config;
 
 import java.io.FileWriter;
 import java.io.IOException;
