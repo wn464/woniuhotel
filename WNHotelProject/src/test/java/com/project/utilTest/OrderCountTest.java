@@ -56,10 +56,11 @@ public class OrderCountTest {
 //		}
 		try {
 
-			//System.out.println(orderutil.getOnLineMoney(200, 1));
+//			System.out.println(orderutil.getOnLineMoney(100, 1));
 			//System.out.println(orderutil.getUnderLineMoney(5000, 0));
-			System.out.println(orderutil.getUnderLineDiscount(5000, 0));
+//			System.out.println(orderutil.getOnLineDiscount(5000, 0));
 			//System.out.println(orderutil.getUnderLineMoney(5000));
+			System.out.println(orderutil.getOnLineDiscount(200, 0));
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
