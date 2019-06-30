@@ -17,9 +17,10 @@
 /*login界面的css*/
 .bgc{
 	margin: 100px auto;
-	width: 1200px;
-	height: 800px;
-	background: url(/images/5.jpg) no-repeat;
+	width: 1000px;
+	height: 600px;
+	box-shadow: 1px 1px 8px rgba(0,0,0,0.7);
+	
 }
 .top2{
 	width: 40%;
@@ -30,16 +31,9 @@
 .loging{
 	height: 130px;
 	width: 100%;
-	font-size: 24px;
-	color: lightsteelblue;
+	font-size: 28px;
+	color: gray;
 }
-.loging1{
-	height: 80px;
-	width: 100%;
-	font-size: 24px;
-	color: lightsteelblue;
-}
-
 #btn3{
 	margin: 30px 0 0 60px;
 }
@@ -50,9 +44,11 @@
 /*注册界面的css*/
 .bgc1{
 	margin: 100px auto;
-	width: 900px;
-	height: 800px;
-	background: url(/images/12.jpg) no-repeat;
+	width: 1000px;
+	height: 600px;
+	box-shadow: 1px 1px 8px rgba(0,0,0,0.7);
+	
+	
 }
 #btn4{
 	margin: 30px 0 0 120px;

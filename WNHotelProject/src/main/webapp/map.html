@@ -5,6 +5,9 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta charset="utf-8">
 	<meta name="keywords" content="" />
+	<link href="css/bootstrap.css" rel='stylesheet' type='text/css' />
+	<link href="css/style.css" rel='stylesheet' type='text/css' />
+	<link href="css/font-awesome.css" rel="stylesheet">
 	<script type="application/x-javascript">
 		addEventListener("load", function () {
 			setTimeout(hideURLbar, 0);
@@ -16,20 +19,47 @@
 	
 	<script type="text/javascript" src="http://api.map.baidu.com/api?v=3.0&ak=Z7QuDLumjH1HBTPlMeySGbrcpzRRqYkV"></script>
 	<script type="text/javascript" src="js/jquery-2.2.3.min.js"></script>
-	
 	<script src="js/responsiveslides.min.js"></script>
 	<style type="text/css">
 		#container {width: 1100px;height: 600px;overflow: hidden;margin:20px auto 0;font-family:"微软雅黑";
 		
 		text-align: center;
 		}
-		 body{
-		background:url("/images/gltp.jpg") no-repeat;
-		
-		} 
+		.pos{
+			width: 1000px;
+			height: 100px;
+			margin: 0 auto;
+		}
+		.pos h1{
+			text-align: center;
+			line-height: 100px;
+		}
+		.all{
+			height: 500px;
+			width: 100%;
+			margin-top: 30px;
+		}
+		.map1{
+			height: 430px;
+			width: 500px;
+			float: left;
+			margin-left: 180px;
+		}
+		.map1 img{
+			height: 100%;
+			width: 100%;
+		}
+		.map2{
+			height: 350px;
+			width: 520px;
+			float: left;
+			margin-left: 100px;
+			margin-top: 50px;
+		}
 	</style>
 </head>
 <body style="opacity: 0.9">
+<<<<<<< HEAD
 <div class="top-bar_sub_w3ls_agileits">
 	</div>
 	 <div id="container">
@@ -41,7 +71,28 @@
 	
 	
 	
-	 <script type="text/javascript" src="js/move-top.js"></script>
+=======
+	<div class="top-bar_sub_w3ls_agileits">
+	</div>
+	<div class="pos">
+		<h1>酒店位置</h1>
+	</div>
+	<div id="container"></div>
+	<div class="all">
+		 <div class="map1">
+		 	<img src="images/map1.png"/>
+		 </div>
+		 <div class="map2">
+		 	<p>京西酒店座落于繁华的春熙路——太古里商圈内，极具东南亚风情。北依世界首座城市环境教育公园——活水公园；东望中国西部第一高塔——锦绣天府塔；西靠国务院确定的全国佛教重点寺院之一；南邻太升路商业街、距火车北站与火车东站均只需十五分钟车程，距双流国际机场仅三十分钟车程，交通便利，是商务活动、观光旅游的理想下榻之地。酒店“用心极致，追求完美”的服务与此相得益彰，让您尽享尊贵验。</p>
+		 	<br />
+		 	<p>酒店地址：中国·四川省·成都市青羊区太升北路2号</p>
+		 	<p>邮编：610017</p>
+		 	<p>传真：+86-28-86948796</p>
+			<p>邮箱：chengdu@tfsunshinehotel.com</p>
+		 </div>
+	</div>
+
+	<script type="text/javascript" src="js/move-top.js"></script>
 	<script type="text/javascript" src="js/easing.js"></script>
 	<script type="text/javascript" src="js/bootstrap.js"></script>  
 	<script>
@@ -99,7 +150,7 @@
 		var opts = {
 		  width : 200,     // 信息窗口宽度
 		  height: 100,     // 信息窗口高度
-		  title : "京西酒店" , // 信息窗口标题
+		  title : "京西大酒店" , // 信息窗口标题
 		  enableMessage:true,//设置允许信息窗发送短息
 		  message:"亲耐滴，晚上一起吃个饭吧？戳下面的链接看下地址喔~"
 		}

@@ -44,7 +44,7 @@ public class MemberHandler {
 		generateCode = CodeUtil.generateCode();
 		System.out.println("--------"+generateCode.toString());
 		boolean mobileQuery = JuHeDemo.mobileQuery(phone, 169209, generateCode);
-		return false;
+		return mobileQuery;
 	}
 	
 	
@@ -123,7 +123,7 @@ public class MemberHandler {
 			return "1";
 		}else {
 			Subject subject = SecurityUtils.getSubject();
-			subject.logout();
+			//subject.logout();
 			
 			if(!subject.isAuthenticated()) {
 				UsernamePasswordToken token = new LoginToken(member.getUserName(),member.getPassword(),LoginType.user.toString());

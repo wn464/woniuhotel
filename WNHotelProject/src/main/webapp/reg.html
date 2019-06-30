@@ -14,9 +14,10 @@
 		}
 		.bgc1{
 			margin: 100px auto;
-			width: 900px;
-			height: 800px;
-			background: url(/images/12.jpg) no-repeat;
+		width: 1000px;
+		height: 600px;
+		box-shadow: 1px 1px 8px rgba(0,0,0,0.7);
+	
 		}
 		#btn4{
 			margin: 0 0 0 120px;
@@ -29,7 +30,7 @@
 		}
 	</style>
 	</head>
-	<body>
+	<body style="background: url(/images/asd.jpg) no-repeat;">
 		<div class="bgc1">
 			<div class="top2">
 				<div class="loging1">
@@ -47,7 +48,7 @@
 					    <label class="control-label" for="inputEmail">手机号</label>
 					    <div class="controls">
 					    	<input type="text" id="phone"  name="phoneNumber"  style="width: 110px">
-					    	<input type="button" value="获取验证码" style="margin-top: -50px; margin-left: 140px" onclick="send()"  onclick="setTime(this)";>
+					    	<input type="button" value="获取验证码" style="margin-top: -50px; margin-left: 140px"  id="send" onclick="setTime(this)";>
 					    </div>
 					</div>
 						<div id="sp2" style="margin-left:180px; margin-top: -30px">&nbsp;</div>
@@ -96,18 +97,18 @@
 				    setTime(val) 
 				    },1000) 
 		    } 
+		$("#send").click(function() {
+				var phone = $("#phone").val();
+		    	$.ajax({
+		    		url:"/member/send",
+		    		data:"phone="+phone,
+		    		dataType:"json",
+		    		success:function(mes){
+		    		}
+		    	})
 		
-		function send() {
-			var phone = $("#phone").val();
-	    	$.ajax({
-	    		url:"/member/send",
-	    		data:"phone="+phone,
-	    		dataType:"json",
-	    		success:function(mes){
-	    			alert(mes)
-	    		}
-	    	})
-		}
+		})
+		
 		
 		
 		
