@@ -31,6 +31,7 @@ import com.project.filter.CustomRolesAuthorizationFilter;
 import com.project.shiro.LoginAuthenticationFilter;
 import com.project.shiro.LoginAuthenticator;
 import com.project.shiro.MemberRealm;
+import com.project.shiro.OneOfRoleAuthorzationFilter;
 import com.project.shiro.UserLogoutFilter;
 import com.project.shiro.UserRealm;
 
@@ -55,14 +56,15 @@ public class ShiroConfig {
 		
 		//认证失败跳转
 		Map<String, Filter> filters = shiroFilter.getFilters();
+		
 		 // 将自定义的FormAuthenticationFilter注入shiroFilter中
         filters.put("authc", new LoginAuthenticationFilter());
         // 将自定义的LogoutFilter注入shiroFilter中
         filters.put("logout", new UserLogoutFilter());
-      
+        filters.put("oneOfRole", new OneOfRoleAuthorzationFilter());
+        //使用 "/**"=oneOfRole[admin,superadmin]
         
-        
-//		shiroFilter.setUnauthorizedUrl("/404.html");
+		shiroFilter.setUnauthorizedUrl("/login.html");
 		
 		Map<String,String> fmap = new LinkedHashMap<String,String>();
 
@@ -88,8 +90,8 @@ public class ShiroConfig {
 		
 		fmap.put("/admin/login","logout");
 		fmap.put("/order/state/*", "authc");
-		
-		fmap.put("/admin/**", "authc");
+		//只有管理员才能访问后台
+		fmap.put("/admin/**", "oneOfRole[admin,superadmin,boss]");
 		//前台
 		fmap.put("/**", "anon");
 		

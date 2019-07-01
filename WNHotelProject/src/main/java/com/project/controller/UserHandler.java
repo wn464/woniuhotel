@@ -53,8 +53,9 @@ public class UserHandler {
 		}else {
 			Subject subject = SecurityUtils.getSubject();
 			System.out.println(user);
+			UsernamePasswordToken token = new LoginToken(user.getUsername(),user.getPassword(),LoginType.admin.toString());
+			
 			if(!subject.isAuthenticated()) {
-				UsernamePasswordToken token = new LoginToken(user.getUsername(),user.getPassword(),LoginType.admin.toString());
 				subject.logout();
 				try {
 					subject.login(token);
@@ -71,6 +72,9 @@ public class UserHandler {
 					System.out.println("认证失败");
 					return "1";
 				}
+			}else {
+				//多角色登录
+				subject.login(token);
 			}
 			
 			
