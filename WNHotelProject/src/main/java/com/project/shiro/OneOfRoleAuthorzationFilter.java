@@ -20,8 +20,13 @@ public class OneOfRoleAuthorzationFilter extends AuthorizationFilter {
 		Subject subject = getSubject(request, response);
 		String url = ((HttpServletRequest)request).getRequestURI();
         // If the subject isn't identified, redirect to login URL
+		 
         if (subject.getPrincipal() == null) {
             saveRequestAndRedirectToLogin(request, response);
+            if (url.contains("/admin/")) {
+             	WebUtils.issueRedirect(request, response, "/admin/login.html");
+             	 return false;
+             }
         } else {
             // If subject is known but not authorized, redirect to the unauthorized URL if there is one
             // If no unauthorized URL is specified, just return an unauthorized HTTP status code
@@ -29,7 +34,6 @@ public class OneOfRoleAuthorzationFilter extends AuthorizationFilter {
             //SHIRO-142 - ensure that redirect _or_ error code occurs - both cannot happen due to response commit:
             if (url.contains("/admin/")) {
             	WebUtils.issueRedirect(request, response, "/admin/login.html");
-                
             } else if(StringUtils.hasText(unauthorizedUrl)){
             	WebUtils.issueRedirect(request, response, unauthorizedUrl);
             }
