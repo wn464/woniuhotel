@@ -61,6 +61,7 @@ public class ShiroConfig {
         filters.put("authc", new LoginAuthenticationFilter());
         // 将自定义的LogoutFilter注入shiroFilter中
         filters.put("logout", new UserLogoutFilter());
+        
         filters.put("oneOfRole", new OneOfRoleAuthorzationFilter());
         //使用 "/**"=oneOfRole[admin,superadmin]
         
