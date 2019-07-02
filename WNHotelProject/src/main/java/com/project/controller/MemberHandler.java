@@ -1,12 +1,17 @@
-package com.project.controller;
+  package com.project.controller;
 
 import java.util.List;
+
+import javax.servlet.ServletRequest;
+import javax.servlet.ServletResponse;
 
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.UsernamePasswordToken;
 import org.apache.shiro.crypto.hash.SimpleHash;
 import org.apache.shiro.session.Session;
 import org.apache.shiro.subject.Subject;
+import org.apache.shiro.web.util.SavedRequest;
+import org.apache.shiro.web.util.WebUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -112,7 +117,8 @@ public class MemberHandler {
 	 */
 	@PostMapping("/member/login")
 	@ResponseBody
-	public String login(ModelMap map, @Validated MemberBean member,BindingResult result) {
+	public String login(ServletRequest request,ServletResponse response,ModelMap map, @Validated MemberBean member,BindingResult result) {
+		
 		System.out.println(member);
 		if(result.hasErrors()) {
 			System.out.println("----------出现错误----------");
@@ -140,7 +146,19 @@ public class MemberHandler {
 					Session session = subject.getSession();
 					session.setAttribute("id", bean.getId());
 					session.setAttribute("userName", bean.getUserName());
+					SavedRequest savedRequest = (SavedRequest) subject.getSession(false).getAttribute("shiroSavedRequest");
 					
+					
+					if(savedRequest!=null) {
+						String url = savedRequest.getRequestURI();
+						System.out.println("RequestURI"+url);
+						if(url!=null) {
+							WebUtils.issueRedirect(request, response, url);
+							return "1";	
+						}
+							
+						
+					}
 					return "2";
 				}catch (Exception e) {
 					System.out.println("认证失败");
