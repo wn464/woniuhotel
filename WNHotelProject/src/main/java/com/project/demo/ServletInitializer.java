@@ -27,8 +27,8 @@ public class ServletInitializer extends SpringBootServletInitializer {
 		return application.sources(WnHotelProjectApplication.class);
 	}
 
-	@Bean  
-    public ServerEndpointExporter serverEndpointExporter() {  
-        return new ServerEndpointExporter();  
-    }  
+//	@Bean  
+//    public ServerEndpointExporter serverEndpointExporter() {  
+//        return new ServerEndpointExporter();  
+//    }  
 }
