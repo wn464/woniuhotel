@@ -148,18 +148,17 @@ public class MemberHandler {
 					session.setAttribute("userName", bean.getUserName());
 					SavedRequest savedRequest = (SavedRequest) subject.getSession(false).getAttribute("shiroSavedRequest");
 					
-					
+					String url = null;
 					if(savedRequest!=null) {
-						String url = savedRequest.getRequestURI();
-						System.out.println("RequestURI"+url);
+						 url= savedRequest.getRequestURI();
+						System.out.println("RequestURI+++++++++++++++"+url);
 						if(url!=null) {
-							WebUtils.issueRedirect(request, response, url);
-							return "1";	
+							//WebUtils.issueRedirect(request, response, url);
+							return url;
+							//return "1";	
 						}
-							
-						
 					}
-					return "2";
+					
 				}catch (Exception e) {
 					System.out.println("认证失败");
 					return "1";
