@@ -40,6 +40,7 @@ protected void redirectToLogin(ServletRequest request, ServletResponse response)
         loginUrl = loginurl;
     }
     WebUtils.issueRedirect(request, response, loginUrl);
+    System.out.println(url);
 }
 	
 }

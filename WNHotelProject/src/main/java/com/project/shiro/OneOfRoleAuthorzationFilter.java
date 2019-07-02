@@ -22,6 +22,7 @@ public class OneOfRoleAuthorzationFilter extends AuthorizationFilter {
         // If the subject isn't identified, redirect to login URL
 		 
         if (subject.getPrincipal() == null) {
+//            saveRequestAndRedirectToLogin(request, response);
             if (url.contains("/admin/")) {
              	WebUtils.issueRedirect(request, response, "/admin/login.html");
              	 return false;

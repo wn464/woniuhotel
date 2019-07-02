@@ -56,13 +56,13 @@ public class ShiroConfig {
 		
 		//认证失败跳转
 		Map<String, Filter> filters = shiroFilter.getFilters();
-		
+		filters.put("oneOfRole", new OneOfRoleAuthorzationFilter());
 		 // 将自定义的FormAuthenticationFilter注入shiroFilter中
         filters.put("authc", new LoginAuthenticationFilter());
         // 将自定义的LogoutFilter注入shiroFilter中
         filters.put("logout", new UserLogoutFilter());
         
-        filters.put("oneOfRole", new OneOfRoleAuthorzationFilter());
+       
         //使用 "/**"=oneOfRole[admin,superadmin]
         
 		shiroFilter.setUnauthorizedUrl("/login.html");
@@ -93,6 +93,7 @@ public class ShiroConfig {
 		fmap.put("/order/state/*", "authc");
 		//只有管理员才能访问后台
 		fmap.put("/admin/**", "oneOfRole[admin,superadmin,boss]");
+//		fmap.put("/admin/**", "authc");
 		//前台
 		fmap.put("/**", "anon");
 		
